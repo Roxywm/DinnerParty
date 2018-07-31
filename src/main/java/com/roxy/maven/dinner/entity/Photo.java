@@ -1,11 +1,12 @@
 package com.roxy.maven.dinner.entity;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * 饭局照片
  */
-public class Photo {
+public class Photo implements Serializable {
     private Long id;
     private Dinner dinner;//照片所属饭局
     private String src;//照片路径

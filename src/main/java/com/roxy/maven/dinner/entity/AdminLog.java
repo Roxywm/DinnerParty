@@ -2,13 +2,14 @@ package com.roxy.maven.dinner.entity;
 
 import com.roxy.maven.dinner.enumeration.LogType;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 
 /**
  * 管理员日志类
  */
-public class AdminLog {
+public class AdminLog implements Serializable {
 	private Long id;
 	private Admin admin;
 	private Timestamp createTime;

@@ -1,11 +1,12 @@
 package com.roxy.maven.dinner.entity;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * 管理员类
  */
-public class Admin {
+public class Admin implements Serializable {
 	private Long id;
 	private String username;
 	private String password;
