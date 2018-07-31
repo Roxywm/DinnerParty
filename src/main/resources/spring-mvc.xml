@@ -32,15 +32,11 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	<!-- 拦截器配置 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/manager/**"/><!-- 需要拦截的url -->
-			<mvc:mapping path="/super/**"/><!-- 需要拦截的url -->
-			<mvc:mapping path="/super/**"/><!-- 需要拦截的url -->
-			<mvc:mapping path="/super/**"/><!-- 需要拦截的url -->
-			<mvc:mapping path="/super/**"/><!-- 需要拦截的url -->
-			<mvc:mapping path="/super/**"/><!-- 需要拦截的url -->
-			<mvc:exclude-mapping path="/user/login"/><!-- 排除url，不拦截此url -->
-			<mvc:exclude-mapping path="/user/logout"/><!-- 排除url，不拦截此url -->
-			<bean class="com.roxy.maven.dinner.intercetor.LoginIntercetor"></bean><!-- 拦截器类 -->
+			<mvc:mapping path="/admin/**"/><!-- 需要拦截的url -->
+			<mvc:exclude-mapping path="/admin/login"/><!-- 排除url，不拦截此url -->
+			<mvc:exclude-mapping path="/admin/logout"/><!-- 排除url，不拦截此url -->
+			<mvc:exclude-mapping path="/admin/authCode"/><!-- 排除验证码 -->
+			<bean class="com.roxy.maven.dinner.intercetor.AdminIntercetor"></bean><!-- 拦截器类 -->
 		</mvc:interceptor>
 	</mvc:interceptors>
 	
