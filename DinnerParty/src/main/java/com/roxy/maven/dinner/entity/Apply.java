@@ -1,11 +1,12 @@
 package com.roxy.maven.dinner.entity;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * 报名
  */
-public class Apply {
+public class Apply implements Serializable {
     private Long id;
     private User user;
     private Dinner dinner;

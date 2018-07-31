@@ -1,9 +1,11 @@
 package com.roxy.maven.dinner.entity;
 
+import java.io.Serializable;
+
 /**
  * 用户
  */
-public class User {
+public class User implements Serializable {
     private Long id;
     private String account;//账号
     private String password;//密码

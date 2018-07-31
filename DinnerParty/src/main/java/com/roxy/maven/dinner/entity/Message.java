@@ -1,11 +1,12 @@
 package com.roxy.maven.dinner.entity;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * 留言
  */
-public class Message {
+public class Message implements Serializable {
     private Long id;
     private User user;//染月
     private User msgUser;//给染月留言的人

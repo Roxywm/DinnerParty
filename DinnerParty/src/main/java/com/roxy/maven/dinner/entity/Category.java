@@ -1,9 +1,11 @@
 package com.roxy.maven.dinner.entity;
 
+import java.io.Serializable;
+
 /**
  * 类别
  */
-public class Category {
+public class Category implements Serializable {
     private Long id;
     private String name;
     private Integer type;

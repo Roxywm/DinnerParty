@@ -1,9 +1,11 @@
 package com.roxy.maven.dinner.entity;
 
+import java.io.Serializable;
+
 /**
  * 地区
  */
-public class Area {
+public class Area implements Serializable {
     private Long id;
     private String name;
     private Area parent;

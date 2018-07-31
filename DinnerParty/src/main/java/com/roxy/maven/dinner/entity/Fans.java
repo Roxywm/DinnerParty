@@ -1,11 +1,12 @@
 package com.roxy.maven.dinner.entity;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * 粉丝
  */
-public class Fans {
+public class Fans implements Serializable {
     private Long id;
     private User user;//染月
     private User fansUser;//染月的粉丝
