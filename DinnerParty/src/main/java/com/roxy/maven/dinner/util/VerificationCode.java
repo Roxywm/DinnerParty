@@ -1,4 +1,4 @@
-package com.roxy.maven.dp.util;
+package com.roxy.maven.dinner.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;

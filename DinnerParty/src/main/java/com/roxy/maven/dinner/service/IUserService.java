@@ -1,4 +1,4 @@
-package com.roxy.maven.dp.service;
+package com.roxy.maven.dinner.service;
 
 public interface IUserService {
 

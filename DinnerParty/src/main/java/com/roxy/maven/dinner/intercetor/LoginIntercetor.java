@@ -1,4 +1,4 @@
-package com.roxy.maven.dp.intercetor;
+package com.roxy.maven.dinner.intercetor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
