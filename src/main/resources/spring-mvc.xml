@@ -12,7 +12,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 	<!-- 全注解方式 -->
 	<!-- 配置扫描Controller的包 -->
-	<context:component-scan base-package="com.roxy.maven.dp.controller" />
+	<context:component-scan base-package="com.roxy.maven.dinner.controller" />
     
     <!-- 启用MVC注解 -->
     <mvc:annotation-driven/>
@@ -40,7 +40,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 			<mvc:mapping path="/super/**"/><!-- 需要拦截的url -->
 			<mvc:exclude-mapping path="/user/login"/><!-- 排除url，不拦截此url -->
 			<mvc:exclude-mapping path="/user/logout"/><!-- 排除url，不拦截此url -->
-			<bean class="com.roxy.maven.dp.intercetor.LoginIntercetor"></bean><!-- 拦截器类 -->
+			<bean class="com.roxy.maven.dinner.intercetor.LoginIntercetor"></bean><!-- 拦截器类 -->
 		</mvc:interceptor>
 	</mvc:interceptors>
 	

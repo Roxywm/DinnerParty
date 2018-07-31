@@ -1,6 +1,6 @@
-package com.roxy.maven.dp.controller;
+package com.roxy.maven.dinner.controller;
 
-import com.roxy.maven.dp.service.IUserService;
+import com.roxy.maven.dinner.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.roxy.maven.dp.dao;
+package com.roxy.maven.dinner.dao;
 
 import org.springframework.stereotype.Repository;
 

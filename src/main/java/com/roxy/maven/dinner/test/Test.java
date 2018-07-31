@@ -1,4 +1,4 @@
-package com.roxy.maven.dp.test;
+package com.roxy.maven.dinner.test;
 
 import redis.clients.jedis.Jedis;
 

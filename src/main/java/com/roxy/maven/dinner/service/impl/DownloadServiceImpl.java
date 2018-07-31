@@ -1,6 +1,6 @@
-package com.roxy.maven.dp.service.impl;
+package com.roxy.maven.dinner.service.impl;
 
-import com.roxy.maven.dp.service.IDownloadService;
+import com.roxy.maven.dinner.service.IDownloadService;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
