@@ -9,7 +9,9 @@ public class Apply {
     private Long id;
     private User user;
     private Dinner dinner;
-    private Timestamp createTime;
+    private String reason;//申请理由
+    private String remark;//备注
+    private Timestamp applyTime;//报名时间
 
     public Long getId() {
         return id;
@@ -35,21 +37,39 @@ public class Apply {
         this.dinner = dinner;
     }
 
-    public Timestamp getCreateTime() {
-        return createTime;
+    public String getReason() {
+        return reason;
     }
 
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public Timestamp getApplyTime() {
+        return applyTime;
+    }
+
+    public void setApplyTime(Timestamp applyTime) {
+        this.applyTime = applyTime;
     }
 
     public Apply() {
     }
 
-    public Apply(User user, Dinner dinner, Timestamp createTime) {
+    public Apply(User user, Dinner dinner, String reason, String remark, Timestamp applyTime) {
         this.user = user;
         this.dinner = dinner;
-        this.createTime = createTime;
+        this.reason = reason;
+        this.remark = remark;
+        this.applyTime = applyTime;
     }
 
     @Override
@@ -58,7 +78,9 @@ public class Apply {
                 "id=" + id +
                 ", user=" + user +
                 ", dinner=" + dinner +
-                ", createTime=" + createTime +
+                ", reason='" + reason + '\'' +
+                ", remark='" + remark + '\'' +
+                ", applyTime=" + applyTime +
                 '}';
     }
 }
