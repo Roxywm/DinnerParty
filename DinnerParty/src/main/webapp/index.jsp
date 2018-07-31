@@ -6,10 +6,10 @@
     <meta name="keywords" content="">
     <meta name="description" content="mezz">
     <meta name="author" content="mezz">
-    <link href="css/css.css" rel="stylesheet">
-    <link href="css/chosen.css" rel="stylesheet">
+    <link href="${ctx}/static/css/css.css" rel="stylesheet">
+    <link href="${ctx}/static/css/chosen.css" rel="stylesheet">
     <!--[if lt IE 9]>
-    <link href="css/ie.css" rel="stylesheet" type="text/css" >
+    <link href="${ctx}/static/css/ie.css" rel="stylesheet" type="text/css" >
     <meta http-equiv="X-UA-Compatible" content="IE=8" >
     <![endif]-->
     <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=IE6/IE6.html"><![endif]-->
@@ -17,7 +17,7 @@
     <title>17素材·私厨 - 为你推荐遍布全球最新鲜，最与众不同的顶级生活方式</title>
 </head>
 <body>
-<div class="indexban" style="background-image:url(images/img1.jpg);">
+<div class="indexban" style="background-image:url(${ctx}/static/images/img1.jpg);">
     <div class="wrap">
         <a href="index.html" class="logo indent">logo</a>
         <div class="medium-right"><a href="login.html">登陆</a><a href="reg.html">注册</a><a href="#">发布我的饭局</a></div>
@@ -51,19 +51,19 @@
 </div>
 
 <div class="wrap">
-    <div class="row-space tc"><a href="active.html"><img src="images/txt1.png"></a></div>
+    <div class="row-space tc"><a href="active.html"><img src="${ctx}/static/images/txt1.png"></a></div>
 
     <div class="Activity clearfix">
         <a href="#" class="item">
-            <div class="img"><img src="upload/img1.jpg"></div>
+            <div class="img"><img src="${ctx}/static/upload/img1.jpg"></div>
             <div class="txt">活动名称</div>
         </a>
         <div class="item large fr">
             <div id="full-screen-slider">
                 <ul id="slides">
-                    <li><a href="#" target="_blank"><img src="upload/img2.jpg"></a></li>
-                    <li><a href="#" target="_blank"><img src="upload/img2.jpg"></a></li>
-                    <li><a href="#" target="_blank"><img src="upload/img2.jpg"></a></li>
+                    <li><a href="#" target="_blank"><img src="${ctx}/static/upload/img2.jpg"></a></li>
+                    <li><a href="#" target="_blank"><img src="${ctx}/static/upload/img2.jpg"></a></li>
+                    <li><a href="#" target="_blank"><img src="${ctx}/static/upload/img2.jpg"></a></li>
                 </ul>
             </div>
         </div>
@@ -71,15 +71,15 @@
 
     <div class="Activity mt36 clearfix">
         <a href="#" class="item">
-            <div class="img"><img src="upload/img3.jpg"></div>
+            <div class="img"><img src="${ctx}/static/upload/img3.jpg"></div>
             <div class="txt" style="padding:10px 0">活动名称<p class="f14">不管是跨洋过海还是跨城郊游，<br>Alice & Chris总是寻找着最本真最<br>当地化的体验。</p></div>
         </a>
         <a href="#" class="item mid">
-            <div class="img"><img src="upload/img4.jpg"></div>
+            <div class="img"><img src="${ctx}/static/upload/img4.jpg"></div>
             <div class="txt">活动名称</div>
         </a>
         <a href="#" class="item mid last">
-            <div class="img"><img src="upload/img5.jpg"></div>
+            <div class="img"><img src="${ctx}/static/upload/img5.jpg"></div>
             <div class="txt">活动名称</div>
         </a>
 
@@ -89,15 +89,15 @@
 
 <div class="slideshow">
     <div class="m_banner">
-        <div class="ban" style=" background-image:url(upload/img6.jpg);"></div>
-        <div class="ban" style=" background-image:url(upload/img6.jpg);"></div>
+        <div class="ban" style=" background-image:url(${ctx}/static/upload/img6.jpg);"></div>
+        <div class="ban" style=" background-image:url(${ctx}/static/upload/img6.jpg);"></div>
         <a href="javascript:;" class="ico prev"></a>
         <a href="javascript:;" class="ico next"></a>
     </div>
 </div>
 
 <div class="community">
-    <div class="row-space tc"><img src="images/txt2.png"></div>
+    <div class="row-space tc"><img src="${ctx}/static/images/txt2.png"></div>
     <ul class="community-wrapper clearfix">
         <li><a href="#"><img src="${ctx}/static/upload/img7.jpg"></a></li>
         <li><a href="#"><img src="${ctx}/static/upload/img8.jpg"></a></li>
