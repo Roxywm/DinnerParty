@@ -20,7 +20,7 @@
 <div class="indexban" style="background-image:url(${ctx}/static/images/img1.jpg);">
     <div class="wrap">
         <a href="index.html" class="logo indent">logo</a>
-        <div class="medium-right"><a href="login.html">登陆</a><a href="reg.html">注册</a><a href="#">发布我的饭局</a></div>
+        <div class="medium-right"><a href="${ctx}/user/login">登陆</a><a href="${ctx}/user/register">注册</a><a href="#">发布我的饭局</a></div>
         <div class="txt"><span class="hd">美食与生活的完美演绎</span><a href="#">早餐</a><a href="#">午餐</a><a href="#">晚餐</a><a href="#">一键搞定</a></div>
     </div>
     <div class="p1-hero-search-form">

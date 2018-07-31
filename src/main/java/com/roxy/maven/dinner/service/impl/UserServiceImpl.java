@@ -1,6 +1,7 @@
 package com.roxy.maven.dinner.service.impl;
 
 import com.roxy.maven.dinner.dao.IUserDao;
+import com.roxy.maven.dinner.entity.User;
 import com.roxy.maven.dinner.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,4 +14,14 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private IUserDao userDao;
 
+
+    @Override
+    public User findByAccount(String account) {
+        return userDao.findByAccount(account);
+    }
+
+    @Override
+    public void register(User user) {
+        userDao.register(user);
+    }
 }

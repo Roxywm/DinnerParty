@@ -9,7 +9,6 @@ public class User implements Serializable {
     private Long id;
     private String account;//账号
     private String password;//密码
-    private String salt;//盐
     private String nickname;//昵称
     private String icon;//用户头像
     private String sex;
@@ -41,14 +40,6 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
     }
 
     public String getNickname() {
@@ -118,10 +109,9 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String account, String password, String salt, String nickname, String icon, String sex, String mobile, String email, String job, Area area, String about) {
+    public User(String account, String password, String nickname, String icon, String sex, String mobile, String email, String job, Area area, String about) {
         this.account = account;
         this.password = password;
-        this.salt = salt;
         this.nickname = nickname;
         this.icon = icon;
         this.sex = sex;
@@ -138,7 +128,6 @@ public class User implements Serializable {
                 "id=" + id +
                 ", account='" + account + '\'' +
                 ", password='" + password + '\'' +
-                ", salt='" + salt + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", icon='" + icon + '\'' +
                 ", sex='" + sex + '\'' +
