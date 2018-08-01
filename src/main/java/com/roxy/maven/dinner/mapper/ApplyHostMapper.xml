@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.roxy.maven.dinner.dao.ApplyHostDao">
+
+    <resultMap id="applyHostMap" type="applyHost">
+        <id property="id" column="aid" />
+        <result property="name" column="name" />
+        <result property="email" column="aemail" />
+        <result property="mobile" column="amobile" />
+        <result property="photo" column="photo" />
+        <result property="status" column="status" />
+        <association property="user" javaType="user">
+            <id property="id" column="id" />
+            <result property="account" column="account" />
+            <result property="password" column="password" />
+            <result property="nickname" column="nickname" />
+            <result property="icon" column="icon" />
+            <result property="sex" column="sex" />
+            <result property="mobile" column="mobile" />
+            <result property="email" column="email" />
+            <result property="job" column="job" />
+            <result property="about" column="about" />
+            <result property="hostStatus" column="hostStatus" />
+            <association property="area" javaType="area">
+                <id property="id" column="did"/>
+                <result property="name" column="name"/>
+                <!-- 父级 -->
+                <association property="parent" javaType="area">
+                    <id property="id" column="pid"/>
+                </association>
+            </association>
+        </association>
+        <association property="area" javaType="area">
+            <id property="id" column="did"/>
+            <result property="name" column="dname"/>
+            <!-- 父级 -->
+            <association property="parent" javaType="area">
+                <id property="id" column="pid"/>
+            </association>
+        </association>
+    </resultMap>
+
+  <insert id="applyHost" parameterType="applyHost" useGeneratedKeys="true" keyProperty="id">
+  	insert into applyHost(id,name,userId,areaId,email,mobile,photo)
+  	values (#{id},#{name},#{user.id},#{area.id},#{email},#{mobile},#{photo})
+  </insert>
+
+    <select id="findByUserId" parameterType="long" resultMap="applyHostMap">
+      select a.id aid,a.name,a.email aemail,a.mobile amobile,a.photo,a.status,u.*,d.id did,d.name dname,d.parentId pid
+      from applyHost a,users u,areas d
+      where a.userId=u.id and a.areaId=d.id and u.id=#{id}
+    </select>
+
+</mapper>

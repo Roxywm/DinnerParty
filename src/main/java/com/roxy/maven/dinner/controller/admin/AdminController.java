@@ -39,7 +39,16 @@ public class AdminController {
 		map.put("loginCount", loginCount);
 		return "admin/index";
 	}
-	
+
+	@RequestMapping(value = "/index")
+	public String index(){
+		return "admin/index";
+	}
+
+	/**
+	 * 跳到登录页/admin/login
+	 * @return
+	 */
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String loginPage(){
 		return "admin/login";		

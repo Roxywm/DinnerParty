@@ -3,14 +3,11 @@
 <div class="col-md-2 bootstrap-admin-col-left">
     <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
         <li class="active">
-            <a href="${ctx}/manager/index"><i class="glyphicon glyphicon-chevron-right"></i> 首页</a>
+            <a href="${ctx}/admin/index"><i class="glyphicon glyphicon-chevron-right"></i> 首页</a>
         </li>
-        <c:forEach items="${jobRight}" var="jobRight">
-            <c:if test="${jobRight.rights.rightType==1}">
-                <li>
-                    <a href="${ctx}/manager/power/?pid=${jobRight.rights.rid}"><i class="glyphicon glyphicon-chevron-right"></i> ${jobRight.rights.rightName}</a>
-                </li>
-            </c:if>
-        </c:forEach>
+        <li>
+            <a href="${ctx}/admin/applyHost/apply_host"><i class="glyphicon glyphicon-chevron-right"></i> 主持人报名管理</a>
+        </li>
+
     </ul>
 </div>

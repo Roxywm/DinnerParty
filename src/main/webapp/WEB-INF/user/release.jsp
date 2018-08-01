@@ -25,11 +25,17 @@
 <div class="memwrap wrap clearfix">
     <div class="section fl">
         <div class="location tr"><a href="Dinner.html">参加的饭局</a><a href="Host.html">主办的饭局</a><a href="Release.html" class="current">发布饭局</a></div>
-
         <c:if test="${loginUser.hostStatus==0}">
-            <div class="Participate pd30">
-                你还不是主持人，请<a href="${ctx}/user/dinner/applyHost" class="blue" style="margin: auto;">申请成为主持人</a>
-            </div>
+            <c:if test="${applyHost==null}">
+                <div class="Participate pd30">
+                    你还不是主持人，请<a href="${ctx}/user/applyHost/createApply" class="blue" style="margin: auto;">申请成为主持人</a>
+                </div>
+            </c:if>
+            <c:if test="${applyHost.status==0}">
+                <div class="Participate pd30">
+                    你已提交主持人申请，请耐心等待工作人员审核！</a>
+                </div>
+            </c:if>
         </c:if>
         <c:if test="${loginUser.hostStatus==1}">
             <div class="Participate pd30">
