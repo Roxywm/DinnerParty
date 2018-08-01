@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 /**
  * 留言
  */
-public class DinnerMessage implements Serializable {
+public class DinnerMsg implements Serializable {
     private Long id;
     private Dinner dinner;//打火锅
     private User msgUser;//给打火锅留言的人
@@ -53,10 +53,10 @@ public class DinnerMessage implements Serializable {
         this.msgTime = msgTime;
     }
 
-    public DinnerMessage() {
+    public DinnerMsg() {
     }
 
-    public DinnerMessage(Dinner dinner, User msgUser, String message, Timestamp msgTime) {
+    public DinnerMsg(Dinner dinner, User msgUser, String message, Timestamp msgTime) {
         this.dinner = dinner;
         this.msgUser = msgUser;
         this.message = message;
@@ -65,7 +65,7 @@ public class DinnerMessage implements Serializable {
 
     @Override
     public String toString() {
-        return "DinnerMessage{" +
+        return "DinnerMsg{" +
                 "id=" + id +
                 ", dinner=" + dinner +
                 ", msgUser=" + msgUser +

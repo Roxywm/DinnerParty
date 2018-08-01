@@ -26,11 +26,11 @@
     <div class="section fl">
         <div class="location tr"><a href="home.html" class="current">首页</a><a href="#">我的饭局</a><a href="follow.html">我的关注</a><a href="My_Messages.html">我的留言</a></div>
         <div class="message pd30">
-            <div class="plmain">
-                <div class="plm clearfix"><span class="fr">(您还可输入 <span id="textCount">90</span> 个字)</span>给TA留下一句话吧……</div>
-                <div class="textarea_input"><textarea id="TextArea1" onkeyup="words_deal();" ></textarea></div>
-                <div class="tool_submit tr"><button type="button" name="" value="" class="button sublist">留 言</button></div>
-            </div>
+            <%--<div class="plmain">--%>
+                <%--<div class="plm clearfix"><span class="fr">(您还可输入 <span id="textCount">90</span> 个字)</span>给TA留下一句话吧……</div>--%>
+                <%--<div class="textarea_input"><textarea id="TextArea1" onkeyup="words_deal();" ></textarea></div>--%>
+                <%--<div class="tool_submit tr"><button type="button" name="" value="" class="button sublist">留 言</button></div>--%>
+            <%--</div>--%>
 
             <div class="plmcomment mt30">
                 <ul class="comment-list">
@@ -100,34 +100,10 @@
             </div>
 
         </div>
-
-
     </div>
 
-    <div class="aside fr">
-        <div class="pd15">
-            <div class="userimg"><img src="upload/img12.png"><i></i></div>
-            <div class="user-level tc">大郭郭呐 <em></em><em></em><em></em></div>
-            <div class="tc"><a href="javascript:;" class="button btn-control btn-follow"> + 关注</a><a href="javascript:;" class="button btn-control btn-sent"><em class="myfont f18">&#xe63f;</em> 私信</a></div>
-            <div class="Praise tc">老师，中国，陕西 <em>&#xe61d;</em><em>&#xe61d;</em><em>&#xe61d;</em></div>
+    <%@include file="/common/user_right.jsp"%>
 
-            <div class="txtwrap tc"><h1 class="f16">个人简介</h1>既能安静又能活泼，既能淑女又能犯二，<br>既能女汉子又能小清新～～～</div>
-            <h1 class="f16">关注 4</h1>
-            <ul class="followlist clearfix">
-                <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-                <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-                <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-                <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-            </ul>
-            <h1 class="f16">粉丝 4</h1>
-            <ul class="followlist bd0 clearfix">
-                <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-                <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-                <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-                <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-            </ul>
-        </div>
-    </div>
 
 </div>
 
