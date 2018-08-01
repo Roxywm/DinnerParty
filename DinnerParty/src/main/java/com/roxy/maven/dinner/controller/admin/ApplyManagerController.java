@@ -19,7 +19,7 @@ public class ApplyManagerController {
      */
     @RequestMapping(value = "/apply_host", method = RequestMethod.GET)
     public String createApply(){
-        return "/admin/apply_host";
+        return "/admin/apply_manager";
     }
 
 

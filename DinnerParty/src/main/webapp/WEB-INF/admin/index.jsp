@@ -19,7 +19,6 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script type="text/javascript" src="${ctx}/static/js/jQuery-v2.0.3.js"></script>
-    <script type="text/javascript" src="${ctx}/static/js/crm.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
