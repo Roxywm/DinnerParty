@@ -20,7 +20,28 @@
 <div class="indexban" style="background-image:url(${ctx}/static/images/img1.jpg);">
     <div class="wrap">
         <a href="index.html" class="logo indent">logo</a>
-        <div class="medium-right"><a href="${ctx}/user/login">登陆</a><a href="${ctx}/user/register">注册</a><a href="#">发布我的饭局</a></div>
+        <c:if test="${not empty loginUser}">
+            <div class="medium-right">
+                <a href="${ctx}/user/home">
+                    <c:choose>
+                        <c:when test="${loginUser.nickname!=null}">
+                            您好！&nbsp;|&nbsp;${loginUser.nickname}
+                        </c:when>
+                        <c:otherwise>
+                            您好！&nbsp;|&nbsp;${loginUser.account}
+                        </c:otherwise>
+                    </c:choose>
+                </a>
+                <a href="${ctx}/user/dinner/create">发布我的饭局</a>
+            </div>
+        </c:if>
+        <c:if test="${empty loginUser}">
+            <div class="medium-right">
+                <a href="${ctx}/user/login">登陆</a>
+                <a href="${ctx}/user/register">注册</a>
+            </div>
+        </c:if>
+
         <div class="txt"><span class="hd">美食与生活的完美演绎</span><a href="#">早餐</a><a href="#">午餐</a><a href="#">晚餐</a><a href="#">一键搞定</a></div>
     </div>
     <div class="p1-hero-search-form">

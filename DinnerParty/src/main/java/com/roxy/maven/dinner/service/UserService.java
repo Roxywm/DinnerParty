@@ -2,7 +2,7 @@ package com.roxy.maven.dinner.service;
 
 import com.roxy.maven.dinner.entity.User;
 
-public interface IUserService {
+public interface UserService {
 
     /**
      * 按用户名查找用户

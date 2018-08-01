@@ -32,7 +32,7 @@
 .indexban .wrap{ position:relative; z-index:100;}
 .indexban .logo{ width:260px; height:61px; background:url(../images/logo.png) no-repeat center; position:absolute; left:0; top:15px; z-index:100;}
 .indexban .medium-right{ position:absolute; left:925px; top:35px;}
-.indexban .medium-right a{ display:inline-block; margin:0 5px; color:#FFF;}
+.indexban .medium-right a{ display:inline-block; margin:0 4px; color:#FFF;}
 .indexban .txt{ width:100%; position:absolute; top:230px; left:0;  line-height:72px; text-align:center; color:#FFF; font-size:24px;}
 .indexban .txt .hd{ font-size:48px; letter-spacing:10px; display:block}
 .indexban .txt a{ display:inline-block; margin:0 5px; text-decoration:none; color:#FFF;}

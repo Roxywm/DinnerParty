@@ -4,7 +4,7 @@ import com.roxy.maven.dinner.entity.User;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IUserDao {
+public interface UserDao {
 
     User findByAccount(String account);
 

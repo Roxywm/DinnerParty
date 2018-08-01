@@ -9,8 +9,8 @@ import javax.servlet.http.HttpSession;
 import com.roxy.maven.dinner.entity.Admin;
 import com.roxy.maven.dinner.entity.AdminLog;
 import com.roxy.maven.dinner.enumeration.LogType;
-import com.roxy.maven.dinner.service.IAdminLogService;
-import com.roxy.maven.dinner.service.IAdminService;
+import com.roxy.maven.dinner.service.AdminLogService;
+import com.roxy.maven.dinner.service.AdminService;
 import com.roxy.maven.dinner.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class AdminController {
 	
 	@Autowired
-	private IAdminService adminService;
+	private AdminService adminService;
 	@Autowired
-	private IAdminLogService adminLogService;
+	private AdminLogService adminLogService;
 	
 	/**
 	 * 后台首页的Controller
