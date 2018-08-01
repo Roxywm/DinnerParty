@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.roxy.maven.dinner.dao.AdminDao">
+  
+  <resultMap type="admin" id="adminMap">
+  	<id property="id" column="id"/>
+  	<result property="username" column="username"/>
+  	<result property="password" column="password"/>
+  	<result property="lastLoginTime" column="lastLoginTime"/>
+  	<result property="currLoginTime" column="currLoginTime"/>
+  </resultMap>
+  
+  <select id="findByUsername" parameterType="string" resultMap="adminMap">
+  	select * from admin where username=#{username}
+  </select>
+  
+  <select id="findAll" resultMap="adminMap">
+  	select * from admin
+  </select>
+  
+  <update id="update" parameterType="admin">
+  	update admin
+  	<set>
+  		<if test="password !=null">
+  			password=#{password},
+  		</if>
+  		<if test="lastLoginTime !=null">
+			lastLoginTime=#{lastLoginTime},
+  		</if>
+  		<if test="currLoginTime !=null">
+			currLoginTime=#{currLoginTime}
+  		</if>
+  	</set>
+  	where id=#{id}
+  </update>
+  
+</mapper>

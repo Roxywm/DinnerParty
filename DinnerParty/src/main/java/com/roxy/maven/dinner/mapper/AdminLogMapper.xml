@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.roxy.maven.dinner.dao.AdminLogDao">
+  
+  <insert id="create" parameterType="adminLog" useGeneratedKeys="true" keyProperty="id">
+  	insert into adminLog(adminId, createTime, type, content)
+  	values (#{admin.id}, #{createTime}, #{type}, #{content})
+  </insert>
+  
+  <select id="findByAdminId" parameterType="long" resultType="adminLog">
+  	select * from adminLog where adminId=#{id}
+  </select>
+  
+  <select id="findAll" resultType="adminLog">
+  	select * from adminLog
+  </select>
+  
+  <select id="getLoginCount" parameterType="long" resultType="int">
+  	select count(*) from adminLog where adminId=#{id} and type='LOGIN'
+  </select>
+  
+</mapper>
