@@ -4,7 +4,7 @@ import com.roxy.maven.dinner.entity.AdminLog;
 
 import java.util.List;
 
-public interface IAdminLogService {
+public interface AdminLogService {
     void create(AdminLog log);
     List<AdminLog> findByAdminId(Long id);
     List<AdminLog> findAll();

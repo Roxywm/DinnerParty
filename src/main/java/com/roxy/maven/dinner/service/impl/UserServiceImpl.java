@@ -1,18 +1,18 @@
 package com.roxy.maven.dinner.service.impl;
 
-import com.roxy.maven.dinner.dao.IUserDao;
+import com.roxy.maven.dinner.dao.UserDao;
 import com.roxy.maven.dinner.entity.User;
-import com.roxy.maven.dinner.service.IUserService;
+import com.roxy.maven.dinner.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Service
-public class UserServiceImpl implements IUserService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
-    private IUserDao userDao;
+    private UserDao userDao;
 
 
     @Override

@@ -2,7 +2,7 @@ package com.roxy.maven.dinner.controller;
 
 import com.roxy.maven.dinner.entity.Area;
 import com.roxy.maven.dinner.entity.User;
-import com.roxy.maven.dinner.service.IUserService;
+import com.roxy.maven.dinner.service.UserService;
 import com.roxy.maven.dinner.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +17,7 @@ import java.util.Map;
 public class UserController {
 
     @Autowired
-    private IUserService userService;
+    private UserService userService;
 
     @RequestMapping(value = "/register",method = RequestMethod.GET)
     public String register(){
@@ -26,6 +26,10 @@ public class UserController {
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String login(){
         return "user/login";
+    }
+    @RequestMapping(value = "/home",method = RequestMethod.GET)
+    public String home(){
+        return "user/home";
     }
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)

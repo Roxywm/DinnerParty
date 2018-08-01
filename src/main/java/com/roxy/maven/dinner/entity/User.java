@@ -17,6 +17,7 @@ public class User implements Serializable {
     private String job;//职业
     private Area area;//城市
     private String about;//介绍
+    private Integer hostStatus;//是否可用发布饭局
 
     public Long getId() {
         return id;
@@ -106,10 +107,18 @@ public class User implements Serializable {
         this.about = about;
     }
 
+    public Integer getHostStatus() {
+        return hostStatus;
+    }
+
+    public void setHostStatus(Integer hostStatus) {
+        this.hostStatus = hostStatus;
+    }
+
     public User() {
     }
 
-    public User(String account, String password, String nickname, String icon, String sex, String mobile, String email, String job, Area area, String about) {
+    public User(String account, String password, String nickname, String icon, String sex, String mobile, String email, String job, Area area, String about, Integer hostStatus) {
         this.account = account;
         this.password = password;
         this.nickname = nickname;
@@ -120,6 +129,7 @@ public class User implements Serializable {
         this.job = job;
         this.area = area;
         this.about = about;
+        this.hostStatus = hostStatus;
     }
 
     @Override
@@ -136,6 +146,7 @@ public class User implements Serializable {
                 ", job='" + job + '\'' +
                 ", area=" + area +
                 ", about='" + about + '\'' +
+                ", hostStatus=" + hostStatus +
                 '}';
     }
 }

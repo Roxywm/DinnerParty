@@ -1,15 +1,17 @@
 package com.roxy.maven.dinner.service.impl;
 
-import com.roxy.maven.dinner.service.IDownloadService;
+import com.roxy.maven.dinner.service.DownloadService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
 
+@Transactional
 @Service
-public class DownloadServiceImpl implements IDownloadService {
+public class DownloadServiceImpl implements DownloadService {
 
 //    @Cacheable(value = "userExce")
     @Override
