@@ -55,7 +55,7 @@
                         <div class="Prompt green" style="padding:0 0 10px">${message}</div>
                     </c:if>
                     <label class="label">
-                        <input type="text" name="email" value="" class="loginipt key user">
+                        <input type="email" name="email" value="" class="loginipt key user">
                         <span class="text">请输入您的邮箱</span>
                     </label>
                     <label class="label">
