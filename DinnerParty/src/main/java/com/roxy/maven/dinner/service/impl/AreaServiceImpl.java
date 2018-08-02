@@ -7,7 +7,9 @@ import com.roxy.maven.dinner.entity.Area;
 import com.roxy.maven.dinner.service.AreaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 @Service
 public class AreaServiceImpl implements AreaService {
 
