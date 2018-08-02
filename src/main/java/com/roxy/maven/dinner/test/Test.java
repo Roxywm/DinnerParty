@@ -1,5 +1,6 @@
 package com.roxy.maven.dinner.test;
 
+import com.roxy.maven.dinner.dao.AreaDao;
 import redis.clients.jedis.Jedis;
 
 public class Test {
@@ -9,8 +10,10 @@ public class Test {
 //        } catch (ClientException e) {
 //            e.printStackTrace();
 //        }
-        Jedis jedis = new Jedis();
-        jedis.flushDB();
+//        Jedis jedis = new Jedis();
+//        jedis.flushDB();
+
+
 
     }
 }

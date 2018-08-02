@@ -37,6 +37,7 @@
                 </div>
             </c:if>
         </c:if>
+
         <c:if test="${loginUser.hostStatus==1}">
             <div class="Participate pd30">
                 <table class="baseinfo participate-tab">

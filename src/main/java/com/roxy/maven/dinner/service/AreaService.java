@@ -8,4 +8,5 @@ import java.util.List;
 public interface AreaService {
 	Area findById(Long id);
 	List<Area> findByParentId(Long parentId);
+	void getParent(Area area);
 }

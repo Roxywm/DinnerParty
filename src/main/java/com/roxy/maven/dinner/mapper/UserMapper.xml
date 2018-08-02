@@ -36,4 +36,41 @@
       insert into users(account,password,nickname,icon,sex,mobile,email,job,areaId,about)
       values (#{account},#{password},#{nickname},#{icon},#{sex},#{mobile},#{email},#{job},#{area.id},#{about})
     </insert>
+
+    <update id="update" parameterType="user">
+        update users
+        <set>
+            <if test="account !=null">
+                account=#{account},
+            </if>
+            <if test="password !=null">
+                password=#{password},
+            </if>
+            <if test="nickname !=null">
+                nickname=#{nickname},
+            </if>
+            <if test="icon !=null">
+                icon=#{icon},
+            </if>
+            <if test="sex !=null">
+                sex=#{sex},
+            </if>
+            <if test="mobile !=null">
+                mobile=#{mobile},
+            </if>
+            <if test="job !=null">
+                job=#{job},
+            </if>
+            <if test="area !=null">
+                areaId=#{area.id},
+            </if>
+            <if test="about !=null">
+                about=#{about},
+            </if>
+            <if test="hostStatus !=null">
+                hostStatus=#{hostStatus}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
 </mapper>

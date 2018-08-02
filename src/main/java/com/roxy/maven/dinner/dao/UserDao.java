@@ -10,4 +10,6 @@ public interface UserDao {
 
     void register(User user);
 
+    int update(User user);
+
 }

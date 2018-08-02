@@ -3,6 +3,8 @@ package com.roxy.maven.dinner.dao;
 import com.roxy.maven.dinner.entity.ApplyHost;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ApplyHostDao {
 
@@ -19,4 +21,16 @@ public interface ApplyHostDao {
      * @return
      */
     int applyHost(ApplyHost applyHost);
+
+    /**
+     * 查询所有申请
+     * @return
+     */
+    List<ApplyHost> findAll();
+
+    /**
+     * 审核通过
+     * @return
+     */
+    int updateStatus(long id);
 }
