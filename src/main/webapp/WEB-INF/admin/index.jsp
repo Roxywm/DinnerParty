@@ -16,6 +16,8 @@
     <!-- Vendors -->
     <link href="${ctx}/static/vendors/easypiechart/jquery.easy-pie-chart.css" rel="stylesheet" media="screen">
     <link href="${ctx}/static/vendors/easypiechart/jquery.easy-pie-chart_custom.css" rel="stylesheet" media="screen">
+    <link type="image/x-icon" href="${ctx}/static/images/" rel="shortcut icon" />
+    <link href="${ctx}/static/images/favicon.ico" rel="bookmark icon" />
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script type="text/javascript" src="${ctx}/static/js/jQuery-v2.0.3.js"></script>

@@ -15,6 +15,8 @@
     <!-- Vendors -->
     <link href="${ctx}/static/vendors/easypiechart/jquery.easy-pie-chart.css" rel="stylesheet" media="screen">
     <link href="${ctx}/static/vendors/easypiechart/jquery.easy-pie-chart_custom.css" rel="stylesheet" media="screen">
+    <link type="image/x-icon" href="${ctx}/static/images/" rel="shortcut icon" />
+    <link href="${ctx}/static/images/favicon.ico" rel="bookmark icon" />
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script type="text/javascript" src="${ctx}/static/js/jQuery-v2.0.3.js"></script>
@@ -143,7 +145,7 @@
             <div class="modal-body">
                 <div class="alert alert-info" role="alert">
                     <input type="hidden" id="userId" value="">
-                    照片：<img id="photo" src="${ctx}/static/images/user.png" height="150px"><br><br>
+                    照片：<img id="photo" src="${ctx}/static/images/usericon.png" height="150px"><br><br>
                     ID：<span id="id" class="black"></span><br><br>
                     申请人：<span id="proposer" class="black"></span><br><br>
                     电话：<span id="mobile" class="black"></span><br><br>
