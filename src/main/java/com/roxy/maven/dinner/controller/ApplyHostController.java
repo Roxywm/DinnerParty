@@ -38,7 +38,7 @@ public class ApplyHostController {
      * @return
      */
     @RequestMapping(value = "/createApply", method = RequestMethod.POST)
-    public String createApply(ApplyHost applyHost, long areaId, @RequestParam("file")MultipartFile file, HttpSession session, Map<String, Object> map){
+    public String createApply(ApplyHost applyHost, long areaId, long cityId, @RequestParam("file")MultipartFile file, HttpSession session, Map<String, Object> map){
         if(file!=null&&!file.getOriginalFilename().equals("")){
             String suffix = getSuffix(file.getOriginalFilename());
             long fileName = System.currentTimeMillis();
@@ -47,7 +47,12 @@ public class ApplyHostController {
                 file.transferTo(oldName);
                 applyHost.setPhoto(oldName.getName());
                 Area area = new Area();
-                area.setId(areaId);
+                if(areaId!=0){
+                    area.setId(areaId);
+                }else{
+                    area.setId(cityId);
+                }
+
                 applyHost.setArea(area);
                 User loginUser = (User) session.getAttribute("loginUser");
                 applyHost.setUser(loginUser);

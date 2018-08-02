@@ -43,7 +43,7 @@
                 <li><span class="tt"><em>&#xe629;</em>城市</span>
                     <select data-placeholder="北京市" id="province" style="width:285px;" class="chosen-select-no-single" tabindex="9">
                     </select>
-                    <select data-placeholder="北京市" id="city" style="width:285px;" class="chosen-select-no-single" tabindex="9">
+                    <select data-placeholder="北京市" name="cityId" id="city" style="width:285px;" class="chosen-select-no-single" tabindex="9">
                     </select>
                     <select data-placeholder="&nbsp;" name="areaId" id="area" style="width:285px;" class="chosen-select-no-single" tabindex="9">
                     </select>
