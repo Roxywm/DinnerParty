@@ -59,4 +59,15 @@ public class UserController {
         return "user/login";
     }
 
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public String edit(){
+        return "/user/user_edit";
+    }
+
+    @RequestMapping(value = "/update")
+    public String update(User user, Map<String, Object> map){
+
+        return "/user/user_edit";
+    }
+
 }

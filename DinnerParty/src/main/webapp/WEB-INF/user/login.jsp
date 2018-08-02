@@ -13,7 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=8" >
     <![endif]-->
     <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=${ctx}/static/IE6/IE6.html"><![endif]-->
-    <link href="favicon.ico" rel="SHORTCUT ICON">
+    <link type="image/x-icon" href="${ctx}/static/images/" rel="shortcut icon" />
+    <link href="${ctx}/static/images/favicon.ico" rel="bookmark icon" />
     <title>私厨 - 为你推荐遍布全球最新鲜，最与众不同的顶级生活方式</title>
 </head>
 <body>
