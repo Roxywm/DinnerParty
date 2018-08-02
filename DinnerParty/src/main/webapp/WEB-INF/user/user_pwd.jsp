@@ -33,69 +33,38 @@
             <c:if test="${not empty message}">
                 <div class="Prompt green" style="padding:0 0 10px; margin-left: 100px;">${message}</div>
             </c:if>
-            <form action="${ctx}/user/update" enctype="multipart/form-data" method="post">
-                <input type="hidden" name="id" value="${user.id}">
+            <form action="${ctx}/user/update/pwd" method="post">
                 <table class="baseinfo">
                     <tr>
-                        <th>账号：</th>
-                        <td>${user.email}</td>
-                        <input type="hidden" name="email" value="${user.email}">
-                    </tr>
-                    <tr>
-                        <th>昵称：</th>
-                        <td><input type="text" name="nickname" value="${user.nickname}" class="baseipt"></td>
-                    </tr>
-                    <tr>
-                        <th valign="top">头像：</th>
+                        <th>原始密码：</th>
                         <td>
-                            <div class="user-photo img fl">
-                                <c:if test="${user.icon!=null}">
-                                    <img id="ImgPr" src="${ctx}/userIcon/${user.icon}">
-                                </c:if>
-                                <c:if test="${user.icon==null}">
-                                    <img id="ImgPr" src="${ctx}/static/images/usericon.png">
-                                </c:if>
-                            </div>
-                            <div class="upfilebox f14 mt20">
-                                <label class="btn-upfiles">
-                                    <input type="file" name="photo" id="up" />选择照片
-                                </label>
-                                <p class="mt10">支持jpg,gif,png格式，建议尺寸大于100*100。</p>
-                            </div>
+                            <input type="password" value="${password}" name="password" class="baseipt">
+                            <c:if test="${not empty yserror}">
+                                <span class="ico wrong"></span><span class="f12">原始密码错误</span>
+                            </c:if>
                         </td>
                     </tr>
                     <tr>
-                        <th>性别：</th>
+                        <th>新密码：</th>
+                        <td><input type="password" value="${newPassword}" name="newPassword" class="baseipt"></td>
+                    </tr>
+                    <tr>
+                        <th>确认密码：</th>
                         <td>
-                            <label><input type="radio" name="sex" value="男" id="RadioGroup1_0" <c:if test="${user.sex=='男'||user.sex==null}">checked</c:if>>  男</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <label><input type="radio" name="sex" value="女" id="RadioGroup1_1" <c:if test="${user.sex=='女'}">checked</c:if>>  女</label>
+                            <input type="password" value="${qrPassword}" name="qrPassword" class="baseipt">
+
+                            <c:if test="${not empty qrerror}">
+                                <span class="ico wrong"></span><span class="f12">两次密码不一致</span>
+                            </c:if>
+
                         </td>
                     </tr>
                     <tr>
-                        <th>职业：</th>
-                        <td><input type="text" name="job" value="${user.job}" class="baseipt"></td>
-                    </tr>
-                    <tr>
-                        <th>所在城市：</th>
-                        <td>
-                            <select data-placeholder="北京市" id="province" style="width:185px;" class="chosen-select-no-single" tabindex="9">
-                            </select>
-                            <select data-placeholder="北京市" name="cityId" id="city" style="width:185px;" class="chosen-select-no-single" tabindex="9">
-                            </select>
-                            <select data-placeholder="&nbsp;" name="areaId" id="area" style="width:185px;" class="chosen-select-no-single" tabindex="9">
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th valign="top">个人简介：</th>
-                        <td>
-                            <textarea name="about" cols="" rows="" class="baseinfo-textarea">${user.about}</textarea>
-                            <p class="mt30 tc"><button type="submit" name="save" class="button btn-save">保存</button></p>
-                        </td>
+                        <th>&nbsp;</th>
+                        <td><button type="submit" name="save" class="button btn-save">修改</button></td>
                     </tr>
                 </table>
             </form>
-
         </div>
     </div>
 

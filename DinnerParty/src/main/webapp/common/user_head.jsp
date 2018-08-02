@@ -12,8 +12,16 @@
             </form>
             <a href="${ctx}/user/dinner/create"><em><img src="${ctx}/static/images/sb.png"></em>  &nbsp;&nbsp;发布我的饭局</a>
             <div class="user">
-        <span class="clearfix"><span class="userimg"><img src="${ctx}/static/upload/img12.png"><i></i></span>
-        <a href="javascript:;" class="fr">设计--麻  <em>&#xe607;</em></a></span>
+        <span class="clearfix"><span class="userimg" style="overflow: hidden">
+            <c:if test="${loginUser.icon!=null}">
+                <img src="${ctx}/userIcon/${loginUser.icon}">
+            </c:if>
+            <c:if test="${loginUser.icon==null}">
+                <img src="${ctx}/static/images/usericon.png">
+            </c:if>
+
+            <i></i></span>
+        <a href="javascript:;" class="fr">${loginUser.nickname}  <em>&#xe607;</em></a></span>
                 <ul class="topslide">
                     <li><em>&#xe627;</em><a href="${ctx}/user/edit">个人设置</a></li>
                     <li><em>&#xe63d;</em><a href="Message.html">消息中心<s>3</s></a></li>

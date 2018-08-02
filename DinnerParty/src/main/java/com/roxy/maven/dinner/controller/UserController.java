@@ -3,6 +3,7 @@ package com.roxy.maven.dinner.controller;
 import com.roxy.maven.dinner.common.Constants;
 import com.roxy.maven.dinner.entity.Area;
 import com.roxy.maven.dinner.entity.User;
+import com.roxy.maven.dinner.service.AreaService;
 import com.roxy.maven.dinner.service.UserService;
 import com.roxy.maven.dinner.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private AreaService areaService;
 
     @RequestMapping(value = "/register",method = RequestMethod.GET)
     public String register(){
@@ -43,6 +46,7 @@ public class UserController {
         if (oldUser==null){
             user.setPassword(MD5Util.generate(user.getPassword()));
             user.setArea(new Area());
+            user.setNickname("User"+user.getEmail().substring(0,user.getEmail().lastIndexOf("@")+1));
             userService.register(user);
             map.put("message","注册成功！使用账户密码进行登录！");
             return "user/login";
@@ -56,6 +60,8 @@ public class UserController {
         User oldUser = userService.findByEmail(user.getEmail());
         if (oldUser!=null){
             if(MD5Util.verify(user.getPassword(), oldUser.getPassword())){
+                Area area = areaService.findById(oldUser.getArea().getId());
+                oldUser.setArea(area);
                 session.setAttribute("loginUser", oldUser);
                 return "redirect:/";
             }
@@ -65,12 +71,15 @@ public class UserController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String edit(){
+    public String edit(HttpSession session, Map<String, Object> map){
+        User loginUser = (User) session.getAttribute("loginUser");
+        User user = userService.findByEmail(loginUser.getEmail());
+        map.put("user",user);
         return "/user/user_edit";
     }
 
     @RequestMapping(value = "/update")
-    public String update(User user, @RequestParam("photo")MultipartFile photo, long areaId, long cityId, HttpSession session, Map<String, Object> map){
+    public String update(User user, @RequestParam("photo")MultipartFile photo, String areaId, String cityId, HttpSession session, Map<String, Object> map){
         if(photo!=null&&!photo.getOriginalFilename().equals("")){
             String suffix = getSuffix(photo.getOriginalFilename());
             long fileName = System.currentTimeMillis();
@@ -78,23 +87,68 @@ public class UserController {
             try {
                 photo.transferTo(oldName);
                 user.setIcon(oldName.getName());
-                Area area = new Area();
-                if(areaId!=0){
-                    area.setId(areaId);
-                }else{
-                    area.setId(cityId);
-                }
-                user.setArea(area);
-                //更新
-                userService.update(user);
-                map.put("error","修改成功！");
             } catch (IOException e) {
-                map.put("error","修改失败！");
                 e.printStackTrace();
             }
         }
+        Area area = new Area();
+        if(areaId!=null){
+            area.setId(Long.parseLong(areaId));
+        }else{
+            area.setId(Long.parseLong(cityId));
+        }
+        user.setArea(area);
+        //更新
+        int rows = userService.update(user);
+        if(rows>0){
+            map.put("message","修改成功！");
+        }else {
+            map.put("error","修改失败！");
+        }
+        User user1 = userService.findByEmail(user.getEmail());
+
+        Area area1 = areaService.findById(user1.getArea().getId());
+        user1.setArea(area1);
+
+        map.put("user",user1);
+        session.setAttribute("loginUser", user1);
+
         return "/user/user_edit";
     }
+
+
+    @RequestMapping(value = "/edit/pwd", method = RequestMethod.GET)
+    public String updatePwd(HttpSession session, Map<String, Object> map){
+        User loginUser = (User) session.getAttribute("loginUser");
+        User user = userService.findByEmail(loginUser.getEmail());
+        map.put("user",user);
+        return "/user/user_pwd";
+    }
+
+    @RequestMapping(value = "/update/pwd", method = RequestMethod.POST)
+    public String update(HttpSession session, Map<String,Object> map, String password, String newPassword, String qrPassword){
+        User loginUser = (User) session.getAttribute("loginUser");
+        if(MD5Util.verify(password, loginUser.getPassword())){
+            if(newPassword.equals(qrPassword)){
+                loginUser.setPassword(MD5Util.generate(newPassword));
+                int rows = userService.update(loginUser);
+                if(rows>0){
+                    map.put("message","修改成功！");
+                }else {
+                    map.put("error","修改失败！");
+                }
+            }else{
+                map.put("qrerror","两次密码不一致！");
+            }
+        }else{
+            map.put("yserror","原始密码错误！");
+        }
+        map.put("password",password);
+        map.put("newPassword",newPassword);
+        map.put("qrPassword",qrPassword);
+        return "/user/user_pwd";
+    }
+
 
     /**
      * 按文件名获取后缀名的方法
