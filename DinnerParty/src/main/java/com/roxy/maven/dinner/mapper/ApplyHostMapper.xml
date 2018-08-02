@@ -26,7 +26,7 @@
             <result property="hostStatus" column="hostStatus" />
             <association property="area" javaType="area">
                 <id property="id" column="did"/>
-                <result property="name" column="name"/>
+                <result property="name" column="dname"/>
                 <!-- 父级 -->
                 <association property="parent" javaType="area">
                     <id property="id" column="pid"/>
@@ -53,5 +53,16 @@
       from applyHost a,users u,areas d
       where a.userId=u.id and a.areaId=d.id and u.id=#{id}
     </select>
+
+    <select id="findAll" resultMap="applyHostMap">
+      select a.id aid,a.name,a.email aemail,a.mobile amobile,a.photo,a.status,u.*,d.id did,d.name dname,d.parentId pid
+      from applyHost a,users u,areas d
+      where a.userId=u.id and a.areaId=d.id
+      order by a.id desc
+    </select>
+
+    <update id="updateStatus" parameterType="long">
+        update applyHost set status=1 where id=#{id}
+    </update>
 
 </mapper>

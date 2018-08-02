@@ -17,11 +17,23 @@ public class AreaServiceImpl implements AreaService {
 	private AreaDao areaDao;
 	
 	public Area findById(Long id) {
-		return areaDao.findById(id);
+        Area area = areaDao.findById(id);
+        getParent(area);
+        return areaDao.findById(id);
 	}
 
 	public List<Area> findByParentId(Long parentId) {
 		return areaDao.findByParentId(parentId);
+	}
+
+	@Override
+	public void getParent(Area area) {
+		if(area.getParent().getId()!=0){
+			if(area.getParent().getId()!=null){
+				Area parent = findById(area.getParent().getId());
+				area.setParent(parent);
+			}
+		}
 	}
 
 }

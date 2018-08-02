@@ -20,7 +20,7 @@ public class AdminIntercetor extends HandlerInterceptorAdapter{
 			return true;//session中保存有登录用户的信息，则返回true，正常访问用户需要访问的资源
 		}
 		//如果未登录，则跳转到登录页面
-		response.sendRedirect(request.getContextPath()+"/WEB-INF/admin/login.jsp");
+		response.sendRedirect(request.getContextPath()+"/admin/login");
 		return false;
 	}
 	

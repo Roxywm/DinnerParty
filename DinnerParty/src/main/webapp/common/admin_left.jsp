@@ -6,7 +6,7 @@
             <a href="${ctx}/admin/index"><i class="glyphicon glyphicon-chevron-right"></i> 首页</a>
         </li>
         <li>
-            <a href="${ctx}/admin/applyHost/apply_host"><i class="glyphicon glyphicon-chevron-right"></i> 主持人报名管理</a>
+            <a href="${ctx}/admin/applyHost/applyPage"><i class="glyphicon glyphicon-chevron-right"></i> 主持人报名管理</a>
         </li>
 
     </ul>

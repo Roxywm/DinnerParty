@@ -4,12 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.roxy.maven.dinner.dao.AreaDao">
+    <resultMap id="areaMap" type="area">
+        <id property="id" column="id"/>
+        <result property="name" column="aname"/>
+        <!-- 父级 -->
+        <association property="parent" javaType="area">
+            <id property="id" column="pid"/>
+        </association>
+    </resultMap>
   
-  <select id="findById" parameterType="long"  resultType="area">
-  	select * from areas where id=#{id}
+  <select id="findById" parameterType="long"  resultMap="areaMap">
+  	select id,name aname,parentId pid from areas where id=#{id}
   </select>
-  
-   <select id="findByParentId" parameterType="long" resultType="area">
+
+  <select id="findByParentId" parameterType="long" resultType="area">
   	select * from areas where parentId=#{parentId}
   </select>
   
