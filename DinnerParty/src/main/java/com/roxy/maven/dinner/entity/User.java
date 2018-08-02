@@ -7,13 +7,12 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
     private Long id;
-    private String account;//账号
+    private String email;
     private String password;//密码
     private String nickname;//昵称
     private String icon;//用户头像
     private String sex;
     private String mobile;
-    private String email;
     private String job;//职业
     private Area area;//城市
     private String about;//介绍
@@ -27,12 +26,12 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getAccount() {
-        return account;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAccount(String account) {
-        this.account = account;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -75,14 +74,6 @@ public class User implements Serializable {
         this.mobile = mobile;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getJob() {
         return job;
     }
@@ -118,14 +109,13 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String account, String password, String nickname, String icon, String sex, String mobile, String email, String job, Area area, String about, Integer hostStatus) {
-        this.account = account;
+    public User(String email, String password, String nickname, String icon, String sex, String mobile, String job, Area area, String about, Integer hostStatus) {
+        this.email = email;
         this.password = password;
         this.nickname = nickname;
         this.icon = icon;
         this.sex = sex;
         this.mobile = mobile;
-        this.email = email;
         this.job = job;
         this.area = area;
         this.about = about;
@@ -136,13 +126,12 @@ public class User implements Serializable {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", account='" + account + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", icon='" + icon + '\'' +
                 ", sex='" + sex + '\'' +
                 ", mobile='" + mobile + '\'' +
-                ", email='" + email + '\'' +
                 ", job='" + job + '\'' +
                 ", area=" + area +
                 ", about='" + about + '\'' +

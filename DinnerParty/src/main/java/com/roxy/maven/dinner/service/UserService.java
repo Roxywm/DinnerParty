@@ -6,10 +6,10 @@ public interface UserService {
 
     /**
      * 按用户名查找用户
-     * @param account
+     * @param email
      * @return
      */
-    User findByAccount(String account);
+    User findByEmail(String email);
 
     /**
      * 注册用户

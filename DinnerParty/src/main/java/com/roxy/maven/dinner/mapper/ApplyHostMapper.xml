@@ -14,13 +14,12 @@
         <result property="status" column="status" />
         <association property="user" javaType="user">
             <id property="id" column="id" />
-            <result property="account" column="account" />
+            <result property="email" column="email" />
             <result property="password" column="password" />
             <result property="nickname" column="nickname" />
             <result property="icon" column="icon" />
             <result property="sex" column="sex" />
             <result property="mobile" column="mobile" />
-            <result property="email" column="email" />
             <result property="job" column="job" />
             <result property="about" column="about" />
             <result property="hostStatus" column="hostStatus" />

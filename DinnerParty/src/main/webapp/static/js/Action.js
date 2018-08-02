@@ -7,7 +7,7 @@ $(window).load(function(){
 	input(".label .key");
 	$("#user-photo").click(function(){
 		if($("body").find(".pop-up").length<=0){
-			$('<div class="pop"><iframe src="upfiles.html" scrolling="no" width="100%" height="100%" frameborder="0"></iframe></div>').appendTo("body").fadeIn(500);
+			$('<div class="pop"><iframe src="${ctx}/user/upfiles" scrolling="no" width="100%" height="100%" frameborder="0"></iframe></div>').appendTo("body").fadeIn(500);
 		}
 	});
 	$(".close").click(function(){

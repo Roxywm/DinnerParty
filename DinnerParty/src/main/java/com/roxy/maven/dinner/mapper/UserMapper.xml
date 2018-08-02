@@ -6,13 +6,12 @@
 <mapper namespace="com.roxy.maven.dinner.dao.UserDao">
     <resultMap id="userMap" type="user">
         <id property="id" column="id" />
-        <result property="account" column="account" />
+        <result property="email" column="email" />
         <result property="password" column="password" />
         <result property="nickname" column="nickname" />
         <result property="icon" column="icon" />
         <result property="sex" column="sex" />
         <result property="mobile" column="mobile" />
-        <result property="email" column="email" />
         <result property="job" column="job" />
         <result property="about" column="about" />
         <result property="hostStatus" column="hostStatus" />
@@ -26,22 +25,22 @@
         </association>
     </resultMap>
 
-    <select id="findByAccount" parameterType="string" resultMap="userMap">
-      select u.id,account,password,nickname,icon,sex,mobile,email,job,about,hostStatus,a.id as aid,name,a.parentId as pid
+    <select id="findByEmail" parameterType="string" resultMap="userMap">
+      select u.id,email,password,nickname,icon,sex,mobile,job,about,hostStatus,a.id as aid,name,a.parentId as pid
       from users u, areas a
-      where u.areaId=a.id and u.account=#{account}
+      where u.areaId=a.id and u.email=#{email}
     </select>
     
     <insert id="register" parameterType="user" useGeneratedKeys="true" keyProperty="id">
-      insert into users(account,password,nickname,icon,sex,mobile,email,job,areaId,about)
-      values (#{account},#{password},#{nickname},#{icon},#{sex},#{mobile},#{email},#{job},#{area.id},#{about})
+      insert into users(email,password,nickname,icon,sex,mobile,job,areaId,about)
+      values (#{email},#{password},#{nickname},#{icon},#{sex},#{mobile},#{job},#{area.id},#{about})
     </insert>
 
     <update id="update" parameterType="user">
         update users
         <set>
-            <if test="account !=null">
-                account=#{account},
+            <if test="email !=null">
+                email=#{email},
             </if>
             <if test="password !=null">
                 password=#{password},

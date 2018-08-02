@@ -27,88 +27,72 @@
     <div class="section fl">
         <div class="location tr"><a href="mem.html" class="current">基本资料</a><a href="pwd.html">修改密码</a><a href="binding.html">帐号绑定</a></div>
         <div class="pd20">
-            <table class="baseinfo">
-                <tr>
-                    <th>账号：</th>
-                    <td>${loginUser.account}</td>
-                </tr>
-                <tr>
-                    <th>昵称：</th>
-                    <td><input type="text" name="nickname" value="${loginUser.nickname}" class="baseipt"></td>
-                </tr>
-                <tr>
-                    <th valign="top">头像：</th>
-                    <td>
-                        <c:if test="${loginUser.icon!=null}">
-                            <div class="user-photo img fl"><img src="${ctx}/uploads/${loginUser.icon}"></div>
-                        </c:if>
-                        <c:if test="${loginUser.icon==null}">
-                            <div class="user-photo img fl"><img src="${ctx}/static/images/usericon.png"></div>
-                        </c:if>
-                        <div class="upfilebox mt20">
-                            <a href="javascript:;" class="button btn-upfile" id="user-photo">选择照片</a>
-                            <p class="mt10">支持jpg,gif,png格式，建议尺寸大于100*100。</p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>性别：</th>
-                    <td>
-                        <label><input type="radio" name="sex" value="男" id="RadioGroup1_0" checked>  男</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label><input type="radio" name="sex" value="女" id="RadioGroup1_1">  女</label>
-                    </td>
-                </tr>
-                <tr>
-                    <th>职业：</th>
-                    <td><input type="text" value="" class="baseipt"></td>
-                </tr>
-                <tr>
-                    <th>所在城市：</th>
-                    <td><select data-placeholder="上海市" style="width:154px;" class="chosen-select-no-single" tabindex="9">
-                        <option>上海市</option>
-                        <option>上海市</option>
-                    </select><select data-placeholder="上海市" style="width:154px;" class="chosen-select-no-single" tabindex="9">
-                        <option>上海市</option>
-                        <option>上海市</option>
-                    </select><select data-placeholder="长宁区" style="width:154px;" class="chosen-select-no-single" tabindex="9">
-                        <option>长宁区</option>
-                        <option>长宁区</option>
-                    </select></td>
-                </tr>
-                <tr>
-                    <th valign="top">个人简介：</th>
-                    <td>
-                        <textarea name="" cols="" rows="" class="baseinfo-textarea"></textarea>
-                        <p class="mt30 tc"><button type="button" name="save" value="" class="button btn-save">保存</button></p>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div class="aside fr">
-        <div class="pd15">
-            <div class="userimg"><img src="${ctx}/static/upload/img12.png"><i></i></div>
-            <div class="user-level tc">大郭郭呐 <em></em><em></em><em></em></div>
-            <div class="tc"><a href="javascript:;" class="button btn-control btn-follow"> + 关注</a><a href="javascript:;" class="button btn-control btn-sent"><em class="myfont f18">&#xe63f;</em> 私信</a></div>
-            <div class="Praise tc">老师，中国，陕西 <em>&#xe61d;</em><em>&#xe61d;</em><em>&#xe61d;</em></div>
+            <form action="${ctx}/user/update" enctype="multipart/form-data" method="post">
+                <input type="hidden" name="id" value="${loginUser.id}">
+                <table class="baseinfo">
+                    <tr>
+                        <th>账号：</th>
+                        <td>${loginUser.email}</td>
+                    </tr>
+                    <tr>
+                        <th>昵称：</th>
+                        <td><input type="text" name="nickname" value="${loginUser.nickname}" class="baseipt"></td>
+                    </tr>
+                    <tr>
+                        <th valign="top">头像：</th>
+                        <td>
+                            <div class="user-photo img fl">
+                                <c:if test="${loginUser.icon!=null}">
+                                    <img id="ImgPr" src="${ctx}/uploads/${loginUser.icon}">
+                                </c:if>
+                                <c:if test="${loginUser.icon==null}">
+                                    <img id="ImgPr" src="${ctx}/static/images/usericon.png">
+                                </c:if>
+                            </div>
+                            <div class="upfilebox f14 mt20">
+                                <label class="btn-upfiles">
+                                    <input type="file" name="photo" id="up" />选择照片
+                                </label>
+                                <p class="mt10">支持jpg,gif,png格式，建议尺寸大于100*100。</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>性别：</th>
+                        <td>
+                            <label><input type="radio" name="sex" value="男" id="RadioGroup1_0" <c:if test="${loginUser.sex=='男'||loginUser.sex==null}">checked</c:if>>  男</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label><input type="radio" name="sex" value="女" id="RadioGroup1_1" <c:if test="${loginUser.sex=='女'}">checked</c:if>>  女</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>职业：</th>
+                        <td><input type="text" value="" name="job" class="baseipt"></td>
+                    </tr>
+                    <tr>
+                        <th>所在城市：</th>
+                        <td>
+                            <select data-placeholder="北京市" id="province" style="width:185px;" class="chosen-select-no-single" tabindex="9">
+                            </select>
+                            <select data-placeholder="北京市" name="cityId" id="city" style="width:185px;" class="chosen-select-no-single" tabindex="9">
+                            </select>
+                            <select data-placeholder="&nbsp;" name="areaId" id="area" style="width:185px;" class="chosen-select-no-single" tabindex="9">
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th valign="top">个人简介：</th>
+                        <td>
+                            <textarea name="about" cols="" rows="" class="baseinfo-textarea">${loginUser.about}</textarea>
+                            <p class="mt30 tc"><button type="submit" name="save" value="" class="button btn-save">保存</button></p>
+                        </td>
+                    </tr>
+                </table>
+            </form>
 
-            <div class="txtwrap tc"><h1 class="f16">个人简介</h1>既能安静又能活泼，既能淑女又能犯二，<br>既能女汉子又能小清新～～～</div>
-            <h1 class="f16">关注 4</h1>
-            <ul class="followlist clearfix">
-                <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-                <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-                <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-                <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-            </ul>
-            <h1 class="f16">粉丝 4</h1>
-            <ul class="followlist bd0 clearfix">
-                <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-                <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-                <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-                <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-            </ul>
         </div>
     </div>
+
+    <%@include file="/common/user_right.jsp"%>
 </div>
 
 <script src="${ctx}/static/js/jquery.js"></script>
@@ -128,6 +112,53 @@
         $("#up").uploadPreview({
             Img: "ImgPr",
         });
+    });
+</script>
+<script>
+    $(function () {
+        $.getJSON("${ctx}/area/getCitys", {"provinceId":"0"}, function (data) {
+            $("#province").empty();
+            $.each(data,function(i,v){
+                var $tr = $("<option value='"+v.id+"'>"+v.name+"</option>");
+                $("#province").append($tr);
+            });
+            $(".chosen-select-no-single").trigger("chosen:updated");
+        } );
+        $.getJSON("${ctx}/area/getCitys", {"provinceId":110000}, function (data) {
+            $("#city").empty();
+            $.each(data,function(i,v){
+                var $tr = $("<option value='"+v.id+"'>"+v.name+"</option>");
+                $("#city").append($tr);
+            });
+            $(".chosen-select-no-single").trigger("chosen:updated");
+        } );
+    })
+
+    $("#province").change(function () {
+        var parentId = $(this).val();
+        $.getJSON("${ctx}/area/getCitys", {"provinceId":parentId}, function (data) {
+            $("#city").empty();
+            $.each(data,function(i,v){
+                var $tr = $("<option value='"+v.id+"'>"+v.name+"</option>");
+                $("#city").append($tr);
+            });
+            $(".chosen-select-no-single").trigger("chosen:updated");
+        } );
+    });
+
+    $("#city").change(function () {
+        var parentId = $(this).val();
+        $.getJSON("${ctx}/area/getCitys", {"provinceId":parentId}, function (data) {
+            $("#area").empty();
+            $.each(data,function(i,v){
+                var $tr = $("<option value='"+v.id+"'>"+v.name+"</option>");
+                $("#area").append($tr);
+            });
+            $(".chosen-select-no-single").trigger("chosen:updated");
+        } );
+    });
+
+    $("#area").change(function () {
     });
 </script>
 </html>

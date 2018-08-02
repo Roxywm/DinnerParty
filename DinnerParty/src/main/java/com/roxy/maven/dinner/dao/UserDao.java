@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserDao {
 
-    User findByAccount(String account);
+    User findByEmail(String email);
 
     void register(User user);
 
