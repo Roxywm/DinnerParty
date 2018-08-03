@@ -23,16 +23,7 @@
 <div class="wrap">
     <div class="sign-title tc" style=" -webkit-opacity: 0.3; -moz-opacity: 0.3; -khtml-opacity: 0.3;  opacity: .3; filter:alpha(opacity=30);  ">
         <h1>申请成为一名HOST</h1>
-        亲爱的 &nbsp; <a href="#" class="o">
-        <c:choose>
-            <c:when test="${loginUser.nickname!=null}">
-                ${loginUser.nickname}
-            </c:when>
-            <c:otherwise>
-                ${loginUser.account}
-            </c:otherwise>
-        </c:choose>
-    </a>，欢迎申请成为一名<span class="o"> “HOST”</span>
+        亲爱的 &nbsp; <a href="#" class="o">${loginUser.nickname}</a>，欢迎申请成为一名<span class="o"> “HOST”</span>
     </div>
 
     <div class="applybox">
@@ -64,7 +55,7 @@
                 <li class="bd0"><div class="Release-submit pd30">
                     <input type="checkbox" value="" id="Myreder">  我已阅读并同意<a href="#" class="o">《17素材服务条款》</a>
                     <p class="mt20">
-                        <button type="submit" class="button btn-submit Appbtn" style="background: #CCCCCC" id="submitBtn" disabled >提交</button>
+                        <button type="submit" class="button btn-submit Appbtn" style="background: #CCCCCC" disabled id="submitBtn" >提交</button>
                         <button type="button" class="button btn-reset Appbtn">取消</button></p>
                 </div>
                 </li>

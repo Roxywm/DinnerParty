@@ -23,7 +23,7 @@
 <div class="wrap">
     <div class="sign-title tc" style=" -webkit-opacity: 0.3; -moz-opacity: 0.3; -khtml-opacity: 0.3;  opacity: .3; filter:alpha(opacity=30);  ">
         <h1>我要申请报名</h1>
-        亲爱的<a href="#" class="o">wang</a>，欢迎申请<span class="o">热红酒</span>
+        亲爱的<a href="#" class="o">${loginUser.nickname}</a>，欢迎申请<span class="o">热红酒</span>
     </div>
 
     <div class="Application tc">
