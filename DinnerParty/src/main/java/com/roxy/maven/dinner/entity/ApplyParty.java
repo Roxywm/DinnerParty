@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 /**
  * 报名
  */
-public class Apply implements Serializable {
+public class ApplyParty implements Serializable {
     private Long id;
     private User user;
     private Dinner dinner;
@@ -62,10 +62,10 @@ public class Apply implements Serializable {
         this.applyTime = applyTime;
     }
 
-    public Apply() {
+    public ApplyParty() {
     }
 
-    public Apply(User user, Dinner dinner, String reason, String remark, Timestamp applyTime) {
+    public ApplyParty(User user, Dinner dinner, String reason, String remark, Timestamp applyTime) {
         this.user = user;
         this.dinner = dinner;
         this.reason = reason;
