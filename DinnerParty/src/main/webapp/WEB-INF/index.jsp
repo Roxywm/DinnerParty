@@ -32,7 +32,7 @@
                         </c:otherwise>
                     </c:choose>
                 </a>
-                <a href="${ctx}/dinner/create">发布我的饭局</a>
+                <a href="${ctx}/mutually/create">发布我的饭局</a>
             </div>
         </c:if>
         <c:if test="${empty loginUser}">

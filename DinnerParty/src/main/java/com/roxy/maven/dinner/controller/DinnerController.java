@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @Controller
-@RequestMapping(value = "/dinner")
+@RequestMapping(value = "/mutually")
 public class DinnerController {
 
     @Autowired
