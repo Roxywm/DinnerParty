@@ -10,7 +10,7 @@
                 </label>
                 <button type="submit" class="button btn-search">&#xe628;</button>
             </form>
-            <a href="${ctx}/dinner/create"><em><img src="${ctx}/static/images/sb.png"></em>  &nbsp;&nbsp;发布我的饭局</a>
+            <a href="${ctx}/mutually/create"><em><img src="${ctx}/static/images/sb.png"></em>  &nbsp;&nbsp;发布我的饭局</a>
             <div class="user">
         <span class="clearfix"><span class="userimg" style="overflow: hidden">
             <c:if test="${loginUser.icon!=null}">

@@ -46,7 +46,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 			<bean class="com.roxy.maven.dinner.intercetor.UserIntercetor"></bean><!-- 拦截器类 -->
 		</mvc:interceptor>
 		<mvc:interceptor>
-			<mvc:mapping path="/dinner/**"/><!-- 需要拦截的url -->
+			<mvc:mapping path="/mutually/**"/><!-- 需要拦截的url -->
 			<bean class="com.roxy.maven.dinner.intercetor.UserIntercetor"></bean><!-- 拦截器类 -->
 		</mvc:interceptor>
 	</mvc:interceptors>
