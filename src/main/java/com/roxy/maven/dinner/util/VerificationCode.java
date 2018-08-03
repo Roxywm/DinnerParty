@@ -9,8 +9,8 @@ import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
-//import org.apache.commons.mail.EmailException;
-//import org.apache.commons.mail.HtmlEmail;
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.HtmlEmail;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -30,7 +30,7 @@ public class VerificationCode {
     //秒滴请求地址前半部分
     public static final String BASE_URL = "https://api.miaodiyun.com/20150822/industrySMS/sendSMS";
     //随机数
-    public static String randNum = createRandomVcode();
+    public static String randNum = "";
     //秒滴短信内容
     public static String smsContent = "【必要商城】您的验证码为"+randNum+"，请于5分钟内正确输入，如非本人操作，请忽略此短信。";
 
@@ -41,7 +41,8 @@ public class VerificationCode {
      * @return 请求响应
      * @throws ClientException
      */
-    public static JSONObject sendAliyunMobileCode(String phoneNumber) throws ClientException {
+    public static JSONObject sendAliyunMobileCode(String phoneNumber, String code) throws ClientException {
+        randNum = code;
         System.setProperty("sun.net.client.defaultConnectTimeout", "10000");//不必修改
         System.setProperty("sun.net.client.defaultReadTimeout", "10000");//不必修改
         IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAIzwxyOQKaX4sf", "cOMRHBvbhmfFr9pmsudHdX6sM7bAgE");//"***"分别填写自己的AccessKey ID和Secret
@@ -65,7 +66,8 @@ public class VerificationCode {
      * @param phoneNumber
      * @return JSONObject对象结果
      */
-    public static JSONObject sendMiaodiMobileCode(String phoneNumber){
+    public static JSONObject sendMiaodiMobileCode(String phoneNumber, String code){
+        randNum = code;
         String args = qureyArguments(ACCOUNT_SID, AUTH_TOKEN, smsContent, phoneNumber);
         OutputStreamWriter out = null;
         InputStream in = null;
@@ -104,7 +106,7 @@ public class VerificationCode {
      * @param eamil
      * @return 发送的验证码
      */
-    /*public static String sendEamilCode(String eamil) {
+    public static String sendEamilCode(String eamil) {
         HtmlEmail send = new HtmlEmail();
         // 获取随机验证码
         String resultCode = achieveCode();
@@ -116,14 +118,14 @@ public class VerificationCode {
             send.addTo(eamil);  //接收者的QQEamil
             send.setFrom("269735929@qq.com", "染月"); //第一个参数是发送者的QQEamil   第二个参数是发送者QQ昵称
             send.setAuthentication("269735929@qq.com", "trfcnohduynxbigj");  //第一个参数是发送者的QQEamil   第二个参数是刚刚获取的授权码
-            send.setSubject(*//*checkAmOrPm() + *//*"小渣渣特给您送上验证码"); //Eamil的标题  第一个参数是我写的判断上下午，删掉即可
-            send.setMsg("HelloWorld!欢迎大大光临，特此送上验证:   " + resultCode + "   请大大签收");   //Eamil的内容
+            send.setSubject("小渣渣特给您送上验证码"); //Eamil的标题  第一个参数是我写的判断上下午，删掉即可
+            send.setMsg("HelloWorld!欢迎大大光临，点击此链接验证邮箱:   <a href='http://localhost:8080/dinner/user/update/email?code="+resultCode+"'>http://localhost:8080/dinner/user/update/email?code="+resultCode+"</a>   请大大签收");   //Eamil的内容
             send.send();//发送
         } catch (EmailException e) {
             e.printStackTrace();
         }
         return resultCode; //同等验证码
-    }*/
+    }
 
     /**
      * 获取手机随机验证码

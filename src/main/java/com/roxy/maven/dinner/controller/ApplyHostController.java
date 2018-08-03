@@ -30,7 +30,7 @@ public class ApplyHostController {
      */
     @RequestMapping(value = "/createApply", method = RequestMethod.GET)
     public String createApply(){
-        return "/user/applyHost";
+        return "dinner/applyHost";
     }
 
     /**
@@ -59,14 +59,14 @@ public class ApplyHostController {
                 int rows = applyHostService.applyHost(applyHost);
                 if(rows==0){
                     map.put("error","报名,请重新填写申请表！");
-                    return "/user/applyHost";
+                    return "dinner/applyHost";
                 }
             } catch (IOException e) {
                 map.put("error","请求错误,请重新填写申请表！");
                 e.printStackTrace();
             }
         }
-        return "/user/apply_success";
+        return "dinner/apply_success";
     }
 
     /**

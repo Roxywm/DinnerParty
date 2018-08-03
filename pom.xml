@@ -176,6 +176,17 @@
       <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
       <version>1.1.0</version>
     </dependency>
+    <!-- 发送短信 -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-email</artifactId>
+      <version>1.5</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.email</groupId>
+      <artifactId>javax.email</artifactId>
+      <version>1.0</version>
+    </dependency>
   </dependencies>
 
   <build>

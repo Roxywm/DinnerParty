@@ -1,6 +1,8 @@
 package com.roxy.maven.dinner.test;
 
+import com.alibaba.fastjson.JSONObject;
 import com.roxy.maven.dinner.dao.AreaDao;
+import com.roxy.maven.dinner.util.VerificationCode;
 import redis.clients.jedis.Jedis;
 
 public class Test {
@@ -13,7 +15,8 @@ public class Test {
 //        Jedis jedis = new Jedis();
 //        jedis.flushDB();
 
-
+        JSONObject jsonObject = VerificationCode.sendMiaodiMobileCode("15224553696", VerificationCode.createRandomVcode());
+        System.out.println(jsonObject.toJSONString());
 
     }
 }

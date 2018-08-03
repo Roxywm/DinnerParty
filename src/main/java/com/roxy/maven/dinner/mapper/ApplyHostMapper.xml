@@ -15,11 +15,13 @@
         <association property="user" javaType="user">
             <id property="id" column="id" />
             <result property="email" column="email" />
+            <result property="emailStatus" column="emailStatus" />
             <result property="password" column="password" />
             <result property="nickname" column="nickname" />
             <result property="icon" column="icon" />
             <result property="sex" column="sex" />
             <result property="mobile" column="mobile" />
+            <result property="mobileStatus" column="mobileStatus" />
             <result property="job" column="job" />
             <result property="about" column="about" />
             <result property="hostStatus" column="hostStatus" />
