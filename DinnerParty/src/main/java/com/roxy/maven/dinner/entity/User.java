@@ -8,11 +8,13 @@ import java.io.Serializable;
 public class User implements Serializable {
     private Long id;
     private String email;
+    private Integer emailStatus;//邮箱绑定状态
     private String password;//密码
     private String nickname;//昵称
     private String icon;//用户头像
     private String sex;
     private String mobile;
+    private Integer mobileStatus;//手机绑定状态
     private String job;//职业
     private Area area;//城市
     private String about;//介绍
@@ -32,6 +34,14 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getEmailStatus() {
+        return emailStatus;
+    }
+
+    public void setEmailStatus(Integer emailStatus) {
+        this.emailStatus = emailStatus;
     }
 
     public String getPassword() {
@@ -74,6 +84,14 @@ public class User implements Serializable {
         this.mobile = mobile;
     }
 
+    public Integer getMobileStatus() {
+        return mobileStatus;
+    }
+
+    public void setMobileStatus(Integer mobileStatus) {
+        this.mobileStatus = mobileStatus;
+    }
+
     public String getJob() {
         return job;
     }
@@ -109,13 +127,15 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String email, String password, String nickname, String icon, String sex, String mobile, String job, Area area, String about, Integer hostStatus) {
+    public User(String email, Integer emailStatus, String password, String nickname, String icon, String sex, String mobile, Integer mobileStatus, String job, Area area, String about, Integer hostStatus) {
         this.email = email;
+        this.emailStatus = emailStatus;
         this.password = password;
         this.nickname = nickname;
         this.icon = icon;
         this.sex = sex;
         this.mobile = mobile;
+        this.mobileStatus = mobileStatus;
         this.job = job;
         this.area = area;
         this.about = about;
@@ -127,11 +147,13 @@ public class User implements Serializable {
         return "User{" +
                 "id=" + id +
                 ", email='" + email + '\'' +
+                ", emailStatus=" + emailStatus +
                 ", password='" + password + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", icon='" + icon + '\'' +
                 ", sex='" + sex + '\'' +
                 ", mobile='" + mobile + '\'' +
+                ", mobileStatus=" + mobileStatus +
                 ", job='" + job + '\'' +
                 ", area=" + area +
                 ", about='" + about + '\'' +

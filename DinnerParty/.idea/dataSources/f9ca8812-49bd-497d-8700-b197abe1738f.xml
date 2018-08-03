@@ -1552,85 +1552,94 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="355" parent="246" name="account">
+    <column id="355" parent="246" name="email">
       <Position>2</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="356" parent="246" name="password">
+    <column id="356" parent="246" name="emailStatus">
       <Position>3</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="357" parent="246" name="nickname">
-      <Position>4</Position>
-      <DataType>varchar(32)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="358" parent="246" name="icon">
-      <Position>5</Position>
-      <DataType>varchar(32)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="359" parent="246" name="sex">
-      <Position>6</Position>
-      <DataType>varchar(3)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="360" parent="246" name="mobile">
-      <Position>7</Position>
-      <DataType>varchar(11)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="361" parent="246" name="email">
-      <Position>8</Position>
-      <DataType>varchar(32)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="362" parent="246" name="job">
-      <Position>9</Position>
-      <DataType>varchar(32)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="363" parent="246" name="areaId">
-      <Position>10</Position>
-      <DataType>bigint(11)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="364" parent="246" name="about">
-      <Position>11</Position>
-      <DataType>text|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="365" parent="246" name="hostStatus">
-      <Position>12</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="366" parent="246" name="account">
-      <ColNames>account</ColNames>
+    <column id="357" parent="246" name="password">
+      <Position>4</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="358" parent="246" name="nickname">
+      <Position>5</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="359" parent="246" name="icon">
+      <Position>6</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="360" parent="246" name="sex">
+      <Position>7</Position>
+      <DataType>varchar(3)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="361" parent="246" name="mobile">
+      <Position>8</Position>
+      <DataType>varchar(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="362" parent="246" name="mobileStatus">
+      <Position>9</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="363" parent="246" name="job">
+      <Position>10</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="364" parent="246" name="areaId">
+      <Position>11</Position>
+      <DataType>bigint(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="365" parent="246" name="about">
+      <Position>12</Position>
+      <DataType>text|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="366" parent="246" name="hostStatus">
+      <Position>13</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="367" parent="246" name="account">
+      <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="367" parent="246" name="areaId">
+    <index id="368" parent="246" name="areaId">
       <ColNames>areaId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="368" parent="246" name="PRIMARY">
+    <key id="369" parent="246" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="369" parent="246" name="account">
-      <ColNames>account</ColNames>
+    <key id="370" parent="246" name="account">
+      <ColNames>email</ColNames>
       <UnderlyingIndexName>account</UnderlyingIndexName>
     </key>
-    <foreign-key id="370" parent="246" name="users_ibfk_1">
+    <foreign-key id="371" parent="246" name="users_ibfk_1">
       <ColNames>areaId</ColNames>
       <RefSchemaName>dinner_party</RefSchemaName>
       <RefTableName>areas</RefTableName>

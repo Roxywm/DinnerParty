@@ -45,16 +45,16 @@
                     </c:if>
 
                     <label class="label">
-                        <input type="text" name="account" value="" class="loginipt key user">
+                        <input type="email" name="email" value="${email}" class="loginipt key user">
                         <span class="text">请输入您的邮箱</span>
                     </label>
                     <label class="label">
-                        <input type="text" name="nickname" value="" class="loginipt key Nickname">
-                        <span class="text">请输入您的昵称</span>
+                        <input type="password" name="password" value="${password}" class="loginipt key Nickname">
+                        <span class="text">请输入您的密码</span>
                     </label>
                     <label class="label">
-                        <input type="password" name="password" value="" class="loginipt key pwd">
-                        <span class="text">请输入您的密码</span>
+                        <input type="password" name="qrPassword" value="${qrPassword}" class="loginipt key pwd">
+                        <span class="text">请确认您的密码</span>
                     </label>
                     <button type="submit" class="button btn-reg" >立即注册</button>
                     <p class="mt20 tc">注册则表示同意<a href="#" class="o">《会员条款》</a></p>

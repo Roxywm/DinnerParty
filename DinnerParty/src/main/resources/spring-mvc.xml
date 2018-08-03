@@ -45,6 +45,10 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 			<mvc:exclude-mapping path="/user/register"/><!-- 排除注册 -->
 			<bean class="com.roxy.maven.dinner.intercetor.UserIntercetor"></bean><!-- 拦截器类 -->
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/dinner/**"/><!-- 需要拦截的url -->
+			<bean class="com.roxy.maven.dinner.intercetor.UserIntercetor"></bean><!-- 拦截器类 -->
+		</mvc:interceptor>
 	</mvc:interceptors>
 	
 	<!-- 配置不需要经过controller就可以直接访问WEB-INF目录下的页面

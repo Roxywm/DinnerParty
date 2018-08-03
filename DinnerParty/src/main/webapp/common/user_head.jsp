@@ -10,7 +10,7 @@
                 </label>
                 <button type="submit" class="button btn-search">&#xe628;</button>
             </form>
-            <a href="${ctx}/user/dinner/create"><em><img src="${ctx}/static/images/sb.png"></em>  &nbsp;&nbsp;发布我的饭局</a>
+            <a href="${ctx}/dinner/create"><em><img src="${ctx}/static/images/sb.png"></em>  &nbsp;&nbsp;发布我的饭局</a>
             <div class="user">
         <span class="clearfix"><span class="userimg" style="overflow: hidden">
             <c:if test="${loginUser.icon!=null}">
@@ -27,7 +27,7 @@
                     <li><em>&#xe63d;</em><a href="Message.html">消息中心<s>3</s></a></li>
                     <li><em>&#xe63c;</em><a href="Dinner.html">饭局管理</a></li>
                     <li><em>&#xe63e;</em><a href="fans.html">我的好友</a></li>
-                    <li><em>&#xe611;</em><a href="index.html">退出</a></li>
+                    <li><em>&#xe611;</em><a href="${ctx}/user/logout">退出</a></li>
                 </ul>
             </div>
         </div>
