@@ -929,8 +929,8 @@
     </collation>
     <table id="234" parent="3" name="admin"/>
     <table id="235" parent="3" name="adminLog"/>
-    <table id="236" parent="3" name="apply"/>
-    <table id="237" parent="3" name="applyHost"/>
+    <table id="236" parent="3" name="applyHost"/>
+    <table id="237" parent="3" name="applyParty"/>
     <table id="238" parent="3" name="areas"/>
     <table id="239" parent="3" name="category"/>
     <table id="240" parent="3" name="concern"/>
@@ -1027,115 +1027,115 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="236" name="userId">
-      <Position>2</Position>
-      <DataType>bigint(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="263" parent="236" name="dinnerId">
-      <Position>3</Position>
-      <DataType>bigint(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="264" parent="236" name="reason">
-      <Position>4</Position>
-      <DataType>text|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="265" parent="236" name="remark">
-      <Position>5</Position>
-      <DataType>text|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="266" parent="236" name="applyTime">
-      <Position>6</Position>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="267" parent="236" name="userId">
-      <ColNames>userId</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="268" parent="236" name="dinnerId">
-      <ColNames>dinnerId</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="269" parent="236" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="270" parent="236" name="apply_ibfk_1">
-      <ColNames>userId</ColNames>
-      <RefSchemaName>dinner_party</RefSchemaName>
-      <RefTableName>users</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="271" parent="236" name="apply_ibfk_2">
-      <ColNames>dinnerId</ColNames>
-      <RefSchemaName>dinner_party</RefSchemaName>
-      <RefTableName>dinner</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="272" parent="237" name="id">
-      <Position>1</Position>
-      <DataType>bigint(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="273" parent="237" name="name">
+    <column id="262" parent="236" name="name">
       <Position>2</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="274" parent="237" name="userId">
+    <column id="263" parent="236" name="userId">
       <Position>3</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="275" parent="237" name="areaId">
+    <column id="264" parent="236" name="areaId">
       <Position>4</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="276" parent="237" name="email">
+    <column id="265" parent="236" name="email">
       <Position>5</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="277" parent="237" name="mobile">
+    <column id="266" parent="236" name="mobile">
       <Position>6</Position>
       <DataType>varchar(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="278" parent="237" name="photo">
+    <column id="267" parent="236" name="photo">
       <Position>7</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="279" parent="237" name="status">
+    <column id="268" parent="236" name="status">
       <Position>8</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
+    <index id="269" parent="236" name="userId">
+      <ColNames>userId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="270" parent="236" name="areaId">
+      <ColNames>areaId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="271" parent="236" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="272" parent="236" name="applyHost_ibfk_1">
+      <ColNames>userId</ColNames>
+      <RefSchemaName>dinner_party</RefSchemaName>
+      <RefTableName>users</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="273" parent="236" name="applyHost_ibfk_2">
+      <ColNames>areaId</ColNames>
+      <RefSchemaName>dinner_party</RefSchemaName>
+      <RefTableName>areas</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="274" parent="237" name="id">
+      <Position>1</Position>
+      <DataType>bigint(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="275" parent="237" name="userId">
+      <Position>2</Position>
+      <DataType>bigint(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="276" parent="237" name="dinnerId">
+      <Position>3</Position>
+      <DataType>bigint(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="277" parent="237" name="reason">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="278" parent="237" name="remark">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="279" parent="237" name="applyTime">
+      <Position>6</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
     <index id="280" parent="237" name="userId">
       <ColNames>userId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="281" parent="237" name="areaId">
-      <ColNames>areaId</ColNames>
+    <index id="281" parent="237" name="dinnerId">
+      <ColNames>dinnerId</ColNames>
       <Type>btree</Type>
     </index>
     <key id="282" parent="237" name="PRIMARY">
@@ -1143,16 +1143,16 @@
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="283" parent="237" name="applyHost_ibfk_1">
+    <foreign-key id="283" parent="237" name="applyParty_ibfk_1">
       <ColNames>userId</ColNames>
       <RefSchemaName>dinner_party</RefSchemaName>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="284" parent="237" name="applyHost_ibfk_2">
-      <ColNames>areaId</ColNames>
+    <foreign-key id="284" parent="237" name="applyParty_ibfk_2">
+      <ColNames>dinnerId</ColNames>
       <RefSchemaName>dinner_party</RefSchemaName>
-      <RefTableName>areas</RefTableName>
+      <RefTableName>dinner</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <column id="285" parent="238" name="id">
