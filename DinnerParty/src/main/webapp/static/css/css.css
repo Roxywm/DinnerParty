@@ -244,7 +244,7 @@ transition: opacity ease-in-out 200ms;}
 .participate-tab .label-name:hover,.participate-tab .label-name.current{  background:#ff4800; border-color:#ff4800; color:#FFF;}
 
 .Participate .photo{ padding:10px 0 0;}
-.photo-control{ width:200px;}
+/*.photo-control{ width:200px;}*/
 .photo-info{ width:430px; margin-left:10px;}
 .active-photo{ width:230px; height:130px; text-align:center; display:table-cell; vertical-align:middle; background:#ebebeb url(../images/photo-bg.jpg) no-repeat center;}
 

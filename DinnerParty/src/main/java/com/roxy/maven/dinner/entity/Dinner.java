@@ -2,6 +2,7 @@ package com.roxy.maven.dinner.entity;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * 饭局
@@ -18,6 +19,8 @@ public class Dinner implements Serializable {
     private String thumbnail;//缩略图
     private String details;//活动详情
     private Integer interest;//感兴趣
+
+    private List<Photo> photos;//饭局照片
 
     public Long getId() {
         return id;
@@ -107,7 +110,19 @@ public class Dinner implements Serializable {
         this.interest = interest;
     }
 
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
+    }
+
     public Dinner() {
+    }
+
+    public Dinner(Long id) {
+        this.id = id;
     }
 
     public Dinner(String titel, Double price, Integer maximum, Timestamp startTime, Timestamp endTime, Category category, String label, String thumbnail, String details, Integer interest) {

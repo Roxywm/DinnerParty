@@ -22,16 +22,7 @@
         <a href="index.html" class="logo indent">logo</a>
         <c:if test="${not empty loginUser}">
             <div class="medium-right">
-                <a href="${ctx}/user/home">
-                    <c:choose>
-                        <c:when test="${loginUser.nickname!=null}">
-                            您好！&nbsp;|&nbsp;${loginUser.nickname}
-                        </c:when>
-                        <c:otherwise>
-                            您好！&nbsp;|&nbsp;${loginUser.account}
-                        </c:otherwise>
-                    </c:choose>
-                </a>
+                <a href="${ctx}/user/home">您好！&nbsp;|&nbsp;${loginUser.nickname}</a>
                 <a href="${ctx}/mutually/create">发布我的饭局</a>
             </div>
         </c:if>
