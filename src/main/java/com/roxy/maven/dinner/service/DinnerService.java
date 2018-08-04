@@ -13,6 +13,24 @@ public interface DinnerService {
      */
     int create(Dinner dinner, List<Photo> list);
 
+    /**
+     * 根据用户ID来查找饭局
+     * @param id
+     * @return
+     */
+    List<Dinner> findByUserId(long id);
+
+    /**
+     * 查询所有饭局未停止报名的饭局
+     * @return
+     */
+    List<Dinner> findNotStart();
+
+    /**
+     * 查询所有饭局
+     * @return
+     */
+    List<Dinner> findAll();
 
 
 }

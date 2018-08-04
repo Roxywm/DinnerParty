@@ -23,7 +23,7 @@
         <c:if test="${not empty loginUser}">
             <div class="medium-right">
                 <a href="${ctx}/user/home">您好！&nbsp;|&nbsp;${loginUser.nickname}</a>
-                <a href="${ctx}/mutually/create">发布我的饭局</a>
+                <a href="${ctx}/mutually/dinner/create">发布我的饭局</a>
             </div>
         </c:if>
         <c:if test="${empty loginUser}">

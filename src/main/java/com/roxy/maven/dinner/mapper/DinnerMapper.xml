@@ -4,6 +4,41 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.roxy.maven.dinner.dao.DinnerDao">
+    <resultMap id="dinnerMap" type="dinner">
+        <id property="id" column="nid" />
+        <result property="titel" column="titel" />
+        <result property="price" column="price" />
+        <result property="maximum" column="maximum" />
+        <result property="startTime" column="startTime" />
+        <result property="endTime" column="endTime" />
+        <result property="label" column="label" />
+        <result property="thumbnail" column="thumbnail" />
+        <result property="details" column="details" />
+        <result property="interest" column="interest" />
+        <result property="status" column="status"/>
+        <association property="user" javaType="user">
+            <id property="id" column="id" />
+            <result property="email" column="email" />
+            <result property="emailStatus" column="emailStatus" />
+            <result property="password" column="password" />
+            <result property="nickname" column="nickname" />
+            <result property="icon" column="icon" />
+            <result property="sex" column="sex" />
+            <result property="mobile" column="mobile" />
+            <result property="mobileStatus" column="mobileStatus" />
+            <result property="job" column="job" />
+            <result property="about" column="about" />
+            <result property="hostStatus" column="hostStatus" />
+            <association property="area" javaType="area">
+                <id property="id" column="did"/>
+                <result property="name" column="dname"/>
+                <!-- 父级 -->
+                <association property="parent" javaType="area">
+                    <id property="id" column="pid"/>
+                </association>
+            </association>
+        </association>
+    </resultMap>
   
     <insert id="create" parameterType="dinner" useGeneratedKeys="true" keyProperty="id">
         insert into dinner(titel, price, maximum, startTime, endTime, categoryId, label, thumbnail, details)
@@ -16,5 +51,9 @@
             (#{item.dinner.id}, #{item.src}, #{item.createTime})
         </foreach>
     </insert>
+
+    <select id="findByUserId" parameterType="long" resultMap="dinnerMap">
+
+    </select>
 
 </mapper>

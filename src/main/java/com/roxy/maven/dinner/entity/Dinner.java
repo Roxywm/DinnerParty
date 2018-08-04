@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class Dinner implements Serializable {
     private Long id;
+    private User user;//所属用户
     private String titel;//标题
     private Double price;
     private Integer maximum;//设置最多报名人数
@@ -19,6 +20,7 @@ public class Dinner implements Serializable {
     private String thumbnail;//缩略图
     private String details;//活动详情
     private Integer interest;//感兴趣
+    private Integer status;//0未开始 1已开始 2已结束
 
     private List<Photo> photos;//饭局照片
 
@@ -28,6 +30,14 @@ public class Dinner implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getTitel() {
@@ -110,6 +120,14 @@ public class Dinner implements Serializable {
         this.interest = interest;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     public List<Photo> getPhotos() {
         return photos;
     }
@@ -125,7 +143,8 @@ public class Dinner implements Serializable {
         this.id = id;
     }
 
-    public Dinner(String titel, Double price, Integer maximum, Timestamp startTime, Timestamp endTime, Category category, String label, String thumbnail, String details, Integer interest) {
+    public Dinner(User user, String titel, Double price, Integer maximum, Timestamp startTime, Timestamp endTime, Category category, String label, String thumbnail, String details, Integer interest, Integer status, List<Photo> photos) {
+        this.user = user;
         this.titel = titel;
         this.price = price;
         this.maximum = maximum;
@@ -136,12 +155,15 @@ public class Dinner implements Serializable {
         this.thumbnail = thumbnail;
         this.details = details;
         this.interest = interest;
+        this.status = status;
+        this.photos = photos;
     }
 
     @Override
     public String toString() {
         return "Dinner{" +
                 "id=" + id +
+                ", user=" + user +
                 ", titel='" + titel + '\'' +
                 ", price=" + price +
                 ", maximum=" + maximum +
@@ -152,6 +174,8 @@ public class Dinner implements Serializable {
                 ", thumbnail='" + thumbnail + '\'' +
                 ", details='" + details + '\'' +
                 ", interest=" + interest +
+                ", status=" + status +
+                ", photos=" + photos +
                 '}';
     }
 }
