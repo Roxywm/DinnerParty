@@ -19,6 +19,7 @@ public class Dinner implements Serializable {
     private String label;//标签
     private String thumbnail;//缩略图
     private String details;//活动详情
+    private Integer enrolment;//报名人数
     private Integer interest;//感兴趣
     private Integer status;//0未开始 1已开始 2已结束
 
@@ -112,6 +113,14 @@ public class Dinner implements Serializable {
         this.details = details;
     }
 
+    public Integer getEnrolment() {
+        return this.enrolment;
+    }
+
+    public void setEnrolment(Integer enrolment) {
+        this.enrolment = enrolment;
+    }
+
     public Integer getInterest() {
         return interest;
     }
@@ -143,7 +152,7 @@ public class Dinner implements Serializable {
         this.id = id;
     }
 
-    public Dinner(User user, String titel, Double price, Integer maximum, Timestamp startTime, Timestamp endTime, Category category, String label, String thumbnail, String details, Integer interest, Integer status, List<Photo> photos) {
+    public Dinner(User user, String titel, Double price, Integer maximum, Timestamp startTime, Timestamp endTime, Category category, String label, String thumbnail, String details, Integer enrolment, Integer interest, Integer status, List<Photo> photos) {
         this.user = user;
         this.titel = titel;
         this.price = price;
@@ -154,6 +163,7 @@ public class Dinner implements Serializable {
         this.label = label;
         this.thumbnail = thumbnail;
         this.details = details;
+        this.enrolment = enrolment;
         this.interest = interest;
         this.status = status;
         this.photos = photos;
@@ -173,6 +183,7 @@ public class Dinner implements Serializable {
                 ", label='" + label + '\'' +
                 ", thumbnail='" + thumbnail + '\'' +
                 ", details='" + details + '\'' +
+                ", Enrolment=" + enrolment +
                 ", interest=" + interest +
                 ", status=" + status +
                 ", photos=" + photos +

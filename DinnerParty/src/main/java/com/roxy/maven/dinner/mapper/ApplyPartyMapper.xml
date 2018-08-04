@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.roxy.maven.dinner.dao.ApplyPartyDao">
+    <resultMap id="applyPartyMap" type="applyParty">
+        <id property="id" column="apid" />
+        <result property="reason" column="reason" />
+        <result property="remark" column="remark" />
+        <association property="user" javaType="user">
+            <id property="id" column="id" />
+            <result property="email" column="email" />
+            <result property="emailStatus" column="emailStatus" />
+            <result property="password" column="password" />
+            <result property="nickname" column="nickname" />
+            <result property="icon" column="icon" />
+            <result property="sex" column="sex" />
+            <result property="mobile" column="mobile" />
+            <result property="mobileStatus" column="mobileStatus" />
+            <result property="job" column="job" />
+            <result property="about" column="about" />
+            <result property="hostStatus" column="hostStatus" />
+            <association property="area" javaType="area">
+                <id property="id" column="aid"/>
+                <result property="name" column="aname"/>
+                <!-- 父级 -->
+                <association property="parent" javaType="area">
+                    <id property="id" column="pid"/>
+                </association>
+            </association>
+        </association>
+        <association property="dinner" javaType="dinner">
+            <id property="id" column="did" />
+        </association>
+    </resultMap>
+
+    <insert id="create" parameterType="applyParty" useGeneratedKeys="true" keyProperty="id">
+        insert into applyParty(userId, dinnerId, reason, remark, applyTime)
+        values (#{user.id},#{dinner.id},#{reason},#{remark},#{applyTime})
+    </insert>
+
+    <delete id="delete" parameterType="long">
+        delete applyParty where userId=#{userId} and dinnerId=#{dinnerId}
+    </delete>
+
+    <select id="findByUserId" parameterType="long" resultMap="applyPartyMap">
+        select ap.id apid, ap.reason,ap.remark,u.*,d.id did,a.id aid, a.name aname, a.parentId pid
+        from applyParty ap,users u,dinner d, areas a
+        where ap.userId=u.id and ap.dinnerId=d.id and u.areaId=a.id and u.id=#{userId}
+    </select>
+
+    <select id="findByDinnerId" parameterType="long" resultMap="applyPartyMap">
+        select ap.id apid, ap.reason,ap.remark,u.*,d.id did,a.id aid, a.name aname, a.parentId pid
+        from applyParty ap,users u,dinner d, areas a
+        where ap.userId=u.id and ap.dinnerId=d.id and u.areaId=a.id and d.id=#{dinnerId}
+    </select>
+
+</mapper>

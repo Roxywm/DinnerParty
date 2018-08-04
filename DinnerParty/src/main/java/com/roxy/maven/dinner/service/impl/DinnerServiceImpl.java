@@ -19,18 +19,27 @@ public class DinnerServiceImpl implements DinnerService {
 
     @Override
     public int create(Dinner dinner, List<Photo> list) {
-        long dinnerId = dinnerDao.create(dinner);
+        int rows = 0;
+
+        rows = dinnerDao.create(dinner);
 
         for(Photo photo1:list){
-            photo1.setDinner(new Dinner(dinnerId));
+            photo1.setDinner(dinner);
         }
+        rows = 0;
+        rows = dinnerDao.createPhoto(list);
 
-        return dinnerDao.createPhoto(list);
+        return rows;
     }
 
     @Override
     public List<Dinner> findByUserId(long id) {
-        return null;
+        return dinnerDao.findByUserId(id);
+    }
+
+    @Override
+    public Dinner findByDinnerId(long id) {
+        return dinnerDao.findByDinnerId(id);
     }
 
     @Override
