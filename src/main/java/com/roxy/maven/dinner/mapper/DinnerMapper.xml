@@ -5,6 +5,16 @@
   
 <mapper namespace="com.roxy.maven.dinner.dao.DinnerDao">
   
+    <insert id="create" parameterType="dinner" useGeneratedKeys="true" keyProperty="id">
+        insert into dinner(titel, price, maximum, startTime, endTime, categoryId, label, thumbnail, details)
+        values (#{titel},#{price},#{maximum},#{startTime},#{endTime},#{category.id},#{label},#{thumbnail},#{details})
+    </insert>
 
+    <insert id="createPhoto" parameterType="java.util.List">
+        insert into photos (dinnerId, src, createTime) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.dinner.id}, #{item.src}, #{item.createTime})
+        </foreach>
+    </insert>
 
 </mapper>

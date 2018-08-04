@@ -1,14 +1,14 @@
 package com.roxy.maven.dinner.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.roxy.maven.dinner.common.Constants;
-import com.roxy.maven.dinner.entity.ApplyHost;
-import com.roxy.maven.dinner.entity.Category;
-import com.roxy.maven.dinner.entity.Dinner;
-import com.roxy.maven.dinner.entity.User;
+import com.roxy.maven.dinner.entity.*;
 import com.roxy.maven.dinner.service.ApplyHostService;
 import com.roxy.maven.dinner.service.CategoryService;
 import com.roxy.maven.dinner.service.DinnerService;
 import com.roxy.maven.dinner.service.UserService;
+import com.roxy.maven.dinner.util.SaveImg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -19,11 +19,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -63,15 +64,15 @@ public class DinnerController {
     /**
      * 发布饭局活动
      * @param dinner
-     * @param startTime
-     * @param endTime
+     * @param startDate
+     * @param endDate
      * @param photo
-     * @param photos
+     * @param request
      * @return
      */
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(Dinner dinner, String startTime, String endTime,
-                         @RequestParam("photo") MultipartFile photo, @RequestParam("photos") MultipartFile photos){
+    public String create(Dinner dinner, Date startDate, Date endDate, String categoryId,
+                         @RequestParam("photo") MultipartFile photo, HttpServletRequest request, Map<String, Object> map){
         if(photo!=null&&!photo.getOriginalFilename().equals("")){
             String suffix = getSuffix(photo.getOriginalFilename());
             long fileName = System.currentTimeMillis();
@@ -83,27 +84,38 @@ public class DinnerController {
                 e.printStackTrace();
             }
         }
-        if(photos!=null&&!photos.getOriginalFilename().equals("")){
-            String suffix = getSuffix(photos.getOriginalFilename());
-            File oldName = new File(Constants.savePath +System.currentTimeMillis()+suffix);
-            try {
-                photos.transferTo(oldName);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        //获取上传的饭局照片集合
+        List<Photo> photos = null;
+        try {
+            photos = SaveImg.getFiles(request);
+            dinner.setPhotos(photos);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ServletException e) {
+            e.printStackTrace();
         }
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            dinner.setStartTime(new Timestamp(sdf.parse(startTime).getTime()));
-            dinner.setStartTime(new Timestamp(sdf.parse(endTime).getTime()));
-        } catch (ParseException e) {
+            dinner.setCategory(new Category(Long.parseLong(categoryId)));
+            dinner.setStartTime(new Timestamp(startDate.getTime()));
+            dinner.setStartTime(new Timestamp(endDate.getTime()));
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
+        int rows = dinnerService.create(dinner, photos);
+        if(rows>0){
+
+            PageHelper.startPage(1, 5);//设置分页
+            List<ApplyHost> list = applyHostService.findAll();
+            PageInfo<ApplyHost> page = new PageInfo<ApplyHost>(list);
+            map.put("page", page);
 
 
+            return "dinner/host_dinner";
+        }
 
-        return "dinner/host_dinner";
+        return "redirect:/mutually/create";
     }
 
 
