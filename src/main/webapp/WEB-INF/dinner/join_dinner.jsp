@@ -32,21 +32,21 @@
         <div class="Participate pd30">
             <c:if test="${fn:length(page.list)==0}">
                 <div class="Participate pd30">
-                    您目前没有主持任何饭局活动！
+                    您目前没有参加任何饭局活动！
                 </div>
             </c:if>
-            <c:forEach items="${page.list}" var="dinner">
+            <c:forEach items="${page.list}" var="applyParty">
                 <div class="item">
-                    <a href="#" class="user img"><img src="${ctx}/userIcon/${dinner.user.icon}"></a>
-                    <div class="hd"><span class="username">${dinner.user.nickname}</span>  发布了  <span class="Period">NO.${dinner.id}期活动</span></div>
+                    <a href="#" class="user img"><img src="${ctx}/userIcon/${applyParty.user.icon}"></a>
+                    <div class="hd"><span class="username">${applyParty.user.nickname}</span>  发布了  <span class="Period">NO.${applyParty.dinner.id}期活动</span></div>
                     <div class="bd">
-                        <div class="Activity-img img"><img src="${ctx}/uploads/${dinner.thumbnail}"></div>
-                        <div class="number">报名人数：<span class="count"><c:if test="${dinner.enrolment==null}">0</c:if>${dinner.enrolment}人</span></div>
+                        <div class="Activity-img img"><img src="${ctx}/uploads/${applyParty.dinner.thumbnail}"></div>
+                        <div class="number">报名人数：<span class="count"><c:if test="${applyParty.dinner.enrolment==null}">0</c:if>${applyParty.dinner.enrolment}人</span></div>
                         <div class="txt">
-                            <div class="title"><a href=#">${dinner.titel}</a></div>
-                            <div class="info">${dinner.details}</div>
+                            <div class="title"><a href=#">${applyParty.dinner.titel}</a></div>
+                            <div class="info">${applyParty.dinner.details}</div>
                             <%--<p class="mt10"><a href="#" target="_blank">先到先得</a>    <a href="#" target="_blank">双向选择</a>    <a href="#" target="_blank">大数据匹配</a></p>--%>
-                            <p class="mt10"><a href="javascript:;" target="_blank">${dinner.category.name}</a></p>
+                            <p class="mt10"><a href="javascript:;" target="_blank">${applyParty.dinner.category.name}</a></p>
                             <a href="Management.html" class="button btn-mana">管理报名人数</a>
                         </div>
                     </div>

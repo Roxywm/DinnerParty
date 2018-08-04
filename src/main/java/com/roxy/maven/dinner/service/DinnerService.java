@@ -21,6 +21,13 @@ public interface DinnerService {
     List<Dinner> findByUserId(long id);
 
     /**
+     * 根据饭局ID来查找饭局
+     * @param id
+     * @return
+     */
+    Dinner findByDinnerId(long id);
+
+    /**
      * 查询所有饭局未停止报名的饭局
      * @return
      */

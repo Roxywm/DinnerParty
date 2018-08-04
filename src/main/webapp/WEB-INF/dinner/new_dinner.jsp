@@ -28,7 +28,7 @@
 
 <div class="memwrap wrap clearfix">
     <div class="section fl">
-        <div class="location tr"><a href="Dinner.html">参加的饭局</a><a href="Host.html">主办的饭局</a><a href="Release.html" class="current">发布饭局</a></div>
+        <div class="location tr"><a href="${ctx}/mutually/dinner/joinDinner">参加的饭局</a><a href="${ctx}/mutually/dinner/hostDinner">主办的饭局</a><a href="${ctx}/mutually/dinner/create" class="current">发布饭局</a></div>
         <c:if test="${loginUser.hostStatus==0}">
             <c:if test="${applyHost==null}">
                 <div class="Participate pd30">
@@ -37,14 +37,14 @@
             </c:if>
             <c:if test="${applyHost.status==0}">
                 <div class="Participate pd30">
-                    你已提交主持人申请，请耐心等待工作人员审核！</a>
+                你已提交主持人申请，请耐心等待工作人员审核！
                 </div>
             </c:if>
         </c:if>
 
         <c:if test="${loginUser.hostStatus==1}">
             <div class="Participate pd30">
-                <form action="${ctx}/mutually/create" method="post" enctype="multipart/form-data">
+                <form action="${ctx}/mutually/dinner/create" method="post" enctype="multipart/form-data">
                     <table class="baseinfo participate-tab">
                         <tr>
                             <th>活动标题：</th>

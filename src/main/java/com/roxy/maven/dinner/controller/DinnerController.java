@@ -4,10 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.roxy.maven.dinner.common.Constants;
 import com.roxy.maven.dinner.entity.*;
-import com.roxy.maven.dinner.service.ApplyHostService;
-import com.roxy.maven.dinner.service.CategoryService;
-import com.roxy.maven.dinner.service.DinnerService;
-import com.roxy.maven.dinner.service.UserService;
+import com.roxy.maven.dinner.service.*;
 import com.roxy.maven.dinner.util.SaveImg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -42,6 +39,8 @@ public class DinnerController {
     private CategoryService categoryService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private ApplyPartyService applyPartyService;
 
     /**
      * 跳到发布饭局页面
@@ -73,7 +72,7 @@ public class DinnerController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(Dinner dinner, Date startDate, Date endDate, String categoryId,
                          @RequestParam("photo") MultipartFile photo,
-                         @RequestParam("files") MultipartFile[] files, Map<String, Object> map){
+                         @RequestParam("files") MultipartFile[] files, HttpSession session){
         //获取缩略图
         if(photo!=null&&!photo.getOriginalFilename().equals("")){
             String suffix = getSuffix(photo.getOriginalFilename());
@@ -102,29 +101,56 @@ public class DinnerController {
         dinner.setStartTime(new Timestamp(startDate.getTime()));
         dinner.setEndTime(new Timestamp(endDate.getTime()));
 
+        User user = (User) session.getAttribute("loginUser");
+        dinner.setUser(user);
         //提交数据库
         int rows = dinnerService.create(dinner, photos);//返回插入照片数量条数
         if(rows>0){
-
-            PageHelper.startPage(1, 5);//设置分页
-            List<ApplyHost> list = applyHostService.findAll();
-            PageInfo<ApplyHost> page = new PageInfo<ApplyHost>(list);
-            map.put("page", page);
-
-            return "dinner/host_dinner";
+            //重定向到自己发布的饭局页面
+            return "redirect:/mutually/dinner/hostDinner";
         }
 
-        return "redirect:/mutually/create";
+        return "redirect:/mutually/dinner/create";
     }
 
 
     /**
-     * 跳到主持的饭局页面
+     * 跳到自己主持的饭局页面
+     * 带分页
      * @return
      */
     @RequestMapping(value = "/hostDinner", method = RequestMethod.GET)
-    public String hostDinner(){
+    public String hostDinner(HttpSession session, Map<String, Object> map){
+        User user = (User) session.getAttribute("loginUser");
+        PageHelper.startPage(1, 5);//设置分页
+        //找出自己主持的饭局活动
+        List<Dinner> list = dinnerService.findByUserId(user.getId());
+        PageInfo<Dinner> page = new PageInfo<Dinner>(list);
+        map.put("page", page);
         return "dinner/host_dinner";
+    }
+
+
+    /**
+     * 跳到自己参加的饭局页面
+     * 带分页
+     * @return
+     */
+    @RequestMapping(value = "/joinDinner", method = RequestMethod.GET)
+    public String joinDinner(HttpSession session, Map<String, Object> map){
+        User user = (User) session.getAttribute("loginUser");
+
+        PageHelper.startPage(1, 5);//设置分页
+        //找出自己参加的饭局活动
+        List<ApplyParty> list = applyPartyService.findByUserId(user.getId());
+        for(ApplyParty applyParty:list){
+            Dinner dinner = dinnerService.findByDinnerId(applyParty.getDinner().getId());
+            applyParty.setDinner(dinner);
+        }
+
+        PageInfo<ApplyParty> page = new PageInfo<ApplyParty>(list);
+        map.put("page", page);
+        return "dinner/join_dinner";
     }
 
 
