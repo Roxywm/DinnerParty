@@ -2,10 +2,12 @@ package com.roxy.maven.dinner.util;
 
 import com.roxy.maven.dinner.common.Constants;
 import com.roxy.maven.dinner.entity.Photo;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -15,31 +17,30 @@ public class SaveImg {
 
     /**
      * 获取商品的照片集合
-     * @param request
+     * @param files
      * @return
      * @throws IOException
      * @throws ServletException
      */
-    public static List<Photo> getFiles(HttpServletRequest request) throws IOException, ServletException {
-        //新建图片集合对象
+    public static List<Photo> getFiles(MultipartFile[] files) throws IOException, ServletException {
         List<Photo> photos = new ArrayList<Photo>();
-        //获取上传的文件集合
-        Collection<Part> parts = request.getParts();
-        for (Part p : parts) {//循环处理上传的文件
-            //判断p的名称是上传域的名称，=才进行写文件的操作
-            if(p.getName().equals("files")){
-                String suffix = getSuffixName(p.getHeader("content-disposition"));//获取文件后缀名
+        if(files!=null && files.length>0){
+            //循环获取file数组中得文件
+            for(int i = 0;i<files.length;i++){
+                MultipartFile file = files[i];
                 try {
-                    Thread.sleep(5);
-                } catch (InterruptedException e) {
+                    //文件后缀名
+                    String suffix = getSuffix(file.getOriginalFilename());
+                    long fileName = System.currentTimeMillis();
+                    String filePath =Constants.savePath+ fileName+suffix;
+                    // 转存文件
+                    file.transferTo(new File(filePath));
+
+                    photos.add(new Photo(null, fileName+suffix,new Timestamp(new Date().getTime())));
+
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
-                String newFilename = System.currentTimeMillis()+suffix;//新文件名
-                p.write(Constants.savePath+newFilename); //把文件写到指定路径
-                Photo photo = new Photo();
-                photo.setSrc("uploads/"+newFilename);
-                photo.setCreateTime(new Timestamp(new Date().getTime()));
-                photos.add(photo);
             }
         }
         return photos;
@@ -106,5 +107,14 @@ public class SaveImg {
             return null;
         String suffix = fileName.substring(fileName.indexOf("."));
         return suffix;
+    }
+
+    /**
+     * 按文件名获取后缀名的方法
+     * @param filename 文件名
+     * @return 后缀名
+     */
+    private static String getSuffix(String filename){
+        return filename.substring(filename.lastIndexOf("."));
     }
 }

@@ -61,8 +61,8 @@
                         <tr>
                             <th>活动时间：</th>
                             <td>
-                                <input class="Wdate" type="text" name="startTime1" onfocus="WdatePicker({minDate:'%y-%M-{%d+1}',isShowClear:false,isShowToday:false,readOnly:true})"/>&nbsp;&nbsp;&nbsp;&nbsp;
-                                截至报名时间：<input id="" class="Wdate" name="endTime1" type="text" onfocus="WdatePicker({minDate:'%y-%M-{%d+1}',isShowClear:false,isShowToday:false,readOnly:true})"/></td>
+                                <input class="Wdate" type="text" name="startDate" onfocus="WdatePicker({minDate:'%y-%M-{%d+1}',isShowClear:false,isShowToday:false,readOnly:true})"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                                截至报名时间：<input id="" class="Wdate" name="endDate" type="text" onfocus="WdatePicker({minDate:'%y-%M-{%d+1}',isShowClear:false,isShowToday:false,readOnly:true})"/></td>
                         </tr>
                         <tr>
                             <%--<th>活动玩法：</th>--%>

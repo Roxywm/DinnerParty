@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping(value = "/mutually")
+@RequestMapping(value = "/mutually/dinner")
 public class DinnerController {
 
     @Autowired
@@ -67,19 +67,21 @@ public class DinnerController {
      * @param startDate
      * @param endDate
      * @param photo
-     * @param request
+     * @param files
      * @return
      */
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(Dinner dinner, Date startDate, Date endDate, String categoryId,
-                         @RequestParam("photo") MultipartFile photo, HttpServletRequest request, Map<String, Object> map){
+                         @RequestParam("photo") MultipartFile photo,
+                         @RequestParam("files") MultipartFile[] files, Map<String, Object> map){
+        //获取缩略图
         if(photo!=null&&!photo.getOriginalFilename().equals("")){
             String suffix = getSuffix(photo.getOriginalFilename());
             long fileName = System.currentTimeMillis();
             File oldName = new File(Constants.savePath +fileName+suffix);
             try {
                 photo.transferTo(oldName);
-                dinner.setThumbnail(oldName.getName());
+                dinner.setThumbnail(oldName.getName());//添加到饭局对象中
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -87,23 +89,21 @@ public class DinnerController {
         //获取上传的饭局照片集合
         List<Photo> photos = null;
         try {
-            photos = SaveImg.getFiles(request);
+            photos = SaveImg.getFiles(files);
             dinner.setPhotos(photos);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ServletException e) {
             e.printStackTrace();
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            dinner.setCategory(new Category(Long.parseLong(categoryId)));
-            dinner.setStartTime(new Timestamp(startDate.getTime()));
-            dinner.setStartTime(new Timestamp(endDate.getTime()));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
-        int rows = dinnerService.create(dinner, photos);
+        //设置开始时间和报名结束时间
+        dinner.setCategory(new Category(Long.parseLong(categoryId)));
+        dinner.setStartTime(new Timestamp(startDate.getTime()));
+        dinner.setEndTime(new Timestamp(endDate.getTime()));
+
+        //提交数据库
+        int rows = dinnerService.create(dinner, photos);//返回插入照片数量条数
         if(rows>0){
 
             PageHelper.startPage(1, 5);//设置分页
@@ -111,11 +111,20 @@ public class DinnerController {
             PageInfo<ApplyHost> page = new PageInfo<ApplyHost>(list);
             map.put("page", page);
 
-
             return "dinner/host_dinner";
         }
 
         return "redirect:/mutually/create";
+    }
+
+
+    /**
+     * 跳到主持的饭局页面
+     * @return
+     */
+    @RequestMapping(value = "/hostDinner", method = RequestMethod.GET)
+    public String hostDinner(){
+        return "dinner/host_dinner";
     }
 
 

@@ -28,5 +28,20 @@ public class DinnerServiceImpl implements DinnerService {
         return dinnerDao.createPhoto(list);
     }
 
+    @Override
+    public List<Dinner> findByUserId(long id) {
+        return null;
+    }
+
+    @Override
+    public List<Dinner> findNotStart() {
+        return null;
+    }
+
+    @Override
+    public List<Dinner> findAll() {
+        return null;
+    }
+
 
 }
