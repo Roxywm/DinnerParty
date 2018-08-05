@@ -13,11 +13,10 @@ public interface ApplyPartyDao {
 
     /**
      * 删除报名记录
-     * @param userId
-     * @param dinnerId
+     * @param id
      * @return
      */
-    int delete(long userId, long dinnerId);
+    int delete(long id);
 
     /**
      * 根据用户ID查找报名记录
@@ -34,5 +33,12 @@ public interface ApplyPartyDao {
      * @return
      */
     List<ApplyParty> findByDinnerId(long dinnerId);
+
+
+    /**
+     * 根据用户ID和饭局ID查找报名记录
+     * @return
+     */
+    ApplyParty findByUserIDandDinnerId(long userId, long dinnerId);
 
 }

@@ -41,7 +41,7 @@
     </insert>
 
     <delete id="delete" parameterType="long">
-        delete applyParty where userId=#{userId} and dinnerId=#{dinnerId}
+        delete from applyParty where id=#{id}
     </delete>
 
     <select id="findByUserId" parameterType="long" resultMap="applyPartyMap">
@@ -54,6 +54,12 @@
         select ap.id apid, ap.reason,ap.remark,u.*,d.id did,a.id aid, a.name aname, a.parentId pid
         from applyParty ap,users u,dinner d, areas a
         where ap.userId=u.id and ap.dinnerId=d.id and u.areaId=a.id and d.id=#{dinnerId}
+    </select>
+
+    <select id="findByUserIDandDinnerId" parameterType="long" resultMap="applyPartyMap">
+        select ap.id apid, ap.reason,ap.remark,u.*,d.id did,a.id aid, a.name aname, a.parentId pid
+        from applyParty ap,users u,dinner d, areas a
+        where ap.userId=u.id and ap.dinnerId=d.id and u.areaId=a.id and u.id=#{arg0} and d.id=#{arg1}
     </select>
 
 </mapper>

@@ -18,21 +18,21 @@
     <title>私厨 - 为你推荐遍布全球最新鲜，最与众不同的顶级生活方式</title>
 </head>
 <body>
-<%--<div class="head">--%>
-    <%--<div class="wrap clearfix">--%>
-        <%--<a href="index.html" class="logo indent">logo</a>--%>
-        <%--<div class="headr fr">--%>
-            <%--<form action="active.html" method="post" class="headsearch">--%>
-                <%--<label class="label">--%>
-                    <%--<input type="text" value="" name="" class="key">--%>
-                    <%--<span class="text">搜索地址、名称、时间等</span>--%>
-                <%--</label>--%>
-                <%--<button type="submit" class="button btn-search">&#xe628;</button>--%>
-            <%--</form>--%>
-            <%--<a href="login.html">登录</a><a href="reg.html">注册</a><a href="#">发布我的饭局</a>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
+<div class="head">
+    <div class="wrap clearfix">
+        <a href="index.html" class="logo indent">logo</a>
+        <div class="headr fr">
+            <form action="active.html" method="post" class="headsearch">
+                <label class="label">
+                    <input type="text" value="" name="" class="key">
+                    <span class="text">搜索地址、名称、时间等</span>
+                </label>
+                <button type="submit" class="button btn-search">&#xe628;</button>
+            </form>
+            <a href="${ctx}/user/login">登录</a><a href="${ctx}/user/register">注册</a><a href="${ctx}/mutually/dinner/create">发布我的饭局</a>
+        </div>
+    </div>
+</div>
 <div class="loginwrapper">
     <div class="wrap pr">
         <div class="loginbox">

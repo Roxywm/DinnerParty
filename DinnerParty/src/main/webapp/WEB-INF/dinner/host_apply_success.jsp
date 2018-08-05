@@ -87,10 +87,10 @@
     <div class="gotop">&#xe608;</div>
 </div>
 <div class="foot tc">Copyright © 2003-2015 17素材, All Rights Reserved</div>
-<script src="js/jquery.js"></script>
-<script src="js/Action.js"></script>
+<script src="${ctx}/static/js/jquery.js"></script>
+<script src="${ctx}/static/js/Action.js"></script>
 
-<script src="js/chosen.jquery.js"></script>
+<script src="${ctx}/static/js/chosen.jquery.js"></script>
 <script type="text/javascript">
     $(document).ready(function($){
         //select 样式美化

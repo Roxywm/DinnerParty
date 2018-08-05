@@ -937,8 +937,8 @@
     <table id="241" parent="3" name="dinner"/>
     <table id="242" parent="3" name="dinnerMsg"/>
     <table id="243" parent="3" name="fans"/>
-    <table id="244" parent="3" name="message"/>
-    <table id="245" parent="3" name="photos"/>
+    <table id="244" parent="3" name="photos"/>
+    <table id="245" parent="3" name="userMsg"/>
     <table id="246" parent="3" name="users"/>
     <column id="247" parent="234" name="id">
       <Position>1</Position>
@@ -1493,92 +1493,92 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="344" parent="244" name="userId">
+    <column id="344" parent="244" name="dinnerId">
       <Position>2</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="345" parent="244" name="msgUser">
+    <column id="345" parent="244" name="src">
       <Position>3</Position>
-      <DataType>bigint(11)|0s</DataType>
+      <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="346" parent="244" name="message">
+    <column id="346" parent="244" name="createTime">
       <Position>4</Position>
-      <DataType>text|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="347" parent="244" name="msgTime">
-      <Position>5</Position>
       <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="348" parent="244" name="userId">
-      <ColNames>userId</ColNames>
+    <index id="347" parent="244" name="dinnerId">
+      <ColNames>dinnerId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="349" parent="244" name="msgUser">
-      <ColNames>msgUser</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="350" parent="244" name="PRIMARY">
+    <key id="348" parent="244" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="351" parent="244" name="message_ibfk_1">
-      <ColNames>userId</ColNames>
+    <foreign-key id="349" parent="244" name="photos_ibfk_1">
+      <ColNames>dinnerId</ColNames>
       <RefSchemaName>dinner_party</RefSchemaName>
-      <RefTableName>users</RefTableName>
+      <RefTableName>dinner</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="352" parent="244" name="message_ibfk_2">
-      <ColNames>msgUser</ColNames>
-      <RefSchemaName>dinner_party</RefSchemaName>
-      <RefTableName>users</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="353" parent="245" name="id">
+    <column id="350" parent="245" name="id">
       <Position>1</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="354" parent="245" name="dinnerId">
+    <column id="351" parent="245" name="userId">
       <Position>2</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="355" parent="245" name="src">
+    <column id="352" parent="245" name="msgUser">
       <Position>3</Position>
-      <DataType>varchar(200)|0s</DataType>
+      <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="356" parent="245" name="createTime">
+    <column id="353" parent="245" name="message">
       <Position>4</Position>
-      <DataType>datetime|0s</DataType>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="357" parent="245" name="dinnerId">
-      <ColNames>dinnerId</ColNames>
+    <column id="354" parent="245" name="msgTime">
+      <Position>5</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="355" parent="245" name="userId">
+      <ColNames>userId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="358" parent="245" name="PRIMARY">
+    <index id="356" parent="245" name="msgUser">
+      <ColNames>msgUser</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="357" parent="245" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="359" parent="245" name="photos_ibfk_1">
-      <ColNames>dinnerId</ColNames>
+    <foreign-key id="358" parent="245" name="userMsg_ibfk_1">
+      <ColNames>userId</ColNames>
       <RefSchemaName>dinner_party</RefSchemaName>
-      <RefTableName>dinner</RefTableName>
+      <RefTableName>users</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="359" parent="245" name="userMsg_ibfk_2">
+      <ColNames>msgUser</ColNames>
+      <RefSchemaName>dinner_party</RefSchemaName>
+      <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <column id="360" parent="246" name="id">

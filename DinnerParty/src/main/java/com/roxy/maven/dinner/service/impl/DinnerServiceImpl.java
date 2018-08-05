@@ -52,5 +52,15 @@ public class DinnerServiceImpl implements DinnerService {
         return null;
     }
 
+    @Override
+    public int interest(Dinner dinner) {
+        return dinnerDao.interest(dinner);
+    }
+
+    @Override
+    public int enrolment(Dinner dinner) {
+        return dinnerDao.enrolment(dinner);
+    }
+
 
 }
