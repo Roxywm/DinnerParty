@@ -66,7 +66,7 @@ public class ApplyHostController {
                 e.printStackTrace();
             }
         }
-        return "dinner/apply_success";
+        return "dinner/host_apply_success";
     }
 
     /**

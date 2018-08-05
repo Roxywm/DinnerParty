@@ -22,8 +22,8 @@ public class ApplyPartyServiceImpl implements ApplyPartyService {
     }
 
     @Override
-    public int delete(long userId, long dinnerId) {
-        return applyPartyDao.delete(userId, dinnerId);
+    public int delete(long id) {
+        return applyPartyDao.delete(id);
     }
 
     @Override
@@ -34,5 +34,10 @@ public class ApplyPartyServiceImpl implements ApplyPartyService {
     @Override
     public List<ApplyParty> findByDinnerId(long dinnerId) {
         return applyPartyDao.findByDinnerId(dinnerId);
+    }
+
+    @Override
+    public ApplyParty findByUserIDandDinnerId(long userId, long dinnerId) {
+        return applyPartyDao.findByUserIDandDinnerId(userId, dinnerId);
     }
 }

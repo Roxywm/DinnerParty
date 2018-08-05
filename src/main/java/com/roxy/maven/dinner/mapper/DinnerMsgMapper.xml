@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.roxy.maven.dinner.dao.DinnerMsgDao">
+    <resultMap id="dinnerMsgMap" type="dinnerMsg">
+        <id property="id" column="dmid" />
+        <result property="message" column="dmmsg" />
+        <result property="msgTime" column="msgTime" />
+        <association property="msgUser" javaType="user">
+            <id property="id" column="id" />
+            <result property="email" column="email" />
+            <result property="emailStatus" column="emailStatus" />
+            <result property="password" column="password" />
+            <result property="nickname" column="nickname" />
+            <result property="icon" column="icon" />
+            <result property="sex" column="sex" />
+            <result property="mobile" column="mobile" />
+            <result property="mobileStatus" column="mobileStatus" />
+            <result property="job" column="job" />
+            <result property="about" column="about" />
+            <result property="hostStatus" column="hostStatus" />
+        </association>
+        <association property="dinner" javaType="dinner">
+            <id property="id" column="did" />
+        </association>
+    </resultMap>
+
+    <insert id="create" parameterType="dinnerMsg" useGeneratedKeys="true" keyProperty="id">
+        insert into dinnerMsg (userId, dinnerId, message, msgTime)
+        values (#{user.id},#{dinner.id},#{message},#{msgTime});
+    </insert>
+
+    <delete id="delete" parameterType="long">
+        delete from dinnerMsg where id=#{id}
+    </delete>
+
+    <select id="findByDinnerId" parameterType="long" resultMap="dinnerMsgMap">
+        select dm.id dmid, dm.message dmmsg, dm.msgTime, u.*, d.id did
+        from dinnerMsg dm, users u, dinner d
+        where dm.userId=u.id and dm.dinnerId=d.id;
+    </select>
+
+</mapper>

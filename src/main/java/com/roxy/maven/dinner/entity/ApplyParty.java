@@ -75,7 +75,7 @@ public class ApplyParty implements Serializable {
 
     @Override
     public String toString() {
-        return "Apply{" +
+        return "ApplyParty{" +
                 "id=" + id +
                 ", user=" + user +
                 ", dinner=" + dinner +

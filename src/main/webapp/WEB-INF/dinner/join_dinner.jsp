@@ -8,6 +8,9 @@
     <meta name="author" content="mezz">
     <link href="${ctx}/static/css/css.css" rel="stylesheet">
     <link href="${ctx}/static/css/chosen.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="${ctx}/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="${ctx}/static/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
     <!--[if lt IE 9]>
     <link href="${ctx}/static/css/ie.css" rel="stylesheet" type="text/css" >
     <meta http-equiv="X-UA-Compatible" content="IE=8" >
@@ -43,7 +46,7 @@
                         <div class="Activity-img img"><img src="${ctx}/uploads/${applyParty.dinner.thumbnail}"></div>
                         <div class="number">报名人数：<span class="count"><c:if test="${applyParty.dinner.enrolment==null}">0</c:if>${applyParty.dinner.enrolment}人</span></div>
                         <div class="txt">
-                            <div class="title"><a href=#">${applyParty.dinner.titel}</a></div>
+                            <div class="title"><a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${applyParty.dinner.id}">${applyParty.dinner.titel}</a></div>
                             <div class="info">${applyParty.dinner.details}</div>
                             <%--<p class="mt10"><a href="#" target="_blank">先到先得</a>    <a href="#" target="_blank">双向选择</a>    <a href="#" target="_blank">大数据匹配</a></p>--%>
                             <p class="mt10"><a href="javascript:;" target="_blank">${applyParty.dinner.category.name}</a></p>
@@ -52,6 +55,22 @@
                     </div>
                 </div>
             </c:forEach>
+            <!-- 分页 -->
+            <div class="dataTables_paginate paging_bootstrap">
+                <ul class="pagination">
+                    <li class="prev disabled">
+                        <a href="?pageNum=${page.prePage}&menu=${param.menu}">上一页</a>
+                    </li>
+                    <c:forEach begin="1" end="${page.pages}" var="p">
+                        <li <c:if test="${p==page.pageNum}">class="active"</c:if>>
+                            <a href="?pageNum=${p}&menu=${param.menu}">${p}</a>
+                        </li>
+                    </c:forEach>
+                    <li class="next">
+                        <a href="?pageNum=${page.nextPage}&menu=${param.menu}">下一页</a>
+                    </li>
+                </ul>
+            </div>
 
         </div>
     </div>
@@ -65,6 +84,7 @@
 <script src="${ctx}/static/date/WdatePicker.js"></script>
 <script src="${ctx}/static/js/Action.js"></script>
 <script src="${ctx}/static/js/upfiles.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/bootstrap.min.js"></script>
 
 <script src="${ctx}/static/js/chosen.jquery.js"></script>
 <script type="text/javascript">

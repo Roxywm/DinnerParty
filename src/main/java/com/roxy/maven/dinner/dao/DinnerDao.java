@@ -47,4 +47,19 @@ public interface DinnerDao {
      */
     List<Dinner> findAll();
 
+
+    /**
+     * 添加感兴趣
+     * @param dinner
+     * @return
+     */
+    int interest(Dinner dinner);
+
+    /**
+     * 添加报名人数
+     * @param dinner
+     * @return
+     */
+    int enrolment(Dinner dinner);
+
 }

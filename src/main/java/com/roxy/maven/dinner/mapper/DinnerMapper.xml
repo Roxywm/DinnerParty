@@ -76,4 +76,20 @@
       and u.id=#{id}
     </select>
 
+    <select id="findByDinnerId" parameterType="long" resultMap="dinnerMap">
+      select d.id did, titel,price,maximum,startTime,endTime,label,thumbnail,details,enrolment,interest,d.status dstatus,
+      u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
+      from dinner d,users u,areas a,category c
+      where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id
+      and d.id=#{id}
+    </select>
+
+    <update id="interest" parameterType="dinner">
+        update dinner set  interest=#{interest}  where id=#{id}
+    </update>
+
+    <update id="enrolment" parameterType="dinner">
+        update dinner set  enrolment=#{enrolment}  where id=#{id}
+    </update>
+
 </mapper>

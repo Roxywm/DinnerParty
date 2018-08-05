@@ -47,13 +47,13 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/mutually/**"/><!-- 需要拦截的url -->
+			<mvc:exclude-mapping path="/mutually/dinner/dinnerDetail"/><!-- 排除url，不拦截此url -->
 			<bean class="com.roxy.maven.dinner.intercetor.UserIntercetor"></bean><!-- 拦截器类 -->
 		</mvc:interceptor>
 	</mvc:interceptors>
 	
 	<!-- 配置不需要经过controller就可以直接访问WEB-INF目录下的页面
-	<mvc:view-controller path="/login" view-name="login"/>
-	<mvc:view-controller path="/register" view-name="register"/> -->
+	<mvc:view-controller path="/login" view-name="login"/> -->
 
 	<!--&lt;!&ndash; 文件上传配置 &ndash;&gt;-->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
