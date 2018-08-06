@@ -127,6 +127,7 @@ public class DinnerController {
         List<Dinner> list = dinnerService.findByUserId(user.getId());
         PageInfo<Dinner> page = new PageInfo<Dinner>(list);
         map.put("page", page);
+        map.put("newDate", new Timestamp(new Date().getTime()));
         return "dinner/host_dinner";
     }
 
@@ -150,6 +151,7 @@ public class DinnerController {
 
         PageInfo<ApplyParty> page = new PageInfo<ApplyParty>(list);
         map.put("page", page);
+        map.put("newDate", new Timestamp(new Date().getTime()));
         return "dinner/join_dinner";
     }
 
@@ -211,12 +213,13 @@ public class DinnerController {
      */
     @RequestMapping(value = "/applyParty", method = RequestMethod.GET)
     public String applyParty(String dinnerId, Map<String, Object> map){
-        map.put("dinnerId",dinnerId);
+        Dinner dinner = dinnerService.findByDinnerId(Long.parseLong(dinnerId));
+        map.put("dinner", dinner);
         return "dinner/sign_up";
     }
 
     /**
-     * 提交报名申请
+     * 提交报名申请 (跳到报名成功页 未付款不提交数据库)
      * @return
      */
     @RequestMapping(value = "/applyParty", method = RequestMethod.POST)
@@ -225,20 +228,34 @@ public class DinnerController {
         applyParty.setDinner(new Dinner(Long.parseLong(dinnerId)));
         applyParty.setUser(user);
         applyParty.setApplyTime(new Timestamp(new Date().getTime()));
+
+        //提交到数据库
         int rows = 0;
         rows = applyPartyService.create(applyParty);
         Dinner dinner = dinnerService.findByDinnerId(Long.parseLong(dinnerId));
         dinner.setEnrolment(dinner.getEnrolment()+1);
         rows = dinnerService.enrolment(dinner);
 
-        if(rows>0){
-            List<ApplyParty> applyPartyList = applyPartyService.findByDinnerId(Long.parseLong(dinnerId));
-            map.put("dinner", dinner);
-            map.put("applyPartyList", applyPartyList);
-            return "dinner/party_apply_success";
-        }
-        map.put("error", "报名失败！");
-        return "dinner/sign_up";
+        applyParty.setDinner(dinner);
+        List<ApplyParty> applyPartyList = applyPartyService.findByDinnerId(Long.parseLong(dinnerId));
+        map.put("applyParty", applyParty);
+        map.put("applyPartyList", applyPartyList);
+
+        return "dinner/party_apply_success";
+
+    }
+
+
+    /**
+     * 用户提交留言
+     * @param dinnerId
+     * @param message
+     * @return
+     */
+    @RequestMapping(value = "/dinnerMsg", method = RequestMethod.POST)
+    public String dinnerMsg(String dinnerId, String message){
+
+        return "";
     }
 
 

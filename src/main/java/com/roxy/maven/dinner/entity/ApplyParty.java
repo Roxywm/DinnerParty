@@ -13,6 +13,7 @@ public class ApplyParty implements Serializable {
     private String reason;//申请理由
     private String remark;//备注
     private Timestamp applyTime;//报名时间
+    private Integer payStatus;
 
     public Long getId() {
         return id;
@@ -62,15 +63,24 @@ public class ApplyParty implements Serializable {
         this.applyTime = applyTime;
     }
 
+    public Integer getPayStatus() {
+        return payStatus;
+    }
+
+    public void setPayStatus(Integer payStatus) {
+        this.payStatus = payStatus;
+    }
+
     public ApplyParty() {
     }
 
-    public ApplyParty(User user, Dinner dinner, String reason, String remark, Timestamp applyTime) {
+    public ApplyParty(User user, Dinner dinner, String reason, String remark, Timestamp applyTime, Integer payStatus) {
         this.user = user;
         this.dinner = dinner;
         this.reason = reason;
         this.remark = remark;
         this.applyTime = applyTime;
+        this.payStatus = payStatus;
     }
 
     @Override
@@ -82,6 +92,7 @@ public class ApplyParty implements Serializable {
                 ", reason='" + reason + '\'' +
                 ", remark='" + remark + '\'' +
                 ", applyTime=" + applyTime +
+                ", payStatus=" + payStatus +
                 '}';
     }
 }

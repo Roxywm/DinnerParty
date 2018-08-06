@@ -197,7 +197,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         </form>
 
 
-        <li class="plmcomment mt20">
+        <div class="plmcomment mt20">
             <ul class="comment-list">
                 <c:if test="${fn:length(dinnerMsgPage.list)==0}">
                     <li class="np-post green" style="text-align: center; font-size: 18px;">
@@ -217,19 +217,29 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                 </c:forEach>
 
             </ul>
-            <!--Pagination-->
+            <!-- 分页 -->
             <div class="page mt20 clearfix">
                 <c:if test="${fn:length(dinnerMsgPage.list)!=0}">
-                    <ul class="pagination">
-                        <li><a href="?pageNum=${page.prePage}&menu=${param.menu}">&laquo;</a></li>
+                    <div class="page mt20 clearfix">
+                        <c:if test="${page.prePage!=0}">
+                            <a href="?pageNum=${page.prePage}" class="prev"><em></em>上一页</a>
+                        </c:if>
+                        <c:if test="${page.prePage==0}">
+                            <a href="javascript:;" class="prev"><em></em>上一页</a>
+                        </c:if>
                         <c:forEach begin="1" end="${page.pages}" var="p">
-                            <li><a href="?pageNum=${p}&menu=${param.menu}" <c:if test="${p==page.pageNum}">class="active"</c:if> >${p}</a></li>
+                            <c:if test="${p==page.pageNum}"><span>${p}</span></c:if>
+                            <c:if test="${p!=page.pageNum}"><a href="?pageNum=${p}">${p}</a></c:if>
                         </c:forEach>
-                        <li><a href="?pageNum=${page.nextPage}&menu=${param.menu}">&raquo;</a></li>
-                    </ul>
+                        <c:if test="${page.nextPage!=0}">
+                            <a href="?pageNum=${page.nextPage}" class="next">下一页<em></em></a>
+                        </c:if>
+                        <c:if test="${page.nextPage==0}">
+                            <a href="javascript:;" class="next">下一页<em></em></a>
+                        </c:if>
+                    </div>
                 </c:if>
             </div>
-
         </div>
     </div>
 </div>

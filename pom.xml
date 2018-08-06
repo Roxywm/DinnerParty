@@ -189,10 +189,11 @@
     </dependency>
     <!-- 阿里支付 -->
     <dependency>
-      <groupId>com.alipay.sdk</groupId>
-      <artifactId>alipay-sdk-java</artifactId>
-      <version>3.3.4.ALL</version>
+      <groupId>com.alipay</groupId>
+      <artifactId>sdk-java</artifactId>
+      <version>20170324180803</version>
     </dependency>
+
     <dependency>
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>

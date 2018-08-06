@@ -40,4 +40,9 @@ public class ApplyPartyServiceImpl implements ApplyPartyService {
     public ApplyParty findByUserIDandDinnerId(long userId, long dinnerId) {
         return applyPartyDao.findByUserIDandDinnerId(userId, dinnerId);
     }
+
+    @Override
+    public int updatePayStatus(ApplyParty applyParty) {
+        return applyPartyDao.updatePayStatus(applyParty);
+    }
 }

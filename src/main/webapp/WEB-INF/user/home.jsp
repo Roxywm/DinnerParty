@@ -97,7 +97,15 @@
                     </li>
                 </ul>
                 <!--Pagination-->
-                <div class="page mt20 clearfix"><a href="#" class="prev"><em></em>上一页</a><span>1</span><a href="#">2</a><a href="#">3</a><a href="#">4</a>...<a href="#">23</a><a href="#" class="next">下一页<em></em></a></div>
+                <div class="page mt20 clearfix">
+                    <a href="#" class="prev"><em></em>上一页</a>
+                    <span>1</span>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    ...<a href="#">23</a>
+                    <a href="#" class="next">下一页<em></em></a>
+                </div>
             </div>
 
         </div>

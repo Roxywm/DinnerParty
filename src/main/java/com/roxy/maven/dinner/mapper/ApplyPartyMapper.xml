@@ -8,6 +8,7 @@
         <id property="id" column="apid" />
         <result property="reason" column="reason" />
         <result property="remark" column="remark" />
+        <result property="payStatus" column="payStatus" />
         <association property="user" javaType="user">
             <id property="id" column="id" />
             <result property="email" column="email" />
@@ -32,6 +33,8 @@
         </association>
         <association property="dinner" javaType="dinner">
             <id property="id" column="did" />
+            <result property="startTime" column="startTime" />
+            <result property="endTime" column="endTime" />
         </association>
     </resultMap>
 
@@ -45,21 +48,25 @@
     </delete>
 
     <select id="findByUserId" parameterType="long" resultMap="applyPartyMap">
-        select ap.id apid, ap.reason,ap.remark,u.*,d.id did,a.id aid, a.name aname, a.parentId pid
+        select ap.id apid, ap.reason,ap.remark,ap.payStatus,u.*,d.id did,d.startTime,d.endTime,a.id aid, a.name aname, a.parentId pid
         from applyParty ap,users u,dinner d, areas a
         where ap.userId=u.id and ap.dinnerId=d.id and u.areaId=a.id and u.id=#{userId}
     </select>
 
     <select id="findByDinnerId" parameterType="long" resultMap="applyPartyMap">
-        select ap.id apid, ap.reason,ap.remark,u.*,d.id did,a.id aid, a.name aname, a.parentId pid
+        select ap.id apid, ap.reason,ap.remark,ap.payStatus,u.*,d.id did,d.startTime,d.endTime,a.id aid, a.name aname, a.parentId pid
         from applyParty ap,users u,dinner d, areas a
         where ap.userId=u.id and ap.dinnerId=d.id and u.areaId=a.id and d.id=#{dinnerId}
     </select>
 
     <select id="findByUserIDandDinnerId" parameterType="long" resultMap="applyPartyMap">
-        select ap.id apid, ap.reason,ap.remark,u.*,d.id did,a.id aid, a.name aname, a.parentId pid
+        select ap.id apid, ap.reason,ap.remark,ap.payStatus,u.*,d.id did,d.startTime,d.endTime,a.id aid, a.name aname, a.parentId pid
         from applyParty ap,users u,dinner d, areas a
         where ap.userId=u.id and ap.dinnerId=d.id and u.areaId=a.id and u.id=#{arg0} and d.id=#{arg1}
     </select>
+
+    <update id="updatePayStatus" parameterType="applyParty">
+        update applyParty set payStatus = 1 where userId=#{user.id} and dinnerId=#{dinner.id};
+    </update>
 
 </mapper>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.roxy.maven.dinner.dao.OrdersDao">
+
+    <resultMap id="ordersMap" type="orders">
+        <id property="id" column="oid" />
+        <result property="remark" column="remark" />
+        <result property="total" column="total" />
+        <result property="outTradeNo" column="outTradeNo" />
+        <result property="tradeNo" column="tradeNo" />
+        <association property="user" javaType="user">
+            <id property="id" column="id" />
+            <result property="email" column="email" />
+            <result property="emailStatus" column="emailStatus" />
+            <result property="password" column="password" />
+            <result property="nickname" column="nickname" />
+            <result property="icon" column="icon" />
+            <result property="sex" column="sex" />
+            <result property="mobile" column="mobile" />
+            <result property="mobileStatus" column="mobileStatus" />
+            <result property="job" column="job" />
+            <result property="about" column="about" />
+            <result property="hostStatus" column="hostStatus" />
+            <association property="area" javaType="area">
+                <id property="id" column="aid"/>
+                <result property="name" column="aname"/>
+                <!-- 父级 -->
+                <association property="parent" javaType="area">
+                    <id property="id" column="pid"/>
+                </association>
+            </association>
+        </association>
+        <association property="dinner" javaType="dinner">
+            <id property="id" column="did" />
+            <result property="startTime" column="startTime" />
+            <result property="endTime" column="endTime" />
+        </association>
+    </resultMap>
+
+    <insert id="create" parameterType="orders" useGeneratedKeys="true" keyProperty="id">
+        insert into orders (userId, dinnerId, remark, total, outTradeNo, tradeNo, createTime)
+        values (#{user.id},#{dinner.id},#{remark},#{total},#{outTradeNo},#{tradeNo},#{createTime});
+    </insert>
+
+    <select id="findAll" resultMap="ordersMap">
+        select o.id oid,o.remark,o.total,o.outTradeNo,o.tradeNo,o.createTime,u.*,a.id aid, a.name aname, a.parentId pid,d.id did,d.startTime,d.endTime
+        from orders o,users u, areas a, dinner d
+        where o.userId=u.id and o.dinnerId=d.id and u.areaId=a.id;
+    </select>
+
+</mapper>
