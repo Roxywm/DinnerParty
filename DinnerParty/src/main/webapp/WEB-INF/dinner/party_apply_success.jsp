@@ -23,14 +23,24 @@
 <div class="wrap">
     <div class="sign-title tc" style=" -webkit-opacity: 0.3; -moz-opacity: 0.3; -khtml-opacity: 0.3;  opacity: .3; filter:alpha(opacity=30);  ">
         <h1>我要申请报名</h1>
-        亲爱的<a href="#" class="o">${loginUser.nickname}</a>，欢迎申请<span class="o">热红酒</span>
+        亲爱的<a href="#" class="o">${loginUser.nickname}</a>，欢迎申请<span class="o">${applyParty.dinner.titel}</span>
     </div>
 
     <div class="Application tc">
         <div class="suc-header o"><img src="${ctx}/static/images/rrt.png">报名成功！</div>
-        <div class="suctxt">恭喜你，你是“<b class="o">${dinner.titel}</b>”的第 <b class="o">${fn:length(applyPartyList)}</b> 位申请者。<br>
+        <div class="suctxt">恭喜你，你是“<b class="o">${applyParty.dinner.titel}</b>”的第 <b class="o">${fn:length(applyPartyList)+1}</b> 位申请者。<br>
             　　我们珍惜你的信任，所以杜绝一切黑幕，招募结果将由待着网、体验地共同选拔产生，并在官网公布，衷心希望特别的你能够成为待着网的下一任体验官！ </div>
-        <div class="Release-submit"><a href="${ctx}/alipay/openPlay?total=${dinner.price}" class="button btn-submit Appbtn">去付款</a></div>
+        <div class="Release-submit">
+            <form action="${ctx}/alipay/openPlay" method="post">
+                <input type="hidden" name="price" value="${applyParty.dinner.price}">
+                <input type="hidden" name="dinnerId" value="${applyParty.dinner.id}">
+                <input type="hidden" name="reason" value="${applyParty.reason}">
+                <input type="hidden" name="remark" value="${applyParty.remark}">
+                <button type="submit" class="button btn-submit Appbtn">去付款</button>
+                <button class="button btn-submit Appbtn" style="background: #CCCCCC" onClick="location.href='${ctx}/mutually/dinner/dinnerDetail?dinnerId=${applyParty.dinner.id}'">取消报名</button>
+            </form>
+
+        </div>
     </div>
 
 </div>

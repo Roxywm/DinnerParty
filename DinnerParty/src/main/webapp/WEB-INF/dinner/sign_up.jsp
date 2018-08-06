@@ -23,7 +23,7 @@
 <div class="wrap">
     <div class="sign-title tc">
         <h1>我要申请报名</h1>
-        亲爱的<a href="#" class="o">wang</a>，欢迎申请<span class="o">热红酒</span>
+        亲爱的<a href="#" class="o">${loginUser.nickname}</a>，欢迎申请<span class="o">${dinner.titel}</span>
     </div>
 
     <div class="membox clearfix">
@@ -39,7 +39,7 @@
 
     <div class="Application mt30">
         <form action="${ctx}/mutually/dinner/applyParty" method="post">
-            <input type="hidden" name="dinnerId" value="${dinnerId}">
+            <input type="hidden" name="dinnerId" value="${dinner.id}">
             <table class="apptab">
                 <tr>
                     <th><em class="ico"></em>申请理由：</th>

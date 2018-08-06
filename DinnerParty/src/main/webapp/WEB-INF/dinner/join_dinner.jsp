@@ -8,9 +8,6 @@
     <meta name="author" content="mezz">
     <link href="${ctx}/static/css/css.css" rel="stylesheet">
     <link href="${ctx}/static/css/chosen.css" rel="stylesheet">
-    <!-- Bootstrap -->
-    <link href="${ctx}/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="${ctx}/static/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
     <!--[if lt IE 9]>
     <link href="${ctx}/static/css/ie.css" rel="stylesheet" type="text/css" >
     <meta http-equiv="X-UA-Compatible" content="IE=8" >
@@ -31,7 +28,7 @@
 
 <div class="memwrap wrap clearfix">
     <div class="section fl">
-        <div class="location tr"><a href="${ctx}/mutually/dinner/joinDinner">参加的饭局</a><a href="${ctx}/mutually/dinner/hostDinner">主办的饭局</a><a href="${ctx}/mutually/dinner/create" class="current">发布饭局</a></div>
+        <div class="location tr"><a href="${ctx}/mutually/dinner/joinDinner" class="current" style="font-weight: bold">参加的饭局</a><a href="${ctx}/mutually/dinner/hostDinner">主办的饭局</a><a href="${ctx}/mutually/dinner/create">发布饭局</a></div>
         <div class="Participate pd30">
             <c:if test="${fn:length(page.list)==0}">
                 <div class="Participate pd30">
@@ -41,36 +38,64 @@
             <c:forEach items="${page.list}" var="applyParty">
                 <div class="item">
                     <a href="#" class="user img"><img src="${ctx}/userIcon/${applyParty.user.icon}"></a>
-                    <div class="hd"><span class="username">${applyParty.user.nickname}</span>  发布了  <span class="Period">NO.${applyParty.dinner.id}期活动</span></div>
+                    <div class="hd"><span class="username">${applyParty.user.nickname}</span>  报名了  <span class="Period">NO.${applyParty.dinner.id}期活动</span></div>
                     <div class="bd">
-                        <div class="Activity-img img"><img src="${ctx}/uploads/${applyParty.dinner.thumbnail}"></div>
-                        <div class="number">报名人数：<span class="count"><c:if test="${applyParty.dinner.enrolment==null}">0</c:if>${applyParty.dinner.enrolment}人</span></div>
+                        <c:if test="${applyParty.dinner.endTime.time < newDate.time}">
+                            <span class="Expired indent">已过期</span>
+                        </c:if>
+
+                        <div class="Activity-img img"><a href="detail.html"><img src="${ctx}/uploads/${applyParty.dinner.thumbnail}"></a></div>
                         <div class="txt">
                             <div class="title"><a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${applyParty.dinner.id}">${applyParty.dinner.titel}</a></div>
                             <div class="info">${applyParty.dinner.details}</div>
                             <%--<p class="mt10"><a href="#" target="_blank">先到先得</a>    <a href="#" target="_blank">双向选择</a>    <a href="#" target="_blank">大数据匹配</a></p>--%>
                             <p class="mt10"><a href="javascript:;" target="_blank">${applyParty.dinner.category.name}</a></p>
-                            <a href="Management.html" class="button btn-mana">管理报名人数</a>
+                            <c:if test="${applyParty.dinner.endTime.time>newDate.time}">
+                                <c:if test="${applyParty.payStatus==0}">
+                                    <form action="${ctx}/alipay/openPlay" method="post" class="fl">
+                                        <input type="hidden" name="price" value="${applyParty.dinner.price}">
+                                        <input type="hidden" name="dinnerId" value="${applyParty.dinner.id}">
+                                        <input type="hidden" name="reason" value="${applyParty.reason}">
+                                        <input type="hidden" name="remark" value="${applyParty.remark}">
+                                        <span class="ff4800" style="margin-right: 88px">报名费：${applyParty.dinner.price}元</span>
+                                        <button type="submit" class="button btn-mana">立即付款</button>
+                                    </form>
+                                </c:if>
+                            </c:if>
+
+                            <c:if test="${applyParty.payStatus==1}">
+                                <p class="Status-wrap mt5 clearfix">
+                                    <span class="ff4800 fr">报名费：${applyParty.dinner.price}元</span>
+                                    <a href="#" class="Status">评论</a>
+                                    <span class="Selected"><em class="myfont"></em>已选中</span>
+                                </p>
+                            </c:if>
+
                         </div>
                     </div>
                 </div>
             </c:forEach>
             <!-- 分页 -->
-            <div class="dataTables_paginate paging_bootstrap">
-                <ul class="pagination">
-                    <li class="prev disabled">
-                        <a href="?pageNum=${page.prePage}&menu=${param.menu}">上一页</a>
-                    </li>
+            <c:if test="${fn:length(page.list)!=0}">
+                <div class="page mt20 clearfix">
+                    <c:if test="${page.prePage!=0}">
+                        <a href="?pageNum=${page.prePage}" class="prev"><em></em>上一页</a>
+                    </c:if>
+                    <c:if test="${page.prePage==0}">
+                        <a href="javascript:;" class="prev"><em></em>上一页</a>
+                    </c:if>
                     <c:forEach begin="1" end="${page.pages}" var="p">
-                        <li <c:if test="${p==page.pageNum}">class="active"</c:if>>
-                            <a href="?pageNum=${p}&menu=${param.menu}">${p}</a>
-                        </li>
+                        <c:if test="${p==page.pageNum}"><span>${p}</span></c:if>
+                        <c:if test="${p!=page.pageNum}"><a href="?pageNum=${p}">${p}</a></c:if>
                     </c:forEach>
-                    <li class="next">
-                        <a href="?pageNum=${page.nextPage}&menu=${param.menu}">下一页</a>
-                    </li>
-                </ul>
-            </div>
+                    <c:if test="${page.nextPage!=0}">
+                        <a href="?pageNum=${page.nextPage}" class="next">下一页<em></em></a>
+                    </c:if>
+                    <c:if test="${page.nextPage==0}">
+                        <a href="javascript:;" class="next">下一页<em></em></a>
+                    </c:if>
+                </div>
+            </c:if>
 
         </div>
     </div>
@@ -84,7 +109,6 @@
 <script src="${ctx}/static/date/WdatePicker.js"></script>
 <script src="${ctx}/static/js/Action.js"></script>
 <script src="${ctx}/static/js/upfiles.js"></script>
-<script type="text/javascript" src="${ctx}/static/js/bootstrap.min.js"></script>
 
 <script src="${ctx}/static/js/chosen.jquery.js"></script>
 <script type="text/javascript">

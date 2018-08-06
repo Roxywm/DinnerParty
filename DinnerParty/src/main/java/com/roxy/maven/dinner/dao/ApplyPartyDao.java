@@ -41,4 +41,11 @@ public interface ApplyPartyDao {
      */
     ApplyParty findByUserIDandDinnerId(long userId, long dinnerId);
 
+    /**
+     * 更新支付状态
+     * @param applyParty
+     * @return
+     */
+    int updatePayStatus(ApplyParty applyParty);
+
 }

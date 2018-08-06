@@ -8,9 +8,6 @@
     <meta name="author" content="mezz">
     <link href="${ctx}/static/css/css.css" rel="stylesheet">
     <link href="${ctx}/static/css/chosen.css" rel="stylesheet">
-    <!-- Bootstrap -->
-    <link href="${ctx}/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="${ctx}/static/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
     <!--[if lt IE 9]>
     <link href="${ctx}/static/css/ie.css" rel="stylesheet" type="text/css" >
     <meta http-equiv="X-UA-Compatible" content="IE=8" >
@@ -31,7 +28,7 @@
 
 <div class="memwrap wrap clearfix">
     <div class="section fl">
-        <div class="location tr"><a href="${ctx}/mutually/dinner/joinDinner">参加的饭局</a><a href="${ctx}/mutually/dinner/hostDinner">主办的饭局</a><a href="${ctx}/mutually/dinner/create" class="current">发布饭局</a></div>
+        <div class="location tr"><a href="${ctx}/mutually/dinner/joinDinner">参加的饭局</a><a href="${ctx}/mutually/dinner/hostDinner" style="font-weight: bold" class="current">主办的饭局</a><a href="${ctx}/mutually/dinner/create">发布饭局</a></div>
         <div class="Participate pd30">
             <c:if test="${fn:length(page.list)==0}">
                 <div class="Participate pd30">
@@ -43,6 +40,9 @@
                     <a href="#" class="user img"><img src="${ctx}/userIcon/${dinner.user.icon}"></a>
                     <div class="hd"><span class="username">${dinner.user.nickname}</span>  发布了  <span class="Period">NO.${dinner.id}期活动</span></div>
                     <div class="bd">
+                        <c:if test="${dinner.endTime.time < newDate.time}">
+                            <span class="Expired indent">已过期</span>
+                        </c:if>
                         <div class="Activity-img img"><img src="${ctx}/uploads/${dinner.thumbnail}"></div>
                         <div class="number">报名人数：<span class="count"><c:if test="${dinner.enrolment==null}">0</c:if>${dinner.enrolment}人</span></div>
                         <div class="txt">
@@ -57,21 +57,42 @@
             </c:forEach>
 
             <!-- 分页 -->
-            <div class="dataTables_paginate paging_bootstrap">
-                <ul class="pagination">
-                    <li class="prev disabled">
-                        <a href="?pageNum=${page.prePage}&menu=${param.menu}">上一页</a>
-                    </li>
+            <c:if test="${fn:length(page.list)!=0}">
+                <div class="page mt20 clearfix">
+                    <c:if test="${page.prePage!=0}">
+                        <a href="?pageNum=${page.prePage}" class="prev"><em></em>上一页</a>
+                    </c:if>
+                    <c:if test="${page.prePage==0}">
+                        <a href="javascript:;" class="prev"><em></em>上一页</a>
+                    </c:if>
                     <c:forEach begin="1" end="${page.pages}" var="p">
-                        <li <c:if test="${p==page.pageNum}">class="active"</c:if>>
-                            <a href="?pageNum=${p}&menu=${param.menu}">${p}</a>
-                        </li>
+                        <c:if test="${p==page.pageNum}"><span>${p}</span></c:if>
+                        <c:if test="${p!=page.pageNum}"><a href="?pageNum=${p}">${p}</a></c:if>
                     </c:forEach>
-                    <li class="next">
-                        <a href="?pageNum=${page.nextPage}&menu=${param.menu}">下一页</a>
-                    </li>
-                </ul>
-            </div>
+                    <c:if test="${page.nextPage!=0}">
+                        <a href="?pageNum=${page.nextPage}" class="next">下一页<em></em></a>
+                    </c:if>
+                    <c:if test="${page.nextPage==0}">
+                        <a href="javascript:;" class="next">下一页<em></em></a>
+                    </c:if>
+                </div>
+            </c:if>
+
+            <%--<div class="dataTables_paginate paging_bootstrap">--%>
+                <%--<ul class="pagination">--%>
+                    <%--<li class="prev disabled">--%>
+                        <%--<a href="?pageNum=${page.prePage}&menu=${param.menu}">上一页</a>--%>
+                    <%--</li>--%>
+                    <%--<c:forEach begin="1" end="${page.pages}" var="p">--%>
+                        <%--<li <c:if test="${p==page.pageNum}">class="active"</c:if>>--%>
+                            <%--<a href="?pageNum=${p}&menu=${param.menu}">${p}</a>--%>
+                        <%--</li>--%>
+                    <%--</c:forEach>--%>
+                    <%--<li class="next">--%>
+                        <%--<a href="?pageNum=${page.nextPage}&menu=${param.menu}">下一页</a>--%>
+                    <%--</li>--%>
+                <%--</ul>--%>
+            <%--</div>--%>
         </div>
     </div>
 

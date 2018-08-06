@@ -127,6 +127,10 @@ public class User implements Serializable {
     public User() {
     }
 
+    public User(Long id) {
+        this.id = id;
+    }
+
     public User(String email, Integer emailStatus, String password, String nickname, String icon, String sex, String mobile, Integer mobileStatus, String job, Area area, String about, Integer hostStatus) {
         this.email = email;
         this.emailStatus = emailStatus;
