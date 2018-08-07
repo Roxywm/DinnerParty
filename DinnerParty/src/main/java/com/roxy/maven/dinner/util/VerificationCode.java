@@ -119,7 +119,7 @@ public class VerificationCode {
             send.setFrom("269735929@qq.com", "染月"); //第一个参数是发送者的QQEamil   第二个参数是发送者QQ昵称
             send.setAuthentication("269735929@qq.com", "trfcnohduynxbigj");  //第一个参数是发送者的QQEamil   第二个参数是刚刚获取的授权码
             send.setSubject("小渣渣特给您送上验证码"); //Eamil的标题  第一个参数是我写的判断上下午，删掉即可
-            send.setMsg("HelloWorld!欢迎大大光临，点击此链接验证邮箱:   <a href='http://localhost:8080/dinner/user/update/email?code="+resultCode+"'>http://localhost:8080/dinner/user/update/email?code="+resultCode+"</a>   请大大签收");   //Eamil的内容
+            send.setMsg("HelloWorld!欢迎大大光临，点击此链接验证邮箱:   <a href='http://localhost:8080/dinner/user/update/email?code="+resultCode+"'>点击此处验证邮箱</a>   请大大签收");   //Eamil的内容
             send.send();//发送
         } catch (EmailException e) {
             e.printStackTrace();
