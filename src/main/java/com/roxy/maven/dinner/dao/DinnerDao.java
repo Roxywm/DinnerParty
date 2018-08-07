@@ -20,7 +20,6 @@ public interface DinnerDao {
      */
     int createPhoto(List<Photo> list);
 
-
     /**
      * 根据用户ID来查找自己发布饭局
      * @param id
@@ -61,5 +60,17 @@ public interface DinnerDao {
      * @return
      */
     int enrolment(Dinner dinner);
+
+    /**
+     * 推荐活动 (报名人数倒叙)
+     * @return
+     */
+    List<Dinner> recommendDinner();
+
+    /**
+     * 模糊搜索
+     * @return
+     */
+    List<Dinner> fuzzySearch(String keyword);
 
 }

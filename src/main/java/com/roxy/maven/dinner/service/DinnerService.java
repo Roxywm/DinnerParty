@@ -56,4 +56,18 @@ public interface DinnerService {
     int enrolment(Dinner dinner);
 
 
+    /**
+     * 推荐活动 (报名人数倒叙)
+     * @return
+     */
+    List<Dinner> recommendDinner();
+
+
+    /**
+     * 模糊搜索
+     * @return
+     */
+    List<Dinner> fuzzySearch(String keyword);
+
+
 }

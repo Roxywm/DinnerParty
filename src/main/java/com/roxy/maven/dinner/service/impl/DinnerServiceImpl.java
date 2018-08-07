@@ -62,5 +62,15 @@ public class DinnerServiceImpl implements DinnerService {
         return dinnerDao.enrolment(dinner);
     }
 
+    @Override
+    public List<Dinner> recommendDinner() {
+        return dinnerDao.recommendDinner();
+    }
+
+    @Override
+    public List<Dinner> fuzzySearch(String keyword) {
+        return dinnerDao.fuzzySearch(keyword);
+    }
+
 
 }

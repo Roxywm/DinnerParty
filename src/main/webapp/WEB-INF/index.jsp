@@ -13,7 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=8" >
     <![endif]-->
     <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=IE6/IE6.html"><![endif]-->
-    <link href="favicon.ico" rel="SHORTCUT ICON">
+    <link type="image/x-icon" href="${ctx}/static/images" rel="shortcut icon" />
+    <link href="${ctx}/static/images/favicon.ico" rel="bookmark icon" />
     <title>17素材·私厨 - 为你推荐遍布全球最新鲜，最与众不同的顶级生活方式</title>
 </head>
 <body>
@@ -52,9 +53,9 @@
     </div>
     <div class="p1-hero-search-form">
         <div class="wrap clearfix">
-            <form action="#" method="post" class="search_form clearfix">
+            <form action="${ctx}/find/dinner/search" method="post" class="search_form clearfix" onsubmit="return check()">
                 <div class="box-wrapper">
-                    <input type="text" class="input-large eat" autocomplete="off" id="eat" name="eat" placeholder="您想要吃什么？">
+                    <input type="text" class="input-large eat" autocomplete="off" id="keyword" name="keyword" placeholder="您想要吃什么？">
                     <span id="enter_location_error_message" class="bad hide">请告诉我您要吃什么？</span>
                 </div>
                 <div class="box-wrapper">
@@ -81,9 +82,9 @@
     <div class="row-space tc"><a href="active.html"><img src="${ctx}/static/images/txt1.png"></a></div>
 
     <div class="Activity clearfix">
-        <a href="#" class="item">
-            <div class="img"><img src="${ctx}/static/upload/img1.jpg"></div>
-            <div class="txt">活动名称</div>
+        <a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${dinnerPage.list.get(0).id}" class="item">
+            <div class="img"><img src="${ctx}/uploads/${dinnerPage.list.get(0).thumbnail}" height="300px" width="306px"></div>
+            <div class="txt">${dinnerPage.list.get(0).titel}<p class="f14">不管是跨洋过海还是跨城郊游，<br>Alice & Chris总是寻找着最本真最<br>当地化的体验。</p></div>
         </a>
         <div class="item large fr">
             <div id="full-screen-slider">
@@ -97,19 +98,18 @@
     </div>
 
     <div class="Activity mt36 clearfix">
-        <a href="#" class="item">
-            <div class="img"><img src="${ctx}/static/upload/img3.jpg"></div>
-            <div class="txt" style="padding:10px 0">活动名称<p class="f14">不管是跨洋过海还是跨城郊游，<br>Alice & Chris总是寻找着最本真最<br>当地化的体验。</p></div>
+        <a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${dinnerPage.list.get(1).id}" class="item">
+            <div class="img"><img src="${ctx}/uploads/${dinnerPage.list.get(1).thumbnail}" height="300px" width="306px"></div>
+            <div class="txt">${dinnerPage.list.get(1).titel}<p class="f14">不管是跨洋过海还是跨城郊游，<br>Alice & Chris总是寻找着最本真最<br>当地化的体验。</p></div>
         </a>
-        <a href="#" class="item mid">
-            <div class="img"><img src="${ctx}/static/upload/img4.jpg"></div>
-            <div class="txt">活动名称</div>
+        <a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${dinnerPage.list.get(2).id}" class="item mid">
+            <div class="img"><img src="${ctx}/uploads/${dinnerPage.list.get(2).thumbnail}" height="300px" width="360px"></div>
+            <div class="txt">${dinnerPage.list.get(2).titel}<p class="f14">不管是跨洋过海还是跨城郊游，<br>Alice & Chris总是寻找着最本真最<br>当地化的体验。</p></div>
         </a>
-        <a href="#" class="item mid last">
-            <div class="img"><img src="${ctx}/static/upload/img5.jpg"></div>
-            <div class="txt">活动名称</div>
+        <a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${dinnerPage.list.get(3).id}" class="item mid last">
+            <div class="img"><img src="${ctx}/uploads/${dinnerPage.list.get(3).thumbnail}" height="300px" width="360px"></div>
+            <div class="txt">${dinnerPage.list.get(3).titel}<p class="f14">不管是跨洋过海还是跨城郊游，<br>Alice & Chris总是寻找着最本真最<br>当地化的体验。</p></div>
         </a>
-
     </div>
 
 </div>
@@ -200,6 +200,26 @@
     }
     for (var selector in config) {
         $(selector).chosen(config[selector]);
+    }
+</script>
+<script>
+    $(".Activity .item .txt").hover(
+        function () {
+            $(this).stop();
+            $(this).animate({height:"130px"});
+        },
+        function () {
+            $(this).stop();
+            $(this).animate({height:"30px"});
+        }
+    )
+    function check(){
+        var keyword = $("#keyword").val();
+            if(keyword ==  null || keyword == ''){
+               alert("关键字不能为空");
+               return false;
+            }
+            return true;
     }
 </script>
 </html>

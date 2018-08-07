@@ -80,10 +80,9 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 </div>
 
 <div class="wrap mt40">
-    <input id="loginUser" value="${loginUser}">
     <div class="detail-box">
         <dl class="lebox">
-            <dt class="img"><img src="${ctx}/uploads/${dinner.thumbnail}"></dt>
+            <dt class="img"><img src="${ctx}/uploads/${dinner.thumbnail}" width="430px"></dt>
             <dd>活动详情 | EVENT DETAILS</dd>
         </dl>
         <h1>${dinner.titel}</h1>
@@ -185,16 +184,15 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 <div class="message wrap mt20">
     <div class="label"><em></em>留言交流</div>
     <div class="pd30">
-        <form action="" method="post">
-            <input type="hidden" name="dinnerId" value="${dinner.id}">
-            <div class="plmain bg-w bd0 mt30">
-                <div class="plm tr"><a href="#" class="c999" style="text-decoration:none"><em class="myfont f20">&#xe61b;</em>${fn:length(dinnerMsgPage.list)}</a></div>
-                <div class="textarea_input">
-                    <textarea id="TextArea1" name="message" style="background:#f9f9f9;" ></textarea>
-                </div>
-                <div class="tool_submit tr"><button type="submit" class="button sublist">留 言</button></div>
+
+        <input type="hidden" name="dinnerId" id="dinnerId" value="${dinner.id}">
+        <div class="plmain bg-w bd0 mt30">
+            <div class="plm tr"><a href="#" class="c999" style="text-decoration:none"><em class="myfont f20">&#xe61b;</em>${fn:length(dinnerMsgPage.list)}</a></div>
+            <div class="textarea_input">
+                <textarea id="message" name="message" style="background:#f9f9f9;" ></textarea>
             </div>
-        </form>
+            <div class="tool_submit tr"><button type="button" id="msgBtn" class="button sublist">留 言</button></div>
+        </div>
 
 
         <div class="plmcomment mt20">
@@ -206,10 +204,10 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                 </c:if>
                 <c:forEach items="${dinnerMsgPage.list}" var="dinnerMsg">
                     <li class="np-post">
-                        <a href="home.html" class="fans img"><img src="${ctx}/userIcon/${dinnerMsg.msgUser.icon}"></a>
+                        <a href="home.html" class="fans img"><img src="${ctx}/userIcon/${dinnerMsg.msgUser.icon}" style="border-radius: 50%;"></a>
                         <div class="post-body">
                             <div class="post-header clearfix">
-                                <a href="home.html" class="name">${dinnerMsg.msgUser.nickname}</a><span class="user-level"><em></em><em></em><em></em></span> 18分钟前<span class="reply"><em class="myfont">&#xe640;</em><a href="javascript:;"> 回复</a></span>
+                                <a href="home.html" class="name">${dinnerMsg.msgUser.nickname}</a><span class="user-level"><em></em><em></em><em></em></span> ${(newDate.time-dinnerMsg.msgTime.time)/1000/60%60}分钟前<span class="reply"><em class="myfont">&#xe640;</em><a href="javascript:;"> 回复</a></span>
                             </div>
                             <div class="post-content">${dinnerMsg.message}</div>
                         </div>
@@ -221,20 +219,20 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
             <div class="page mt20 clearfix">
                 <c:if test="${fn:length(dinnerMsgPage.list)!=0}">
                     <div class="page mt20 clearfix">
-                        <c:if test="${page.prePage!=0}">
-                            <a href="?pageNum=${page.prePage}" class="prev"><em></em>上一页</a>
+                        <c:if test="${dinnerMsgPage.prePage!=0}">
+                            <a href="?pageNum=${dinnerMsgPage.prePage}&dinnerId=${dinner.id}" class="prev"><em></em>上一页</a>
                         </c:if>
-                        <c:if test="${page.prePage==0}">
+                        <c:if test="${dinnerMsgPage.prePage==0}">
                             <a href="javascript:;" class="prev"><em></em>上一页</a>
                         </c:if>
-                        <c:forEach begin="1" end="${page.pages}" var="p">
-                            <c:if test="${p==page.pageNum}"><span>${p}</span></c:if>
-                            <c:if test="${p!=page.pageNum}"><a href="?pageNum=${p}">${p}</a></c:if>
+                        <c:forEach begin="1" end="${dinnerMsgPage.pages}" var="p">
+                            <c:if test="${p==dinnerMsgPage.pageNum}"><span>${p}</span></c:if>
+                            <c:if test="${p!=dinnerMsgPage.pageNum}"><a href="?pageNum=${p}&dinnerId=${dinner.id}">${p}</a></c:if>
                         </c:forEach>
-                        <c:if test="${page.nextPage!=0}">
-                            <a href="?pageNum=${page.nextPage}" class="next">下一页<em></em></a>
+                        <c:if test="${dinnerMsgPage.nextPage!=0}">
+                            <a href="?pageNum=${dinnerMsgPage.nextPage}&dinnerId=${dinner.id}" class="next">下一页<em></em></a>
                         </c:if>
-                        <c:if test="${page.nextPage==0}">
+                        <c:if test="${dinnerMsgPage.nextPage==0}">
                             <a href="javascript:;" class="next">下一页<em></em></a>
                         </c:if>
                     </div>
@@ -322,12 +320,8 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 <script>
 
     $(function () {
-
-
         setTime();
-
         setInterval(setTime,1000);
-
     })
     function setTime(){
         var nowTime = new Date();
@@ -357,16 +351,17 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     }
 </script>
 <script>
+    //提交我想要
     var flag = true;
     $("#interest").click(function () {
-        if($("#loginUser").val()!=""){
+        if(${loginUser!=null}){
             if(flag){
                 $.getJSON("${ctx}/mutually/dinner/interest",{"dinnerId":${dinner.id}},function (data) {
-                    if(data.ok==true){
+                    if(data.ok){
                         $("#interestNum").html(data.interest);
                         flag = false;
                     }else{
-                        alert("未知错误！")
+                        alert("你已经点过了！")
                     }
                 })
             }
@@ -375,5 +370,29 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         }
     })
 </script>
+<script>
+    $("#msgBtn").click(function(){
+        if(${loginUser!=null}){
+            var dinnerId = $("#dinnerId").val();
+            var message = $("#message").val();
+            if(message!=""){
+                $.getJSON("${ctx}/mutually/dinner/dinnerMsg",{"dinnerId":dinnerId,"message":message},function(data){
+                    if(data.ok){
+                        window.location.reload();
+                        <%--window.location.href="${ctx}/mutually/dinner/dinnerDetail?dinnerId="+dinnerId;--%>
+                    }else{
+                        alert(data.error);
+                    }
+                });
+            }else{
+                alert("请输入留言！")
+            }
+        }else {
+            window.location.href="${ctx}/user/login";
+        }
+
+    })
+</script>
+
 </body>
 </html>

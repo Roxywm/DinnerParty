@@ -2,12 +2,7 @@
 <div class="aside fr">
     <div class="pd15">
         <div class="userimg">
-            <c:if test="${loginUser.icon!=null}">
-                <img src="${ctx}/userIcon/${loginUser.icon}" height="145px">
-            </c:if>
-            <c:if test="${loginUser.icon==null}">
-                <img src="${ctx}/static/images/usericon.png" height="145px">
-            </c:if>
+            <img src="${ctx}/userIcon/${loginUser.icon}" height="145px">
             <i></i></div>
         <div class="user-level tc">${loginUser.nickname} <em></em><em></em><em></em></div>
         <div class="tc"><a href="javascript:;" class="button btn-control btn-follow"> + 关注</a><a href="javascript:;" class="button btn-control btn-sent"><em class="myfont f18">&#xe63f;</em> 私信</a></div>

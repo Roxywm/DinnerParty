@@ -29,7 +29,7 @@
 <div class="memwrap wrap clearfix">
     <div class="section fl">
         <div class="location tr"><a href="${ctx}/mutually/dinner/joinDinner">参加的饭局</a><a href="${ctx}/mutually/dinner/hostDinner">主办的饭局</a><a href="${ctx}/mutually/dinner/create" class="current" style="font-weight: bold">发布饭局</a></div>
-        <c:if test="${loginUser.hostStatus==0}">
+        <c:if test="${user.hostStatus==0}">
             <c:if test="${applyHost==null}">
                 <div class="Participate pd30">
                     你还不是主持人，请<a href="${ctx}/user/applyHost/createApply" class="blue" style="margin: auto;">申请成为主持人</a>
@@ -42,7 +42,7 @@
             </c:if>
         </c:if>
 
-        <c:if test="${loginUser.hostStatus==1}">
+        <c:if test="${user.hostStatus==1}">
             <div class="Participate pd30">
                 <form action="${ctx}/mutually/dinner/create" method="post" enctype="multipart/form-data">
                     <table class="baseinfo participate-tab">
