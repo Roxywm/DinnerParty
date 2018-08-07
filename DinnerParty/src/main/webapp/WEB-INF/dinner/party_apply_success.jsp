@@ -37,7 +37,7 @@
                 <input type="hidden" name="reason" value="${applyParty.reason}">
                 <input type="hidden" name="remark" value="${applyParty.remark}">
                 <button type="submit" class="button btn-submit Appbtn">去付款</button>
-                <button class="button btn-submit Appbtn" style="background: #CCCCCC" onClick="location.href='${ctx}/mutually/dinner/dinnerDetail?dinnerId=${applyParty.dinner.id}'">取消报名</button>
+                <a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${applyParty.dinner.id}" class="button Appbtn" style="background: #CCCCCC; color:white;">暂时不支付</a>
             </form>
 
         </div>

@@ -29,7 +29,7 @@
 
     <insert id="create" parameterType="dinnerMsg" useGeneratedKeys="true" keyProperty="id">
         insert into dinnerMsg (userId, dinnerId, message, msgTime)
-        values (#{user.id},#{dinner.id},#{message},#{msgTime});
+        values (#{msgUser.id},#{dinner.id},#{message},#{msgTime});
     </insert>
 
     <delete id="delete" parameterType="long">
@@ -39,7 +39,7 @@
     <select id="findByDinnerId" parameterType="long" resultMap="dinnerMsgMap">
         select dm.id dmid, dm.message dmmsg, dm.msgTime, u.*, d.id did
         from dinnerMsg dm, users u, dinner d
-        where dm.userId=u.id and dm.dinnerId=d.id;
+        where dm.userId=u.id and dm.dinnerId=d.id and d.id=#{dinnerId} order by dm.id desc
     </select>
 
 </mapper>

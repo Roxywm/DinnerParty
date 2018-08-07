@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
@@ -162,7 +161,7 @@ public class DinnerController {
     @RequestMapping(value = "/dinnerDetail", method = RequestMethod.GET)
     public String dinnerDetail(String dinnerId, Map<String, Object> map, HttpSession session,
                                @RequestParam(value="pageNum",defaultValue="1") int pageNum,
-                               @RequestParam(value="pageSize",defaultValue="10") int pageSize){
+                               @RequestParam(value="pageSize",defaultValue="6") int pageSize){
         Dinner dinner = dinnerService.findByDinnerId(Long.parseLong(dinnerId));
 
         PageHelper.startPage(pageNum, pageSize);//设置分页
@@ -182,6 +181,7 @@ public class DinnerController {
         map.put("applyParty", applyParty);
         map.put("dinnerMsgPage", dinnerMsgPage);
         map.put("applyPartyList", applyPartyList);
+        map.put("newDate", new Timestamp(new Date().getTime()));
         return "/dinner/dinner_detail";
     }
 
@@ -252,10 +252,31 @@ public class DinnerController {
      * @param message
      * @return
      */
-    @RequestMapping(value = "/dinnerMsg", method = RequestMethod.POST)
-    public String dinnerMsg(String dinnerId, String message){
+    @ResponseBody
+    @RequestMapping(value = "/dinnerMsg")
+    public Map<String, Object> dinnerMsg(String dinnerId, String message, HttpSession session){
+        Map<String, Object> map = new HashMap<String, Object>();
+        User user = (User) session.getAttribute("loginUser");
+        DinnerMsg dinnerMsg = new DinnerMsg();
+        dinnerMsg.setDinner(new Dinner(Long.parseLong(dinnerId)));
+        dinnerMsg.setMsgUser(user);
+        dinnerMsg.setMessage(message);
+        dinnerMsg.setMsgTime(new Timestamp(new Date().getTime()));
+        ApplyParty applyParty = applyPartyService.findByUserIDandDinnerId(user.getId(), Long.parseLong(dinnerId));
+        if(applyParty!=null){
+            int rows = dinnerMsgService.create(dinnerMsg);
+            if(rows>0){
+                map.put("ok",true);
+            }else{
+                map.put("ok",false);
+                map.put("error","留言失败！");
+            }
+        }else{
+            map.put("ok",false);
+            map.put("error","你还没有报名该活动，无法留言！");
+        }
 
-        return "";
+        return map;
     }
 
 
