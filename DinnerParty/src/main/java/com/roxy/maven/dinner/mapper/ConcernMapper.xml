@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.roxy.maven.dinner.dao.ConcernDao">
+    <resultMap id="concernMap" type="concern">
+        <id property="id" column="id" />
+        <result property="status" column="status" />
+        <result property="concernTime" column="concernTime" />
+        <association property="user" javaType="user">
+            <id property="id" column="u1id" />
+            <result property="nickname" column="u1nickname" />
+            <result property="icon" column="u1icon" />
+            <result property="sex" column="u1sex" />
+            <result property="about" column="u1about" />
+        </association>
+        <association property="concernUser" javaType="user">
+            <id property="id" column="u2id" />
+            <result property="nickname" column="u2nickname" />
+            <result property="icon" column="u2icon" />
+            <result property="sex" column="u2sex" />
+            <result property="about" column="u2about" />
+        </association>
+    </resultMap>
+
+    <select id="findAllConcern" parameterType="long" resultMap="concernMap">
+        select c.id,c.status,c.concernTime,u1.id u1id,u1.nickname u1nickname,u1.icon u1icon,u1.sex u1sex,u1.about u1about,
+        u2.id u2id,u2.nickname u2nickname,u2.icon u2icon,u2.sex u2sex,u2.about u2about
+        from concern c,users u1,users u2
+        where c.userId=u1.id and c.concernUser=u2.id and c.userId=#{userId} order by c.id desc
+    </select>
+
+    <select id="findAllFans" parameterType="long" resultMap="concernMap">
+        select c.id,c.status,c.concernTime,u1.id u1id,u1.nickname u1nickname,u1.icon u1icon,u1.sex u1sex,u1.about u1about,
+        u2.id u2id,u2.nickname u2nickname,u2.icon u2icon,u2.sex u2sex,u2.about u2about
+        from concern c,users u1,users u2
+        where c.userId=u1.id and c.concernUser=u2.id and c.concernUser=#{userId} order by c.id desc
+    </select>
+
+    <insert id="add" parameterType="concern" useGeneratedKeys="true" keyProperty="id">
+        insert into concern (userId, concernUser, concernTime)
+         values (#{user.id},#{concernUser.id},#{concernTime})
+    </insert>
+
+    <delete id="delete" parameterType="concern">
+        delete from concern where userId=#{user.id} and concernUser=#{concernUser.id}
+    </delete>
+
+    <select id="findISConcern" parameterType="concern" resultMap="concernMap">
+        select c.id,c.status,c.concernTime,u1.id u1id,u1.nickname u1nickname,u1.icon u1icon,u1.sex u1sex,u1.about u1about,
+        u2.id u2id,u2.nickname u2nickname,u2.icon u2icon,u2.sex u2sex,u2.about u2about
+        from concern c,users u1,users u2
+        where c.userId=u1.id and c.concernUser=u2.id and c.userId=#{user.id} and c.concernUser=#{concernUser.id}
+    </select>
+
+</mapper>

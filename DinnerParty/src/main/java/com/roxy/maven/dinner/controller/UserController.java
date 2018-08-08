@@ -2,11 +2,14 @@ package com.roxy.maven.dinner.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.aliyuncs.exceptions.ClientException;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.roxy.maven.dinner.common.Constants;
+import com.roxy.maven.dinner.entity.ApplyParty;
 import com.roxy.maven.dinner.entity.Area;
+import com.roxy.maven.dinner.entity.Dinner;
 import com.roxy.maven.dinner.entity.User;
-import com.roxy.maven.dinner.service.AreaService;
-import com.roxy.maven.dinner.service.UserService;
+import com.roxy.maven.dinner.service.*;
 import com.roxy.maven.dinner.util.MD5Util;
 import com.roxy.maven.dinner.util.VerificationCode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.sql.Timestamp;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -38,10 +40,7 @@ public class UserController {
     public String login(){
         return "user/login";
     }
-    @RequestMapping(value = "/home",method = RequestMethod.GET)
-    public String home(){
-        return "user/home";
-    }
+
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public String register(User user, String qrPassword, Map<String, Object> map){

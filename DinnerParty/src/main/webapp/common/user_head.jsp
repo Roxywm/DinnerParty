@@ -12,10 +12,15 @@
             </form>
             <a href="${ctx}/mutually/dinner/create"><em><img src="${ctx}/static/images/sb.png"></em>  &nbsp;&nbsp;发布我的饭局</a>
             <div class="user">
-        <span class="clearfix"><span class="userimg" style="overflow: hidden">
-            <img src="${ctx}/userIcon/${loginUser.icon}<c:if test="${loginUser==null}">usericon.png</c:if>">
-            <i></i></span>
-        <a href="${ctx}/user/home" class="fr">${loginUser.nickname}  <em>&#xe607;</em></a></span>
+        <span class="clearfix">
+            <span class="userimg" style="overflow: hidden">
+                <a href="${ctx}/user/edit">
+                    <img src="${ctx}/userIcon/${loginUser.icon}<c:if test="${loginUser==null}">usericon.png</c:if>">
+                    <i></i>
+                </a>
+            </span>
+            <a href="${ctx}/me/home" class="fr">${loginUser.nickname}  <em>&#xe607;</em></a>
+        </span>
                 <ul class="topslide">
                     <li><em>&#xe627;</em><a href="${ctx}/user/edit">个人设置</a></li>
                     <li><em>&#xe63d;</em><a href="Message.html">消息中心<%--<s>3</s>--%></a></li>

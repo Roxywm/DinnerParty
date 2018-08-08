@@ -174,7 +174,7 @@ public class DinnerController {
         User loginUser = (User) session.getAttribute("loginUser");
         ApplyParty applyParty = null;
         if(loginUser!=null){
-            applyParty = applyPartyService.findByUserIDandDinnerId(loginUser.getId(), dinner.getId());
+            applyParty = applyPartyService.findByUserIdAndDinnerId(loginUser.getId(), dinner.getId());
         }
 
         map.put("dinner", dinner);
@@ -262,7 +262,7 @@ public class DinnerController {
         dinnerMsg.setMsgUser(user);
         dinnerMsg.setMessage(message);
         dinnerMsg.setMsgTime(new Timestamp(new Date().getTime()));
-        ApplyParty applyParty = applyPartyService.findByUserIDandDinnerId(user.getId(), Long.parseLong(dinnerId));
+        ApplyParty applyParty = applyPartyService.findByUserIdAndDinnerId(user.getId(), Long.parseLong(dinnerId));
         if(applyParty!=null){
             int rows = dinnerMsgService.create(dinnerMsg);
             if(rows>0){

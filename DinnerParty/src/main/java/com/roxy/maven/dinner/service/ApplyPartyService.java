@@ -37,7 +37,7 @@ public interface ApplyPartyService {
      * 根据用户ID和饭局ID查找报名记录
      * @return
      */
-    ApplyParty findByUserIDandDinnerId(long userId, long dinnerId);
+    ApplyParty findByUserIdAndDinnerId(long userId, long dinnerId);
 
 
     /**

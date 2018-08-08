@@ -12,6 +12,13 @@ public interface UserService {
     User findByEmail(String email);
 
     /**
+     * 按用户名查找用户
+     * @param id
+     * @return
+     */
+    User findById(long id);
+
+    /**
      * 注册用户
      * @param user
      */

@@ -37,8 +37,8 @@ public class ApplyPartyServiceImpl implements ApplyPartyService {
     }
 
     @Override
-    public ApplyParty findByUserIDandDinnerId(long userId, long dinnerId) {
-        return applyPartyDao.findByUserIDandDinnerId(userId, dinnerId);
+    public ApplyParty findByUserIdAndDinnerId(long userId, long dinnerId) {
+        return applyPartyDao.findByUserIdAndDinnerId(userId, dinnerId);
     }
 
     @Override
