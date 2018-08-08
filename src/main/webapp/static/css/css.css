@@ -135,7 +135,7 @@ transition: opacity ease-in-out 200ms;}
 
 
 .mem-banner{ height:116px; background-color:#292929; background-position:center; background-repeat:no-repeat;}
-.headr .user{ display:inline-block; width:125px; float:left; margin-left:10px; height:50px; position:relative; z-index:1000;}
+.headr .user{ display:inline-block; width:150px; float:left; margin-left:10px; height:50px; position:relative; z-index:1000;}
 .userimg{ position:relative; border-radius:50%; -moz-border-radius:50%; -webkit-border-radius:50%; overflow:hidden;}
 .headr .userimg{ display:inline-block;  width:33px; height:33px; margin-top:-6px;  float:left;}
 .headr .userimg img{ width:33px; height:33px;}

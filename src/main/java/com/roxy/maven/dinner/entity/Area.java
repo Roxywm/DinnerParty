@@ -35,8 +35,6 @@ public class Area implements Serializable {
     }
 
     public Area() {
-        this.id = 450521L;
-        this.name = "中国";
     }
 
     public Area(String name, Area parent) {

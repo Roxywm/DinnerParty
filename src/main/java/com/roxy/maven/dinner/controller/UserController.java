@@ -48,7 +48,6 @@ public class UserController {
             User oldUser = userService.findByEmail(user.getEmail());
             if (oldUser==null){
                 user.setPassword(MD5Util.generate(user.getPassword()));
-                user.setArea(new Area());
                 user.setNickname("User"+user.getEmail().substring(0,5));
                 userService.register(user);
                 map.put("message","注册成功！使用账户密码进行登录！");
