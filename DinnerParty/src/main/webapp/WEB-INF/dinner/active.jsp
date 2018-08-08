@@ -75,8 +75,8 @@
                     </div>
                     <div class="active-info">
                         <div class="user">
-                            <a href="${ctx}/others/heMain?userId=${dinner.user.id}" class="userimg"><img src="${ctx}/userIcon/${dinner.user.icon}"></a>
-                            <a href="${ctx}/others/heMain?userId=${dinner.user.id}">${dinner.user.nickname}</a><em class="user-level"></em><em class="user-level"></em><em class="user-level"></em>
+                            <a href="${ctx}/he/heMain?userId=${dinner.user.id}" class="userimg"><img src="${ctx}/userIcon/${dinner.user.icon}"></a>
+                            <a href="${ctx}/he/heMain?userId=${dinner.user.id}">${dinner.user.nickname}</a><em class="user-level"></em><em class="user-level"></em><em class="user-level"></em>
                         </div>
                         <div class="txt">${dinner.details}</div>
                         <span class="o">${dinner.price}元/每人 </span>  <fmt:formatDate value='${dinner.endTime}' pattern='yyyy年MM月dd日'/>结束报名
@@ -118,8 +118,8 @@
             <a href="#" class="img"><img src="${ctx}/static/upload/img19.jpg"></a>
             <div class="active-info">
                 <div class="user">
-                    <a href="${ctx}/others/heMain?userId=${dinner.user.id}" class="userimg"><img src="${ctx}/userIcon/${dinner.user.icon}"></a>
-                    <a href="${ctx}/others/heMain?userId=${dinner.user.id}">${dinner.user.nickname}</a>
+                    <a href="${ctx}/he/heMain?userId=${dinner.user.id}" class="userimg"><img src="${ctx}/userIcon/${dinner.user.icon}"></a>
+                    <a href="${ctx}/he/heMain?userId=${dinner.user.id}">${dinner.user.nickname}</a>
                 </div>
                 <div class="hd"><a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${dinner.id}">${dinner.titel}</a></div>
                 <span class="o">${dinner.price}元/每人 </span>  <fmt:formatDate value='${dinner.startTime}' pattern='yyyy年MM月dd日'/>

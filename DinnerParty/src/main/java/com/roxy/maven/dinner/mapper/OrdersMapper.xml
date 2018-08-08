@@ -48,7 +48,7 @@
     <select id="findAll" resultMap="ordersMap">
         select o.id oid,o.remark,o.total,o.outTradeNo,o.tradeNo,o.createTime,u.*,a.id aid, a.name aname, a.parentId pid,d.id did,d.startTime,d.endTime
         from orders o,users u, areas a, dinner d
-        where o.userId=u.id and o.dinnerId=d.id and u.areaId=a.id;
+        where o.userId=u.id and o.dinnerId=d.id and u.areaId=a.id order by o.id desc
     </select>
 
 </mapper>

@@ -42,10 +42,10 @@
                 <ul class="comment-list">
                     <c:forEach items="${page.list}" var="userMsg">
                         <li class="np-post">
-                            <a href="${ctx}/others/heMain?userId=${userMsg.msgUser.id}" class="fans img"><img src="${ctx}/userIcon/${userMsg.msgUser.icon}" style="border-radius: 50%;"></a>
+                            <a href="${ctx}/he/heMain?userId=${userMsg.msgUser.id}" class="fans img"><img src="${ctx}/userIcon/${userMsg.msgUser.icon}" style="border-radius: 50%;"></a>
                             <div class="post-body">
                                 <div class="post-header clearfix">
-                                    <a href="${ctx}/others/heMain?userId=${userMsg.msgUser.id}" class="name o">${userMsg.msgUser.nickname}</a>
+                                    <a href="${ctx}/he/heMain?userId=${userMsg.msgUser.id}" class="name o">${userMsg.msgUser.nickname}</a>
                                     <span class="time"><fmt:formatDate value='${userMsg.msgTime}' pattern='yyyy年MM月dd日 HH:mm'/></span>
                                     <span class="dele"><em class="myfont">&#xe601;</em><a href="javascript:;"> 删除</a></span>
                                     <span class="reply"><em class="myfont">&#xe640;</em><a href="javascript:;"> 回复</a></span>

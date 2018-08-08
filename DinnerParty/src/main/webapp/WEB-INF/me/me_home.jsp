@@ -42,10 +42,10 @@
                 <ul class="comment-list">
                     <c:forEach items="${page.list}" var="applyParty">
                         <li class="np-post">
-                            <a href="${ctx}/others/heMain?userId=${applyParty.user.id}" class="fans img"><img src="${ctx}/userIcon/${applyParty.user.icon}" style="border-radius:50%;"></a>
+                            <a href="${ctx}/he/heMain?userId=${applyParty.user.id}" class="fans img"><img src="${ctx}/userIcon/${applyParty.user.icon}" style="border-radius:50%;"></a>
                             <div class="post-body">
                                 <div class="post-header clearfix">
-                                    <a href="${ctx}/others/heMain?userId=${applyParty.user.id}" class="name">${applyParty.user.nickname}</a>发布了  no.${applyParty.id}期活动
+                                    <a href="${ctx}/he/heMain?userId=${applyParty.user.id}" class="name">${applyParty.user.nickname}</a>发布了  no.${applyParty.id}期活动
                                 </div>
                                 <div class="Participate children">
                                     <div class="item">
@@ -55,7 +55,7 @@
                                             </c:if>
                                             <div class="Activity-img img"><img src="${ctx}/uploads/${applyParty.dinner.thumbnail}"></div>
                                             <div class="txt">
-                                                <div class="title"><a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${dinner.id}">${applyParty.dinner.titel}</a></div>
+                                                <div class="title"><a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${applyParty.dinner.id}">${applyParty.dinner.titel}</a></div>
                                                 <div class="info">${applyParty.dinner.details}</div>
                                                 <p class="mt10"><a href="#" target="_blank">先到先得</a>    <a href="#" target="_blank">双向选择</a>    <a href="#" target="_blank">大数据匹配</a></p>
                                             </div>

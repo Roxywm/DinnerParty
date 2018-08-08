@@ -123,7 +123,7 @@
     </div>
 
 
-    <%@include file="others_right.jsp"%>
+    <%@include file="he_right.jsp"%>
 
 </div>
 
@@ -141,5 +141,21 @@
             $(selector).chosen(config[selector]);
         }
     });
+</script>
+<script>
+    $("#concernBtn").click(function () {
+        if(${loginUser!=null}){
+            $.getJSON("${ctx}/he/addConcern",{"userId":${user.id}},function (data) {
+                if(data.ok){
+                    $("#concernBtn").html("已关注");
+                    $("#concernBtn").removeAttr("id");
+                }else{
+                    alert(data.error);
+                }
+            })
+        }else{
+            window.location.href="${ctx}/user/login";
+        }
+    })
 </script>
 </html>

@@ -15,8 +15,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping(value = "/others")
-public class OthersController {
+@RequestMapping(value = "/he")
+public class HeController {
 
     @Autowired
     private DinnerService dinnerService;
@@ -42,13 +42,18 @@ public class OthersController {
     public String heMain(String userId, Map<String, Object> map, HttpSession session){
         User loginUser = (User)session.getAttribute("loginUser");
         User user = userService.findById(Long.parseLong(userId));
-        Concern concern = new Concern();
-        concern.setUser(loginUser);
-        concern.setConcernUser(user);
-        Concern isConcern = concernService.findISConcern(concern);
-        map.put("user", user);
-        map.put("isConcern", isConcern);
-        return "others/he_home";
+        if(loginUser.getId()==user.getId()){
+            return "redirect:/me/home";
+        }else{
+            Concern concern = new Concern();
+            concern.setUser(loginUser);
+            concern.setConcernUser(user);
+            Concern isConcern = concernService.findISConcern(concern);
+            map.put("user", user);
+            map.put("isConcern", isConcern);
+            return "he/he_home";
+        }
+
     }
 
     @ResponseBody

@@ -72,7 +72,7 @@
       u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
       from dinner d,users u,areas a,category c
       where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id
-      and u.id=#{id}
+      and u.id=#{id} order by d.id desc
     </select>
 
     <select id="findByDinnerId" parameterType="long" resultMap="dinnerMap">
@@ -80,7 +80,7 @@
       u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
       from dinner d,users u,areas a,category c
       where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id
-      and d.id=#{id}
+      and d.id=#{id} order by d.id desc
     </select>
 
     <update id="interest" parameterType="dinner">

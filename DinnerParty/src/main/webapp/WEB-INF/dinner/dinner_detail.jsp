@@ -94,8 +94,8 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 
 <div class="wrap mt40 clearfix">
     <div class="Publisher mt10 fl">
-        <a href="#" class="user-img"><img src="${ctx}/userIcon/${dinner.user.icon}" style="border-radius: 50%"></a>
-        <div class="user-level tc">${dinner.user.nickname} <em></em><em></em><em></em></div>
+        <a href="${ctx}/he/heMain?userId=${dinner.user.id}" class="user-img"><img src="${ctx}/userIcon/${dinner.user.icon}" style="border-radius: 50%"></a>
+        <div class="user-level tc"><a href="${ctx}/he/heMain?userId=${dinner.user.id}">${dinner.user.nickname}</a> <em></em><em></em><em></em></div>
         <p class="tc"><a href="javascript:;" class="button btn-follow"> + 关注</a></p>
         <div class="pd10">
             <p class="myfont"><em>&#xe642;</em><em>&#xe629;</em></p>
@@ -149,12 +149,15 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                 <em>秒</em>/Second
             </li>
         </ul>
-        <c:if test="${applyParty!=null}">
-            <a href="javascript:;" class="button btn-apply">已申请</a>
-        </c:if>
-        <c:if test="${applyParty==null}">
-            <a href="${ctx}/mutually/dinner/applyParty?dinnerId=${dinner.id}" class="button btn-apply">立即申请</a>
-        </c:if>
+
+        <c:choose>
+            <c:when test="${applyParty==null}">
+                <a href="${ctx}/mutually/dinner/applyParty?dinnerId=${dinner.id}" class="button btn-apply">立即申请</a>
+            </c:when>
+            <c:otherwise>
+                <a href="javascript:;" class="button btn-apply">已申请</a>
+            </c:otherwise>
+        </c:choose>
 
         <a href="javascript:;" class="button btn-enj" id="interest">感兴趣<span class="f12" id="interestNum">(${dinner.interest}人)</span></a>
         <div class="title tc pd10 f12">已经有<span>${dinner.enrolment}</span>人报名</div>
