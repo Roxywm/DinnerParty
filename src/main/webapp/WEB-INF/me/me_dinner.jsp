@@ -42,10 +42,10 @@
                 <ul class="comment-list">
                     <c:forEach items="${page.list}" var="dinner">
                         <li class="np-post">
-                            <a href="${ctx}/others/heMain?userId=${dinner.user.id}" class="fans img"><img src="${ctx}/userIcon/${dinner.user.icon}" style="border-radius:50%;"></a>
+                            <a href="${ctx}/he/heMain?userId=${dinner.user.id}" class="fans img"><img src="${ctx}/userIcon/${dinner.user.icon}" style="border-radius:50%;"></a>
                             <div class="post-body">
                                 <div class="post-header clearfix">
-                                    <a href="${ctx}/others/heMain?userId=${dinner.user.id}" class="name">${dinner.user.nickname}</a>发布了  no.${dinner.id}期活动
+                                    <a href="${ctx}/he/heMain?userId=${dinner.user.id}" class="name">${dinner.user.nickname}</a>发布了  no.${dinner.id}期活动
                                 </div>
                                 <div class="Participate children">
                                     <div class="item">

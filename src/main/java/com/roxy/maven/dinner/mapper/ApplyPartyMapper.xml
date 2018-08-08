@@ -59,7 +59,7 @@
         where ap.userId=u.id and ap.dinnerId=d.id and u.areaId=a.id and d.id=#{dinnerId}
     </select>
 
-    <select id="findByUserIDandDinnerId" parameterType="long" resultMap="applyPartyMap">
+    <select id="findByUserIdAndDinnerId" parameterType="long" resultMap="applyPartyMap">
         select ap.id apid, ap.reason,ap.remark,ap.payStatus,u.*,d.id did,d.startTime,d.endTime,a.id aid, a.name aname, a.parentId pid
         from applyParty ap,users u,dinner d, areas a
         where ap.userId=u.id and ap.dinnerId=d.id and u.areaId=a.id and u.id=#{arg0} and d.id=#{arg1}

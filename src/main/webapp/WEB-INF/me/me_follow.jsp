@@ -42,7 +42,7 @@
                 <ul class="fans">
                     <c:forEach items="${page.list}" var="concern">
                         <li>
-                            <a href="${ctx}/others/heMain?userId=${concern.concernUser.id}" class="img"><img src="${ctx}/userIcom/${concern.concernUser.icon}"></a>
+                            <a href="${ctx}/he/heMain?userId=${concern.concernUser.id}" class="img"><img src="${ctx}/userIcom/${concern.concernUser.icon}"></a>
                             <div class="fansinfo">
                                 <div class="header"><a href="#">${concern.concernUser.nickname}</a>
                                     <c:if test="${concern.concernUser.sex=='男'}"><em class="ico male">男</em></c:if>
