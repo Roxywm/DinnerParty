@@ -23,7 +23,7 @@
 <c:if test="${loginUser==null}">
     <div class="head">
         <div class="wrap clearfix">
-            <a href="index.html" class="logo indent">logo</a>
+            <a href="${ctx}/" class="logo indent">logo</a>
             <div class="headr fr">
                 <form action="active.html" method="post" class="headsearch">
                     <label class="label">

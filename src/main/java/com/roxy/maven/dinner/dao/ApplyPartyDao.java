@@ -19,7 +19,7 @@ public interface ApplyPartyDao {
     int delete(long id);
 
     /**
-     * 根据用户ID查找报名记录
+     * 根据用户ID查找报名记录 (查询自己参加的饭局)
      * 有多少条记录就报名多少次
      * @param userId
      * @return
@@ -27,7 +27,7 @@ public interface ApplyPartyDao {
     List<ApplyParty> findByUserId(long userId);
 
     /**
-     * 根据饭局ID查找报名人员
+     * 根据饭局ID查找报名人员 (查询该饭局报名的人)
      * 有多少条记录就有多少人报名
      * @param dinnerId
      * @return
@@ -39,7 +39,7 @@ public interface ApplyPartyDao {
      * 根据用户ID和饭局ID查找报名记录
      * @return
      */
-    ApplyParty findByUserIDandDinnerId(long userId, long dinnerId);
+    ApplyParty findByUserIdAndDinnerId(long userId, long dinnerId);
 
     /**
      * 更新支付状态

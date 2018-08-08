@@ -48,12 +48,11 @@
 
         <collection property="photos" javaType="ArrayList" column="did"
                     ofType="photo" select="selectPhotoByDid"/>
-
     </resultMap>
 
     <!-- 按饭局id查询饭局照片 -->
     <select id="selectPhotoByDid" parameterType="long" resultType="photo">
-        select * from photos where dinnerId=#{id};
+        select * from photos where dinnerId=#{id}
     </select>
 
     <insert id="create" parameterType="dinner" useGeneratedKeys="true" keyProperty="id">

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.roxy.maven.dinner.dao.UserMsgDao">
+    <resultMap id="userMsgMap" type="userMsg">
+        <id property="id" column="mid" />
+        <result property="message" column="message" />
+        <result property="msgTime" column="msgTime" />
+        <association property="user" javaType="user">
+            <id property="id" column="u1id" />
+            <result property="nickname" column="u1nickname" />
+            <result property="icon" column="u1icon" />
+            <result property="sex" column="u1sex" />
+            <result property="about" column="u1about" />
+        </association>
+        <association property="msgUser" javaType="user">
+            <id property="id" column="u2id" />
+            <result property="nickname" column="u2nickname" />
+            <result property="icon" column="u2icon" />
+            <result property="sex" column="u2sex" />
+            <result property="about" column="u2about" />
+        </association>
+
+    </resultMap>
+
+    <insert id="add" parameterType="userMsg" useGeneratedKeys="true" keyProperty="id">
+        insert into userMsg (userId, msgUser, message, msgTime)
+        values (#{user.id},#{msgUser.id},#{message},#{msgTime})
+    </insert>
+
+    <delete id="delete" parameterType="long">
+        delete from userMsg where id=#{id}
+    </delete>
+
+    <select id="findByUserId" parameterType="long" resultMap="userMsgMap">
+        select m.id mid,m.message,m.msgTime,u1.id u1id,u1.nickname u1nickname,u1.icon u1icon,u1.sex u1sex,u1.about u1about,
+        u2.id u2id,u2.nickname u2nickname,u2.icon u2icon,u2.sex u2sex,u2.about u2about
+        from userMsg m,users u1,users u2
+        where m.userId=u1.id and m.msgUser=u2.id and m.userId=#{userId} order by m.id desc
+    </select>
+
+</mapper>

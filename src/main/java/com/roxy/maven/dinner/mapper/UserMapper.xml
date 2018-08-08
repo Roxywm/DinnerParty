@@ -32,6 +32,12 @@
       from users u, areas a
       where u.areaId=a.id and u.email=#{email}
     </select>
+
+    <select id="findById" parameterType="long" resultMap="userMap">
+      select u.id,email,emailStatus,password,nickname,icon,sex,mobile,mobileStatus,job,about,hostStatus,a.id as aid,name,a.parentId as pid
+      from users u, areas a
+      where u.areaId=a.id and u.id=#{id}
+    </select>
     
     <insert id="register" parameterType="user" useGeneratedKeys="true" keyProperty="id">
       insert into users(email,password,nickname,icon,sex,mobile,job,areaId,about)

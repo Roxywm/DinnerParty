@@ -8,6 +8,8 @@ public interface UserDao {
 
     User findByEmail(String email);
 
+    User findById(long id);
+
     void register(User user);
 
     int update(User user);
