@@ -9,11 +9,11 @@
     <link href="${ctx}/static/css/css.css" rel="stylesheet">
     <link href="${ctx}/static/css/chosen.css" rel="stylesheet">
     <!--[if lt IE 9]>
-    <link href="${ctx}/static/css/ie.css" rel="stylesheet" type="text/css" >
+    <link href="css/ie.css" rel="stylesheet" type="text/css" >
     <meta http-equiv="X-UA-Compatible" content="IE=8" >
     <![endif]-->
-    <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=${ctx}/static/IE6/IE6.html"><![endif]-->
-    <link type="image/x-icon" href="${ctx}/static/images" rel="shortcut icon" />
+    <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=IE6/IE6.html"><![endif]-->
+    <link type="image/x-icon" href="${ctx}/static/images/" rel="shortcut icon" />
     <link href="${ctx}/static/images/favicon.ico" rel="bookmark icon" />
     <title>17素材·私厨 - 为你推荐遍布全球最新鲜，最与众不同的顶级生活方式</title>
 </head>
@@ -25,18 +25,19 @@
 
 <div class="memwrap wrap clearfix">
     <div class="section fl">
-        <div class="location tr"><a href="${ctx}/me/meHome">首页</a><a href="${ctx}/me/meDinner">我的饭局</a><a href="${ctx}/me/meFollow">我的关注</a><a href="${ctx}/me/meMessage" class="current" style="font-weight: bold">我的留言</a></div>
+        <div class="location tr"><a href="${ctx}/he/heMain?userId=${user.id}">参加的饭局</a><a href="${ctx}/he/heHostDinner?userId=${user.id}">发布的饭局</a><a href="${ctx}/he/heMessage?userId=${user.id}" class="current" style="border-radius: 50%;">TA的评价</a><a href="${ctx}/he/heConcern?userId=${user.id}">TA的关注</a></div>
+
         <div class="message pd30">
-            <%--<div class="plmain">--%>
-                <%--<div class="plm clearfix"><span class="fr">(您还可输入 <span id="textCount">90</span> 个字)</span>给TA留下一句话吧……</div>--%>
-                <%--<div class="textarea_input"><textarea id="TextArea1" onkeyup="words_deal();" ></textarea></div>--%>
-                <%--<div class="tool_submit tr"><button type="button" name="" value="" class="button sublist">留 言</button></div>--%>
-            <%--</div>--%>
+            <div class="plmain">
+            <div class="plm clearfix"><span class="fr">(您还可输入 <span id="textCount">90</span> 个字)</span>给TA留下一句话吧……</div>
+            <div class="textarea_input"><textarea id="message" name="message" onkeyup="words_deal();" ></textarea></div>
+            <div class="tool_submit tr"><button type="button" id="msgBtn" class="button sublist">留 言</button></div>
+            </div>
 
             <div class="plmcomment mt30">
                 <c:if test="${fn:length(page.list)==0}">
                     <div class="Participate pd30">
-                        您没有留言！
+                        TA没有留言！
                     </div>
                 </c:if>
                 <ul class="comment-list">
@@ -52,10 +53,9 @@
                                 </div>
 
                                 <div class="child">
-                                    <%--<div class="post-header clearfix"><a href="home.html" class="name o">兜帽家的豆豆</a><span class="time">01月20日 11:11</span></div>--%>
+                                        <%--<div class="post-header clearfix"><a href="home.html" class="name o">兜帽家的豆豆</a><span class="time">01月20日 11:11</span></div>--%>
                                     <div class="post-content"><div class="txtcon">${userMsg.message}</div></div>
                                 </div>
-
                             </div>
                         </li>
                     </c:forEach>
@@ -88,8 +88,8 @@
         </div>
     </div>
 
-    <%@include file="/WEB-INF/me/me_right.jsp"%>
 
+    <%@include file="he_right.jsp"%>
 
 </div>
 
@@ -107,5 +107,47 @@
             $(selector).chosen(config[selector]);
         }
     });
+</script>
+<script>
+    var flag = ${isConcern==null};
+    $("#concernBtn").click(function () {
+        if(${loginUser!=null}){
+            if(flag){
+                //关注
+                $.getJSON("${ctx}/he/addConcern",{"userId":${user.id}},function (data) {
+                    if(data.ok){
+                        $("#concernBtn").html("已关注");
+                        flag = false;
+                    }else{
+                        alert(data.error);
+                    }
+                })
+            }else{
+                //取消关注
+            }
+
+        }else{
+            window.location.href="${ctx}/user/login";
+        }
+    })
+
+    $("#msgBtn").click(function () {
+        if(${loginUser!=null}){
+            var message = $("#message").val();
+            if(message!=""){
+                $.getJSON("${ctx}/he/addMessage",{"userId":${user.id},"message":message},function (data) {
+                    if(data.ok){
+                        window.location.reload();
+                    }else{
+                        alert(data.error);
+                    }
+                })
+            }else{
+                alert("请输入留言！")
+            }
+        }else{
+            window.location.href="${ctx}/user/login";
+        }
+    })
 </script>
 </html>

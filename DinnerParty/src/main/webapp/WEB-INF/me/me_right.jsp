@@ -11,19 +11,17 @@
             ${loginUser.area.parent.name}-${loginUser.area.name} <em>&#xe61d;</em><em>&#xe61d;</em><em>&#xe61d;</em></div>
 
         <div class="txtwrap tc"><h1 class="f16">个人简介</h1>${loginUser.about}</div>
-        <h1 class="f16">关注 4</h1>
+        <h1 class="f16">关注 ${concernNum}</h1>
         <ul class="followlist clearfix">
-            <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-            <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-            <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-            <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
+            <c:forEach items="${concernPage.list}" var="concern">
+                <li><a href="${ctx}/he/heMain?userId=${concern.concernUser.id}"><img src="${ctx}/userIcon/${concern.concernUser.icon}"></a></li>
+            </c:forEach>
         </ul>
-        <h1 class="f16">粉丝 4</h1>
+        <h1 class="f16">粉丝 ${fansNum}</h1>
         <ul class="followlist bd0 clearfix">
-            <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-            <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-            <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
-            <li><a href="#"><img src="${ctx}/static/upload/img12.png"></a></li>
+            <c:forEach items="${fansPage.list}" var="concern">
+                <li><a href="${ctx}/he/heMain?userId=${concern.user.id}"><img src="${ctx}/userIcon/${concern.user.icon}"></a></li>
+            </c:forEach>
         </ul>
     </div>
 </div>

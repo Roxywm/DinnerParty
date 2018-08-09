@@ -2,6 +2,8 @@ package com.roxy.maven.dinner.service;
 
 import com.roxy.maven.dinner.entity.User;
 
+import java.util.List;
+
 public interface UserService {
 
     /**
@@ -30,4 +32,13 @@ public interface UserService {
      * @return
      */
     int update(User user);
+
+
+    /**
+     * 查询所有用户
+     * @return
+     */
+    List<User> findAll();
+
+
 }

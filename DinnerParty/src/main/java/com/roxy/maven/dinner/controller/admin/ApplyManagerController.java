@@ -29,7 +29,7 @@ public class ApplyManagerController {
     private UserService userService;
 
     /**
-     * 跳到报名页
+     * 跳到查看报名页
      * @return
      */
     @RequestMapping(value = "/applyPage", method = RequestMethod.GET)
@@ -47,6 +47,12 @@ public class ApplyManagerController {
         return "admin/apply_list";
     }
 
+    /**
+     * 通过审核
+     * @param applyId
+     * @param user
+     * @return
+     */
     @RequestMapping(value = "/updateStatus")
     public String updateStatus(long applyId, User user){
         int rows = applyHostService.updateStatus(applyId);

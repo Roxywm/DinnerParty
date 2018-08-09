@@ -43,7 +43,7 @@
          values (#{user.id},#{concernUser.id},#{concernTime})
     </insert>
 
-    <delete id="delete" parameterType="concern">
+    <delete id="cancel" parameterType="concern">
         delete from concern where userId=#{user.id} and concernUser=#{concernUser.id}
     </delete>
 

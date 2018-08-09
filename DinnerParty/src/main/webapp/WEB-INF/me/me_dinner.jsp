@@ -25,7 +25,7 @@
 
 <div class="memwrap wrap clearfix">
     <div class="section fl">
-        <div class="location tr"><a href="${ctx}/me/home">首页</a><a href="${ctx}/me/meDinner" class="current" style="font-weight: bold">我的饭局</a><a href="${ctx}/me/follow">我的关注</a><a href="${ctx}/me/message">我的留言</a></div>
+        <div class="location tr"><a href="${ctx}/me/meHome">首页</a><a href="${ctx}/me/meDinner" class="current" style="font-weight: bold">我的饭局</a><a href="${ctx}/me/meFollow">我的关注</a><a href="${ctx}/me/meMessage">我的留言</a></div>
         <div class="message pd30">
             <%--<div class="plmain">--%>
                 <%--<div class="plm clearfix"><span class="fr">(您还可输入 <span id="textCount">90</span> 个字)</span>给TA留下一句话吧……</div>--%>
@@ -96,7 +96,7 @@
         </div>
     </div>
 
-    <%@include file="/common/user_right.jsp"%>
+    <%@include file="/WEB-INF/me/me_right.jsp"%>
 
 
 </div>

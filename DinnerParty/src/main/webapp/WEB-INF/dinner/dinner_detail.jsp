@@ -96,12 +96,25 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <div class="Publisher mt10 fl">
         <a href="${ctx}/he/heMain?userId=${dinner.user.id}" class="user-img"><img src="${ctx}/userIcon/${dinner.user.icon}" style="border-radius: 50%"></a>
         <div class="user-level tc"><a href="${ctx}/he/heMain?userId=${dinner.user.id}">${dinner.user.nickname}</a> <em></em><em></em><em></em></div>
-        <p class="tc"><a href="javascript:;" class="button btn-follow"> + 关注</a></p>
+
+        <p class="tc">
+
+            <c:choose>
+                <c:when test="${isConcern==null&&loginUser.id!=dinner.user.id}">
+                    <a href="javascript:;" class="button btn-follow" id="concernBtn"> + 关注</a>
+                </c:when>
+                <c:when test="${isConcern!=null&&loginUser.id!=dinner.user.id}">
+                    <a href="javascript:;" class="button btn-follow" id="concernBtn">已关注</a>
+                </c:when>
+            </c:choose>
+
+        </p>
+
         <div class="pd10">
             <p class="myfont"><em>&#xe642;</em><em>&#xe629;</em></p>
             <p class="mt5">个人信誉值</p>
             <span class="Progress mt10"><span class="bar" style="width:75%;"></span></span>
-            <p class="mt5">粉丝  0</p>
+            <p class="mt5">粉丝  ${fansnum}</p>
         </div>
     </div>
     <div class="detail-info fl">
@@ -151,11 +164,11 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         </ul>
 
         <c:choose>
-            <c:when test="${applyParty==null}">
-                <a href="${ctx}/mutually/dinner/applyParty?dinnerId=${dinner.id}" class="button btn-apply">立即申请</a>
+            <c:when test="${isApplyParty==null}">
+                <a href="${ctx}/mutually/dinner/applyParty?dinnerId=${dinner.id}" class="button btn-apply" id="btn-apply">立即申请</a>
             </c:when>
             <c:otherwise>
-                <a href="javascript:;" class="button btn-apply">已申请</a>
+                <a href="javascript:;" class="button btn-apply" id="btn-apply">已申请</a>
             </c:otherwise>
         </c:choose>
 
@@ -323,8 +336,15 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 <script>
 
     $(function () {
-        setTime();
-        setInterval(setTime,1000);
+        var nowTime = new Date();
+        var endTime = new Date($("#endTime").val()*1);
+        if(endTime>nowTime){
+            setTime();
+            setInterval(setTime,1000);
+        }else{
+            $("#btn-apply").html("已结束");
+            $("#btn-apply").attr("href","javascript:;");
+        }
     })
     function setTime(){
         var nowTime = new Date();
@@ -396,6 +416,36 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 
     })
 </script>
+<script>
+    var flag = ${isConcern==null};
+    $("#concernBtn").click(function () {
+        if(${loginUser!=null}){
+            if(flag){
+                //关注
+                $.getJSON("${ctx}/he/addConcern",{"userId":${dinner.user.id}},function (data) {
+                    if(data.ok){
+                        $("#concernBtn").html("已关注");
+                        flag = false;
+                    }else{
+                        alert(data.error);
+                    }
+                })
+            }else{
+                //取消关注
+                $.getJSON("${ctx}/he/cancelConcern",{"userId":${dinner.user.id}},function (data) {
+                    if(data.ok){
+                        $("#concernBtn").html(" + 关注");
+                        flag = true;
+                    }else{
+                        alert(data.error);
+                    }
+                })
+            }
 
+        }else{
+            window.location.href="${ctx}/user/login";
+        }
+    })
+</script>
 </body>
 </html>

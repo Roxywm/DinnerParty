@@ -3,6 +3,8 @@ package com.roxy.maven.dinner.dao;
 import com.roxy.maven.dinner.entity.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UserDao {
 
@@ -13,5 +15,7 @@ public interface UserDao {
     void register(User user);
 
     int update(User user);
+
+    List<User> findAll();
 
 }

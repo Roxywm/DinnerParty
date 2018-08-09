@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Transactional
 @Service
 public class UserServiceImpl implements UserService {
@@ -33,5 +35,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public int update(User user) {
         return userDao.update(user);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userDao.findAll();
     }
 }

@@ -31,7 +31,7 @@ public interface ConcernService {
      * 取消关注
      * @return
      */
-    int delete(Concern concern);
+    int cancel(Concern concern);
 
     /**
      * 查找user是否关注concernUser

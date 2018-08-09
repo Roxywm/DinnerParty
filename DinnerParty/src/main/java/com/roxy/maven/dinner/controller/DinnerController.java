@@ -40,6 +40,8 @@ public class DinnerController {
     private ApplyPartyService applyPartyService;
     @Autowired
     private DinnerMsgService dinnerMsgService;
+    @Autowired
+    private ConcernService concernService;
 
     /**
      * 跳到发布饭局页面
@@ -119,9 +121,11 @@ public class DinnerController {
      * @return
      */
     @RequestMapping(value = "/hostDinner", method = RequestMethod.GET)
-    public String hostDinner(HttpSession session, Map<String, Object> map){
+    public String hostDinner(HttpSession session, Map<String, Object> map,
+                             @RequestParam(value="pageNum",defaultValue="1") int pageNum,
+                             @RequestParam(value="pageSize",defaultValue="5") int pageSize){
         User user = (User) session.getAttribute("loginUser");
-        PageHelper.startPage(1, 5);//设置分页
+        PageHelper.startPage(pageNum, pageSize);//设置分页
         //找出自己主持的饭局活动
         List<Dinner> list = dinnerService.findByUserId(user.getId());
         PageInfo<Dinner> page = new PageInfo<Dinner>(list);
@@ -137,10 +141,12 @@ public class DinnerController {
      * @return
      */
     @RequestMapping(value = "/joinDinner", method = RequestMethod.GET)
-    public String joinDinner(HttpSession session, Map<String, Object> map){
+    public String joinDinner(HttpSession session, Map<String, Object> map,
+                             @RequestParam(value="pageNum",defaultValue="1") int pageNum,
+                             @RequestParam(value="pageSize",defaultValue="5") int pageSize){
         User user = (User) session.getAttribute("loginUser");
 
-        PageHelper.startPage(1, 5);//设置分页
+        PageHelper.startPage(pageNum, pageSize);//设置分页
         //找出自己参加的饭局活动
         List<ApplyParty> list = applyPartyService.findByUserId(user.getId());
         for(ApplyParty applyParty:list){
@@ -172,13 +178,22 @@ public class DinnerController {
         //查找报名该饭局的用户
         List<ApplyParty> applyPartyList = applyPartyService.findByDinnerId(dinner.getId());
         User loginUser = (User) session.getAttribute("loginUser");
-        ApplyParty applyParty = null;
+        ApplyParty isApplyParty = null;
         if(loginUser!=null){
-            applyParty = applyPartyService.findByUserIdAndDinnerId(loginUser.getId(), dinner.getId());
+            isApplyParty = applyPartyService.findByUserIdAndDinnerId(loginUser.getId(), dinner.getId());
         }
 
+        Concern concern = new Concern();
+        concern.setUser(loginUser);
+        concern.setConcernUser(dinner.getUser());
+        Concern isConcern = concernService.findISConcern(concern);//判断是否关注
+
+        List<Concern> fansList = concernService.findAllFans(dinner.getUser().getId());
+
+        map.put("isConcern", isConcern);
+        map.put("fansnum", fansList.size());
         map.put("dinner", dinner);
-        map.put("applyParty", applyParty);
+        map.put("isApplyParty", isApplyParty);
         map.put("dinnerMsgPage", dinnerMsgPage);
         map.put("applyPartyList", applyPartyList);
         map.put("newDate", new Timestamp(new Date().getTime()));
