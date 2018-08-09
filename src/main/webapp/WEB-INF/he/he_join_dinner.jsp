@@ -111,6 +111,14 @@
                 })
             }else{
                 //取消关注
+                $.getJSON("${ctx}/he/cancelConcern",{"userId":${user.id}},function (data) {
+                    if(data.ok){
+                        $("#concernBtn").html(" + 关注");
+                        flag = true;
+                    }else{
+                        alert(data.error);
+                    }
+                })
             }
 
         }else{
