@@ -56,41 +56,22 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>照片</th>
-                                    <th>申请人</th>
-                                    <th>电话</th>
-                                    <th>邮箱</th>
-                                    <th>地址</th>
-                                    <th>操作</th>
+                                    <th>账号</th>
+                                    <th>昵称</th>
+                                    <th>性别</th>
+                                    <th>手机</th>
+                                    <th>职业</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${page.list}" var="applyHost">
+                                <c:forEach items="${page.list}" var="user">
                                     <tr>
-                                        <td>${applyHost.id}</td>
-                                        <td>
-                                            <img src="${ctx}/uploads/${applyHost.photo}" height="50px">
-                                        </td>
-                                        <td>${applyHost.name}</td>
-                                        <td>${applyHost.mobile}</td>
-                                        <td>${applyHost.email}</td>
-                                        <td>
-                                                ${applyHost.area.parent.parent.name}
-                                                <c:if test="${applyHost.area.parent.parent.name != null}">-</c:if>
-                                            ${applyHost.area.parent.name}-${applyHost.area.name}
-                                        </td>
-                                        <td id="audit">
-                                            <c:if test="${applyHost.status==1}">已通过</c:if>
-                                            <c:if test="${applyHost.status==0}">
-                                                <a href="javascript:;" value="${applyHost.id}" photo="${ctx}/uploads/${applyHost.photo}"
-                                                   proposer="${applyHost.name}"
-                                                   mobile="${applyHost.mobile}" email="${applyHost.email}" userId="${applyHost.user.id}"
-                                                   area="${applyHost.area.parent.parent.name}
-                                                <c:if test="${applyHost.area.parent.parent.name != null}">-</c:if>
-                                            ${applyHost.area.parent.name}-${applyHost.area.name}"
-                                                   class="blue audit">审核</a>
-                                            </c:if>
-                                        </td>
+                                        <td>${user.id}</td>
+                                        <td>${user.email}</td>
+                                        <td>${user.nickname}</td>
+                                        <td>${user.sex}</td>
+                                        <td>${user.mobile}</td>
+                                        <td>${user.job}</td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>

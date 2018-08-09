@@ -38,7 +38,7 @@
         <a href="index.html" class="logo indent">logo</a>
         <c:if test="${not empty loginUser}">
             <div class="medium-right">
-                <a href="${ctx}/me/home">您好！&nbsp;|&nbsp;${loginUser.nickname}</a>
+                <a href="${ctx}/me/meHome">您好！&nbsp;|&nbsp;${loginUser.nickname}</a>
                 <a href="${ctx}/mutually/dinner/create">发布我的饭局</a>
             </div>
         </c:if>
@@ -106,10 +106,10 @@
             <div class="img"><img src="${ctx}/uploads/${dinnerPage.list.get(2).thumbnail}" height="300px" width="360px"></div>
             <div class="txt">${dinnerPage.list.get(2).titel}<p class="f14">不管是跨洋过海还是跨城郊游，<br>Alice & Chris总是寻找着最本真最<br>当地化的体验。</p></div>
         </a>
-        <a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${dinnerPage.list.get(3).id}" class="item mid last">
-            <div class="img"><img src="${ctx}/uploads/${dinnerPage.list.get(3).thumbnail}" height="300px" width="360px"></div>
-            <div class="txt">${dinnerPage.list.get(3).titel}<p class="f14">不管是跨洋过海还是跨城郊游，<br>Alice & Chris总是寻找着最本真最<br>当地化的体验。</p></div>
-        </a>
+        <%--<a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${dinnerPage.list.get(3).id}" class="item mid last">--%>
+            <%--<div class="img"><img src="${ctx}/uploads/${dinnerPage.list.get(3).thumbnail}" height="300px" width="360px"></div>--%>
+            <%--<div class="txt">${dinnerPage.list.get(3).titel}<p class="f14">不管是跨洋过海还是跨城郊游，<br>Alice & Chris总是寻找着最本真最<br>当地化的体验。</p></div>--%>
+        <%--</a>--%>
     </div>
 
 </div>

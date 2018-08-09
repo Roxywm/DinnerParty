@@ -32,8 +32,8 @@ public class ConcernServiceImpl implements ConcernService {
     }
 
     @Override
-    public int delete(Concern concern) {
-        return concernDao.delete(concern);
+    public int cancel(Concern concern) {
+        return concernDao.cancel(concern);
     }
 
     @Override

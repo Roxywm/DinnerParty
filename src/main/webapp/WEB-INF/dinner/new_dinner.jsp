@@ -129,7 +129,7 @@
     </div>
 
 
-    <%@include file="/common/user_right.jsp"%>
+    <%@include file="/WEB-INF/me/me_right.jsp"%>
 
 </div>
 

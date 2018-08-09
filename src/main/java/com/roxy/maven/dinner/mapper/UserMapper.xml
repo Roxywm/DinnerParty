@@ -44,6 +44,13 @@
       values (#{email},#{password},#{nickname},#{sex},#{mobile},#{job},#{about})
     </insert>
 
+
+    <select id="findAll" resultMap="userMap">
+      select u.id,email,emailStatus,password,nickname,icon,sex,mobile,mobileStatus,job,about,hostStatus,a.id as aid,name,a.parentId as pid
+      from users u, areas a
+      where u.areaId=a.id
+    </select>
+
     <update id="update" parameterType="user">
         update users
         <set>

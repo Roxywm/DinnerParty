@@ -25,44 +25,33 @@
 
 <div class="memwrap wrap clearfix">
     <div class="section fl">
-        <div class="location tr"><a href="${ctx}/me/meHome">首页</a><a href="${ctx}/me/meDinner">我的饭局</a><a href="${ctx}/me/meFollow">我的关注</a><a href="${ctx}/me/meMessage" class="current" style="font-weight: bold">我的留言</a></div>
-        <div class="message pd30">
-            <%--<div class="plmain">--%>
-                <%--<div class="plm clearfix"><span class="fr">(您还可输入 <span id="textCount">90</span> 个字)</span>给TA留下一句话吧……</div>--%>
-                <%--<div class="textarea_input"><textarea id="TextArea1" onkeyup="words_deal();" ></textarea></div>--%>
-                <%--<div class="tool_submit tr"><button type="button" name="" value="" class="button sublist">留 言</button></div>--%>
-            <%--</div>--%>
-
-            <div class="plmcomment mt30">
-                <c:if test="${fn:length(page.list)==0}">
-                    <div class="Participate pd30">
-                        您没有留言！
-                    </div>
-                </c:if>
-                <ul class="comment-list">
-                    <c:forEach items="${page.list}" var="userMsg">
-                        <li class="np-post">
-                            <a href="${ctx}/he/heMain?userId=${userMsg.msgUser.id}" class="fans img"><img src="${ctx}/userIcon/${userMsg.msgUser.icon}" style="border-radius: 50%;"></a>
-                            <div class="post-body">
-                                <div class="post-header clearfix">
-                                    <a href="${ctx}/he/heMain?userId=${userMsg.msgUser.id}" class="name o">${userMsg.msgUser.nickname}</a>
-                                    <span class="time"><fmt:formatDate value='${userMsg.msgTime}' pattern='yyyy年MM月dd日 HH:mm'/></span>
-                                    <span class="dele"><em class="myfont">&#xe601;</em><a href="javascript:;"> 删除</a></span>
-                                    <span class="reply"><em class="myfont">&#xe640;</em><a href="javascript:;"> 回复</a></span>
-                                </div>
-
-                                <div class="child">
-                                    <%--<div class="post-header clearfix"><a href="home.html" class="name o">兜帽家的豆豆</a><span class="time">01月20日 11:11</span></div>--%>
-                                    <div class="post-content"><div class="txtcon">${userMsg.message}</div></div>
-                                </div>
-
+        <div class="location tr"><span class="f12 fl"><em class="myfont"></em> 我已关注 <b class="o f14"> 8</b> 人</span><a href="${ctx}/me/meConcern">我的关注</a><a href="${ctx}/me/meFans" class="current" style="font-weight: bold">我的粉丝</a></div>
+        <div class="plmcomment mt30">
+            <c:if test="${fn:length(page.list)==0}">
+                <div class="Participate pd30">
+                    您还没有粉丝！
+                </div>
+            </c:if>
+            <ul class="fans">
+                <c:forEach items="${page.list}" var="concern">
+                    <li>
+                        <a href="${ctx}/he/heMain?userId=${concern.user.id}" class="img"><img src="${ctx}/userIcon/${concern.user.icon}" style="border-radius: 50%;"></a>
+                        <div class="fansinfo">
+                            <div class="header"><a href="${ctx}/he/heMain?userId=${concern.user.id}">${concern.user.nickname}</a>
+                                <c:if test="${concern.user.sex=='男'}"><em class="ico male">男</em></c:if>
+                                <c:if test="${concern.user.sex=='女'}"><em class="ico female">女</em></c:if>
                             </div>
-                        </li>
-                    </c:forEach>
-                </ul>
+                                ${concern.user.about}
+                        </div>
+                        <div class="Status">
+                            <a href="#" class="Pull">拉黑名单</a><a href="javascript:;" class="follow-btn"><span class="concerns"><em class="myfont">&#xe610;</em>已关注</span><span class="Unfollow">取消关注</span></a> <a href="#" class="Private-letter"><em class="myfont">&#xe63f;</em>私信</a>
+                        </div>
+                    </li>
+                </c:forEach>
+            </ul>
 
-
-                <!--Pagination-->
+            <!--Pagination-->
+            <div class="page mt20 clearfix">
                 <c:if test="${fn:length(page.list)!=0}">
                     <div class="page mt20 clearfix">
                         <c:if test="${page.prePage!=0}">
@@ -84,7 +73,6 @@
                     </div>
                 </c:if>
             </div>
-
         </div>
     </div>
 

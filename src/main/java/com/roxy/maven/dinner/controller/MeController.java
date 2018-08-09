@@ -36,7 +36,7 @@ public class MeController {
      * 跳到个人首页
      * @return
      */
-    @RequestMapping(value = "/home",method = RequestMethod.GET)
+    @RequestMapping(value = "/meHome",method = RequestMethod.GET)
     public String home(Map<String, Object> map, HttpSession session,
                        @RequestParam(value="pageNum",defaultValue="1") int pageNum,
                        @RequestParam(value="pageSize",defaultValue="5") int pageSize){
@@ -79,7 +79,7 @@ public class MeController {
      * 跳到我的关注页面
      * @return
      */
-    @RequestMapping(value = "/follow", method = RequestMethod.GET)
+    @RequestMapping(value = "/meFollow", method = RequestMethod.GET)
     public String meFollow(HttpSession session, Map<String, Object> map,
                            @RequestParam(value="pageNum",defaultValue="1") int pageNum,
                            @RequestParam(value="pageSize",defaultValue="10") int pageSize){
@@ -95,7 +95,7 @@ public class MeController {
      * 跳到对我的留言页面
      * @return
      */
-    @RequestMapping(value = "/message", method = RequestMethod.GET)
+    @RequestMapping(value = "/meMessage", method = RequestMethod.GET)
     public String meMessage(HttpSession session, Map<String, Object> map,
                             @RequestParam(value="pageNum",defaultValue="1") int pageNum,
                             @RequestParam(value="pageSize",defaultValue="10") int pageSize){
@@ -106,6 +106,46 @@ public class MeController {
         PageInfo<UserMsg> page = new PageInfo<UserMsg>(userMsgList);
         map.put("page", page);
         return "me/me_message";
+    }
+
+    /**
+     * 跳到我的关注页 (我的好友)
+     * @param session
+     * @param map
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @RequestMapping(value = "/meConcern", method = RequestMethod.GET)
+    public String meConcern(HttpSession session, Map<String, Object> map,
+                         @RequestParam(value="pageNum",defaultValue="1") int pageNum,
+                         @RequestParam(value="pageSize",defaultValue="10") int pageSize){
+        User loginUser = (User)session.getAttribute("loginUser");
+        PageHelper.startPage(pageNum, pageSize);//设置分页
+        List<Concern> concernList = concernService.findAllConcern(loginUser.getId());
+        PageInfo<Concern> page = new PageInfo<Concern>(concernList);
+        map.put("page", page);
+        return "me/me_concern";
+    }
+
+    /**
+     * 跳到我的粉丝
+     * @param session
+     * @param map
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @RequestMapping(value = "/meFans", method = RequestMethod.GET)
+    public String meFans(HttpSession session, Map<String, Object> map,
+                            @RequestParam(value="pageNum",defaultValue="1") int pageNum,
+                            @RequestParam(value="pageSize",defaultValue="10") int pageSize){
+        User loginUser = (User)session.getAttribute("loginUser");
+        PageHelper.startPage(pageNum, pageSize);//设置分页
+        List<Concern> concernList = concernService.findAllFans(loginUser.getId());
+        PageInfo<Concern> page = new PageInfo<Concern>(concernList);
+        map.put("page", page);
+        return "me/me_fans";
     }
 
 

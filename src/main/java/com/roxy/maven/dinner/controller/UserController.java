@@ -5,10 +5,7 @@ import com.aliyuncs.exceptions.ClientException;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.roxy.maven.dinner.common.Constants;
-import com.roxy.maven.dinner.entity.ApplyParty;
-import com.roxy.maven.dinner.entity.Area;
-import com.roxy.maven.dinner.entity.Dinner;
-import com.roxy.maven.dinner.entity.User;
+import com.roxy.maven.dinner.entity.*;
 import com.roxy.maven.dinner.service.*;
 import com.roxy.maven.dinner.util.MD5Util;
 import com.roxy.maven.dinner.util.VerificationCode;
@@ -31,17 +28,35 @@ public class UserController {
     private UserService userService;
     @Autowired
     private AreaService areaService;
+    @Autowired
+    private ConcernService concernService;
 
+    /**
+     * 跳到注册页
+     * @return
+     */
     @RequestMapping(value = "/register",method = RequestMethod.GET)
     public String register(){
         return "user/register";
     }
+
+    /**
+     * 跳到登录页
+     * @return
+     */
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String login(){
         return "user/login";
     }
 
 
+    /**
+     * 用户注册
+     * @param user
+     * @param qrPassword
+     * @param map
+     * @return
+     */
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public String register(User user, String qrPassword, Map<String, Object> map){
         if(user.getPassword().equals(qrPassword)){
@@ -63,6 +78,13 @@ public class UserController {
         return "user/register";
     }
 
+    /**
+     * 用户登录
+     * @param user
+     * @param session
+     * @param map
+     * @return
+     */
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String login(User user, HttpSession session, Map<String, Object> map){
         User oldUser = userService.findByEmail(user.getEmail());
@@ -70,7 +92,19 @@ public class UserController {
             if(MD5Util.verify(user.getPassword(), oldUser.getPassword())){
                 Area area = areaService.findById(oldUser.getArea().getId());
                 oldUser.setArea(area);
+
+                PageHelper.startPage(1, 4);//设置分页
+                List<Concern> concernList = concernService.findAllConcern(oldUser.getId());
+                PageInfo<Concern> concernPage = new PageInfo<Concern>(concernList);
+                List<Concern> fansList = concernService.findAllFans(oldUser.getId());
+                PageInfo<Concern> fansPage = new PageInfo<Concern>(fansList);
+
                 session.setAttribute("loginUser", oldUser);
+                session.setAttribute("concernPage", concernPage);
+                session.setAttribute("fansPage", fansPage);
+                session.setAttribute("concernNum", concernList.size());
+                session.setAttribute("fansNum", fansList.size());
+
                 return "redirect:/";
             }
         }
@@ -78,12 +112,23 @@ public class UserController {
         return "user/login";
     }
 
+    /**
+     * 退出登录
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "/logout",method = RequestMethod.GET)
     public String logout(HttpSession session){
         session.removeAttribute("loginUser");
         return "redirect:login";
     }
 
+    /**
+     * 跳到用户编辑页
+     * @param session
+     * @param map
+     * @return
+     */
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String edit(HttpSession session, Map<String, Object> map){
         User loginUser = (User) session.getAttribute("loginUser");

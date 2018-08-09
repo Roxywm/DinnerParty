@@ -57,6 +57,11 @@
         </div>
 
         <ul class="active-list">
+            <c:if test="${fn:length(dinnerPage.list)==0}">
+                <li class="Prompt green" style="padding:0 0 10px;text-align: center;font-size: 18px;">
+                    没有符合要求的结果！
+                </li>
+            </c:if>
             <c:forEach items="${dinnerPage.list}" var="dinner">
                 <li>
                     <div class="img">

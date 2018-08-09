@@ -25,7 +25,7 @@
 
 <div class="memwrap wrap clearfix">
     <div class="section fl">
-        <div class="location tr"><a href="${ctx}/me/home">首页</a><a href="${ctx}/me/meDinner">我的饭局</a><a href="${ctx}/me/follow" class="current" style="font-weight: bold">我的关注</a><a href="${ctx}/me/message">我的留言</a></div>
+        <div class="location tr"><a href="${ctx}/me/meHome">首页</a><a href="${ctx}/me/meDinner">我的饭局</a><a href="${ctx}/me/meFollow" class="current" style="font-weight: bold">我的关注</a><a href="${ctx}/me/meMessage">我的留言</a></div>
         <div class="message pd30">
             <%--<div class="plmain">--%>
                 <%--<div class="plm clearfix"><span class="fr">(您还可输入 <span id="textCount">90</span> 个字)</span>给TA留下一句话吧……</div>--%>
@@ -42,9 +42,9 @@
                 <ul class="fans">
                     <c:forEach items="${page.list}" var="concern">
                         <li>
-                            <a href="${ctx}/he/heMain?userId=${concern.concernUser.id}" class="img"><img src="${ctx}/userIcom/${concern.concernUser.icon}"></a>
+                            <a href="${ctx}/he/heMain?userId=${concern.concernUser.id}" class="img"><img src="${ctx}/userIcon/${concern.concernUser.icon}" style="border-radius: 50%;"></a>
                             <div class="fansinfo">
-                                <div class="header"><a href="#">${concern.concernUser.nickname}</a>
+                                <div class="header"><a href="${ctx}/he/heMain?userId=${concern.concernUser.id}">${concern.concernUser.nickname}</a>
                                     <c:if test="${concern.concernUser.sex=='男'}"><em class="ico male">男</em></c:if>
                                     <c:if test="${concern.concernUser.sex=='女'}"><em class="ico female">女</em></c:if>
                                 </div>
@@ -86,7 +86,7 @@
         </div>
     </div>
 
-    <%@include file="/common/user_right.jsp"%>
+    <%@include file="/WEB-INF/me/me_right.jsp"%>
 
 
 </div>

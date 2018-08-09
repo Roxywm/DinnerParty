@@ -25,7 +25,7 @@
 
 <div class="memwrap wrap clearfix">
     <div class="section fl">
-        <div class="location tr"><a href="${ctx}/me/home" class="current" style="font-weight: bold">首页</a><a href="${ctx}/me/meDinner">我的饭局</a><a href="${ctx}/me/follow">我的关注</a><a href="${ctx}/me/message">我的留言</a></div>
+        <div class="location tr"><a href="${ctx}/me/meHome" class="current" style="font-weight: bold">首页</a><a href="${ctx}/me/meDinner">我的饭局</a><a href="${ctx}/me/meFollow">我的关注</a><a href="${ctx}/me/meMessage">我的留言</a></div>
         <div class="message pd30">
             <%--<div class="plmain">--%>
                 <%--<div class="plm clearfix"><span class="fr">(您还可输入 <span id="textCount">90</span> 个字)</span>给TA留下一句话吧……</div>--%>
@@ -68,34 +68,32 @@
 
                 </ul>
                 <!--Pagination-->
-                <div class="page mt20 clearfix">
-                    <c:if test="${fn:length(page.list)!=0}">
-                        <div class="page mt20 clearfix">
-                            <c:if test="${page.prePage!=0}">
-                                <a href="?pageNum=${page.prePage}" class="prev"><em></em>上一页</a>
-                            </c:if>
-                            <c:if test="${page.prePage==0}">
-                                <a href="javascript:void(0);" class="prev"><em></em>上一页</a>
-                            </c:if>
-                            <c:forEach begin="1" end="${page.pages}" var="p">
-                                <c:if test="${p==page.pageNum}"><span>${p}</span></c:if>
-                                <c:if test="${p!=page.pageNum}"><a href="?pageNum=${p}">${p}</a></c:if>
-                            </c:forEach>
-                            <c:if test="${page.nextPage!=0}">
-                                <a href="?pageNum=${page.nextPage}" class="next">下一页<em></em></a>
-                            </c:if>
-                            <c:if test="${page.nextPage==0}">
-                                <a href="javascript:void(0);" class="next">下一页<em></em></a>
-                            </c:if>
-                        </div>
-                    </c:if>
-                </div>
+                <c:if test="${fn:length(page.list)!=0}">
+                    <div class="page mt20 clearfix">
+                        <c:if test="${page.prePage!=0}">
+                            <a href="?pageNum=${page.prePage}" class="prev"><em></em>上一页</a>
+                        </c:if>
+                        <c:if test="${page.prePage==0}">
+                            <a href="javascript:void(0);" class="prev"><em></em>上一页</a>
+                        </c:if>
+                        <c:forEach begin="1" end="${page.pages}" var="p">
+                            <c:if test="${p==page.pageNum}"><span>${p}</span></c:if>
+                            <c:if test="${p!=page.pageNum}"><a href="?pageNum=${p}">${p}</a></c:if>
+                        </c:forEach>
+                        <c:if test="${page.nextPage!=0}">
+                            <a href="?pageNum=${page.nextPage}" class="next">下一页<em></em></a>
+                        </c:if>
+                        <c:if test="${page.nextPage==0}">
+                            <a href="javascript:void(0);" class="next">下一页<em></em></a>
+                        </c:if>
+                    </div>
+                </c:if>
             </div>
 
         </div>
     </div>
 
-    <%@include file="/common/user_right.jsp"%>
+    <%@include file="/WEB-INF/me/me_right.jsp"%>
 
 
 </div>

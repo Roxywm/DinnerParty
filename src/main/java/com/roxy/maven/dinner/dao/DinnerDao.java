@@ -21,7 +21,7 @@ public interface DinnerDao {
     int createPhoto(List<Photo> list);
 
     /**
-     * 根据用户ID来查找自己发布饭局
+     * 根据用户ID来查找该用户发布饭局
      * @param id
      * @return
      */
