@@ -509,3 +509,12 @@ margin: 3px; background: url(../images/sprite_s.png) no-repeat 0 0px;}
 
 
 .Expired{ position:absolute; left:0; top:0; z-index:555; width:90px; height:60px; background:url(../images/Expired.png) no-repeat center; display:block;}
+
+#categoryId{
+    height: 34px;
+    border: none;
+    border-right:1px solid #f2f2f2;
+    padding-left: 15px;
+    line-height: 34px;
+    cursor: pointer;
+}

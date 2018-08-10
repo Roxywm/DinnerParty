@@ -105,6 +105,39 @@
       from dinner d,users u,areas a,category c
       where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id and d.endTime>now()
       and (titel like CONCAT('%', #{keyword}, '%') or details like CONCAT('%', #{keyword}, '%') or label like CONCAT('%', #{keyword}, '%'))
-      order by enrolment desc
+    </select>
+
+    <select id="fuzzySearchDateDesc" parameterType="string" resultMap="dinnerMap">
+      select d.id did, titel,price,maximum,startTime,endTime,label,thumbnail,details,enrolment,interest,d.status dstatus,
+      u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
+      from dinner d,users u,areas a,category c
+      where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id and d.endTime>now()
+      and (titel like CONCAT('%', #{keyword}, '%') or details like CONCAT('%', #{keyword}, '%') or label like CONCAT('%', #{keyword}, '%'))
+      order by startTime desc
+    </select>
+
+    <select id="fuzzySearchPriceDesc" parameterType="string" resultMap="dinnerMap">
+      select d.id did, titel,price,maximum,startTime,endTime,label,thumbnail,details,enrolment,interest,d.status dstatus,
+      u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
+      from dinner d,users u,areas a,category c
+      where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id and d.endTime>now()
+      and (titel like CONCAT('%', #{keyword}, '%') or details like CONCAT('%', #{keyword}, '%') or label like CONCAT('%', #{keyword}, '%'))
+      order by price desc
+    </select>
+
+    <select id="fuzzySearchTimeSlot" parameterType="date" resultMap="dinnerMap">
+      select d.id did, titel,price,maximum,startTime,endTime,label,thumbnail,details,enrolment,interest,d.status dstatus,
+      u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
+      from dinner d,users u,areas a,category c
+      where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id and d.endTime>now()
+      and d.startTime &gt; #{arg0} and d.startTime &lt; #{arg1}
+    </select>
+
+    <select id="categorySearch" parameterType="long" resultMap="dinnerMap">
+      select d.id did, titel,price,maximum,startTime,endTime,label,thumbnail,details,enrolment,interest,d.status dstatus,
+      u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
+      from dinner d,users u,areas a,category c
+      where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id and d.endTime>now()
+      and c.id=#{categoryId}
     </select>
 </mapper>

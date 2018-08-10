@@ -4,6 +4,8 @@ import com.roxy.maven.dinner.entity.Dinner;
 import com.roxy.maven.dinner.entity.Photo;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -72,5 +74,31 @@ public interface DinnerDao {
      * @return
      */
     List<Dinner> fuzzySearch(String keyword);
+
+    /**
+     * 模糊搜索
+     * 日期降序
+     * @return
+     */
+    List<Dinner> fuzzySearchDateDesc(String keyword);
+
+    /**
+     * 模糊搜索
+     * 价钱降序
+     * @return
+     */
+    List<Dinner> fuzzySearchPriceDesc(String keyword);
+
+    /**
+     * 时间段
+     * @return
+     */
+    List<Dinner> fuzzySearchTimeSlot(Date startDate, Date endDate);
+
+    /**
+     * 类型搜索
+     * @return
+     */
+    List<Dinner> categorySearch(long categoryId);
 
 }

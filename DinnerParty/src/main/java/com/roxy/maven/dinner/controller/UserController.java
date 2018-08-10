@@ -96,6 +96,7 @@ public class UserController {
                 PageHelper.startPage(1, 4);//设置分页
                 List<Concern> concernList = concernService.findAllConcern(oldUser.getId());
                 PageInfo<Concern> concernPage = new PageInfo<Concern>(concernList);
+                PageHelper.startPage(1, 4);//设置分页
                 List<Concern> fansList = concernService.findAllFans(oldUser.getId());
                 PageInfo<Concern> fansPage = new PageInfo<Concern>(fansList);
 

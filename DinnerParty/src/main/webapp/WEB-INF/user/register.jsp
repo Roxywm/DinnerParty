@@ -20,19 +20,21 @@
 <body>
 <%--<div class="head">--%>
     <%--<div class="wrap clearfix">--%>
-        <%--<a href="index.html" class="logo indent">logo</a>--%>
+        <%--<a href="${ctx}/" class="logo indent">logo</a>--%>
         <%--<div class="headr fr">--%>
-            <%--<form action="active.html" method="post" class="headsearch">--%>
+            <%--<form action="${ctx}/find/dinner/search" method="post" class="headsearch" onsubmit="return check()">--%>
                 <%--<label class="label">--%>
-                    <%--<input type="text" value="" name="" class="key">--%>
+                    <%--<input type="text" id="keyword" name="keyword" class="key">--%>
                     <%--<span class="text">搜索地址、名称、时间等</span>--%>
                 <%--</label>--%>
                 <%--<button type="submit" class="button btn-search">&#xe628;</button>--%>
             <%--</form>--%>
-            <%--<a href="${ctx}/user/login">登录</a><a href="${ctx}/user/register">注册</a><a href="${ctx}/mutually/dinner/create">发布我的饭局</a>--%>
+            <%--&lt;%&ndash;<a href="${ctx}/user/login">登录</a><a href="${ctx}/user/register">注册</a><a href="${ctx}/mutually/dinner/create">发布我的饭局</a>&ndash;%&gt;--%>
         <%--</div>--%>
     <%--</div>--%>
 <%--</div>--%>
+<%@include file="/common/user_head.jsp"%>
+
 <div class="loginwrapper">
     <div class="wrap pr">
         <div class="loginbox">
