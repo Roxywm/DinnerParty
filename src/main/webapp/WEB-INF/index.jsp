@@ -15,7 +15,7 @@
     <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=IE6/IE6.html"><![endif]-->
     <link type="image/x-icon" href="${ctx}/static/images" rel="shortcut icon" />
     <link href="${ctx}/static/images/favicon.ico" rel="bookmark icon" />
-    <title>17素材·私厨 - 为你推荐遍布全球最新鲜，最与众不同的顶级生活方式</title>
+    <title>美滋滋·私厨 - 为你推荐遍布全球最新鲜，最与众不同的顶级生活方式</title>
 </head>
 <body>
 <%--<div class="head">--%>
@@ -33,21 +33,23 @@
         <%--</div>--%>
     <%--</div>--%>
 <%--</div>--%>
+<%@include file="/common/user_head.jsp"%>
+
 <div class="indexban" style="background-image:url(${ctx}/static/images/img1.jpg);">
     <div class="wrap">
-        <a href="index.html" class="logo indent">logo</a>
-        <c:if test="${not empty loginUser}">
-            <div class="medium-right">
-                <a href="${ctx}/me/meHome">您好！&nbsp;|&nbsp;${loginUser.nickname}</a>
-                <a href="${ctx}/mutually/dinner/create">发布我的饭局</a>
-            </div>
-        </c:if>
-        <c:if test="${empty loginUser}">
-            <div class="medium-right">
-                <a href="${ctx}/user/login">登陆</a>
-                <a href="${ctx}/user/register">注册</a>
-            </div>
-        </c:if>
+        <%--<a href="index.html" class="logo indent">logo</a>--%>
+        <%--<c:if test="${not empty loginUser}">--%>
+            <%--<div class="medium-right">--%>
+                <%--<a href="${ctx}/me/meHome">您好！&nbsp;|&nbsp;${loginUser.nickname}</a>--%>
+                <%--<a href="${ctx}/mutually/dinner/create">发布我的饭局</a>--%>
+            <%--</div>--%>
+        <%--</c:if>--%>
+        <%--<c:if test="${empty loginUser}">--%>
+            <%--<div class="medium-right">--%>
+                <%--<a href="${ctx}/user/login">登陆</a>--%>
+                <%--<a href="${ctx}/user/register">注册</a>--%>
+            <%--</div>--%>
+        <%--</c:if>--%>
 
         <div class="txt"><span class="hd">美食与生活的完美演绎</span><a href="#">早餐</a><a href="#">午餐</a><a href="#">晚餐</a><a href="#">一键搞定</a></div>
     </div>
@@ -84,7 +86,7 @@
     <div class="Activity clearfix">
         <a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${dinnerPage.list.get(0).id}" class="item">
             <div class="img"><img src="${ctx}/uploads/${dinnerPage.list.get(0).thumbnail}" height="300px" width="306px"></div>
-            <div class="txt">${dinnerPage.list.get(0).titel}<p class="f14">不管是跨洋过海还是跨城郊游，<br>Alice & Chris总是寻找着最本真最<br>当地化的体验。</p></div>
+            <div class="txt">${dinnerPage.list.get(0).titel}<p class="f14">${dinnerPage.list.get(0).details}</p></div>
         </a>
         <div class="item large fr">
             <div id="full-screen-slider">
@@ -100,16 +102,16 @@
     <div class="Activity mt36 clearfix">
         <a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${dinnerPage.list.get(1).id}" class="item">
             <div class="img"><img src="${ctx}/uploads/${dinnerPage.list.get(1).thumbnail}" height="300px" width="306px"></div>
-            <div class="txt">${dinnerPage.list.get(1).titel}<p class="f14">不管是跨洋过海还是跨城郊游，<br>Alice & Chris总是寻找着最本真最<br>当地化的体验。</p></div>
+            <div class="txt">${dinnerPage.list.get(1).titel}<p class="f14">${dinnerPage.list.get(1).details}</p></div>
         </a>
         <a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${dinnerPage.list.get(2).id}" class="item mid">
             <div class="img"><img src="${ctx}/uploads/${dinnerPage.list.get(2).thumbnail}" height="300px" width="360px"></div>
-            <div class="txt">${dinnerPage.list.get(2).titel}<p class="f14">不管是跨洋过海还是跨城郊游，<br>Alice & Chris总是寻找着最本真最<br>当地化的体验。</p></div>
+            <div class="txt">${dinnerPage.list.get(2).titel}<p class="f14">${dinnerPage.list.get(2).details}</p></div>
         </a>
-        <%--<a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${dinnerPage.list.get(3).id}" class="item mid last">--%>
-            <%--<div class="img"><img src="${ctx}/uploads/${dinnerPage.list.get(3).thumbnail}" height="300px" width="360px"></div>--%>
-            <%--<div class="txt">${dinnerPage.list.get(3).titel}<p class="f14">不管是跨洋过海还是跨城郊游，<br>Alice & Chris总是寻找着最本真最<br>当地化的体验。</p></div>--%>
-        <%--</a>--%>
+        <a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${dinnerPage.list.get(3).id}" class="item mid last">
+            <div class="img"><img src="${ctx}/uploads/${dinnerPage.list.get(3).thumbnail}" height="300px" width="360px"></div>
+            <div class="txt">${dinnerPage.list.get(3).titel}<p class="f14">${dinnerPage.list.get(3).details}</p></div>
+        </a>
     </div>
 
 </div>

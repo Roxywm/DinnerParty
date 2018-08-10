@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Transactional
@@ -70,6 +71,26 @@ public class DinnerServiceImpl implements DinnerService {
     @Override
     public List<Dinner> fuzzySearch(String keyword) {
         return dinnerDao.fuzzySearch(keyword);
+    }
+
+    @Override
+    public List<Dinner> fuzzySearchDateDesc(String keyword) {
+        return dinnerDao.fuzzySearchDateDesc(keyword);
+    }
+
+    @Override
+    public List<Dinner> fuzzySearchPriceDesc(String keyword) {
+        return dinnerDao.fuzzySearchPriceDesc(keyword);
+    }
+
+    @Override
+    public List<Dinner> fuzzySearchTimeSlot(Date startDate, Date endDate) {
+        return dinnerDao.fuzzySearchTimeSlot(startDate, endDate);
+    }
+
+    @Override
+    public List<Dinner> categorySearch(long categoryId) {
+        return dinnerDao.categorySearch(categoryId);
     }
 
 

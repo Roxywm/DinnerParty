@@ -32,7 +32,7 @@ public class IndexController {
     @RequestMapping(value = "/")
     public String index(Map<String, Object> map){
 
-        PageHelper.startPage(1, 10);//设置分页
+        PageHelper.startPage(1, 4);//设置分页
         //获取推荐饭局(报名人数最多 未停止报名)
         List<Dinner> dinnerList = dinnerService.recommendDinner();
         PageInfo<Dinner> dinnerPage = new PageInfo<Dinner>(dinnerList);

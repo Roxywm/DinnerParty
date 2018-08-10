@@ -3,6 +3,7 @@ package com.roxy.maven.dinner.service;
 import com.roxy.maven.dinner.entity.Dinner;
 import com.roxy.maven.dinner.entity.Photo;
 
+import java.util.Date;
 import java.util.List;
 
 public interface DinnerService {
@@ -39,8 +40,6 @@ public interface DinnerService {
      */
     List<Dinner> findAll();
 
-
-
     /**
      * 添加感兴趣
      * @param dinner
@@ -68,6 +67,32 @@ public interface DinnerService {
      * @return
      */
     List<Dinner> fuzzySearch(String keyword);
+
+    /**
+     * 模糊搜索
+     * 日期降序
+     * @return
+     */
+    List<Dinner> fuzzySearchDateDesc(String keyword);
+
+    /**
+     * 模糊搜索
+     * 价钱降序
+     * @return
+     */
+    List<Dinner> fuzzySearchPriceDesc(String keyword);
+
+    /**
+     * 时间段搜索
+     * @return
+     */
+    List<Dinner> fuzzySearchTimeSlot(Date startDate, Date endDate);
+
+    /**
+     * 类型ID搜索
+     * @return
+     */
+    List<Dinner> categorySearch(long categoryId);
 
 
 }

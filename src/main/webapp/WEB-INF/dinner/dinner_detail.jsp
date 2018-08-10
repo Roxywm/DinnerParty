@@ -189,8 +189,8 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         <div class="regster">
             <c:forEach items="${applyPartyList}" var="applyParty">
                 <dl>
-                    <dt><a href="#"><img src="${ctx}/userIcon/${applyParty.user.icon}" height="145px"></a></dt>
-                    <dd><a href="#">${applyParty.user.nickname}</a></dd>
+                    <dt><a href="${ctx}/he/heMain?userId=${applyParty.user.id}"><img src="${ctx}/userIcon/${applyParty.user.icon}" height="145px"></a></dt>
+                    <dd><a href="${ctx}/he/heMain?userId=${applyParty.user.id}">${applyParty.user.nickname}</a></dd>
                 </dl>
             </c:forEach>
         </div>
@@ -220,10 +220,10 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                 </c:if>
                 <c:forEach items="${dinnerMsgPage.list}" var="dinnerMsg">
                     <li class="np-post">
-                        <a href="home.html" class="fans img"><img src="${ctx}/userIcon/${dinnerMsg.msgUser.icon}" style="border-radius: 50%;"></a>
+                        <a href="${ctx}/he/heMain?userId=${dinnerMsg.msgUser.id}" class="fans img"><img src="${ctx}/userIcon/${dinnerMsg.msgUser.icon}" style="border-radius: 50%;"></a>
                         <div class="post-body">
                             <div class="post-header clearfix">
-                                <a href="home.html" class="name">${dinnerMsg.msgUser.nickname}</a><span class="user-level"><em></em><em></em><em></em></span> ${(newDate.time-dinnerMsg.msgTime.time)/1000/60%60}分钟前<span class="reply"><em class="myfont">&#xe640;</em><a href="javascript:;"> 回复</a></span>
+                                <a href="${ctx}/he/heMain?userId=${dinnerMsg.msgUser.id}" class="name">${dinnerMsg.msgUser.nickname}</a><span class="user-level"><em></em><em></em><em></em></span> <fmt:formatDate value="${dinnerMsg.msgTime}" pattern="yyyy-MM-dd HH:mm:ss" /><span class="reply"><em class="myfont">&#xe640;</em><a href="javascript:;"> 回复</a></span>
                             </div>
                             <div class="post-content">${dinnerMsg.message}</div>
                         </div>
