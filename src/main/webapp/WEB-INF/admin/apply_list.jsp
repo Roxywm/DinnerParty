@@ -214,7 +214,7 @@
                     hideMethod: "fadeOut"
                 };
                 toastr.info("审核成功!");
-
+                window.location.href="${ctx}/admin/applyHost/applyPage";
             }else{
                 toastr.options = {
                     closeButton: false,
@@ -232,7 +232,7 @@
                     hideMethod: "fadeOut"
                 };
                 toastr.info("审核失败!");
-
+                window.location.href="${ctx}/admin/applyHost/applyPage";
             }
         });
     });

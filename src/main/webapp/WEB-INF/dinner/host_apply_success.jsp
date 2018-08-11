@@ -30,7 +30,7 @@
         <div class="suc-header o"><img src="${ctx}/static/images/rrt.png">已提交申请！</div>
         <div class="suctxt">恭喜你，成功提交主持申请表。<br>
             　　请您耐心等待结果，我们会在一个工作日内处理您的申请！ </div>
-        <div class="Release-submit"><a href="${ctx}/user/home" class="button btn-submit Appbtn">返回个人首页</a></div>
+        <div class="Release-submit"><a href="${ctx}/me/meHome" class="button btn-submit Appbtn">返回个人首页</a></div>
     </div>
 
 </div>

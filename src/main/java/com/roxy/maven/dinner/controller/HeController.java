@@ -246,9 +246,23 @@ public class HeController {
     @RequestMapping(value = "/addMessage")
     public Map<String, Object> addMessage(String message, String userId, HttpSession session){
 
+        User user = userService.findById(Long.parseLong(userId));//染月
+        User msgUser = (User) session.getAttribute("loginUser");//给留言的人  当前登录用户
 
+        UserMsg userMsg = new UserMsg();
+        userMsg.setUser(user);
+        userMsg.setMsgUser(msgUser);
+        userMsg.setMessage(message);
+        userMsg.setMsgTime(new Timestamp(new Date().getTime()));
 
         Map<String, Object> map = new HashMap<String, Object>();
+        int rows = userMsgService.add(userMsg);
+        if(rows>0){
+            map.put("ok", true);
+        }else{
+            map.put("ok",false);
+            map.put("error", "留言失败！");
+        }
         return map;
     }
 

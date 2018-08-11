@@ -30,7 +30,7 @@
         <div class="message pd30">
             <div class="plmain">
             <div class="plm clearfix"><span class="fr">(您还可输入 <span id="textCount">90</span> 个字)</span>给TA留下一句话吧……</div>
-            <div class="textarea_input"><textarea id="message" name="message" onkeyup="words_deal();" ></textarea></div>
+            <div class="textarea_input"><textarea id="TextArea1" name="message" onkeyup="words_deal();" ></textarea></div>
             <div class="tool_submit tr"><button type="button" id="msgBtn" class="button sublist">留 言</button></div>
             </div>
 
@@ -48,8 +48,8 @@
                                 <div class="post-header clearfix">
                                     <a href="${ctx}/he/heMain?userId=${userMsg.msgUser.id}" class="name o">${userMsg.msgUser.nickname}</a>
                                     <span class="time"><fmt:formatDate value='${userMsg.msgTime}' pattern='yyyy年MM月dd日 HH:mm'/></span>
-                                    <span class="dele"><em class="myfont">&#xe601;</em><a href="javascript:;"> 删除</a></span>
-                                    <span class="reply"><em class="myfont">&#xe640;</em><a href="javascript:;"> 回复</a></span>
+                                    <%--<span class="dele"><em class="myfont">&#xe601;</em><a href="javascript:;"> 删除</a></span>--%>
+                                    <%--<span class="reply"><em class="myfont">&#xe640;</em><a href="javascript:;"> 回复</a></span>--%>
                                 </div>
 
                                 <div class="child">
@@ -133,7 +133,7 @@
 
     $("#msgBtn").click(function () {
         if(${loginUser!=null}){
-            var message = $("#message").val();
+            var message = $("#TextArea1").val();
             if(message!=""){
                 $.getJSON("${ctx}/he/addMessage",{"userId":${user.id},"message":message},function (data) {
                     if(data.ok){
