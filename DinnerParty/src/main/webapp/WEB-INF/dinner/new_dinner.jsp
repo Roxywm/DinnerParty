@@ -18,7 +18,7 @@
     <style>
         .myfloat{float: left;margin-right: 10px;}
     </style>
-    <title>17素材·私厨 - 为你推荐遍布全球最新鲜，最与众不同的顶级生活方式</title>
+    <title>美滋滋·私厨 - 发布新饭局</title>
 </head>
 <body>
 <%@include file="/common/user_head.jsp"%>

@@ -88,15 +88,8 @@ public class FindController {
         PageHelper.startPage(pageNum, pageSize);//设置分页
         //模糊查找
         List<Dinner> dinnerList = null;
-        System.out.println(keyword);
-        if("".equals(rule)){
-            if("dateDesc".equals(rule)){
-                //时间降序
-                dinnerList = dinnerService.fuzzySearchDateDesc(keyword);
-            }else if("priceDesc".equals(rule)){
-                //价钱降序
-                dinnerList = dinnerService.fuzzySearchPriceDesc(keyword);
-            }
+        if(rule==null){
+            dinnerList = dinnerService.fuzzySearch(keyword);
         }else if("dateDesc".equals(rule)){
             //时间降序
             dinnerList = dinnerService.fuzzySearchDateDesc(keyword);
@@ -164,7 +157,7 @@ public class FindController {
      * @return
      */
     @RequestMapping(value = "/categorySearch", method = RequestMethod.GET)
-    public String categorySearch(String categoryId, Map<String, Object> map,
+    public String categorySearch(String categoryId, String keyword, Map<String, Object> map,
                            @RequestParam(value="pageNum",defaultValue="1") int pageNum,
                            @RequestParam(value="pageSize",defaultValue="5") int pageSize){
 
@@ -185,6 +178,7 @@ public class FindController {
         map.put("recommendDinner", list);
         map.put("categoryList", categoryList);
         map.put("categoryId", categoryId);
+        map.put("keyword", keyword);
         return "/dinner/active";
     }
 
