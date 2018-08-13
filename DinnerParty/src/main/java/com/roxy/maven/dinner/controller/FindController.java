@@ -157,7 +157,7 @@ public class FindController {
      * @return
      */
     @RequestMapping(value = "/categorySearch", method = RequestMethod.GET)
-    public String categorySearch(String categoryId, String keyword, Map<String, Object> map,
+    public String categorySearch(String categoryId, Map<String, Object> map,
                            @RequestParam(value="pageNum",defaultValue="1") int pageNum,
                            @RequestParam(value="pageSize",defaultValue="5") int pageSize){
 
@@ -174,11 +174,14 @@ public class FindController {
         //查找类型
         List<Category> categoryList = categoryService.findAll();
 
+        //查找类型名称
+        Category category = categoryService.findById(Long.parseLong(categoryId));
+
         map.put("dinnerPage", dinnerPage);
         map.put("recommendDinner", list);
         map.put("categoryList", categoryList);
         map.put("categoryId", categoryId);
-        map.put("keyword", keyword);
+        map.put("keyword", category.getName());
         return "/dinner/active";
     }
 

@@ -7,10 +7,13 @@ import com.roxy.maven.dinner.entity.User;
 import com.roxy.maven.dinner.service.ApplyHostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.io.File;
@@ -57,16 +60,20 @@ public class ApplyHostController {
                 User loginUser = (User) session.getAttribute("loginUser");
                 applyHost.setUser(loginUser);
                 int rows = applyHostService.applyHost(applyHost);
-                if(rows==0){
-                    map.put("error","报名,请重新填写申请表！");
-                    return "dinner/applyHost";
+                if(rows>0){
+                    //报名成功
+                    return "dinner/host_apply_success";
+                }else{
+                    map.put("error","报名失败,请重新填写申请表！");
                 }
             } catch (IOException e) {
                 map.put("error","请求错误,请重新填写申请表！");
                 e.printStackTrace();
             }
+        }else{
+            map.put("error","请添加一张照片！");
         }
-        return "dinner/host_apply_success";
+        return "dinner/applyHost";
     }
 
     /**
@@ -78,4 +85,10 @@ public class ApplyHostController {
         return filename.substring(filename.lastIndexOf("."));
     }
 
+
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ModelAndView exceptionHandler(Exception exception){
+        System.out.println("上传文件异常！");
+        return new ModelAndView("dinner/applyHost").addObject("error","文件上传异常!上传文件的大小超过最大限制！！！");
+    }
 }

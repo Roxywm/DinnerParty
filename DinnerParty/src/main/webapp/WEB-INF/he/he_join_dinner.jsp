@@ -15,7 +15,7 @@
     <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=IE6/IE6.html"><![endif]-->
     <link type="image/x-icon" href="${ctx}/static/images/" rel="shortcut icon" />
     <link href="${ctx}/static/images/favicon.ico" rel="bookmark icon" />
-    <title>17素材·私厨 - 为你推荐遍布全球最新鲜，最与众不同的顶级生活方式</title>
+    <title>美滋滋·私厨 - TA参加的饭局</title>
 </head>
 <body>
 <%@include file="/common/user_head.jsp"%>
@@ -46,7 +46,11 @@
                             <div class="title"><a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${applyParty.dinner.id}">${applyParty.dinner.titel}</a></div>
                             <div class="info">${applyParty.dinner.details}</div>
                             <p class="mt10"><a href="#" target="_blank">先到先得</a>    <a href="#" target="_blank">双向选择</a>    <a href="#" target="_blank">大数据匹配</a></p>
-                            <p class="Status-wrap mt5 clearfix"><span class="ff4800 fr">报名费：${applyParty.dinner.price}元</span><a href="#" class="Status">评论</a>  <span class="Selected"><em class="myfont">&#xe64b;</em>已选中</span></p>
+                            <p class="Status-wrap mt5 clearfix">
+                                <span class="ff4800 fr">报名费：${applyParty.dinner.price}元</span>
+                                <a href="#" class="Status">评论</a>
+                                <%--<span class="Selected"><em class="myfont">&#xe64b;</em>已选中</span>--%>
+                            </p>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
 <%@ include file="/common/taglib.jsp" %>
 <html>
 <head>
-    <title>首页_Bootstrap3响应式后台主题模板Boot3Admin - JS代码网</title>
+    <title>美滋滋·私厨 - 后台管理 - 订单列表</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -46,7 +46,10 @@
                     <div class="panel-heading">
                         <div class="text-muted bootstrap-admin-box-title">
                             <a href="${ctx}/admin/applyHost/applyPage" class="btn btn-info btn-sm">
-                                <span class="glyphicon glyphicon-refresh"></span>刷新
+                                <span class="glyphicon glyphicon-refresh"></span>&nbsp;刷新
+                            </a>
+                            <a href="${ctx}/admin/orders/ordersExce" class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-export"></span>&nbsp;导出订单信息
                             </a>
                         </div>
                     </div>

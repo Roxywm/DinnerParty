@@ -15,7 +15,7 @@
     <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=${ctx}/static/IE6/IE6.html"><![endif]-->
     <link type="image/x-icon" href="${ctx}/static/images" rel="shortcut icon" />
     <link href="${ctx}/static/images/favicon.ico" rel="bookmark icon" />
-    <title>17素材·私厨 - 为你推荐遍布全球最新鲜，最与众不同的顶级生活方式</title>
+    <title>美滋滋·私厨 - 报名主持人</title>
 </head>
 <body>
 <%@include file="/common/user_head.jsp"%>
@@ -30,6 +30,11 @@
         <form action="${ctx}/user/applyHost/createApply" method="post" enctype="multipart/form-data">
             <h1>请认真填写您申请<span class="o">“HOST”</span>信息，提交成功后，无法修改哦！</h1>
             <ul class="apply-form baseinfo">
+                <li>
+                    <c:if test="${not empty error}">
+                        <p style="color: red; font-size: 18px">${error}</p>
+                    </c:if>
+                </li>
                 <li><span class="tt"><em>&#xe627;</em>姓名</span><input type="text" name="name" value="" class="inpt"></li>
                 <li><span class="tt"><em>&#xe629;</em>城市</span>
                     <select data-placeholder="北京市" id="province" style="width:285px;" class="chosen-select-no-single" tabindex="9">

@@ -12,7 +12,9 @@ import com.roxy.maven.dinner.util.VerificationCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.io.File;
@@ -401,6 +403,13 @@ public class UserController {
      */
     private String getSuffix(String filename){
         return filename.substring(filename.lastIndexOf("."));
+    }
+
+
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ModelAndView exceptionHandler(Exception exception){
+        System.out.println("上传文件异常！");
+        return new ModelAndView("/user/user_edit").addObject("error","文件上传异常!上传文件的大小超过最大限制！！！");
     }
 
 }

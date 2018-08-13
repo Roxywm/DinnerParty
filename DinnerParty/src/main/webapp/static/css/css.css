@@ -2,7 +2,7 @@
 .ico{ background:url(../images/ico.png) no-repeat; display:inline-block;}
 
 .head{ height:76px; background:#FFF;}
-.head .logo{ width:224px; height:52px; margin-top:12px; background:url(../images/logo2.png) no-repeat center; float:left; display:block;}
+.head .logo{ width:224px; height:52px; margin-top:12px; background:url(../images/logo.png) no-repeat center; float:left; display:block;}
 .headr{ padding-top:24px;}
 .headr>a{ display:inline-block; margin:0 6px; float:left;}
 .headr .headsearch{ display:inline-block; width:379px; height:33px; vertical-align:middle; float:left;}
