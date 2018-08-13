@@ -1239,6 +1239,7 @@
       <Position>4</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="300" parent="240" name="concernTime">
@@ -1326,416 +1327,423 @@
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="315" parent="241" name="thumbnail">
+    <column id="315" parent="241" name="address">
       <Position>10</Position>
+      <DataType>varchar(500)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="316" parent="241" name="thumbnail">
+      <Position>11</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="316" parent="241" name="details">
-      <Position>11</Position>
+    <column id="317" parent="241" name="details">
+      <Position>12</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="317" parent="241" name="enrolment">
-      <Position>12</Position>
-      <DataType>int(10)|0s</DataType>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="318" parent="241" name="interest">
+    <column id="318" parent="241" name="enrolment">
       <Position>13</Position>
       <DataType>int(10)|0s</DataType>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="319" parent="241" name="status">
+    <column id="319" parent="241" name="interest">
       <Position>14</Position>
+      <DataType>int(10)|0s</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="320" parent="241" name="status">
+      <Position>15</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="320" parent="241" name="userId">
+    <index id="321" parent="241" name="userId">
       <ColNames>userId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="321" parent="241" name="categoryId">
+    <index id="322" parent="241" name="categoryId">
       <ColNames>categoryId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="322" parent="241" name="PRIMARY">
+    <key id="323" parent="241" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="323" parent="241" name="dinner_ibfk_2">
+    <foreign-key id="324" parent="241" name="dinner_ibfk_2">
       <ColNames>userId</ColNames>
       <RefSchemaName>dinner_party</RefSchemaName>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="324" parent="241" name="dinner_ibfk_1">
+    <foreign-key id="325" parent="241" name="dinner_ibfk_1">
       <ColNames>categoryId</ColNames>
       <RefSchemaName>dinner_party</RefSchemaName>
       <RefTableName>category</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="325" parent="242" name="id">
+    <column id="326" parent="242" name="id">
       <Position>1</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="326" parent="242" name="userId">
+    <column id="327" parent="242" name="userId">
       <Position>2</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="327" parent="242" name="dinnerId">
+    <column id="328" parent="242" name="dinnerId">
       <Position>3</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="328" parent="242" name="message">
+    <column id="329" parent="242" name="message">
       <Position>4</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="329" parent="242" name="msgTime">
+    <column id="330" parent="242" name="msgTime">
       <Position>5</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="330" parent="242" name="userId">
+    <index id="331" parent="242" name="userId">
       <ColNames>userId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="331" parent="242" name="dinnerId">
+    <index id="332" parent="242" name="dinnerId">
       <ColNames>dinnerId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="332" parent="242" name="PRIMARY">
+    <key id="333" parent="242" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="333" parent="242" name="dinnerMsg_ibfk_1">
+    <foreign-key id="334" parent="242" name="dinnerMsg_ibfk_1">
       <ColNames>userId</ColNames>
       <RefSchemaName>dinner_party</RefSchemaName>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="334" parent="242" name="dinnerMsg_ibfk_2">
+    <foreign-key id="335" parent="242" name="dinnerMsg_ibfk_2">
       <ColNames>dinnerId</ColNames>
       <RefSchemaName>dinner_party</RefSchemaName>
       <RefTableName>dinner</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="335" parent="243" name="id">
+    <column id="336" parent="243" name="id">
       <Position>1</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="336" parent="243" name="userId">
+    <column id="337" parent="243" name="userId">
       <Position>2</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="337" parent="243" name="fansUser">
+    <column id="338" parent="243" name="fansUser">
       <Position>3</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="338" parent="243" name="status">
+    <column id="339" parent="243" name="status">
       <Position>4</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="339" parent="243" name="fansTime">
+    <column id="340" parent="243" name="fansTime">
       <Position>5</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="340" parent="243" name="userId">
+    <index id="341" parent="243" name="userId">
       <ColNames>userId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="341" parent="243" name="fansUser">
+    <index id="342" parent="243" name="fansUser">
       <ColNames>fansUser</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="342" parent="243" name="PRIMARY">
+    <key id="343" parent="243" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="343" parent="243" name="fans_ibfk_1">
+    <foreign-key id="344" parent="243" name="fans_ibfk_1">
       <ColNames>userId</ColNames>
       <RefSchemaName>dinner_party</RefSchemaName>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="344" parent="243" name="fans_ibfk_2">
+    <foreign-key id="345" parent="243" name="fans_ibfk_2">
       <ColNames>fansUser</ColNames>
       <RefSchemaName>dinner_party</RefSchemaName>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="345" parent="244" name="id">
+    <column id="346" parent="244" name="id">
       <Position>1</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="346" parent="244" name="userId">
+    <column id="347" parent="244" name="userId">
       <Position>2</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="347" parent="244" name="dinnerId">
+    <column id="348" parent="244" name="dinnerId">
       <Position>3</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="348" parent="244" name="remark">
+    <column id="349" parent="244" name="remark">
       <Position>4</Position>
-      <DataType>bigint(100)|0s</DataType>
+      <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="349" parent="244" name="total">
+    <column id="350" parent="244" name="total">
       <Position>5</Position>
       <DataType>double(10,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="350" parent="244" name="outTradeNo">
+    <column id="351" parent="244" name="outTradeNo">
       <Position>6</Position>
-      <DataType>bigint(30)|0s</DataType>
+      <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="351" parent="244" name="tradeNo">
+    <column id="352" parent="244" name="tradeNo">
       <Position>7</Position>
-      <DataType>bigint(30)|0s</DataType>
+      <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="352" parent="244" name="createTime">
+    <column id="353" parent="244" name="createTime">
       <Position>8</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="353" parent="244" name="PRIMARY">
+    <key id="354" parent="244" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="354" parent="245" name="id">
+    <column id="355" parent="245" name="id">
       <Position>1</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="355" parent="245" name="dinnerId">
+    <column id="356" parent="245" name="dinnerId">
       <Position>2</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="356" parent="245" name="src">
+    <column id="357" parent="245" name="src">
       <Position>3</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="357" parent="245" name="createTime">
+    <column id="358" parent="245" name="createTime">
       <Position>4</Position>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="358" parent="245" name="dinnerId">
+    <index id="359" parent="245" name="dinnerId">
       <ColNames>dinnerId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="359" parent="245" name="PRIMARY">
+    <key id="360" parent="245" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="360" parent="245" name="photos_ibfk_1">
+    <foreign-key id="361" parent="245" name="photos_ibfk_1">
       <ColNames>dinnerId</ColNames>
       <RefSchemaName>dinner_party</RefSchemaName>
       <RefTableName>dinner</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="361" parent="246" name="id">
+    <column id="362" parent="246" name="id">
       <Position>1</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="362" parent="246" name="userId">
+    <column id="363" parent="246" name="userId">
       <Position>2</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="363" parent="246" name="msgUser">
+    <column id="364" parent="246" name="msgUser">
       <Position>3</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="364" parent="246" name="message">
+    <column id="365" parent="246" name="message">
       <Position>4</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="365" parent="246" name="msgTime">
+    <column id="366" parent="246" name="msgTime">
       <Position>5</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="366" parent="246" name="userId">
+    <index id="367" parent="246" name="userId">
       <ColNames>userId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="367" parent="246" name="msgUser">
+    <index id="368" parent="246" name="msgUser">
       <ColNames>msgUser</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="368" parent="246" name="PRIMARY">
+    <key id="369" parent="246" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="369" parent="246" name="userMsg_ibfk_1">
+    <foreign-key id="370" parent="246" name="userMsg_ibfk_1">
       <ColNames>userId</ColNames>
       <RefSchemaName>dinner_party</RefSchemaName>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="370" parent="246" name="userMsg_ibfk_2">
+    <foreign-key id="371" parent="246" name="userMsg_ibfk_2">
       <ColNames>msgUser</ColNames>
       <RefSchemaName>dinner_party</RefSchemaName>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="371" parent="247" name="id">
+    <column id="372" parent="247" name="id">
       <Position>1</Position>
       <DataType>bigint(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="372" parent="247" name="email">
+    <column id="373" parent="247" name="email">
       <Position>2</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="373" parent="247" name="emailStatus">
+    <column id="374" parent="247" name="emailStatus">
       <Position>3</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="374" parent="247" name="password">
+    <column id="375" parent="247" name="password">
       <Position>4</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="375" parent="247" name="nickname">
+    <column id="376" parent="247" name="nickname">
       <Position>5</Position>
       <DataType>varchar(32)|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="376" parent="247" name="icon">
+    <column id="377" parent="247" name="icon">
       <Position>6</Position>
       <DataType>varchar(32)|0s</DataType>
+      <DefaultExpression>&apos;usericon.png&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="377" parent="247" name="sex">
+    <column id="378" parent="247" name="sex">
       <Position>7</Position>
       <DataType>varchar(3)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="378" parent="247" name="mobile">
+    <column id="379" parent="247" name="mobile">
       <Position>8</Position>
       <DataType>varchar(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="379" parent="247" name="mobileStatus">
+    <column id="380" parent="247" name="mobileStatus">
       <Position>9</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="380" parent="247" name="job">
+    <column id="381" parent="247" name="job">
       <Position>10</Position>
       <DataType>varchar(32)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="381" parent="247" name="areaId">
+    <column id="382" parent="247" name="areaId">
       <Position>11</Position>
       <DataType>bigint(11)|0s</DataType>
+      <DefaultExpression>&apos;450521&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="382" parent="247" name="about">
+    <column id="383" parent="247" name="about">
       <Position>12</Position>
-      <DataType>text|0s</DataType>
+      <DataType>varchar(1000)|0s</DataType>
+      <DefaultExpression>&apos;这个人很懒，什么也没留下！&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="383" parent="247" name="hostStatus">
+    <column id="384" parent="247" name="hostStatus">
       <Position>13</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="384" parent="247" name="account">
+    <index id="385" parent="247" name="account">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="385" parent="247" name="areaId">
+    <index id="386" parent="247" name="areaId">
       <ColNames>areaId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="386" parent="247" name="PRIMARY">
+    <key id="387" parent="247" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="387" parent="247" name="account">
+    <key id="388" parent="247" name="account">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>account</UnderlyingIndexName>
     </key>
-    <foreign-key id="388" parent="247" name="users_ibfk_1">
+    <foreign-key id="389" parent="247" name="users_ibfk_1">
       <ColNames>areaId</ColNames>
       <RefSchemaName>dinner_party</RefSchemaName>
       <RefTableName>areas</RefTableName>

@@ -105,7 +105,7 @@
       u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
       from dinner d,users u,areas a,category c
       where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id and d.endTime>now()
-      and (titel like CONCAT('%', #{keyword}, '%') or details like CONCAT('%', #{keyword}, '%') or c.name like CONCAT('%', #{keyword}, '%') or label like CONCAT('%', #{keyword}, '%'))
+      and (titel like CONCAT('%', #{keyword}, '%') or address like CONCAT('%', #{keyword}, '%') or details like CONCAT('%', #{keyword}, '%') or c.name like CONCAT('%', #{keyword}, '%') or label like CONCAT('%', #{keyword}, '%'))
     </select>
 
     <select id="fuzzySearchDateDesc" parameterType="string" resultMap="dinnerMap">
@@ -113,7 +113,7 @@
       u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
       from dinner d,users u,areas a,category c
       where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id and d.endTime>now()
-      and (titel like CONCAT('%', #{keyword}, '%') or details like CONCAT('%', #{keyword}, '%') or c.name like CONCAT('%', #{keyword}, '%') or label like CONCAT('%', #{keyword}, '%'))
+      and (titel like CONCAT('%', #{keyword}, '%') or address like CONCAT('%', #{keyword}, '%') or details like CONCAT('%', #{keyword}, '%') or c.name like CONCAT('%', #{keyword}, '%') or label like CONCAT('%', #{keyword}, '%'))
       order by startTime desc
     </select>
 
@@ -122,7 +122,7 @@
       u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
       from dinner d,users u,areas a,category c
       where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id and d.endTime>now()
-      and (titel like CONCAT('%', #{keyword}, '%') or details like CONCAT('%', #{keyword}, '%') or c.name like CONCAT('%', #{keyword}, '%') or label like CONCAT('%', #{keyword}, '%'))
+      and (titel like CONCAT('%', #{keyword}, '%') or address like CONCAT('%', #{keyword}, '%') or details like CONCAT('%', #{keyword}, '%') or c.name like CONCAT('%', #{keyword}, '%') or label like CONCAT('%', #{keyword}, '%'))
       order by price desc
     </select>
 

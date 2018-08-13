@@ -88,7 +88,7 @@ public class FindController {
         PageHelper.startPage(pageNum, pageSize);//设置分页
         //模糊查找
         List<Dinner> dinnerList = null;
-        if(rule==null){
+        if(rule==""){
             dinnerList = dinnerService.fuzzySearch(keyword);
         }else if("dateDesc".equals(rule)){
             //时间降序
