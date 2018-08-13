@@ -20,6 +20,14 @@ import java.util.Map;
 
 public class ExcelUtil<T> {
 
+    /**
+     * 导入文件
+     * @param type
+     * @param src
+     * @return
+     * @throws IOException
+     * @throws BiffException
+     */
     public List<T> getExcelData(Class<?> type, String src) throws IOException, BiffException {
         List<T> list = new ArrayList<T>();
 
@@ -41,6 +49,12 @@ public class ExcelUtil<T> {
         return list;
     }
 
+    /**
+     * 导出文件
+     * @param list
+     * @param fileName
+     * @return
+     */
     public String writerExcelData(List<T> list, String fileName){
         File file = null;
         try {

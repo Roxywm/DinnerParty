@@ -87,7 +87,7 @@
                         <tr>
                             <th valign="top">活动地址：</th>
                             <td class="label-active">
-                                <input type="hidden" name="address" id="address" value="">
+                                <input type="text" name="address" id="address" value="" class="baseipt">
                                 <div id="allmap" style="height: 350px";></div>
                             </td>
                         </tr>
@@ -96,7 +96,7 @@
                     <div class="photo clearfix">
                         <div class="photo-control fl">
                             <div class="active-photo img"><img id="ImgPr"></div>
-                            <p class="mt10 clearfix"><a href="javascript:;" class="button dele fr">删除图片</a><label class="btn-upfiles"><input type="file" name="photo" id="up" />修改图片</label></p>
+                            <p class="mt10 clearfix"><a href="javascript:;" class="button dele fr">删除图片</a><label class="btn-upfiles"><input type="file" name="photo" id="up" />选择图片</label></p>
                         </div>
                         <%--<div class="photo-info fl">--%>
                             <%--<textarea name="" cols="" rows="" class="area"></textarea>--%>
@@ -258,7 +258,7 @@
     }
 </script>
 
-<script defer type="text/javascript">
+<%--<script defer type="text/javascript">
     // 百度地图API功能
     var x="";
     var y="";
@@ -293,6 +293,74 @@
             var addComp = rs.addressComponents;
             $("#address").val(addComp.province + "-" + addComp.city + "-" + addComp.district + "-" + addComp.street + "-" + addComp.streetNumber);
         });
-    } function clearAll(e){ map.removeOverlay(marker); }
+    }
+    function clearAll(e){ map.removeOverlay(marker); }
+</script>--%>
+
+
+<script defer type="text/javascript">
+    // 百度地图API功能
+    var x="";
+    var y="";
+    var map = new BMap.Map("allmap");
+    // var point = new BMap.Point(116.331398,39.897445);
+    map.centerAndZoom(point,12);
+    // var marker = new BMap.Marker(point);  // 创建标注
+    // map.addOverlay(marker);              // 将标注添加到地图中
+
+    //浏览器定位
+    var geolocation = new BMap.Geolocation();
+    geolocation.getCurrentPosition(function(r){
+        if(this.getStatus() == BMAP_STATUS_SUCCESS){
+            var mk = new BMap.Marker(r.point);  // 创建标注
+            map.addOverlay(mk);                 // 将标注添加到地图中
+            map.panTo(r.point);
+            x = r.point.lng;
+            y = r.point.lat;
+        }
+        else {
+            alert('failed'+this.getStatus());
+        }
+    },{enableHighAccuracy: true})
+
+
+    if(x != "" && y != ""){
+        // clearAll();  //清除地图上存在的标注
+        var point = new BMap.Point(x,y);
+        map.centerAndZoom(point);
+        marker = new BMap.Marker(point);  // 创建新的标注
+        map.addOverlay(marker);    //将标注添加到地图上
+    }else{
+        map.centerAndZoom("北海市", 12);
+    }
+
+
+    setTimeout(function(){
+        map.setZoom(14);
+    }, 1000);  //2秒后放大到14级
+    map.enableScrollWheelZoom(true);   //缩放地图
+
+    map.addEventListener("click", showInfo);
+
+    function showInfo(e){
+        x=e.point.lng;   //获取鼠标当前点击的经纬度
+        y=e.point.lat;
+        if(x != "" && y != ""){
+            clearAll();  //清除地图上存在的标注
+            var point = new BMap.Point(x,y);
+            map.centerAndZoom(point);
+            marker = new BMap.Marker(point);  // 创建新的标注
+            map.addOverlay(marker);    //将标注添加到地图上
+        }else{
+            map.centerAndZoom("北京", 12);
+        }
+        var point = new BMap.Point(x,y);  //获取当前地理名称
+        var gc = new BMap.Geocoder();
+        gc.getLocation(point, function(rs){
+            var addComp = rs.addressComponents;
+            $("#address").val(addComp.province + "-" + addComp.city + "-" + addComp.district + "-" + addComp.street + "-" + addComp.streetNumber);
+        });
+    }
+    function clearAll(e){ map.removeOverlay(marker); }
 </script>
 </html>

@@ -18,7 +18,7 @@
     <style>
         .myfloat{float: left;margin-right: 10px;}
     </style>
-    <title>17素材·私厨 - 为你推荐遍布全球最新鲜，最与众不同的顶级生活方式</title>
+    <title>美滋滋·私厨 - 参加的饭局</title>
 </head>
 <body>
 <%@include file="/common/user_head.jsp"%>
@@ -37,8 +37,8 @@
             </c:if>
             <c:forEach items="${page.list}" var="applyParty">
                 <div class="item">
-                    <a href="#" class="user img"><img src="${ctx}/userIcon/${applyParty.user.icon}"></a>
-                    <div class="hd"><span class="username">${applyParty.user.nickname}</span>  报名了  <span class="Period">NO.${applyParty.dinner.id}期活动</span></div>
+                    <a href="${ctx}/he/heMain?userId=${applyParty.dinner.user.id}" class="user img"><img src="${ctx}/userIcon/${applyParty.dinner.user.icon}"></a>
+                    <div class="hd"><span class="username">${applyParty.dinner.user.nickname}</span>  发布了  <span class="Period">NO.${applyParty.dinner.id}期活动</span></div>
                     <div class="bd">
                         <c:if test="${applyParty.dinner.endTime.time < newDate.time}">
                             <span class="Expired indent">已过期</span>
@@ -67,7 +67,7 @@
                                 <p class="Status-wrap mt5 clearfix">
                                     <span class="ff4800 fr">报名费：${applyParty.dinner.price}元</span>
                                     <a href="#" class="Status">评论</a>
-                                    <span class="Selected"><em class="myfont"></em>已选中</span>
+                                    <%--<span class="Selected"><em class="myfont"></em>已选中</span>--%>
                                 </p>
                             </c:if>
 

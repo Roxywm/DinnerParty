@@ -18,25 +18,25 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
-    @Cacheable(value = "findByEmail", key = "#email")
+//    @Cacheable(value = "findByEmail", key = "#email")
     @Override
     public User findByEmail(String email) {
         return userDao.findByEmail(email);
     }
 
-    @Cacheable(value = "findById", key = "#id")
+//    @Cacheable(value = "findByUserId", key = "#id")
     @Override
     public User findById(long id) {
         return userDao.findById(id);
     }
 
-    @CacheEvict(value = {"findByEmail", "findById"}, allEntries = true)
+//    @CacheEvict(value = {"findByEmail", "findById"}, allEntries = true)
     @Override
     public void register(User user) {
         userDao.register(user);
     }
 
-    @CacheEvict(value = {"findByEmail", "findById"}, allEntries = true)
+//    @CacheEvict(value = {"findByEmail", "findById"}, allEntries = true)
     @Override
     public int update(User user) {
         return userDao.update(user);

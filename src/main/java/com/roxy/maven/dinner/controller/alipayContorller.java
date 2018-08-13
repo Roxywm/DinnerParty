@@ -48,11 +48,11 @@ public class alipayContorller {
         //找出该饭局
         dinner = dinnerService.findByDinnerId(Long.parseLong(dinnerId));
 
-
         /**跳转支付宝**/
 
         //获得初始化的AlipayClient
-        AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id, AlipayConfig.merchant_private_key, "json", AlipayConfig.charset, AlipayConfig.alipay_public_key, AlipayConfig.sign_type);
+        AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id,
+                AlipayConfig.merchant_private_key, "json", AlipayConfig.charset, AlipayConfig.alipay_public_key, AlipayConfig.sign_type);
 
         //设置请求参数
         AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
@@ -79,7 +79,6 @@ public class alipayContorller {
         String result = null;
         try {
             result = alipayClient.pageExecute(alipayRequest).getBody();
-
 
         } catch (AlipayApiException e) {
             e.printStackTrace();

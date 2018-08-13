@@ -40,8 +40,8 @@
     </select>
     
     <insert id="register" parameterType="user" useGeneratedKeys="true" keyProperty="id">
-      insert into users(email,password,nickname,sex,mobile,job,about)
-      values (#{email},#{password},#{nickname},#{sex},#{mobile},#{job},#{about})
+      insert into users(email,password,nickname,sex,mobile,job)
+      values (#{email},#{password},#{nickname},#{sex},#{mobile},#{job})
     </insert>
 
 

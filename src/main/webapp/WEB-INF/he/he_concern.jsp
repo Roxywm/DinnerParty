@@ -15,7 +15,7 @@
     <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=IE6/IE6.html"><![endif]-->
     <link type="image/x-icon" href="${ctx}/static/images/" rel="shortcut icon" />
     <link href="${ctx}/static/images/favicon.ico" rel="bookmark icon" />
-    <title>17素材·私厨 - 为你推荐遍布全球最新鲜，最与众不同的顶级生活方式</title>
+    <title>美滋滋·私厨 - TA的关注</title>
 </head>
 <body>
 <%@include file="/common/user_head.jsp"%>
@@ -47,7 +47,8 @@
                     <div class="Status">
                         <a href="javascript:;" class="follow-btn">
                             <span class="concerns"><em class="myfont">&#xe610;</em>已关注</span>
-                            <span class="Unfollow">取消关注</span></a>
+                            <span class="Unfollow">取消关注</span>
+                        </a>
                         <a href="#" class="Private-letter"><em class="myfont">&#xe63f;</em>私信</a>
                     </div>
                 </li>

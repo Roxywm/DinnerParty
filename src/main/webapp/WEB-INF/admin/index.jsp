@@ -2,7 +2,7 @@
 <%@ include file="/common/taglib.jsp" %>
 <html>
 <head>
-    <title>首页_Bootstrap3响应式后台主题模板Boot3Admin - JS代码网</title>
+    <title>美滋滋·私厨 - 后台管理 - 首页</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

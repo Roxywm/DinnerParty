@@ -9,28 +9,24 @@
     <link href="${ctx}/static/css/css.css" rel="stylesheet">
     <link href="${ctx}/static/css/chosen.css" rel="stylesheet">
     <!--[if lt IE 9]>
-    <link href="${ctx}/static/css/ie.css" rel="stylesheet" type="text/css" >
+    <link href="css/ie.css" rel="stylesheet" type="text/css" >
     <meta http-equiv="X-UA-Compatible" content="IE=8" >
     <![endif]-->
-    <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=${ctx}/static/IE6/IE6.html"><![endif]-->
+    <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=IE6/IE6.html"><![endif]-->
     <link type="image/x-icon" href="${ctx}/static/images" rel="shortcut icon" />
     <link href="${ctx}/static/images/favicon.ico" rel="bookmark icon" />
-    <title>美滋滋·私厨 - 报名成功</title>
+    <title>美滋滋·私厨 - 页面发生错误</title>
 </head>
 <body>
 <%@include file="/common/user_head.jsp"%>
 
 <div class="wrap">
     <div class="sign-title tc" style=" -webkit-opacity: 0.3; -moz-opacity: 0.3; -khtml-opacity: 0.3;  opacity: .3; filter:alpha(opacity=30);  ">
-        <h1>我要申请报名</h1>
-        亲爱的<a href="#" class="o">${loginUser.nickname}</a>，欢迎申请<span class="o">热红酒</span>
+        <h1>500</h1>
     </div>
 
     <div class="Application tc">
-        <div class="suc-header o"><img src="${ctx}/static/images/rrt.png">已提交申请！</div>
-        <div class="suctxt">恭喜你，成功提交主持申请表。<br>
-            　　请您耐心等待结果，我们会在一个工作日内处理您的申请！ </div>
-        <div class="Release-submit"><a href="${ctx}/me/meHome" class="button btn-submit Appbtn">返回个人首页</a></div>
+        <p class="f18">您访问的页面发生错误</p>
     </div>
 
 </div>
@@ -80,8 +76,8 @@
             </ul>
         </div>
         <div class="fr">
-            <img src="images/img2.jpg">
-            <img src="images/img3.jpg">
+            <img src="${ctx}/static/images/img2.jpg">
+            <img src="${ctx}/static/images/img3.jpg">
         </div>
     </div>
     <div class="gotop">&#xe608;</div>
