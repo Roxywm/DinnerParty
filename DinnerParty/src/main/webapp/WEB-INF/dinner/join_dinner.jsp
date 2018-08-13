@@ -44,7 +44,7 @@
                             <span class="Expired indent">已过期</span>
                         </c:if>
 
-                        <div class="Activity-img img"><a href="detail.html"><img src="${ctx}/uploads/${applyParty.dinner.thumbnail}"></a></div>
+                        <div class="Activity-img img"><a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${applyParty.dinner.id}"><img src="${ctx}/uploads/${applyParty.dinner.thumbnail}"></a></div>
                         <div class="txt">
                             <div class="title"><a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${applyParty.dinner.id}">${applyParty.dinner.titel}</a></div>
                             <div class="info">${applyParty.dinner.details}</div>

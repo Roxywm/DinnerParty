@@ -148,6 +148,23 @@ public class MeController {
         return "me/me_fans";
     }
 
+    /**
+     * 跳到管理报名人员的页面
+     * @return
+     */
+    @RequestMapping(value = "/managerApply", method = RequestMethod.GET)
+    public String managerApply(String dinnerId, Map<String, Object> map){
+
+        Dinner dinner = dinnerService.findByDinnerId(Long.parseLong(dinnerId));
+
+        List<ApplyParty> partyList = applyPartyService.findByDinnerId(Long.parseLong(dinnerId));
+
+        map.put("dinner", dinner);
+        map.put("partyList", partyList);
+
+        return "me/manager_apply";
+    }
+
 
 
 }

@@ -92,7 +92,7 @@
             <c:forEach items="${dinnerPage.list}" var="dinner">
                 <li>
                     <div class="img">
-                        <a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${dinner.id}"><img src="${ctx}/uploads/${dinner.thumbnail}" height="220px" width="730px"></a>
+                        <a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${dinner.id}"><img src="${ctx}/uploads/${dinner.photos.get(0).src}" height="220px" width="730px"></a>
                         <div class="bottominfo">
                             <span class="label">
                                 <c:forEach items="${dinner.label.split(' ')}" var="str">
@@ -147,7 +147,7 @@
     <div class="aside fr">
         <h1 class="header">热门活动</h1>
         <div class="hot-active">
-            <a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${recommendDinner.get(0).id}" class="img"><img src="${ctx}/uploads/${recommendDinner.get(0).thumbnail}" height="108px" width="300px"></a>
+            <a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${recommendDinner.get(0).id}" class="img"><img src="${ctx}/uploads/${recommendDinner.get(0).photos.get(0).src}" height="108px" width="300px"></a>
             <div class="active-info">
                 <div class="user">
                     <a href="${ctx}/he/heMain?userId=${recommendDinner.get(0).user.id}" class="userimg"><img src="${ctx}/userIcon/${recommendDinner.get(0).user.icon}"></a>

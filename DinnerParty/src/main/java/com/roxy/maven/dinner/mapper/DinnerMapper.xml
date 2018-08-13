@@ -12,6 +12,7 @@
         <result property="startTime" column="startTime" />
         <result property="endTime" column="endTime" />
         <result property="label" column="label" />
+        <result property="address" column="address" />
         <result property="thumbnail" column="thumbnail" />
         <result property="details" column="details" />
         <result property="enrolment" column="enrolment" />
@@ -56,8 +57,8 @@
     </select>
 
     <insert id="create" parameterType="dinner" useGeneratedKeys="true" keyProperty="id">
-        insert into dinner(userId,titel, price, maximum, startTime, endTime, categoryId, label, thumbnail, details)
-        values (#{user.id},#{titel},#{price},#{maximum},#{startTime},#{endTime},#{category.id},#{label},#{thumbnail},#{details})
+        insert into dinner(userId,titel, price, maximum, startTime, endTime, categoryId, label, address, thumbnail, details)
+        values (#{user.id},#{titel},#{price},#{maximum},#{startTime},#{endTime},#{category.id},#{label},#{address},#{thumbnail},#{details})
     </insert>
 
     <insert id="createPhoto" parameterType="java.util.List">
@@ -68,7 +69,7 @@
     </insert>
 
     <select id="findByUserId" parameterType="long" resultMap="dinnerMap">
-      select d.id did, titel,price,maximum,startTime,endTime,label,thumbnail,details,enrolment,interest,d.status dstatus,
+      select d.id did, titel,price,maximum,startTime,endTime,label,address,thumbnail,details,enrolment,interest,d.status dstatus,
       u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
       from dinner d,users u,areas a,category c
       where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id
@@ -76,7 +77,7 @@
     </select>
 
     <select id="findByDinnerId" parameterType="long" resultMap="dinnerMap">
-      select d.id did, titel,price,maximum,startTime,endTime,label,thumbnail,details,enrolment,interest,d.status dstatus,
+      select d.id did, titel,price,maximum,startTime,endTime,label,address,thumbnail,details,enrolment,interest,d.status dstatus,
       u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
       from dinner d,users u,areas a,category c
       where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id
@@ -92,7 +93,7 @@
     </update>
 
     <select id="recommendDinner" resultMap="dinnerMap">
-      select d.id did, titel,price,maximum,startTime,endTime,label,thumbnail,details,enrolment,interest,d.status dstatus,
+      select d.id did, titel,price,maximum,startTime,endTime,label,address,thumbnail,details,enrolment,interest,d.status dstatus,
       u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
       from dinner d,users u,areas a,category c
       where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id and d.endTime>now()
@@ -100,7 +101,7 @@
     </select>
 
     <select id="fuzzySearch" parameterType="string" resultMap="dinnerMap">
-      select d.id did, titel,price,maximum,startTime,endTime,label,thumbnail,details,enrolment,interest,d.status dstatus,
+      select d.id did, titel,price,maximum,startTime,endTime,label,address,thumbnail,details,enrolment,interest,d.status dstatus,
       u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
       from dinner d,users u,areas a,category c
       where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id and d.endTime>now()
@@ -108,7 +109,7 @@
     </select>
 
     <select id="fuzzySearchDateDesc" parameterType="string" resultMap="dinnerMap">
-      select d.id did, titel,price,maximum,startTime,endTime,label,thumbnail,details,enrolment,interest,d.status dstatus,
+      select d.id did, titel,price,maximum,startTime,endTime,label,address,thumbnail,details,enrolment,interest,d.status dstatus,
       u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
       from dinner d,users u,areas a,category c
       where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id and d.endTime>now()
@@ -117,7 +118,7 @@
     </select>
 
     <select id="fuzzySearchPriceDesc" parameterType="string" resultMap="dinnerMap">
-      select d.id did, titel,price,maximum,startTime,endTime,label,thumbnail,details,enrolment,interest,d.status dstatus,
+      select d.id did, titel,price,maximum,startTime,endTime,label,address,thumbnail,details,enrolment,interest,d.status dstatus,
       u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
       from dinner d,users u,areas a,category c
       where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id and d.endTime>now()
@@ -126,7 +127,7 @@
     </select>
 
     <select id="fuzzySearchTimeSlot" parameterType="date" resultMap="dinnerMap">
-      select d.id did, titel,price,maximum,startTime,endTime,label,thumbnail,details,enrolment,interest,d.status dstatus,
+      select d.id did, titel,price,maximum,startTime,endTime,label,address,thumbnail,details,enrolment,interest,d.status dstatus,
       u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
       from dinner d,users u,areas a,category c
       where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id and d.endTime>now()
@@ -134,7 +135,7 @@
     </select>
 
     <select id="categorySearch" parameterType="long" resultMap="dinnerMap">
-      select d.id did, titel,price,maximum,startTime,endTime,label,thumbnail,details,enrolment,interest,d.status dstatus,
+      select d.id did, titel,price,maximum,startTime,endTime,label,address,thumbnail,details,enrolment,interest,d.status dstatus,
       u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
       from dinner d,users u,areas a,category c
       where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id and d.endTime>now()

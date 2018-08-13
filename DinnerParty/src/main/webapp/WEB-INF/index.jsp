@@ -60,19 +60,19 @@
                     <input type="text" class="input-large eat" autocomplete="off" id="keyword" name="keyword" placeholder="您想要吃什么？">
                     <span id="enter_location_error_message" class="bad hide">请告诉我您要吃什么？</span>
                 </div>
-                <div class="box-wrapper">
-                    <select data-placeholder="地点" style="width:150px;" class="chosen-select-no-single" tabindex="9">
-                        <option>地点</option>
-                        <option>地点</option>
-                    </select>
-                </div>
-                <div class="box-wrapper bd0">
-                    <select data-placeholder="就餐人数" style="width:150px;" class="chosen-select-no-single" tabindex="9">
-                        <option>就餐人数</option>
-                        <option>2人</option>
-                        <option>2人</option>
-                    </select>
-                </div>
+                <%--<div class="box-wrapper">--%>
+                    <%--<select data-placeholder="地点" style="width:150px;" class="chosen-select-no-single" tabindex="9">--%>
+                        <%--<option>地点</option>--%>
+                        <%--<option>地点</option>--%>
+                    <%--</select>--%>
+                <%--</div>--%>
+                <%--<div class="box-wrapper bd0">--%>
+                    <%--<select data-placeholder="就餐人数" style="width:150px;" class="chosen-select-no-single" tabindex="9">--%>
+                        <%--<option>就餐人数</option>--%>
+                        <%--<option>2人</option>--%>
+                        <%--<option>2人</option>--%>
+                    <%--</select>--%>
+                <%--</div>--%>
                 <button type="submit" class="button search-button" id="submit_search">搜索</button>
             </form>
             <div class="hot-key fl">热门搜索： <a href="active.html">早餐</a><a href="active.html">午餐</a><a href="active.html">晚餐</a><a href="active.html">西餐</a><a href="active.html">午餐</a><a href="active.html">西餐</a><a href="active.html">西餐</a></div>

@@ -50,7 +50,7 @@
                             <div class="info">${dinner.details}</div>
                             <%--<p class="mt10"><a href="#" target="_blank">先到先得</a>    <a href="#" target="_blank">双向选择</a>    <a href="#" target="_blank">大数据匹配</a></p>--%>
                             <p class="mt10"><a href="javascript:;" target="_blank">${dinner.category.name}</a></p>
-                            <a href="Management.html" class="button btn-mana">管理报名人数</a>
+                            <a href="${ctx}/me/managerApply?dinnerId=${dinner.id}" class="button btn-mana">管理报名人数</a>
                         </div>
                     </div>
                 </div>

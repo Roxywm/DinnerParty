@@ -13,7 +13,7 @@
 
 .indexban{ height:600px; width:100%; position:relative; background-position:center; background-repeat:no-repeat; z-index:99}
 .p1-hero-search-form{ background: #000; background: rgba(0,0,0,0.6); -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";position: absolute; bottom:0; left:0; right:0; padding:23px 0;}
-.search_form{ width:673px; height:44px; float:left; display:block; background:#FFF;}
+.search_form{ /*width:673px; */height:44px; float:left; display:block; background:#FFF;margin-left: 200px;}
 .box-wrapper { position: relative; display: inline-block; float:left; border-right:1px solid #ececec;}
 .input-large{ padding:10px 20px; height:24px; line-height:24px; border:0; font-size:14px; width:260px;}
 #enter_location_error_message { position: absolute; top: 100%; left: 0; width: 100%; background: #fff; background: rgba(255,255,255,0.8);
