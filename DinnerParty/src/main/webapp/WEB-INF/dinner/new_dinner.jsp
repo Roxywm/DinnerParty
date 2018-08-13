@@ -88,7 +88,10 @@
                             <th valign="top">活动地址：</th>
                             <td class="label-active">
                                 <input type="text" name="address" id="address" value="" class="baseipt">
-                                <div id="allmap" style="height: 350px";></div>
+                                <input type="text" id="localSearch" placeholder="搜索地址">
+                                <button type="button" onclick="setPlace()">搜索</button>
+                                <div id="allmap" style="height: 350px";>
+                                </div>
                             </td>
                         </tr>
                     </table>
@@ -300,23 +303,20 @@
 
 <script defer type="text/javascript">
     // 百度地图API功能
-    var x="";
-    var y="";
+    var x = 0;
+    var y = 0;
     var map = new BMap.Map("allmap");
-    // var point = new BMap.Point(116.331398,39.897445);
-    map.centerAndZoom(point,12);
-    // var marker = new BMap.Marker(point);  // 创建标注
-    // map.addOverlay(marker);              // 将标注添加到地图中
-
+    var marker = null;
     //浏览器定位
     var geolocation = new BMap.Geolocation();
     geolocation.getCurrentPosition(function(r){
         if(this.getStatus() == BMAP_STATUS_SUCCESS){
-            var mk = new BMap.Marker(r.point);  // 创建标注
-            map.addOverlay(mk);                 // 将标注添加到地图中
-            map.panTo(r.point);
-            x = r.point.lng;
-            y = r.point.lat;
+            map.centerAndZoom(r.point,14);
+            marker = new BMap.Marker(r.point);  // 创建标注
+            map.addOverlay(marker);
+
+            getAddress(r.point.lng,r.point.lat);
+
         }
         else {
             alert('failed'+this.getStatus());
@@ -324,20 +324,10 @@
     },{enableHighAccuracy: true})
 
 
-    if(x != "" && y != ""){
-        // clearAll();  //清除地图上存在的标注
-        var point = new BMap.Point(x,y);
-        map.centerAndZoom(point);
-        marker = new BMap.Marker(point);  // 创建新的标注
-        map.addOverlay(marker);    //将标注添加到地图上
-    }else{
-        map.centerAndZoom("北海市", 12);
-    }
+    // setTimeout(function(){
+    //     map.setZoom(14);
+    // }, 1000);  //2秒后放大到14级
 
-
-    setTimeout(function(){
-        map.setZoom(14);
-    }, 1000);  //2秒后放大到14级
     map.enableScrollWheelZoom(true);   //缩放地图
 
     map.addEventListener("click", showInfo);
@@ -352,15 +342,47 @@
             marker = new BMap.Marker(point);  // 创建新的标注
             map.addOverlay(marker);    //将标注添加到地图上
         }else{
-            map.centerAndZoom("北京", 12);
+            map.centerAndZoom("北京", 14);
         }
-        var point = new BMap.Point(x,y);  //获取当前地理名称
-        var gc = new BMap.Geocoder();
-        gc.getLocation(point, function(rs){
-            var addComp = rs.addressComponents;
-            $("#address").val(addComp.province + "-" + addComp.city + "-" + addComp.district + "-" + addComp.street + "-" + addComp.streetNumber);
-        });
+
+        getAddress(x,y);
+
+        // var point = new BMap.Point(x,y);  //获取当前地理名称
+        // var gc = new BMap.Geocoder();
+        // gc.getLocation(point, function(rs){
+        //     var addComp = rs.addressComponents;
+        //     $("#address").val(addComp.province + "-" + addComp.city + "-" + addComp.district + "-" + addComp.street + "-" + addComp.streetNumber);
+        // });
     }
     function clearAll(e){ map.removeOverlay(marker); }
+
+
+    function getAddress(x,y) {
+        var url = "http://api.map.baidu.com/geocoder/v2/?ak=3oHqr7Ms8LCLzpbjCLE6ZYh0lX0nRGyg&location="+y+","+x+"&output=json&pois=1";
+        $.ajax({
+            url:url,
+            type:"get",
+            dataType:"jsonp",
+            success:function (data) {
+                $("#address").val(data.result.addressComponent.city+"-"+data.result.addressComponent.district+"-"+data.result.addressComponent.street+"-"+data.result.sematic_description)
+            }
+        })
+    }
+
+    function setPlace() {
+        map.clearOverlays();    //清除地图上所有覆盖物
+        function myFun() {
+            var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+            map.centerAndZoom(pp, 14);
+            marker = new BMap.Marker(pp);
+            map.addOverlay(marker);    //添加标注
+            getAddress(pp.lng,pp.lat);
+        }
+
+        var local = new BMap.LocalSearch(map, { //智能搜索
+            onSearchComplete: myFun
+        });
+        local.search($("#localSearch").val());
+    }
 </script>
 </html>
