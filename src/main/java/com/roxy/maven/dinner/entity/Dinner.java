@@ -17,6 +17,7 @@ public class Dinner implements Serializable {
     private Timestamp endTime;//结束时间
     private Category category;//类型
     private String label;//标签
+    private String address;//活动地址
     private String thumbnail;//缩略图
     private String details;//活动详情
     private Integer enrolment;//报名人数
@@ -97,6 +98,14 @@ public class Dinner implements Serializable {
         this.label = label;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getThumbnail() {
         return thumbnail;
     }
@@ -152,7 +161,7 @@ public class Dinner implements Serializable {
         this.id = id;
     }
 
-    public Dinner(User user, String titel, Double price, Integer maximum, Timestamp startTime, Timestamp endTime, Category category, String label, String thumbnail, String details, Integer enrolment, Integer interest, Integer status, List<Photo> photos) {
+    public Dinner(User user, String titel, Double price, Integer maximum, Timestamp startTime, Timestamp endTime, Category category, String label, String address, String thumbnail, String details, Integer enrolment, Integer interest, Integer status, List<Photo> photos) {
         this.user = user;
         this.titel = titel;
         this.price = price;
@@ -161,6 +170,7 @@ public class Dinner implements Serializable {
         this.endTime = endTime;
         this.category = category;
         this.label = label;
+        this.address = address;
         this.thumbnail = thumbnail;
         this.details = details;
         this.enrolment = enrolment;
@@ -181,9 +191,10 @@ public class Dinner implements Serializable {
                 ", endTime=" + endTime +
                 ", category=" + category +
                 ", label='" + label + '\'' +
+                ", address='" + address + '\'' +
                 ", thumbnail='" + thumbnail + '\'' +
                 ", details='" + details + '\'' +
-                ", Enrolment=" + enrolment +
+                ", enrolment=" + enrolment +
                 ", interest=" + interest +
                 ", status=" + status +
                 ", photos=" + photos +

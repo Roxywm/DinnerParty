@@ -70,10 +70,19 @@ public class HeController {
 
         PageInfo<ApplyParty> page = new PageInfo<ApplyParty>(list);
 
+
+        //接待人数
+        List<Dinner> dinnerList = dinnerService.findByUserId(user.getId());
+        int reception = 0;
+        for(Dinner dinner:dinnerList){
+            reception += dinner.getEnrolment();
+        }
+
         map.put("user", user);
         map.put("isConcern", isConcern);
         map.put("page", page);
         map.put("newDate", new Timestamp(new Date().getTime()));
+        session.setAttribute("reception", reception);
         if(loginUser!=null){
             if(loginUser.getId()==user.getId()){
                 return "redirect:/me/meHome";

@@ -6,6 +6,7 @@ import com.roxy.maven.dinner.dao.AreaDao;
 import com.roxy.maven.dinner.entity.Area;
 import com.roxy.maven.dinner.service.AreaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,13 +16,15 @@ public class AreaServiceImpl implements AreaService {
 
 	@Autowired
 	private AreaDao areaDao;
-	
+
+	@Cacheable(value = "findByAreaId", key = "#id")
 	public Area findById(Long id) {
         Area area = areaDao.findById(id);
         getParent(area);
         return areaDao.findById(id);
 	}
 
+	@Cacheable(value = "findByParentId", key = "#parentId")
 	public List<Area> findByParentId(Long parentId) {
 		return areaDao.findByParentId(parentId);
 	}

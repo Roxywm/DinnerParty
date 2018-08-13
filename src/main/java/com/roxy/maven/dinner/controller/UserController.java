@@ -30,6 +30,8 @@ public class UserController {
     private AreaService areaService;
     @Autowired
     private ConcernService concernService;
+    @Autowired
+    private DinnerService dinnerService;
 
     /**
      * 跳到注册页
@@ -93,12 +95,15 @@ public class UserController {
                 Area area = areaService.findById(oldUser.getArea().getId());
                 oldUser.setArea(area);
 
+                //查找关注的人
                 PageHelper.startPage(1, 4);//设置分页
                 List<Concern> concernList = concernService.findAllConcern(oldUser.getId());
                 PageInfo<Concern> concernPage = new PageInfo<Concern>(concernList);
+                //查找粉丝
                 PageHelper.startPage(1, 4);//设置分页
                 List<Concern> fansList = concernService.findAllFans(oldUser.getId());
                 PageInfo<Concern> fansPage = new PageInfo<Concern>(fansList);
+
 
                 session.setAttribute("loginUser", oldUser);
                 session.setAttribute("concernPage", concernPage);

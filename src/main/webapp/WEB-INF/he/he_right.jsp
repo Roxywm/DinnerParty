@@ -17,7 +17,7 @@
         <div class="Praise tc">${user.area.parent.parent.name}
             <c:if test="${user.area.parent.parent.name != null}">-</c:if>
             ${user.area.parent.name}-${user.area.name}</div>
-        <div class="tc">已经接待客人数：<span class="o">200</span>人</div>
+        <div class="tc">已经接待客人数：<span class="o">${reception}</span>人</div>
 
         <div class="txtwrap tc" style="border-bottom:0; min-height:200px;">
             <h1 class="f16">个人简介</h1>

@@ -79,10 +79,16 @@
                             </td>
                         </tr>
                         <tr>
-                            <th valign="top">活动标签：</th>
-                            <td class="label-active">
-                                <a href="javascript:;" class="label-name">标签</a><a href="javascript:;" class="label-name">标签</a><a href="javascript:;" class="label-name">标签</a><a href="javascript:;" class="label-name">标签</a><a href="javascript:;" class="label-name">标签</a>
+                            <th>活动标签：</th>
+                            <td>
                                 <p class="mt10"><input type="text" name="label" value="" class="baseipt"> 多个标签请用“空格”分开</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th valign="top">活动地址：</th>
+                            <td class="label-active">
+                                <input type="hidden" name="address" id="address" value="">
+                                <div id="allmap" style="height: 350px";></div>
                             </td>
                         </tr>
                     </table>
@@ -137,8 +143,10 @@
 <script src="${ctx}/static/date/WdatePicker.js"></script>
 <script src="${ctx}/static/js/Action.js"></script>
 <script src="${ctx}/static/js/upfiles.js"></script>
-
 <script src="${ctx}/static/js/chosen.jquery.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=3oHqr7Ms8LCLzpbjCLE6ZYh0lX0nRGyg"></script>
+
+
 <script type="text/javascript">
     $(document).ready(function($){
         //select 样式美化
@@ -248,5 +256,43 @@
             ThisPic.height = reHeight;
         }
     }
+</script>
+
+<script defer type="text/javascript">
+    // 百度地图API功能
+    var x="";
+    var y="";
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(109.12262792,21.47271824);
+    map.centerAndZoom(point , 11);
+    var marker = new BMap.Marker(point);  // 创建标注
+    map.addOverlay(marker);              // 将标注添加到地图中
+
+    setTimeout(function(){
+        map.setZoom(14);
+    }, 1000);  //2秒后放大到14级
+    map.enableScrollWheelZoom(true);   //缩放地图
+
+    map.addEventListener("click", showInfo);
+
+    function showInfo(e){
+        x=e.point.lng;   //获取鼠标当前点击的经纬度
+        y=e.point.lat;
+        if(x != "" && y != ""){
+            clearAll();  //清除地图上存在的标注
+            var point = new BMap.Point(x,y);
+            map.centerAndZoom(point);
+            marker = new BMap.Marker(point);  // 创建新的标注
+            map.addOverlay(marker);    //将标注添加到地图上
+        }else{
+            map.centerAndZoom("北京", 12);
+        }
+        var point = new BMap.Point(x,y);  //获取当前地理名称
+        var gc = new BMap.Geocoder();
+        gc.getLocation(point, function(rs){
+            var addComp = rs.addressComponents;
+            $("#address").val(addComp.province + "-" + addComp.city + "-" + addComp.district + "-" + addComp.street + "-" + addComp.streetNumber);
+        });
+    } function clearAll(e){ map.removeOverlay(marker); }
 </script>
 </html>

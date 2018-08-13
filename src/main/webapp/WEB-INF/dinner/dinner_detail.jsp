@@ -17,6 +17,7 @@
     <link type="image/x-icon" href="${ctx}/static/images" rel="shortcut icon" />
     <link href="${ctx}/static/images/favicon.ico" rel="bookmark icon" />
     <title>17素材·私厨 - 为你推荐遍布全球最新鲜，最与众不同的顶级生活方式</title>
+
 </head>
 <body>
 
@@ -127,7 +128,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
             <table>
                 <tr>
                     <th><img src="${ctx}/static/images/l.png"></th>
-                    <td><p class="c999">活动地址</p>陕西南路35号雅克红房子5楼200 米</td>
+                    <td><p class="c999">活动地址</p>${dinner.address}</td>
                 </tr>
                 <tr>
                     <th><img src="${ctx}/static/images/time.png"></th>
@@ -331,6 +332,9 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
             autoplay: true,
             autoplaySpeed: 2000,
         });
+
+
+
     })
 </script>
 <script>
@@ -447,5 +451,6 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         }
     })
 </script>
+
 </body>
 </html>
