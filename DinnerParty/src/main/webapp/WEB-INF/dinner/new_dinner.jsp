@@ -366,8 +366,8 @@
         }
     })
 </script>
-<script>
-function check3() {
+<script type="text/javascript">
+    function check3() {
     var titel = $("#titel").val();
     var price = $("#price").val();
     var maximum = $("#maximum").val();
