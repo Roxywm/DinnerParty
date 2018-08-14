@@ -126,105 +126,19 @@
     </div>
 </div>
 
-<!-- 模态框 -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title" id="myModalLabel">审核</h4>
-            </div>
-            <div class="modal-body">
-                <div class="alert alert-info" role="alert">
-                    <input type="hidden" id="userId" value="">
-                    照片：<img id="photo" src="${ctx}/static/images/usericon.png" height="150px"><br><br>
-                    ID：<span id="id" class="black"></span><br><br>
-                    申请人：<span id="proposer" class="black"></span><br><br>
-                    电话：<span id="mobile" class="black"></span><br><br>
-                    邮箱：<span id="email" class="black"></span><br><br>
-                    地址：<span id="area" class="black"></span>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>驳回
-                </button>
-                <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal">
-                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>通过
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script type="text/javascript" src="${ctx}/static/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/twitter-bootstrap-hover-dropdown.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/vendors/easypiechart/jquery.easy-pie-chart.js"></script>
+<script type="text/javascript" src="${ctx}/static/layer/layer.js"></script>
 
 <script type="text/javascript">
     $(function () {
         // Easy pie charts
         $('.easyPieChart').easyPieChart({animate: 1000});
 
-
-    });
-
-    $(".audit").click(function () {
-        $("#userId").val($(this).attr("userId"))
-        $("#id").text($(this).attr("value"));
-        $("#photo").attr("src",$(this).attr("photo"));
-        $("#proposer").text($(this).attr("proposer"));
-        $("#mobile").text($(this).attr("mobile"));
-        $("#email").text($(this).attr("email"));
-        $("#area").text($(this).attr("area"));
-        $('#myModal').modal();
-    });
-
-    $("#btn_submit").click(function(){
-        var id = $("#id").text();
-        var userId = $("#userId").val();
-        $.get("${ctx}/admin/applyHost/updateStatus",{"applyId":id,"id":userId}, function(result){
-            if (result=="ok"){
-                toastr.options = {
-                    closeButton: false,
-                    debug: false,
-                    progressBar: false,
-                    positionClass: "toast-top-center",
-                    onclick: null,
-                    showDuration: "300",
-                    hideDuration: "1000",
-                    timeOut: "5000",
-                    extendedTimeOut: "1000",
-                    showEasing: "swing",
-                    hideEasing: "linear",
-                    showMethod: "fadeIn",
-                    hideMethod: "fadeOut"
-                };
-                toastr.info("审核成功!");
-
-            }else{
-                toastr.options = {
-                    closeButton: false,
-                    debug: false,
-                    progressBar: false,
-                    positionClass: "toast-top-center",
-                    onclick: null,
-                    showDuration: "300",
-                    hideDuration: "1000",
-                    timeOut: "5000",
-                    extendedTimeOut: "1000",
-                    showEasing: "swing",
-                    hideEasing: "linear",
-                    showMethod: "fadeIn",
-                    hideMethod: "fadeOut"
-                };
-                toastr.info("审核失败!");
-
-            }
-        });
     });
 </script>
 </body>

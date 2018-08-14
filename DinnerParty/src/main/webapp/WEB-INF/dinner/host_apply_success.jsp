@@ -89,6 +89,7 @@
 <div class="foot tc">Copyright © 2003-2015 17素材, All Rights Reserved</div>
 <script src="${ctx}/static/js/jquery.js"></script>
 <script src="${ctx}/static/js/Action.js"></script>
+<script type="text/javascript" src="${ctx}/static/layer/layer.js"></script>
 
 <script src="${ctx}/static/js/chosen.jquery.js"></script>
 <script type="text/javascript">

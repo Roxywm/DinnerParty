@@ -126,6 +126,7 @@
 <script src="${ctx}/static/js/jquery-1.8.3.min.js"></script>
 <script src="${ctx}/static/js/Action.js"></script>
 <script src="${ctx}/static/js/upfiles.js"></script>
+<script type="text/javascript" src="${ctx}/static/layer/layer.js"></script>
 
 <script src="${ctx}/static/js/chosen.jquery.js"></script>
 <script type="text/javascript">

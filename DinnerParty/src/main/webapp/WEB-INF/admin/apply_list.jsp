@@ -21,8 +21,9 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script type="text/javascript" src="${ctx}/static/js/jQuery-v2.0.3.js"></script>
 
-    <link href="${ctx}/static/toastr/toastr.css" rel="stylesheet"/>
-    <script src="${ctx}/static/toastr/toastr.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="${ctx}/static/layer/layer.js"></script>
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -179,7 +180,6 @@
         // Easy pie charts
         $('.easyPieChart').easyPieChart({animate: 1000});
 
-
     });
 
     $(".audit").click(function () {
@@ -196,42 +196,13 @@
     $("#btn_submit").click(function(){
         var id = $("#id").text();
         var userId = $("#userId").val();
-        $.get("${ctx}/admin/applyHost/updateStatus",{"applyId":id,"id":userId}, function(result){
-            if (result=="ok"){
-                toastr.options = {
-                    closeButton: false,
-                    debug: false,
-                    progressBar: false,
-                    positionClass: "toast-top-center",
-                    onclick: null,
-                    showDuration: "300",
-                    hideDuration: "1000",
-                    timeOut: "5000",
-                    extendedTimeOut: "1000",
-                    showEasing: "swing",
-                    hideEasing: "linear",
-                    showMethod: "fadeIn",
-                    hideMethod: "fadeOut"
-                };
-                toastr.info("审核成功!");
-                window.location.href="${ctx}/admin/applyHost/applyPage";
+        $.getJSON("${ctx}/admin/applyHost/updateStatus",{"applyId":id,"id":userId}, function(result){
+            if (result.ok){
+                layer.msg('审核成功！');
+                $("#audit").html("已通过")
+                <%--window.location.href="${ctx}/admin/applyHost/applyPage";--%>
             }else{
-                toastr.options = {
-                    closeButton: false,
-                    debug: false,
-                    progressBar: false,
-                    positionClass: "toast-top-center",
-                    onclick: null,
-                    showDuration: "300",
-                    hideDuration: "1000",
-                    timeOut: "5000",
-                    extendedTimeOut: "1000",
-                    showEasing: "swing",
-                    hideEasing: "linear",
-                    showMethod: "fadeIn",
-                    hideMethod: "fadeOut"
-                };
-                toastr.info("审核失败!");
+                layer.msg(result.error);
                 window.location.href="${ctx}/admin/applyHost/applyPage";
             }
         });

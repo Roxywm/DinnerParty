@@ -22,7 +22,7 @@
 
 <div class="wrap">
     <div class="sign-title tc" style=" -webkit-opacity: 0.3; -moz-opacity: 0.3; -khtml-opacity: 0.3;  opacity: .3; filter:alpha(opacity=30);  ">
-        <h1>500</h1>
+        <h1 style="font-size: 50px">500</h1>
     </div>
 
     <div class="Application tc">
@@ -85,6 +85,7 @@
 <div class="foot tc">Copyright © 2003-2015 17素材, All Rights Reserved</div>
 <script src="${ctx}/static/js/jquery.js"></script>
 <script src="${ctx}/static/js/Action.js"></script>
+<script type="text/javascript" src="${ctx}/static/layer/layer.js"></script>
 
 <script src="${ctx}/static/js/chosen.jquery.js"></script>
 <script type="text/javascript">

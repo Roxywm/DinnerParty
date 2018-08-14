@@ -189,6 +189,7 @@
 <script type="text/javascript" src="${ctx}/static/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/twitter-bootstrap-hover-dropdown.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/vendors/easypiechart/jquery.easy-pie-chart.js"></script>
+<script type="text/javascript" src="${ctx}/static/layer/layer.js"></script>
 
 <script type="text/javascript">
     $(function() {
