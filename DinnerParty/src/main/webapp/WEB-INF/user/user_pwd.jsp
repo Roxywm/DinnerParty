@@ -71,10 +71,14 @@
     <%@include file="/WEB-INF/me/me_right.jsp"%>
 </div>
 
+<!-- foot -->
+<%@include file="/common/user_foot.jsp"%>
+
 <script src="${ctx}/static/js/jquery.js"></script>
 <script src="${ctx}/static/js/Action.js"></script>
 <script src="${ctx}/static/js/upfiles.js"></script>
 
+<script type="text/javascript" src="${ctx}/static/layer/layer.js"></script>
 <script src="${ctx}/static/js/chosen.jquery.js"></script>
 <script type="text/javascript">
     $(document).ready(function($){

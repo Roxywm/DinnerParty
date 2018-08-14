@@ -125,6 +125,7 @@ public class MeController {
         List<Concern> concernList = concernService.findAllConcern(loginUser.getId());
         PageInfo<Concern> page = new PageInfo<Concern>(concernList);
         map.put("page", page);
+        map.put("concernSize", concernService.findAllConcern(loginUser.getId()).size());
         return "me/me_concern";
     }
 

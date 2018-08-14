@@ -22,7 +22,7 @@
         <div class="xs6 xm4 xs3-move xm4-move">
             <br /><br />
             <div class="media media-y">
-                <a href="http://www.pintuer.com" target="_blank"><img src="${ctx}/static/images/logo.png" class="radius" alt="后台管理系统" /></a>
+                <a href="http://www.pintuer.com" target="_blank"><img src="${ctx}/static/images/logo2.png" class="radius" alt="后台管理系统" /></a>
             </div>
             <br /><br />
             <form action="${ctx}/admin/login" method="post">
@@ -54,7 +54,7 @@
                     <div class="panel-foot text-center"><button class="button button-block bg-main text-big">立即登录后台</button></div>
                 </div>
             </form>
-            <div class="text-right text-small text-gray padding-top">基于<a class="text-gray" target="_blank" href="http://www.pintuer.com">拼图前端框架</a>构建</div>
+            <%--<div class="text-right text-small text-gray padding-top">基于<a class="text-gray" target="_blank" href="http://www.pintuer.com">拼图前端框架</a>构建</div>--%>
         </div>
     </div>
 </div>

@@ -67,7 +67,8 @@ public class UserController {
             User oldUser = userService.findByEmail(user.getEmail());
             if (oldUser==null){
                 user.setPassword(MD5Util.generate(user.getPassword()));
-                user.setNickname("User"+user.getEmail().substring(0,5));
+//                user.setNickname("User"+user.getEmail().substring(0,5));
+                user.setNickname("User"+VerificationCode.createRandomVcode());
                 userService.register(user);
                 map.put("message","注册成功！使用账户密码进行登录！");
                 return "user/login";
@@ -117,6 +118,7 @@ public class UserController {
             }
         }
         map.put("error", "账号或密码错误！");
+        map.put("email", user.getEmail());
         return "user/login";
     }
 

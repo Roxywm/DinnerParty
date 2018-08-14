@@ -143,6 +143,8 @@
     <%@include file="/WEB-INF/me/me_right.jsp"%>
 
 </div>
+<!-- foot -->
+<%@include file="/common/user_foot.jsp"%>
 
 <script src="${ctx}/static/js/jquery.js"></script>
 <script src="${ctx}/static/date/WdatePicker.js"></script>
@@ -171,7 +173,7 @@
         });
     });
 </script>
-<script>
+<script type="text/javascript">
 
     $("#Myreder").click(function () {
         var aaa = $("#Myreder").prop("checked");
@@ -264,48 +266,7 @@
         }
     }
 </script>
-
-<%--<script defer type="text/javascript">
-    // 百度地图API功能
-    var x="";
-    var y="";
-    var map = new BMap.Map("allmap");
-    var point = new BMap.Point(109.12262792,21.47271824);
-    map.centerAndZoom(point , 11);
-    var marker = new BMap.Marker(point);  // 创建标注
-    map.addOverlay(marker);              // 将标注添加到地图中
-
-    setTimeout(function(){
-        map.setZoom(14);
-    }, 1000);  //2秒后放大到14级
-    map.enableScrollWheelZoom(true);   //缩放地图
-
-    map.addEventListener("click", showInfo);
-
-    function showInfo(e){
-        x=e.point.lng;   //获取鼠标当前点击的经纬度
-        y=e.point.lat;
-        if(x != "" && y != ""){
-            clearAll();  //清除地图上存在的标注
-            var point = new BMap.Point(x,y);
-            map.centerAndZoom(point);
-            marker = new BMap.Marker(point);  // 创建新的标注
-            map.addOverlay(marker);    //将标注添加到地图上
-        }else{
-            map.centerAndZoom("北京", 12);
-        }
-        var point = new BMap.Point(x,y);  //获取当前地理名称
-        var gc = new BMap.Geocoder();
-        gc.getLocation(point, function(rs){
-            var addComp = rs.addressComponents;
-            $("#address").val(addComp.province + "-" + addComp.city + "-" + addComp.district + "-" + addComp.street + "-" + addComp.streetNumber);
-        });
-    }
-    function clearAll(e){ map.removeOverlay(marker); }
-</script>--%>
-
-
-<script defer type="text/javascript">
+<script type="text/javascript">
     // 百度地图API功能
     var x = 0;
     var y = 0;

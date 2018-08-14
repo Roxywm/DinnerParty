@@ -5,6 +5,7 @@ import com.roxy.maven.dinner.entity.ApplyHost;
 import com.roxy.maven.dinner.entity.Area;
 import com.roxy.maven.dinner.entity.User;
 import com.roxy.maven.dinner.service.ApplyHostService;
+import com.roxy.maven.dinner.util.VerificationCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -62,6 +63,9 @@ public class ApplyHostController {
                 int rows = applyHostService.applyHost(applyHost);
                 if(rows>0){
                     //报名成功
+                    //发送通知管理员的邮件
+                    VerificationCode.sendAdminExamineEmail();
+
                     return "dinner/host_apply_success";
                 }else{
                     map.put("error","报名失败,请重新填写申请表！");

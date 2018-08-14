@@ -118,8 +118,34 @@ public class VerificationCode {
             send.addTo(eamil);  //接收者的QQEamil
             send.setFrom("269735929@qq.com", "染月"); //第一个参数是发送者的QQEamil   第二个参数是发送者QQ昵称
             send.setAuthentication("269735929@qq.com", "trfcnohduynxbigj");  //第一个参数是发送者的QQEamil   第二个参数是刚刚获取的授权码
-            send.setSubject("小渣渣特给您送上验证码"); //Eamil的标题  第一个参数是我写的判断上下午，删掉即可
+            send.setSubject("小渣渣特给您送上激活链接"); //Eamil的标题  第一个参数是我写的判断上下午，删掉即可
             send.setMsg("HelloWorld!欢迎大大光临，点击此链接验证邮箱:   <a href='http://localhost:8080/dinner/user/update/email?code="+resultCode+"'>点击此处验证邮箱</a>   请大大签收");   //Eamil的内容
+            send.send();//发送
+        } catch (EmailException e) {
+            e.printStackTrace();
+        }
+        return resultCode; //同等验证码
+    }
+
+
+    /**
+     * 发送通知管理员审核邮件
+     * @return 发送的验证码
+     */
+    public static String sendAdminExamineEmail() {
+        HtmlEmail send = new HtmlEmail();
+        // 获取随机验证码
+        String resultCode = achieveCode();
+        try {
+            send.setHostName("smtp.qq.com");
+            send.setSmtpPort(465);  //端口号
+            send.setSSLOnConnect(true); //开启SSL加密
+            send.setCharset("utf-8");
+            send.addTo("Roxywm@163.com");  //接收者的QQEamil
+            send.setFrom("269735929@qq.com", "染月"); //第一个参数是发送者的QQEamil   第二个参数是发送者QQ昵称
+            send.setAuthentication("269735929@qq.com", "trfcnohduynxbigj");  //第一个参数是发送者的QQEamil   第二个参数是刚刚获取的授权码
+            send.setSubject("有新的用户申请信息，请尽快处理！"); //Eamil的标题  第一个参数是我写的判断上下午，删掉即可
+            send.setMsg("HelloWorld！点击此链接进行登录处理：   <a href='http://localhost:8080/dinner/admin/login/'>点击此处</a>");   //Eamil的内容
             send.send();//发送
         } catch (EmailException e) {
             e.printStackTrace();

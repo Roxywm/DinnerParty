@@ -91,9 +91,18 @@
         <div class="item large fr">
             <div id="full-screen-slider">
                 <ul id="slides">
-                    <li><a href="#" target="_blank"><img src="${ctx}/static/upload/img2.jpg"></a></li>
-                    <li><a href="#" target="_blank"><img src="${ctx}/static/upload/img2.jpg"></a></li>
-                    <li><a href="#" target="_blank"><img src="${ctx}/static/upload/img2.jpg"></a></li>
+                    <li>
+                        <a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${dinnerPage.list.get(1).id}" target="_blank">
+                        <img src="${ctx}/static/upload/img2.jpg" width="758px" height="300px"></a>
+                    </li>
+                    <li>
+                        <a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${dinnerPage.list.get(2).id}" target="_blank">
+                        <img src="${ctx}/static/upload/img20.jpg" width="758px" height="300px"></a>
+                    </li>
+                    <li>
+                        <a href="${ctx}/mutually/dinner/dinnerDetail?dinnerId=${dinnerPage.list.get(3).id}" target="_blank">
+                        <img src="${ctx}/static/upload/img23.jpg" width="758px" height="300px"></a>
+                    </li>
                 </ul>
             </div>
         </div>

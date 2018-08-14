@@ -25,7 +25,7 @@
 
 <div class="memwrap wrap clearfix">
     <div class="section fl">
-        <div class="location tr"><span class="f12 fl"><em class="myfont"></em> 我已关注 <b class="o f14"> 8</b> 人</span><a href="${ctx}/me/meConcern" class="current" style="font-weight: bold">我的关注</a><a href="${ctx}/me/meFans">我的粉丝</a></div>
+        <div class="location tr"><span class="f12 fl"><em class="myfont"></em> 我已关注 <b class="o f14"> ${concernSize}</b> 人</span><a href="${ctx}/me/meConcern" class="current" style="font-weight: bold">我的关注</a><a href="${ctx}/me/meFans">我的粉丝</a></div>
         <div class="plmcomment mt30">
             <c:if test="${fn:length(page.list)==0}">
                 <div class="Participate pd30">
@@ -78,8 +78,10 @@
 
     <%@include file="/WEB-INF/me/me_right.jsp"%>
 
-
 </div>
+
+<!-- foot -->
+<%@include file="/common/user_foot.jsp"%>
 
 <script src="${ctx}/static/js/jquery.js"></script>
 <script src="${ctx}/static/js/Action.js"></script>
