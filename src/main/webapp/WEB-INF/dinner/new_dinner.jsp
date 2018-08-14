@@ -15,6 +15,8 @@
     <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=${ctx}/static/IE6/IE6.html"><![endif]-->
     <link type="image/x-icon" href="${ctx}/static/images" rel="shortcut icon" />
     <link href="${ctx}/static/images/favicon.ico" rel="bookmark icon" />
+
+
     <style>
         .myfloat{float: left;margin-right: 10px;}
     </style>
@@ -148,6 +150,8 @@
 <script src="${ctx}/static/js/upfiles.js"></script>
 <script src="${ctx}/static/js/chosen.jquery.js"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=3oHqr7Ms8LCLzpbjCLE6ZYh0lX0nRGyg"></script>
+<script type="text/javascript" src="${ctx}/static/layer/layer.js"></script>
+
 
 
 <script type="text/javascript">
@@ -372,11 +376,15 @@
     function setPlace() {
         map.clearOverlays();    //清除地图上所有覆盖物
         function myFun() {
-            var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
-            map.centerAndZoom(pp, 14);
-            marker = new BMap.Marker(pp);
-            map.addOverlay(marker);    //添加标注
-            getAddress(pp.lng,pp.lat);
+            if(local.getResults().Br.length!=0){
+                var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+                map.centerAndZoom(pp, 14);
+                marker = new BMap.Marker(pp);
+                map.addOverlay(marker);    //添加标注
+                getAddress(pp.lng,pp.lat);
+            }else{
+                layer.msg("当前城市没有找到结果");
+            }
         }
 
         var local = new BMap.LocalSearch(map, { //智能搜索
@@ -384,5 +392,12 @@
         });
         local.search($("#localSearch").val());
     }
+
+
+    $("#localSearch").keydown(function (event) {
+        if(event.keyCode==13){
+            setPlace()
+        }
+    })
 </script>
 </html>

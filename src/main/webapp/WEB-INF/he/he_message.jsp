@@ -95,6 +95,7 @@
 
 <script src="${ctx}/static/js/jquery.js"></script>
 <script src="${ctx}/static/js/Action.js"></script>
+<script type="text/javascript" src="${ctx}/static/layer/layer.js"></script>
 
 <script src="${ctx}/static/js/chosen.jquery.js"></script>
 <script type="text/javascript">
@@ -119,7 +120,7 @@
                         $("#concernBtn").html("已关注");
                         flag = false;
                     }else{
-                        alert(data.error);
+                        layer.msg(data.error);
                     }
                 })
             }else{
@@ -139,11 +140,11 @@
                     if(data.ok){
                         window.location.reload();
                     }else{
-                        alert(data.error);
+                        layer.msg(data.error);
                     }
                 })
             }else{
-                alert("请输入留言！")
+                layer.msg("请输入留言！")
             }
         }else{
             window.location.href="${ctx}/user/login";

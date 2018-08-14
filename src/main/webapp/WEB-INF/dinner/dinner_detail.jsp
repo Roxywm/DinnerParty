@@ -21,26 +21,8 @@
 </head>
 <body>
 
-<c:if test="${loginUser==null}">
-    <div class="head">
-        <div class="wrap clearfix">
-            <a href="${ctx}/" class="logo indent">logo</a>
-            <div class="headr fr">
-                <form action="active.html" method="post" class="headsearch">
-                    <label class="label">
-                        <input type="text" value="" name="" class="key">
-                        <span class="text">搜索地址、名称、时间等</span>
-                    </label>
-                    <button type="submit" class="button btn-search">&#xe628;</button>
-                </form>
-                <a href="${ctx}/user/login">登录</a><a href="${ctx}/user/register">注册</a><a href="${ctx}/mutually/dinner/create">发布我的饭局</a>
-            </div>
-        </div>
-    </div>
-</c:if>
-<c:if test="${loginUser!=null}">
-    <%@include file="/common/user_head.jsp"%>
-</c:if>
+<%@include file="/common/user_head.jsp"%>
+
 
 <div class="detail-banner">
     <div class="item" style="background-image:url(${ctx}/static/upload/img23.jpg);">
@@ -315,6 +297,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 <script src="${ctx}/static/js/Action.js"></script>
 <script src="${ctx}/static/js/slick.js"></script>
 <script src="${ctx}/static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/layer/layer.js"></script>
 <script>
     $(function(){
         $('.detail-banner').slick({
@@ -388,7 +371,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                         $("#interestNum").html(data.interest);
                         flag = false;
                     }else{
-                        alert("你已经点过了！")
+                        layer.msg("你已经点过了！")
                     }
                 })
             }
@@ -408,11 +391,11 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                         window.location.reload();
                         <%--window.location.href="${ctx}/mutually/dinner/dinnerDetail?dinnerId="+dinnerId;--%>
                     }else{
-                        alert(data.error);
+                        layer.msg(data.error);
                     }
                 });
             }else{
-                alert("请输入留言！")
+                layer.msg("请输入留言！")
             }
         }else {
             window.location.href="${ctx}/user/login";
@@ -431,7 +414,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                         $("#concernBtn").html("已关注");
                         flag = false;
                     }else{
-                        alert(data.error);
+                        layer.msg(data.error);
                     }
                 })
             }else{

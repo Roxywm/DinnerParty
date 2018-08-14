@@ -13,7 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -53,15 +55,20 @@ public class ApplyManagerController {
      * @param user
      * @return
      */
+    @ResponseBody
     @RequestMapping(value = "/updateStatus")
-    public String updateStatus(long applyId, User user){
+    public Map<String, Object> updateStatus(long applyId, User user){
         int rows = applyHostService.updateStatus(applyId);
         user.setHostStatus(1);
         userService.update(user);
+        Map<String, Object> map = new HashMap<String,Object>();
         if(rows>0){
-            return "ok";
+            map.put("ok",true);
+        }else{
+            map.put("ok", false);
+            map.put("error", "审核失败！");
         }
-        return "error";
+        return map;
     }
 
 

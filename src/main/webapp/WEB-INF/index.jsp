@@ -196,6 +196,7 @@
 <script src="${ctx}/static/js/index.js"></script>
 
 <script src="${ctx}/static/js/chosen.jquery.js"></script>
+<script type="text/javascript" src="${ctx}/static/layer/layer.js"></script>
 <script type="text/javascript">
     var config = {
         '.chosen-select-no-single' : {disable_search_threshold:10}
@@ -218,7 +219,7 @@
     function check(){
         var keyword = $("#keyword").val();
             if(keyword ==  null || keyword == ''){
-               alert("关键字不能为空");
+                layer.msg("关键字不能为空");
                return false;
             }
             return true;

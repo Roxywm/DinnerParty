@@ -86,6 +86,7 @@
 
 <script src="${ctx}/static/js/jquery.js"></script>
 <script src="${ctx}/static/js/Action.js"></script>
+<script type="text/javascript" src="${ctx}/static/layer/layer.js"></script>
 
 <script src="${ctx}/static/js/chosen.jquery.js"></script>
 <script type="text/javascript">
@@ -110,7 +111,7 @@
                         $("#concernBtn").html("已关注");
                         flag = false;
                     }else{
-                        alert(data.error);
+                        layer.msg(data.error);
                     }
                 })
             }else{
@@ -120,7 +121,7 @@
                         $("#concernBtn").html(" + 关注");
                         flag = true;
                     }else{
-                        alert(data.error);
+                        layer.msg(data.error);
                     }
                 })
             }
