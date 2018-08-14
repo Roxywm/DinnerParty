@@ -25,7 +25,7 @@
 
 <div class="memwrap wrap clearfix">
     <div class="section fl">
-        <div class="location tr"><a href="${ctx}/he/heMain?userId=${user.id}">参加的饭局</a><a href="${ctx}/he/heHostDinner?userId=${user.id}">发布的饭局</a><a href="${ctx}/he/heMessage?userId=${user.id}">TA的评价</a><a href="${ctx}/he/heConcern?userId=${user.id}" class="current" style="border-radius: 50%;">TA的关注</a></div>
+        <div class="location tr"><a href="${ctx}/he/heMain?userId=${user.id}">参加的饭局</a><a href="${ctx}/he/heHostDinner?userId=${user.id}">发布的饭局</a><a href="${ctx}/he/heMessage?userId=${user.id}">TA的评价</a><a href="${ctx}/he/heConcern?userId=${user.id}" class="current" style="font-weight: bold;">TA的关注</a></div>
 
         <ul class="fans">
             <c:if test="${fn:length(page.list)==0}">
@@ -45,11 +45,11 @@
                             ${concern.concernUser.about}
                     </div>
                     <div class="Status">
-                        <a href="javascript:;" class="follow-btn">
-                            <span class="concerns"><em class="myfont">&#xe610;</em>已关注</span>
-                            <span class="Unfollow">取消关注</span>
-                        </a>
-                        <a href="#" class="Private-letter"><em class="myfont">&#xe63f;</em>私信</a>
+                        <%--<a href="javascript:;" class="follow-btn">--%>
+                            <%--<span class="concerns"><em class="myfont">&#xe610;</em>已关注</span>--%>
+                            <%--<span class="Unfollow">取消关注</span>--%>
+                        <%--</a>--%>
+                        <a href="${ctx}/he/heMessage?userId=${concern.concernUser.id}" class="Private-letter"><em class="myfont">&#xe63f;</em>留言</a>
                     </div>
                 </li>
             </c:forEach>

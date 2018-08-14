@@ -25,7 +25,7 @@
 
 <div class="memwrap wrap clearfix">
     <div class="section fl">
-        <div class="location tr"><span class="f12 fl"><em class="myfont"></em> 我已关注 <b class="o f14"> 8</b> 人</span><a href="${ctx}/me/meConcern">我的关注</a><a href="${ctx}/me/meFans" class="current" style="font-weight: bold">我的粉丝</a></div>
+        <div class="location tr"><span class="f12 fl"><em class="myfont"></em> 我的粉丝 <b class="o f14"> ${fansSize}</b> 人</span><a href="${ctx}/me/meConcern">我的关注</a><a href="${ctx}/me/meFans" class="current" style="font-weight: bold">我的粉丝</a></div>
         <div class="plmcomment mt30">
             <c:if test="${fn:length(page.list)==0}">
                 <div class="Participate pd30">
@@ -44,35 +44,42 @@
                                 ${concern.user.about}
                         </div>
                         <div class="Status">
-                            <a href="#" class="Pull">拉黑名单</a><a href="javascript:;" class="follow-btn"><span class="concerns"><em class="myfont">&#xe610;</em>已关注</span><span class="Unfollow">取消关注</span></a> <a href="#" class="Private-letter"><em class="myfont">&#xe63f;</em>私信</a>
+                            <a href="#" class="Pull">拉黑名单</a>
+                            <a href="javascript:;" class="follow-btn">
+                                <span class="concerns"><em class="myfont">&#xe610;</em>已关注</span>
+                                <span class="Unfollow">取消关注</span>
+                            </a>
+                            <a href="${ctx}/he/heMessage?userId=${concern.user.id}" class="Private-letter">
+                                <em class="myfont">&#xe63f;</em>留言
+                            </a>
                         </div>
                     </li>
                 </c:forEach>
+                <!--Pagination-->
+                <div class="page mt20 clearfix">
+                    <c:if test="${fn:length(page.list)!=0}">
+                        <div class="page mt20 clearfix">
+                            <c:if test="${page.prePage!=0}">
+                                <a href="?pageNum=${page.prePage}" class="prev"><em></em>上一页</a>
+                            </c:if>
+                            <c:if test="${page.prePage==0}">
+                                <a href="javascript:;" class="prev"><em></em>上一页</a>
+                            </c:if>
+                            <c:forEach begin="1" end="${page.pages}" var="p">
+                                <c:if test="${p==page.pageNum}"><span>${p}</span></c:if>
+                                <c:if test="${p!=page.pageNum}"><a href="?pageNum=${p}">${p}</a></c:if>
+                            </c:forEach>
+                            <c:if test="${page.nextPage!=0}">
+                                <a href="?pageNum=${page.nextPage}" class="next">下一页<em></em></a>
+                            </c:if>
+                            <c:if test="${page.nextPage==0}">
+                                <a href="javascript:;" class="next">下一页<em></em></a>
+                            </c:if>
+                        </div>
+                    </c:if>
+                </div>
             </ul>
 
-            <!--Pagination-->
-            <div class="page mt20 clearfix">
-                <c:if test="${fn:length(page.list)!=0}">
-                    <div class="page mt20 clearfix">
-                        <c:if test="${page.prePage!=0}">
-                            <a href="?pageNum=${page.prePage}" class="prev"><em></em>上一页</a>
-                        </c:if>
-                        <c:if test="${page.prePage==0}">
-                            <a href="javascript:;" class="prev"><em></em>上一页</a>
-                        </c:if>
-                        <c:forEach begin="1" end="${page.pages}" var="p">
-                            <c:if test="${p==page.pageNum}"><span>${p}</span></c:if>
-                            <c:if test="${p!=page.pageNum}"><a href="?pageNum=${p}">${p}</a></c:if>
-                        </c:forEach>
-                        <c:if test="${page.nextPage!=0}">
-                            <a href="?pageNum=${page.nextPage}" class="next">下一页<em></em></a>
-                        </c:if>
-                        <c:if test="${page.nextPage==0}">
-                            <a href="javascript:;" class="next">下一页<em></em></a>
-                        </c:if>
-                    </div>
-                </c:if>
-            </div>
         </div>
     </div>
 

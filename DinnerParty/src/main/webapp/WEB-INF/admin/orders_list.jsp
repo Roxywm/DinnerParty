@@ -121,7 +121,7 @@
     <div class="row">
         <hr>
         <footer role="contentinfo">
-            <p>&copy; 2018 <a href="#" target="_blank">美滋滋·私厨</a></p>
+            <p>&copy; 2018 <a href="${ctx}/" target="_blank">美滋滋·私厨</a></p>
         </footer>
     </div>
 </div>

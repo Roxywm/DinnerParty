@@ -146,6 +146,7 @@ public class MeController {
         List<Concern> concernList = concernService.findAllFans(loginUser.getId());
         PageInfo<Concern> page = new PageInfo<Concern>(concernList);
         map.put("page", page);
+        map.put("fansSize", concernService.findAllFans(loginUser.getId()).size());
         return "me/me_fans";
     }
 
