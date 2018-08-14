@@ -90,8 +90,10 @@
 
     <%@include file="/WEB-INF/me/me_right.jsp"%>
 
-
 </div>
+
+<!-- foot -->
+<%@include file="/common/user_foot.jsp"%>
 
 <script src="${ctx}/static/js/jquery.js"></script>
 <script src="${ctx}/static/js/Action.js"></script>

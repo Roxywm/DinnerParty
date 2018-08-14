@@ -77,29 +77,15 @@
                     </c:if>
                 </div>
             </c:if>
-
-            <%--<div class="dataTables_paginate paging_bootstrap">--%>
-                <%--<ul class="pagination">--%>
-                    <%--<li class="prev disabled">--%>
-                        <%--<a href="?pageNum=${page.prePage}&menu=${param.menu}">上一页</a>--%>
-                    <%--</li>--%>
-                    <%--<c:forEach begin="1" end="${page.pages}" var="p">--%>
-                        <%--<li <c:if test="${p==page.pageNum}">class="active"</c:if>>--%>
-                            <%--<a href="?pageNum=${p}&menu=${param.menu}">${p}</a>--%>
-                        <%--</li>--%>
-                    <%--</c:forEach>--%>
-                    <%--<li class="next">--%>
-                        <%--<a href="?pageNum=${page.nextPage}&menu=${param.menu}">下一页</a>--%>
-                    <%--</li>--%>
-                <%--</ul>--%>
-            <%--</div>--%>
         </div>
     </div>
-
 
     <%@include file="/WEB-INF/me/me_right.jsp"%>
 
 </div>
+
+<!-- foot -->
+<%@include file="/common/user_foot.jsp"%>
 
 <script src="${ctx}/static/js/jquery.js"></script>
 <script src="${ctx}/static/date/WdatePicker.js"></script>

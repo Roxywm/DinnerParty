@@ -54,7 +54,7 @@
                 <li><span class="tt"><em>&#xe643;</em>请上传一张您在烹饪中的照片（必须为本人）</span>
                     <div class="pd15 clearfix">
                         <div class="active-photo img fl"><img id="ImgPr2"></div>
-                        <label class="btn-upfiles fl" style="margin-left:10px;"><input type="file" name="file" id="up2" />修改图片</label>
+                        <label class="btn-upfiles fl" style="margin-left:10px;"><input type="file" name="file" id="up2" />添加图片</label>
                     </div>
                 </li>
                 <li class="bd0"><div class="Release-submit pd30">
@@ -70,58 +70,9 @@
 
 </div>
 
+<!-- foot -->
+<%@include file="/common/user_foot.jsp"%>
 
-<!--foot-->
-<div class="footmenu">
-    <div class="wrap clearfix">
-        <div class="item bd0">
-            <h1 class="hd">产品理念</h1>
-            <ul>
-                <li><a href="#">食品安全</a></li>
-                <li><a href="#">订购流程</a></li>
-                <li><a href="#">修改订单</a></li>
-                <li><a href="#">冷链配送</a></li>
-                <li><a href="#">全程冷链</a></li>
-            </ul>
-        </div>
-        <div class="item">
-            <h1 class="hd">产品理念</h1>
-            <ul>
-                <li><a href="#">食品安全</a></li>
-                <li><a href="#">订购流程</a></li>
-                <li><a href="#">修改订单</a></li>
-                <li><a href="#">冷链配送</a></li>
-                <li><a href="#">全程冷链</a></li>
-            </ul>
-        </div>
-        <div class="item">
-            <h1 class="hd">产品理念</h1>
-            <ul>
-                <li><a href="#">食品安全</a></li>
-                <li><a href="#">订购流程</a></li>
-                <li><a href="#">修改订单</a></li>
-                <li><a href="#">冷链配送</a></li>
-                <li><a href="#">全程冷链</a></li>
-            </ul>
-        </div>
-        <div class="item">
-            <h1 class="hd">产品理念</h1>
-            <ul>
-                <li><a href="#">食品安全</a></li>
-                <li><a href="#">订购流程</a></li>
-                <li><a href="#">修改订单</a></li>
-                <li><a href="#">冷链配送</a></li>
-                <li><a href="#">全程冷链</a></li>
-            </ul>
-        </div>
-        <div class="fr">
-            <img src="${ctx}/static/images/img2.jpg">
-            <img src="${ctx}/static/images/img3.jpg">
-        </div>
-    </div>
-    <div class="gotop">&#xe608;</div>
-</div>
-<div class="foot tc">Copyright © 2003-2015 17素材, All Rights Reserved</div>
 <%--<script src="${ctx}/static/js/jquery.js"></script>--%>
 <script src="${ctx}/static/js/jquery-1.8.3.min.js"></script>
 <script src="${ctx}/static/js/Action.js"></script>

@@ -42,7 +42,7 @@
     <script>
         function check1(){
             var keyword = $("#keyword1").val();
-            if(keyword ==  null || keyword == ''){
+            if(keyword ==  null || keyword == ""){
                 layer.msg("关键字不能为空");
                 return false;
             }

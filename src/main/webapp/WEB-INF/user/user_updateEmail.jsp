@@ -45,9 +45,13 @@
 
 </div>
 
+<!-- foot -->
+<%@include file="/common/user_foot.jsp"%>
+
 <script src="${ctx}/static/js/jquery.js"></script>
 <script src="${ctx}/static/js/Action.js"></script>
 <script src="${ctx}/static/js/upfiles.js"></script>
+<script type="text/javascript" src="${ctx}/static/layer/layer.js"></script>
 
 <script src="${ctx}/static/js/chosen.jquery.js"></script>
 <script type="text/javascript">
@@ -62,46 +66,6 @@
         $("#up").uploadPreview({
             Img: "ImgPr",
         });
-    });
-</script>
-<script>
-    $("#btn-send").click(function () {
-        var mobile = $("#mobile").val();
-        var mobileCode = $("#mobileCode").val();
-        $.get("${ctx}/user/mobileCode",{"phoneNumber":mobile,"mobileCode":mobileCode},function (data) {
-            console.log(data)
-            if(data=="ok"){
-                var i = 60;
-                var Times = setInterval(function () {
-                    if(i>0){
-                        $("#btn-send").attr("disabled",true);
-                        $("#btn-send").text(i--+"秒后再次发送");
-                    }else {
-                        $("#btn-send").removeAttr("disabled");
-                        $("#btn-send").text("发送短信验证码");
-                        clearInterval(Times);
-                    }
-                },1000)
-            }else{
-                alert("获取验证码失败！");
-                // toastr.options = {
-                //     closeButton: false,
-                //     debug: false,
-                //     progressBar: false,
-                //     positionClass: "toast-top-center",
-                //     onclick: null,
-                //     showDuration: "300",
-                //     hideDuration: "1000",
-                //     timeOut: "5000",
-                //     extendedTimeOut: "1000",
-                //     showEasing: "swing",
-                //     hideEasing: "linear",
-                //     showMethod: "fadeIn",
-                //     hideMethod: "fadeOut"
-                // };
-                // toastr.info("获取验证码失败！");
-            }
-        })
     });
 </script>
 </html>

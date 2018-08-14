@@ -61,9 +61,13 @@
     </div>
 </div>
 
+<!-- foot -->
+<%@include file="/common/user_foot.jsp"%>
+
 <script src="${ctx}/static/js/jquery.js"></script>
 <script src="${ctx}/static/js/Action.js"></script>
 <script src="${ctx}/static/js/upfiles.js"></script>
+<script type="text/javascript" src="${ctx}/static/layer/layer.js"></script>
 
 <script src="${ctx}/static/js/chosen.jquery.js"></script>
 <script type="text/javascript">
@@ -99,23 +103,7 @@
                     }
                 },1000)
             }else{
-                alert("获取验证码失败！");
-                // toastr.options = {
-                //     closeButton: false,
-                //     debug: false,
-                //     progressBar: false,
-                //     positionClass: "toast-top-center",
-                //     onclick: null,
-                //     showDuration: "300",
-                //     hideDuration: "1000",
-                //     timeOut: "5000",
-                //     extendedTimeOut: "1000",
-                //     showEasing: "swing",
-                //     hideEasing: "linear",
-                //     showMethod: "fadeIn",
-                //     hideMethod: "fadeOut"
-                // };
-                // toastr.info("获取验证码失败！");
+                layer.msg("获取验证码失败！");
             }
         })
     });

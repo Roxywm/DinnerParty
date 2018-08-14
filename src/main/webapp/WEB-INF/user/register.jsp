@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/common/taglib.jsp" %>
 <!doctype html>
-<html><head>
+<html>
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="keywords" content="">
     <meta name="description" content="mezz">
@@ -18,21 +19,6 @@
     <title>美滋滋·私厨 - 用户注册</title>
 </head>
 <body>
-<%--<div class="head">--%>
-    <%--<div class="wrap clearfix">--%>
-        <%--<a href="${ctx}/" class="logo indent">logo</a>--%>
-        <%--<div class="headr fr">--%>
-            <%--<form action="${ctx}/find/dinner/search" method="post" class="headsearch" onsubmit="return check()">--%>
-                <%--<label class="label">--%>
-                    <%--<input type="text" id="keyword" name="keyword" class="key">--%>
-                    <%--<span class="text">搜索地址、名称、时间等</span>--%>
-                <%--</label>--%>
-                <%--<button type="submit" class="button btn-search">&#xe628;</button>--%>
-            <%--</form>--%>
-            <%--&lt;%&ndash;<a href="${ctx}/user/login">登录</a><a href="${ctx}/user/register">注册</a><a href="${ctx}/mutually/dinner/create">发布我的饭局</a>&ndash;%&gt;--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
 <%@include file="/common/user_head.jsp"%>
 
 <div class="loginwrapper">
@@ -77,11 +63,12 @@
     <div class="wrap clearfix">
         <div class="txt fl">
             <div class="foot-nav"> <a href="#">加入我们</a>/<a href="#">联系我们</a>/<a href="#">媒体报道</a>/<a href="#">会员条款</a>/<a href="#">版权声明</a></div>
-            Copyright © 2003-2015 , All Rights Reserved　
+            Roxy © 2003-2018 美滋滋·私厨有限公司
         </div>
         <div class="orc fr"><img src="${ctx}/static/images/img2.jpg" width="63"><img src="${ctx}/static/images/img3.jpg" width="63"></div>
     </div>
 </div><script src="${ctx}/static/js/jquery.js"></script>
 <script src="${ctx}/static/js/Action.js"></script>
+<script type="text/javascript" src="${ctx}/static/layer/layer.js"></script>
 </body>
 </html>

@@ -82,7 +82,7 @@ public class UserManagerController {
             }
             //以fileName为文件名来创建一个Workbook
             wwb = Workbook.createWorkbook(file);
-            WritableSheet ws = wwb.createSheet("Orders", 0);
+            WritableSheet ws = wwb.createSheet("Users", 0);
 
             //设置表头
             Label id= new Label(0, 0, "ID");
