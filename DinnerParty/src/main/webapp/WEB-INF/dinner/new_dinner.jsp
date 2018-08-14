@@ -46,25 +46,25 @@
 
         <c:if test="${user.hostStatus==1}">
             <div class="Participate pd30">
-                <form action="${ctx}/mutually/dinner/create" method="post" enctype="multipart/form-data">
+                <form action="${ctx}/mutually/dinner/create" method="post" enctype="multipart/form-data" onsubmit="return check3()">
                     <table class="baseinfo participate-tab">
                         <tr>
                             <th>活动标题：</th>
-                            <td><input type="text" name="titel" value="" class="baseipt"></td>
+                            <td><input type="text" name="titel" id="titel" value="" class="baseipt"></td>
                         </tr>
                         <tr>
                             <th>活动价格：</th>
-                            <td><input type="text" name="price" value="" class="baseipt"> 人/元</td>
+                            <td><input type="text" name="price" id="price" value="" class="baseipt"> 人/元</td>
                         </tr>
                         <tr>
                             <th>报名人数：</th>
-                            <td><input type="text" name="maximum" value="" class="baseipt" style="width:185px"> 人</td>
+                            <td><input type="text" name="maximum" id="maximum" value="" class="baseipt" style="width:185px"> 人</td>
                         </tr>
                         <tr>
                             <th>活动时间：</th>
                             <td>
-                                <input class="Wdate" type="text" name="startDate" onfocus="WdatePicker({minDate:'%y-%M-{%d+1}',isShowClear:false,isShowToday:false,readOnly:true})"/>&nbsp;&nbsp;&nbsp;&nbsp;
-                                截至报名时间：<input id="" class="Wdate" name="endDate" type="text" onfocus="WdatePicker({minDate:'%y-%M-{%d+1}',isShowClear:false,isShowToday:false,readOnly:true})"/></td>
+                                <input class="Wdate" type="text" name="startDate" id="startDate" onfocus="WdatePicker({minDate:'%y-%M-{%d+1}',isShowClear:false,isShowToday:false,readOnly:true})"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                                截至报名时间：<input class="Wdate" name="endDate" id="endDate" type="text" onfocus="WdatePicker({minDate:'%y-%M-{%d+1}',isShowClear:false,isShowToday:false,readOnly:true})"/></td>
                         </tr>
                         <tr>
                             <%--<th>活动玩法：</th>--%>
@@ -83,7 +83,7 @@
                         <tr>
                             <th>活动标签：</th>
                             <td>
-                                <p class="mt10"><input type="text" name="label" value="" class="baseipt"> 多个标签请用“空格”分开</p>
+                                <p class="mt10"><input type="text" name="label" id="label" value="" class="baseipt"> 多个标签请用“空格”分开</p>
                             </td>
                         </tr>
                         <tr>
@@ -101,7 +101,12 @@
                     <div class="photo clearfix">
                         <div class="photo-control fl">
                             <div class="active-photo img"><img id="ImgPr"></div>
-                            <p class="mt10 clearfix"><a href="javascript:;" class="button dele fr">删除图片</a><label class="btn-upfiles"><input type="file" name="photo" id="up" />选择图片</label></p>
+                            <p class="mt10 clearfix">
+                                <a href="javascript:;" class="button dele fr">删除图片</a>
+                                <label class="btn-upfiles">
+                                    <input type="file" name="photo" id="up" />选择图片
+                                </label>
+                            </p>
                         </div>
                         <%--<div class="photo-info fl">--%>
                             <%--<textarea name="" cols="" rows="" class="area"></textarea>--%>
@@ -129,7 +134,7 @@
                         <%--</div>--%>
                     </div>
                     <p class="mt30">活动详情：</p>
-                    <textarea name="details" cols="" rows="" class="area2"></textarea>
+                    <textarea name="details" id="details" cols="" rows="" class="area2"></textarea>
                     <div class="Release-submit">
                         <input type="checkbox" id="Myreder">  我已阅读并同意<a href="#" class="o">《17素材服务条款》</a>
                         <p class="mt20"><button type="submit" style="background: #CCCCCC" disabled  id="submitBtn" class="button btn-submit">提交</button><button type="button" name="" value="" class="button btn-reset">取消</button></p>
@@ -360,5 +365,54 @@
             setPlace()
         }
     })
+</script>
+<script>
+function check3() {
+    var titel = $("#titel").val();
+    var price = $("#price").val();
+    var maximum = $("#maximum").val();
+    var startDate = $("#startDate").val();
+    var endDate = $("#endDate").val();
+    var label = $("#label").val();
+    var up = $("#up").val();
+    var file_input = $("#file_input").val();
+    var details = $("#details").val();
+
+    if(titel!=""&&price!=""&&maximum!=""&&startDate!=""&&endDate!=""&&label!=""&&up!=""&&file_input!=""&&details!=""){
+        return true;
+    }
+
+    if(titel==""){
+        $("#titel").css("border", "red 1px solid");
+    }
+    if(price==""){
+        $("#price").css("border", "red 1px solid");
+    }
+    if(maximum==""){
+        $("#maximum").css("border", "red 1px solid");
+    }
+    if(startDate==""){
+        $("#startDate").css("border", "red 1px solid");
+    }
+    if(endDate==""){
+        $("#endDate").css("border", "red 1px solid");
+    }
+    if(label==""){
+        $("#label").css("border", "red 1px solid");
+    }
+    if(up==""){
+        layer.msg("未选择照片")
+        return false;
+    }
+    if(file_input==""){
+        layer.msg("未选择照片")
+        return false;
+    }
+    if(details==""){
+        $("#details").css("border", "red 1px solid");
+    }
+    layer.msg("请认真填写红色框的内容")
+    return false;
+}
 </script>
 </html>
