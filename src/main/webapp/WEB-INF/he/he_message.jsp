@@ -25,7 +25,7 @@
 
 <div class="memwrap wrap clearfix">
     <div class="section fl">
-        <div class="location tr"><a href="${ctx}/he/heMain?userId=${user.id}">参加的饭局</a><a href="${ctx}/he/heHostDinner?userId=${user.id}">发布的饭局</a><a href="${ctx}/he/heMessage?userId=${user.id}" class="current" style="border-radius: 50%;">TA的评价</a><a href="${ctx}/he/heConcern?userId=${user.id}">TA的关注</a></div>
+        <div class="location tr"><a href="${ctx}/he/heMain?userId=${user.id}">参加的饭局</a><a href="${ctx}/he/heHostDinner?userId=${user.id}">发布的饭局</a><a href="${ctx}/he/heMessage?userId=${user.id}" class="current" style="font-weight: bold;">TA的评价</a><a href="${ctx}/he/heConcern?userId=${user.id}">TA的关注</a></div>
 
         <div class="message pd30">
             <div class="plmain">

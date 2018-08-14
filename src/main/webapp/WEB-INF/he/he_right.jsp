@@ -12,7 +12,7 @@
                     <a href="javascript:;" class="button btn-control btn-follow" id="concernBtn">已关注</a>
                 </c:otherwise>
             </c:choose>
-            <a href="javascript:;" class="button btn-control btn-sent"><em class="myfont f18">&#xe63f;</em> 私信</a>
+            <a href="${ctx}/he/heMessage?userId=${user.id}" class="button btn-control btn-sent"><em class="myfont f18">&#xe63f;</em> 留言</a>
         </div>
         <div class="Praise tc">${user.area.parent.parent.name}
             <c:if test="${user.area.parent.parent.name != null}">-</c:if>
