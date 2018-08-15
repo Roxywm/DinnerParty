@@ -2,10 +2,12 @@ package com.roxy.maven.dinner.controller.admin;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import com.github.pagehelper.PageHelper;
 import com.roxy.maven.dinner.entity.Admin;
 import com.roxy.maven.dinner.entity.AdminLog;
 import com.roxy.maven.dinner.enumeration.LogType;
@@ -36,14 +38,13 @@ public class AdminController {
 		Admin admin = (Admin)session.getAttribute("loginAdmin");
 		//获取管理员的登录次数
 		int loginCount = adminLogService.getLoginCount(admin.getId());
+		PageHelper.startPage(1, 6);
+		List<AdminLog> adminLogList = adminLogService.findAll();
+		map.put("adminLogList", adminLogList);
 		map.put("loginCount", loginCount);
 		return "admin/index";
 	}
 
-	@RequestMapping(value = "/index")
-	public String index(){
-		return "admin/index";
-	}
 
 	/**
 	 * 跳到登录页/admin/login
@@ -63,7 +64,7 @@ public class AdminController {
 			if(admin!=null){
 				if(MD5Util.verify(password, admin.getPassword())){
 					session.setAttribute("loginAdmin", admin);
-					
+
 					//当前时间
 					Timestamp now = new Timestamp(new Date().getTime());
 					

@@ -44,11 +44,11 @@
                                 ${concern.user.about}
                         </div>
                         <div class="Status">
-                            <a href="#" class="Pull">拉黑名单</a>
-                            <a href="javascript:;" class="follow-btn">
-                                <span class="concerns"><em class="myfont">&#xe610;</em>已关注</span>
-                                <span class="Unfollow">取消关注</span>
-                            </a>
+                            <%--<a href="#" class="Pull">拉黑名单</a>--%>
+                            <%--<a href="javascript:;" class="follow-btn">--%>
+                                <%--<span class="concerns"><em class="myfont">&#xe610;</em>已关注</span>--%>
+                                <%--<span class="Unfollow">取消关注</span>--%>
+                            <%--</a>--%>
                             <a href="${ctx}/he/heMessage?userId=${concern.user.id}" class="Private-letter">
                                 <em class="myfont">&#xe63f;</em>留言
                             </a>

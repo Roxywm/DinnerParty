@@ -52,125 +52,107 @@
                 <div class="navbar navbar-default bootstrap-admin-navbar-thin">
                     <ol class="breadcrumb bootstrap-admin-breadcrumb">
                         <li>
-                            <a href="#">首页</a>
+                            <a href="${ctx}/admin/">首页</a>
                         </li>
-                        <li>
-                            <a href="#">设置</a>
-                        </li>
-                        <li class="active">工具</li>
+                        <%--<li>--%>
+                            <%--<a href="#">设置</a>--%>
+                        <%--</li>--%>
+                        <%--<li class="active">工具</li>--%>
                     </ol>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="panel panel-default bootstrap-admin-no-table-panel">
-                    <div class="panel-heading">
-                        <div class="text-muted bootstrap-admin-box-title">统计</div>
-                        <div class="pull-right"><span class="badge">查看更多</span></div>
-                    </div>
-                    <div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">
-                        <div class="col-md-3">
-                            <div class="easyPieChart" data-percent="73" style="width: 110px; height: 110px; line-height: 110px;">73%<canvas width="110" height="110"></canvas></div>
-                            <div class="chart-bottom-heading"><span class="label label-info">访问量</span></div>
+            <div class="row bootstrap-admin-no-edges-padding">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="text-muted bootstrap-admin-box-title">管理员信息</div>
+                            <%--<div class="pull-right"><span class="badge">1,234</span></div>--%>
                         </div>
-                        <div class="col-md-3">
-                            <div class="easyPieChart" data-percent="53" style="width: 110px; height: 110px; line-height: 110px;">53%<canvas width="110" height="110"></canvas></div>
-                            <div class="chart-bottom-heading"><span class="label label-info">页面浏览量</span></div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="easyPieChart" data-percent="83" style="width: 110px; height: 110px; line-height: 110px;">83%<canvas width="110" height="110"></canvas></div>
-                            <div class="chart-bottom-heading"><span class="label label-info">用户</span></div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="easyPieChart" data-percent="13" style="width: 110px; height: 110px; line-height: 110px;">13%<canvas width="110" height="110"></canvas></div>
-                            <div class="chart-bottom-heading"><span class="label label-info">订单</span></div>
+                        <div class="bootstrap-admin-panel-content">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>管理员</th>
+                                    <th>上一次登陆时间</th>
+                                    <th>当前登陆时间</th>
+                                    <th>登录次数</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>${loginAdmin.username}</td>
+                                    <td>${loginAdmin.lastLoginTime}</td>
+                                    <td>${loginAdmin.currLoginTime}</td>
+                                    <td>${loginCount}</td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="row bootstrap-admin-no-edges-padding">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="text-muted bootstrap-admin-box-title">用户</div>
-                            <div class="pull-right"><span class="badge">1,234</span></div>
+                            <div class="text-muted bootstrap-admin-box-title">最近操作记录</div>
+                            <%--<div class="pull-right"><span class="badge">752</span></div>--%>
                         </div>
                         <div class="bootstrap-admin-panel-content">
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Username</th>
+                                    <th>管理员</th>
+                                    <th>操作时间</th>
+                                    <th>操作类型</th>
+                                    <th>操作内容</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Vincent</td>
-                                    <td>Gabriel</td>
-                                    <td>@gabrielva</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="text-muted bootstrap-admin-box-title">订单</div>
-                            <div class="pull-right"><span class="badge">752</span></div>
-                        </div>
-                        <div class="bootstrap-admin-panel-content">
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Product</th>
-                                    <th>Date</th>
-                                    <th>Amount</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Coat</td>
-                                    <td>02/02/2013</td>
-                                    <td>$25.12</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Jacket</td>
-                                    <td>01/02/2013</td>
-                                    <td>$335.00</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Shoes</td>
-                                    <td>01/02/2013</td>
-                                    <td>$29.99</td>
-                                </tr>
+                                    <c:forEach items="${adminLogList}" var="adminLog">
+                                        <tr>
+                                            <td>${adminLog.admin.username}</td>
+                                            <td>${adminLog.createTime}</td>
+                                            <td>${adminLog.type}</td>
+                                            <td>${adminLog.content}</td>
+                                        </tr>
+                                    </c:forEach>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+            <%--<div class="row">--%>
+                <%--<div class="panel panel-default bootstrap-admin-no-table-panel">--%>
+                    <%--<div class="panel-heading">--%>
+                        <%--<div class="text-muted bootstrap-admin-box-title">统计</div>--%>
+                        <%--<div class="pull-right"><span class="badge">查看更多</span></div>--%>
+                    <%--</div>--%>
+                    <%--<div class="bootstrap-admin-panel-content bootstrap-admin-no-table-panel-content collapse in">--%>
+                        <%--<div class="col-md-3">--%>
+                            <%--<div class="easyPieChart" data-percent="73" style="width: 110px; height: 110px; line-height: 110px;">73%<canvas width="110" height="110"></canvas></div>--%>
+                            <%--<div class="chart-bottom-heading"><span class="label label-info">访问量</span></div>--%>
+                        <%--</div>--%>
+                        <%--<div class="col-md-3">--%>
+                            <%--<div class="easyPieChart" data-percent="53" style="width: 110px; height: 110px; line-height: 110px;">53%<canvas width="110" height="110"></canvas></div>--%>
+                            <%--<div class="chart-bottom-heading"><span class="label label-info">页面浏览量</span></div>--%>
+                        <%--</div>--%>
+                        <%--<div class="col-md-3">--%>
+                            <%--<div class="easyPieChart" data-percent="83" style="width: 110px; height: 110px; line-height: 110px;">83%<canvas width="110" height="110"></canvas></div>--%>
+                            <%--<div class="chart-bottom-heading"><span class="label label-info">用户</span></div>--%>
+                        <%--</div>--%>
+                        <%--<div class="col-md-3">--%>
+                            <%--<div class="easyPieChart" data-percent="13" style="width: 110px; height: 110px; line-height: 110px;">13%<canvas width="110" height="110"></canvas></div>--%>
+                            <%--<div class="chart-bottom-heading"><span class="label label-info">订单</span></div>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+
 
         </div>
     </div>

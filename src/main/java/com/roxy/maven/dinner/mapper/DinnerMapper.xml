@@ -97,7 +97,7 @@
       u.*, a.id aid, a.name aname, a.parentId pid, c.id cid,c.name cname,c.type,c.status cstatus
       from dinner d,users u,areas a,category c
       where d.categoryId=c.id and d.userId=u.id and u.areaId=a.id and d.endTime>now()
-      order by enrolment desc
+      order by enrolment desc,interest desc
     </select>
 
     <select id="fuzzySearch" parameterType="string" resultMap="dinnerMap">
