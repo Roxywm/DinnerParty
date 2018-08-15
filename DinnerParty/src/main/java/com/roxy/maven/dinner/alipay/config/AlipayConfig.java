@@ -21,11 +21,11 @@ public class AlipayConfig {
 	// 支付宝公钥,查看地址：https://openhome.alipay.com/platform/keyManage.htm 对应APPID下的支付宝公钥。
     public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAt7owVuCb5/lyREdE/BZ7IURp0bv6YZ2O81tRVU69r62Ca7u+4DovgvEGLjs+kIP2QZVpUODUPr1yk1sf/k5xzsRPkFtrVNb/X3h/jALQu5Aj2mDIMZymDbvErGzvCCub3A81xYz+S46VOmQpPhVm26xJySNX5R1dRjTltp9meq/rrqTR3IjWd2VjQUnKqVkjRJ89RPCJVOdFgj3211VlCyTz1PBlAJ79J7dyNl46moSvTEDnjX9J50sUxgMNpJJjJZ22Ga/OYQ6IB38SQQAAajZreqwA8AguxwA/yyr24OkfVp3Pk6Cpxv6lksSENAezMiHSFgPeroV826fvxK0wRQIDAQAB";
 	// 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String notify_url = "http://localhost:8080/dinner/alipay/notify_url";
-//    public static String notify_url = "http://www.ywming.com/dinner/alipay/notify_url.jsp";
+//    public static String notify_url = "http://localhost:8080/dinner/alipay/notify_url";
+    public static String notify_url = "http://www.ywming.com/dinner/alipay/notify_url";
 	// 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String return_url = "http://localhost:8080/dinner/alipay/return_url";
-//    public static String return_url = "http://www.ywming.com/dinner/alipay/pay_success";
+//    public static String return_url = "http://localhost:8080/dinner/alipay/return_url";
+    public static String return_url = "http://www.ywming.com/dinner/alipay/return_url";
 	// 签名方式
 	public static String sign_type = "RSA2";
 	// 字符编码格式

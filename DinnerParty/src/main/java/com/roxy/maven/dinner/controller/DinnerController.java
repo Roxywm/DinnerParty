@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.roxy.maven.dinner.common.Constants;
 import com.roxy.maven.dinner.entity.*;
 import com.roxy.maven.dinner.service.*;
+import com.roxy.maven.dinner.util.CompressPicUtil;
 import com.roxy.maven.dinner.util.SaveImg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -78,24 +81,30 @@ public class DinnerController {
         if(photo!=null&&!photo.getOriginalFilename().equals("")){
             String suffix = getSuffix(photo.getOriginalFilename());
             long fileName = System.currentTimeMillis();
-            File oldName = new File(Constants.savePath +fileName+suffix);
+            String filePath =Constants.savePath+ fileName+suffix;
+            File oldFile = new File(filePath);
             try {
-                photo.transferTo(oldName);
-                dinner.setThumbnail(oldName.getName());//添加到饭局对象中
+                photo.transferTo(oldFile);
+
+                //图片处理
+                CompressPicUtil mypic = new CompressPicUtil();
+                BufferedImage read = ImageIO.read(oldFile);
+                String pic = mypic.compressPic(Constants.savePath, Constants.savePath, fileName + suffix, fileName + "_min" + suffix, read.getWidth(), read.getHeight(), false);
+                if("ok".equals(pic)){
+                    dinner.setThumbnail(fileName + "_min" + suffix);//添加到饭局对象中
+                }else{
+                    dinner.setThumbnail(oldFile.getName());//添加到饭局对象中
+                }
+
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         //获取上传的饭局照片集合
-        List<Photo> photos = null;
-        try {
-            photos = SaveImg.getFiles(files);
-            dinner.setPhotos(photos);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ServletException e) {
-            e.printStackTrace();
-        }
+        List<Photo> photos = SaveImg.getFiles(files);
+        dinner.setPhotos(photos);
+
 
         //设置开始时间和报名结束时间
         dinner.setCategory(new Category(Long.parseLong(categoryId)));
