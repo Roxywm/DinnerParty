@@ -50,13 +50,13 @@
     <select id="findByUserId" parameterType="long" resultMap="applyPartyMap">
         select ap.id apid, ap.reason,ap.remark,ap.payStatus,u.*,d.id did,d.startTime,d.endTime,a.id aid, a.name aname, a.parentId pid
         from applyParty ap,users u,dinner d, areas a
-        where ap.userId=u.id and ap.dinnerId=d.id and u.areaId=a.id and u.id=#{userId}
+        where ap.userId=u.id and ap.dinnerId=d.id and u.areaId=a.id and u.id=#{userId} order by ap.id desc
     </select>
 
     <select id="findByDinnerId" parameterType="long" resultMap="applyPartyMap">
         select ap.id apid, ap.reason,ap.remark,ap.payStatus,u.*,d.id did,d.startTime,d.endTime,a.id aid, a.name aname, a.parentId pid
         from applyParty ap,users u,dinner d, areas a
-        where ap.userId=u.id and ap.dinnerId=d.id and u.areaId=a.id and d.id=#{dinnerId}
+        where ap.userId=u.id and ap.dinnerId=d.id and u.areaId=a.id and d.id=#{dinnerId} order by ap.id desc
     </select>
 
     <select id="findByUserIdAndDinnerId" parameterType="long" resultMap="applyPartyMap">

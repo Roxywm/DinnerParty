@@ -31,7 +31,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/alipay")
-public class AlipayContorller {
+public class AlipayController {
 
     @Autowired
     private DinnerService dinnerService;
@@ -206,7 +206,7 @@ public class AlipayContorller {
             //提交订单到数据库
             User user = (User) session.getAttribute("loginUser");
             Orders orders = new Orders(user,dinner,remark,Double.parseDouble(total_amount),out_trade_no,trade_no,new Timestamp(new Date().getTime()));
-            int rows = ordersService.create(orders);
+            int rows = ordersService.create(orders);//创建订单
             if(rows>0){
                 ApplyParty applyParty = new ApplyParty();
                 applyParty.setUser(user);

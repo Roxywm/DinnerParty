@@ -4,18 +4,33 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.roxy.maven.dinner.dao.AdminLogDao">
+    <resultMap id="adminLogMap" type="adminLog">
+        <id property="id" column="id" />
+        <result property="createTime" column="createTime" />
+        <result property="type" column="type" />
+        <result property="content" column="content" />
+        <association property="admin" javaType="admin">
+            <id property="id" column="aid" />
+            <result property="username" column="username" />
+            <result property="password" column="password" />
+            <result property="lastLoginTime" column="lastLoginTime" />
+            <result property="currLoginTime" column="currLoginTime" />
+        </association>
+    </resultMap>
   
   <insert id="create" parameterType="adminLog" useGeneratedKeys="true" keyProperty="id">
   	insert into adminLog(adminId, createTime, type, content)
   	values (#{admin.id}, #{createTime}, #{type}, #{content})
   </insert>
   
-  <select id="findByAdminId" parameterType="long" resultType="adminLog">
+  <select id="findByAdminId" parameterType="long" resultMap="adminLogMap">
   	select * from adminLog where adminId=#{id}
   </select>
   
-  <select id="findAll" resultType="adminLog">
-  	select * from adminLog
+  <select id="findAll" resultMap="adminLogMap">
+  	select al.id, al.createTime, al.type, al.type, al.content, a.id aid, a.username, a.password, a.lastLoginTime, a.currLoginTime
+  	from adminLog al, admin a
+  	where al.adminId=a.id order by al.id desc
   </select>
   
   <select id="getLoginCount" parameterType="long" resultType="int">

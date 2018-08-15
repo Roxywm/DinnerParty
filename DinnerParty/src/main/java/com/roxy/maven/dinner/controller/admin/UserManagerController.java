@@ -3,8 +3,12 @@ package com.roxy.maven.dinner.controller.admin;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.roxy.maven.dinner.common.Constants;
+import com.roxy.maven.dinner.entity.Admin;
+import com.roxy.maven.dinner.entity.AdminLog;
 import com.roxy.maven.dinner.entity.Orders;
 import com.roxy.maven.dinner.entity.User;
+import com.roxy.maven.dinner.enumeration.LogType;
+import com.roxy.maven.dinner.service.AdminLogService;
 import com.roxy.maven.dinner.service.DownloadService;
 import com.roxy.maven.dinner.service.UserService;
 import jxl.Workbook;
@@ -19,8 +23,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +39,8 @@ public class UserManagerController {
     private UserService userService;
     @Autowired
     private DownloadService downloadService;
+    @Autowired
+    private AdminLogService adminLogService;
 
 
     @RequestMapping(value = "/")
@@ -53,11 +62,20 @@ public class UserManagerController {
      * @param response
      */
     @RequestMapping(value = "/userExce", method = RequestMethod.GET)
-    public void ordersExce(HttpServletRequest request, HttpServletResponse response){
+    public void ordersExce(HttpServletRequest request, HttpServletResponse response, HttpSession session){
 
         List<User> userList = userService.findAll();
         File file = writerExcelData(userList, "用户信息.xls");
         try {
+            //保存日志
+            Admin admin = (Admin)session.getAttribute("loginAdmin");//当前时间
+            Timestamp now = new Timestamp(new Date().getTime());
+            AdminLog log = new AdminLog();
+            log.setAdmin(admin);
+            log.setCreateTime(now);
+            log.setType(LogType.CHECK);
+            log.setContent("下载用户信息");
+            adminLogService.create(log);
             downloadService.downloadSolve(request, response, file);
         } catch (IOException e) {
             e.printStackTrace();

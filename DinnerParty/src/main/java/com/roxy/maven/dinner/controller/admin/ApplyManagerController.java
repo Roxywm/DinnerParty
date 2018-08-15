@@ -2,12 +2,9 @@ package com.roxy.maven.dinner.controller.admin;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.roxy.maven.dinner.entity.ApplyHost;
-import com.roxy.maven.dinner.entity.Area;
-import com.roxy.maven.dinner.entity.User;
-import com.roxy.maven.dinner.service.ApplyHostService;
-import com.roxy.maven.dinner.service.AreaService;
-import com.roxy.maven.dinner.service.UserService;
+import com.roxy.maven.dinner.entity.*;
+import com.roxy.maven.dinner.enumeration.LogType;
+import com.roxy.maven.dinner.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +29,8 @@ public class ApplyManagerController {
     private AreaService areaService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private AdminLogService adminLogService;
 
     /**
      * 跳到查看报名页
@@ -57,12 +59,22 @@ public class ApplyManagerController {
      */
     @ResponseBody
     @RequestMapping(value = "/updateStatus")
-    public Map<String, Object> updateStatus(long applyId, User user){
+    public Map<String, Object> updateStatus(long applyId, User user, HttpSession session){
         int rows = applyHostService.updateStatus(applyId);
         user.setHostStatus(1);
         userService.update(user);
         Map<String, Object> map = new HashMap<String,Object>();
         if(rows>0){
+            //保存日志
+            Admin admin = (Admin)session.getAttribute("loginAdmin");//当前时间
+            Timestamp now = new Timestamp(new Date().getTime());
+            AdminLog log = new AdminLog();
+            log.setAdmin(admin);
+            log.setCreateTime(now);
+            log.setType(LogType.UPDATE);
+            log.setContent("审核用户报名");
+            adminLogService.create(log);
+
             map.put("ok",true);
         }else{
             map.put("ok", false);
