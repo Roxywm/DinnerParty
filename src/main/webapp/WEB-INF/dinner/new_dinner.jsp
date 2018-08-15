@@ -399,6 +399,9 @@
     if(label==""){
         $("#label").css("border", "red 1px solid");
     }
+    if(details==""){
+        $("#details").css("border", "red 1px solid");
+    }
     if(up==""){
         layer.msg("未选择照片")
         return false;
@@ -406,9 +409,6 @@
     if(file_input==""){
         layer.msg("未选择照片")
         return false;
-    }
-    if(details==""){
-        $("#details").css("border", "red 1px solid");
     }
     layer.msg("请认真填写红色框的内容")
     return false;

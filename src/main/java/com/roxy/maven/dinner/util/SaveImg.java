@@ -4,9 +4,11 @@ import com.roxy.maven.dinner.common.Constants;
 import com.roxy.maven.dinner.entity.Photo;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -22,7 +24,7 @@ public class SaveImg {
      * @throws IOException
      * @throws ServletException
      */
-    public static List<Photo> getFiles(MultipartFile[] files) throws IOException, ServletException {
+    public static List<Photo> getFiles(MultipartFile[] files){
         List<Photo> photos = new ArrayList<Photo>();
         if(files!=null && files.length>0){
             //循环获取file数组中得文件
@@ -33,10 +35,19 @@ public class SaveImg {
                     String suffix = getSuffix(file.getOriginalFilename());
                     long fileName = System.currentTimeMillis();
                     String filePath =Constants.savePath+ fileName+suffix;
+                    File oldFile = new File(filePath);
                     // 转存文件
-                    file.transferTo(new File(filePath));
+                    file.transferTo(oldFile);
 
-                    photos.add(new Photo(null, fileName+suffix,new Timestamp(new Date().getTime())));
+                    //图片处理
+                    CompressPicUtil mypic = new CompressPicUtil();
+                    BufferedImage read = ImageIO.read(oldFile);
+                    String pic = mypic.compressPic(Constants.savePath, Constants.savePath, fileName + suffix, fileName + "_min" + suffix, read.getWidth(), read.getHeight(), false);
+                    if("ok".equals(pic)){
+                        photos.add(new Photo(null, fileName + "_min" + suffix, new Timestamp(new Date().getTime())));
+                    }else{
+                        photos.add(new Photo(null, fileName+suffix, new Timestamp(new Date().getTime())));
+                    }
 
                 } catch (IOException e) {
                     e.printStackTrace();
