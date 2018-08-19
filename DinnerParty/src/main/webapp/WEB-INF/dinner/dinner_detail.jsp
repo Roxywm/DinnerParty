@@ -65,7 +65,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 <div class="wrap mt40">
     <div class="detail-box">
         <dl class="lebox">
-            <dt class="img"><img src="${ctx}/uploads/${dinner.thumbnail}" width="430px"></dt>
+            <dt class="img"><img src="${ctx}/uploads/${dinner.photos.get(0).src}" width="430px"></dt>
             <dd>活动详情 | EVENT DETAILS</dd>
         </dl>
         <h1>${dinner.titel}</h1>
