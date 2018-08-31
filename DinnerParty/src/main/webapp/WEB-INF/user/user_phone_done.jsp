@@ -39,8 +39,8 @@
                 <th valign="top"><p class="mt30"><em class="myfont ff4800" style="font-size:100px;">&#xe64b;</em></p></th>
                 <td>
                     <p class="f24 c333">您的手机已绑定成功！</p>
-                    <p class="mt10">绑定成功 <span class="ff4800" id="show">5</span> 秒后返回个人中心页面  点击 <a href="${ctx}/user/edit" class="ff4800">立即返回</a></p>
-                    <p class="Release-submit mt40"><button type="button" name="" value="" class="button btn-submit Appbtn">完成</button></p>
+                    <p class="mt10">绑定成功 <span class="ff4800" id="show">5</span> 秒后返回个人中心页面  点击 <a href="${ctx}/user/edit/binding" class="ff4800">立即返回</a></p>
+                    <p class="Release-submit mt40"><button type="button" onClick="location.href='${ctx}/user/edit/binding'" class="button btn-submit Appbtn">完成</button></p>
                 </td>
             </tr>
 
@@ -71,5 +71,17 @@
             Img: "ImgPr",
         });
     });
+</script>
+<script>
+    $(function () {
+        var time = 5*1+1;
+        setInterval(function () {
+            time--;
+            if(time<=0){
+                window.location.href="${ctx}/user/edit/binding";
+            }
+            $("#show").html(time);
+        },1000);
+    })
 </script>
 </html>

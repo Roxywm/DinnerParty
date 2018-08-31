@@ -37,7 +37,7 @@
                                 ${user.email}
                                 <c:if test="${user.emailStatus==0}">
                                     <p class="mt10">
-                                        <a href="${ctx}/user/edit/email" class="button btn-bind">未验证</a>
+                                        <a href="${ctx}/user/edit/email?email=${user.email}" class="button btn-bind">未验证</a>
                                     </p>
                                 </c:if>
                                 <c:if test="${user.emailStatus==1}">
@@ -62,7 +62,7 @@
                                 ${user.mobile}
                                 <c:if test="${user.mobileStatus==0}">
                                     <p class="mt10">
-                                        <a href="${ctx}/user/edit/mobile" class="button btn-bind">未验证</a>
+                                        <a href="${ctx}/user/edit/mobile?mobile=${user.mobile}" class="button btn-bind">未验证</a>
                                     </p>
                                 </c:if>
                                 <c:if test="${user.mobileStatus==1}">

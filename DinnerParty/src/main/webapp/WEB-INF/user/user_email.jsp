@@ -38,7 +38,7 @@
             <c:if test="${not empty error}">
                 <div class="Prompt red" style="padding:0 0 10px; margin-left: 100px;">${error}</div>
             </c:if>
-            <p class="f18">邮箱地址：<input type="email" name="email" class="inputmail" placeholder="请输入您的邮箱"></p>
+            <p class="f18">邮箱地址：<input type="email" name="email" value="${email}" class="inputmail" placeholder="请输入您的邮箱"></p>
             <div class="Release-submit"><button type="submit" class="button btn-submit Appbtn">下一步</button></div>
         </div>
     </form>

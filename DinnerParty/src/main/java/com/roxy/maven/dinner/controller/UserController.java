@@ -265,10 +265,11 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/edit/mobile", method = RequestMethod.GET)
-    public String bindingMobile(HttpSession session, Map<String, Object> map){
+    public String bindingMobile(String mobile, HttpSession session, Map<String, Object> map){
         User loginUser = (User) session.getAttribute("loginUser");
         User user = userService.findByEmail(loginUser.getEmail());
         map.put("user",user);
+        map.put("phoneNumber", mobile);
         return "/user/user_phone";
     }
 
@@ -360,7 +361,8 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/edit/email", method = RequestMethod.GET)
-    public String bindingEmail(){
+    public String bindingEmail(String email, Map<String, Object> map){
+        map.put("email", email);
         return "user/user_email";
     }
 
