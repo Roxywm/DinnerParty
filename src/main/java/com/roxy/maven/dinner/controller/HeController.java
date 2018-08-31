@@ -244,6 +244,12 @@ public class HeController {
         Map<String, Object> map = new HashMap<String, Object>();
         int rows = concernService.cancel(concern);
         if(rows>0){
+            //查找关注的人
+            PageHelper.startPage(1, 4);//设置分页
+            List<Concern> concernList = concernService.findAllConcern(user.getId());
+            PageInfo<Concern> concernPage = new PageInfo<Concern>(concernList);
+            session.setAttribute("concernNum", concernList.size());
+            session.setAttribute("concernPage", concernPage);
             map.put("ok",true);
         }else{
             map.put("ok",false);

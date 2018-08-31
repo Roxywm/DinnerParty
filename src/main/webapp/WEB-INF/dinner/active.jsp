@@ -50,7 +50,7 @@
 
         <div class="sortbar mt10 clearfix">
             <ul class="nav-pills">
-                <li class="current"><a href="${ctx}/find/dinner/search?keyword=${keyword}" title="全部">全部</a></li>
+                <li class="current"><a href="${ctx}/find/dinner/search?keyword=<%--${keyword}--%>&rule=" title="全部">全部</a></li>
                 <li><a href="${ctx}/find/dinner/search?keyword=${keyword}&rule=dateDesc" title="时间">时间<em class="ico time"></em></a></li>
                 <li><a href="${ctx}/find/dinner/search?keyword=${keyword}&rule=priceDesc" title="菜金从高到低">菜金<em class="ico price"></em></a></li>
                 <li>

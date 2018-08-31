@@ -35,8 +35,8 @@
             </c:if>
             <c:forEach items="${page.list}" var="applyParty">
                 <div class="item">
-                    <a href="#" class="user img"><img src="${ctx}/userIcon/${applyParty.dinner.user.icon}"></a>
-                    <div class="hd"><span class="username">${applyParty.dinner.user.nickname}</span>  报名了  <span class="Period">NO.${applyParty.dinner.id}期活动</span></div>
+                    <a href="${ctx}/he/heMain?userId=${applyParty.user.id}" class="user img"><img src="${ctx}/userIcon/${applyParty.user.icon}"></a>
+                    <div class="hd"><span class="username">${applyParty.user.nickname}</span>  报名了  <span class="Period">NO.${applyParty.dinner.id}期活动</span></div>
                     <div class="bd">
                         <c:if test="${applyParty.dinner.endTime.time < newDate.time}">
                             <span class="Expired indent">已过期</span>

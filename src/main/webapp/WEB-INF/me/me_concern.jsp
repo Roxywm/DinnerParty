@@ -47,7 +47,7 @@
                             <a href="#" class="Pull">拉黑名单</a>
                             <a href="javascript:;" class="follow-btn">
                                 <span class="concerns"><em class="myfont">&#xe610;</em>已关注</span>
-                                <span class="Unfollow">取消关注</span>
+                                <span class="Unfollow" id="Unfollow" userId="${concern.concernUser.id}">取消关注</span>
                             </a>
                             <a href="${ctx}/he/heMessage?userId=${concern.concernUser.id}" class="Private-letter">
                                 <em class="myfont">&#xe63f;</em>留言
@@ -105,5 +105,18 @@
             $(selector).chosen(config[selector]);
         }
     });
+</script>
+<script>
+    $("#Unfollow").click(function () {
+        //取消关注
+        var userId = $("#Unfollow").attr("userId");
+        $.getJSON("${ctx}/he/cancelConcern",{"userId":userId},function (data) {
+            if(data.ok){
+                window.location.reload();
+            }else{
+                alert(data.error);
+            }
+        })
+    })
 </script>
 </html>
